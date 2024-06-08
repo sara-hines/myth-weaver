@@ -1,7 +1,7 @@
 .mythweaver {
     text-align: center;
     background-color: var(--bg-color);
-    min-height: 100vh; /* Changed to min-height to ensure content fits */
+    min-height: 100vh; /* Ensures content fits */
 }
 
 .main-content {
@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - var(--header-height)); /* Adjust based on header height */
+    padding: 20px;
 }
 
 .story-grid {
@@ -22,7 +23,7 @@
     position: relative;
     overflow: hidden;
     border-radius: var(--border-radius);
-    width: 100%; /* Changed to 100% to fit the grid cell */
+    width: 100%; /* Fit the grid cell */
     height: 300px;
     font-size: 12px;
     cursor: pointer;
@@ -230,5 +231,39 @@
     .story-info .story-author,
     .story-info .story-stars {
         font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .modal-header-center .modal-title {
+        font-size: 1.2rem; /* Adjust font size for small screens */
+    }
+
+    .modal-body-lg {
+        padding: 0.5rem; /* Adjust padding for small screens */
+    }
+
+    .modal-body-lg form .form-control,
+    .modal-body-lg form .btn {
+        font-size: 0.9rem; /* Adjust font size for small screens */
+        padding: 0.25rem 0.5rem; /* Adjust padding for small screens */
+    }
+
+    .modal {
+        width: 95%; /* Adjust modal width for small screens */
+        margin: 0 auto; /* Center the modal */
+    }
+
+    .modal-content {
+        padding: 1rem; /* Adjust padding for modal content */
+    }
+
+    .modal-header-center .btn-close {
+        top: 10px; /* Adjust close button position */
+        right: 10px; /* Adjust close button position */
+        width: 1.5rem; /* Adjust close button size */
+        height: 1.5rem; /* Adjust close button size */
+    }
+
+    .modal-header-center .btn-close::before {
+        font-size: 1.5rem; /* Adjust close button font size */
     }
 }

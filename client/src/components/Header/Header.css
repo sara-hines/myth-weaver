@@ -205,3 +205,36 @@
   font-size: 1.1rem; /* Increase the font size of buttons */
   padding: 0.75rem 1.5rem; /* Increase padding for buttons */
 }
+
+/* Responsive Modals */
+@media (max-width: 768px) {
+  .modal-header-center .modal-title {
+    font-size: 1.5rem; /* Adjust the font size for smaller screens */
+  }
+
+  .modal-body-lg {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .modal-body-lg form .form-control,
+  .modal-body-lg form .btn {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-header-center .modal-title {
+    font-size: 1.2rem; /* Further adjust the font size for very small screens */
+  }
+
+  .modal-body-lg {
+    padding: 0.5rem; /* Further adjust padding for very small screens */
+  }
+
+  .modal-body-lg form .form-control,
+  .modal-body-lg form .btn {
+    font-size: 0.9rem; /* Further adjust font size for very small screens */
+    padding: 0.25rem 0.5rem; /* Further adjust padding for very small screens */
+  }
+}
