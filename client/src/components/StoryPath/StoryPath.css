@@ -1,14 +1,16 @@
 .story-path {
     background-color: var(--bg-color);
     text-align: center;
-    padding: 50px;
+    padding: 20px;
     height: calc(100vh - var(--header-height));
     color: var(--text-color);
+    box-sizing: border-box;
 }
 
 .story-path-container {
     margin: 0 auto;
     max-width: 60vw;
+    padding: 20px;
 }
 
 .story-path-container h1 {
@@ -28,8 +30,8 @@
     display: flex;
     margin: 0 auto;
     justify-content: center;
-    gap: 30px; /* Add space between buttons */
-    flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
+    gap: 30px;
+    flex-wrap: wrap;
     max-width: 60vw;
 }
 
@@ -41,7 +43,7 @@
     padding: 10px 20px;
     font-size: 1.2em;
     cursor: pointer;
-    transition: opacity ease-in-out .3s;
+    transition: opacity ease-in-out 0.3s;
 }
 
 .option:nth-child(even) {
@@ -57,9 +59,7 @@
     margin: 0 auto;
     justify-content: center;
     gap: 30px;
-    /* Add space between buttons */
     flex-wrap: wrap;
-    /* Allow buttons to wrap to the next line if necessary */
     max-width: 60vw;
 }
 
@@ -83,4 +83,71 @@
 .bookmark a:hover {
     color: var(--header-link-hover);
     text-decoration: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .story-path-container {
+        max-width: 80vw;
+    }
+
+    .story-path-container h1 {
+        font-size: 2em;
+    }
+
+    .story-path-container p {
+        font-size: 1.2em;
+    }
+
+    .options {
+        max-width: 80vw;
+        gap: 20px;
+    }
+
+    .option {
+        font-size: 1em;
+    }
+
+    .story-end-button {
+        max-width: 80vw;
+        gap: 20px;
+    }
+
+    .bookmark {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-path-container {
+        max-width: 95vw;
+    }
+
+    .story-path-container h1 {
+        font-size: 1.5em;
+    }
+
+    .story-path-container p {
+        font-size: 1em;
+    }
+
+    .options {
+        max-width: 95vw;
+        gap: 15px;
+    }
+
+    .option {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+
+    .story-end-button {
+        max-width: 95vw;
+        gap: 15px;
+    }
+
+    .bookmark {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
 }
