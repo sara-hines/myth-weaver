@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import SignupForm from '../SignupForm/SignupForm';
 import LoginForm from '../LoginForm/LoginForm';
@@ -7,18 +7,30 @@ import './Header.css';
 import { Modal } from 'react-bootstrap';
 
 const Header = () => {
-    // State to control the visibility of the modal
     const [showModal, setShowModal] = useState(false);
-    const [modalType, setModalType] = useState('login'); // To toggle between login and signup
+    const [modalType, setModalType] = useState('login');
     const location = useLocation();
-    const [theme, setTheme] = useState('fairycore'); // Initial theme state
-    const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown visibility
+    const [theme, setTheme] = useState('fairycore');
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    useEffect(() => {
+        const titleSpans = document.querySelectorAll('.animated-char');
+        titleSpans.forEach(span => {
+            span.classList.remove('start-animation');
+            void span.offsetWidth; // Trigger reflow to restart animation
+            span.classList.add('start-animation');
+        });
+    }, [location]);
 
     const handleThemeChange = (newTheme) => {
         setTheme(newTheme);
-        // Apply theme logic here
         document.documentElement.setAttribute('data-theme', newTheme);
     };
+
+    const title = "MythWeaver";
+    const titleAnimated = title.split("").map((char, index) => (
+        <span key={index} className="animated-char">{char}</span>
+    ));
 
     return (
         <>
@@ -38,7 +50,9 @@ const Header = () => {
                         </>
                     )}
                 </div>
-                <h1 className="title"><Link to='/myth-index'>MythWeaver</Link></h1>
+                <h1 className="title">
+                    <Link to='/myth-index' className="cssanimation leBlurIn sequence">{titleAnimated}</Link>
+                </h1>
                 <div className="header-right">
                     {location.pathname === '/myth-index' && (
                         <>
