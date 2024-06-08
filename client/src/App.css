@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: var(--theme-font);
+}
+
+/* Default (fairycore) theme */
+:root {
+  font-size: 16px; /* set default for rem */
+  --border-radius: 10px;
+  --theme-font: 'Chewy', cursive, sans-serif;
+  --header-height: 274px; /* header & footer height combined */
+
+  /* COLORS */
+  --bg-color: rgb(211, 201, 198); /* #d3c9c6 */
+  --text-color: rgb(100, 91, 89); /* #645b59 */
+  --container-color: rgb(216, 184, 153); /* #d8b899 */ 
+  --accent-container: rgb(223, 240, 248); /* #dff0f8 */
+  --dark-accent: rgb(29, 29, 29);
+  --mid-dark-accent: rgb(132, 125, 124); /* #847d7c */
+  --button-accent: rgb(176, 86, 93); /* #b0565d */
+  --dk-button-accent: rgb(155, 63, 78); /* #9b3f4e */
+  --dk-container-color: rgb(232, 157, 117); /* #e89d75 */
+  --rating-bg: rgb(177, 202, 203); /* #b1cacb */
+
+  /* HEADER VARIABLES */
+  --header-bg: rgb(216, 184, 153); /* #d8b899 */
+  --header-text: rgb(201, 95, 126); /* #c95f7e */
+  --header-title: rgb(129, 106, 166); /* #816aa6 */
+  --header-shadow: rgb(201, 95, 126); /* #c95f7e */
+  --header-link-hover: rgb(223, 240, 248); /* #dff0f8 */
+
+  /* STORY COLOR ARRAY */
+  --story-1: rgb(240, 173, 78); /* #f0ad4e */
+  --story-2: rgb(201, 95, 126); /* #c95f7e */
+  --story-3: rgb(140, 138, 119); /* #8c8a77 */
+  --story-4: rgb(129, 106, 166); /* #816aa6 */
+  --story-5: rgb(223, 240, 248); /* #dff0f8 */
+  --story-6: rgb(221, 161, 94); /* #dda15e */
+  --story-7: rgb(139, 94, 60); /* #8b5e3c */
+  --story-8: rgb(237, 176, 139); /* #edb08b */
+}
+  
+/* Dark theme */
+[data-theme="cyberpunk"] {
+  --bg-color: #333333;
+  --text-color: #ffffff;
+}
+
+/* Fantasy theme */
+[data-theme="fantasy"] {
+  --bg-color: goldenrod;
+  --text-color: #ffffff;
+}

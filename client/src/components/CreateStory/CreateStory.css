@@ -1,0 +1,256 @@
+/* General styles for the Create Story page */
+.create-story-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d3c1b1; /* Beige background */
+    min-height: 100vh;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.create-story-header {
+    width: 100%;
+    background-color: #d3c1b1; /* Beige background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.home-link {
+    font-size: 24px;
+    color: #000; /* Black color */
+    text-decoration: none;
+}
+
+.create-story-title {
+    font-size: 36px;
+    color: #000; /* Black color */
+}
+
+.change-theme-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #000; /* Black color */
+    cursor: pointer;
+}
+
+.create-story-content {
+    display: flex;
+    width: 100%;
+}
+
+.create-story-sidebar {
+    width: 200px;
+    background-color: #e29e7c; /* Orange background */
+    padding: 20px;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.story-title {
+    font-size: 24px;
+    color: #523B87; /* Purple color */
+    margin-bottom: 10px;
+}
+
+.story-options {
+    list-style: none;
+    padding: 0;
+}
+
+.story-option {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.story-option.new { color: #FF7276; /* Red color */ }
+.story-option.edit { color: #A0CC57; /* Green color */ }
+.story-option.rename { color: #FF7276; /* Red color */ }
+.story-option.test { color: #A0CC57; /* Green color */ }
+.story-option.build { color: #FF7276; /* Red color */ }
+.story-option.delete { color: #FF0000; /* Bright red color */ }
+
+.create-story-main {
+    display: flex;
+    flex-grow: 1;
+    background-color: #d3c1b1; /* Beige background */
+    padding: 20px;
+}
+
+.story-graph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+.node {
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* White color */
+    position: absolute;
+}
+
+.purple { background-color: #523B87; left: 10%; }
+.blue { background-color: #7AC4C1; left: 30%; }
+.aqua { background-color: #2DB6C8; left: 50%; top: 10%; }
+.pink { background-color: #D6768E; left: 50%; top: 50%; }
+
+.story-editor {
+    background-color: #d3b1b1; /* Beige background */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D6768E; /* Pink background */
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    color: #000; /* Black color */
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: #fff; /* White color */
+    cursor: pointer;
+}
+
+.editor-content {
+    width: 100%;
+    height: 200px;
+    background-color: #b5a3a3; /* Light beige background */
+    border: none;
+    border-radius: 0 0 20px 20px;
+    padding: 10px;
+    font-size: 16px;
+    color: #000; /* Black color */
+    resize: none;
+    outline: none;
+}
+
+/* Quick styles added for create story test button, feel free to change however - Sara */
+.submit-story-test-btn {
+    background-color: #b0627b;
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.create-story-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.create-story-content {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    overflow-y: auto;
+}
+
+.create-story-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.finalize-story-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chapter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-height: 70vh;
+    overflow-y: auto;
+    margin: 20px 0;
+    padding-right: 20px;
+    gap: 10px;
+}
+
+.chapter-container .chapter-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chapter-container button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 80%;
+    max-width: 400px;
+}
+
+.indent-1 {
+    margin-left: 40px;
+}
+
+.indent-2 {
+    margin-left: 80px;
+}
+
+.indent-3 {
+    margin-left: 120px;
+}
+
+.indent-4 {
+    margin-left: 160px;
+}
+
+.indent-5 {
+    margin-left: 200px;
+}
+
+/* Add more indentation levels as needed */

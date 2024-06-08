@@ -1,0 +1,109 @@
+.story-review {
+    background-color: var(--bg-color);
+    min-height: calc(100vh - var(--header-height));
+}
+
+.story-review-container {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    margin: auto;
+    background-color: var(--bg-color);
+}
+
+.story-review h2 {
+    margin: 15px auto;
+    color: var(--header-text);
+    border-bottom: 1px solid;
+    max-width: calc(fit-content + 20px);
+}
+
+.username-input,
+.review-textarea,
+.star-rating select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    background-color: var(--header-link-hover);
+    color: var(--dark-accent);
+}
+
+.review-textarea {
+    height: 100px;
+    resize: vertical;
+    background-color: var(--header-link-hover);
+    color: var(--dark-accent);
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.star-rating .star {
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--header-link-hover);
+    transition: color 0.2s;
+}
+
+.star-rating .star.filled {
+    color: #ffcc00;
+}
+
+.star-rating .star:hover,
+.star-rating .star:hover ~ .star {
+    color: #ffcc00;
+}
+
+/* This line is necessary to revert the color of the stars to the right of the hovered star */
+.star-rating .star:hover ~ .star {
+    color: var(--header-link-hover);
+}
+
+.review-buttons {
+    display: flex;
+    gap: 10px; /* Adjust the spacing between buttons as needed */
+    justify-content: center; /* Center the buttons within the div */
+    margin-bottom: 15px; /* Add some space below the buttons */
+}
+
+.save-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--button-accent);
+    color: var(--header-link-hover);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background-color: var(--dk-button-accent);
+}
+
+.reviews-list {
+    margin-top: 20px;
+}
+
+.review-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.review-item h3 {
+    margin: 0 0 5px 0;
+    color: #007bff;
+}
+
+.review-item p {
+    margin: 5px 0;
+}

@@ -1,0 +1,56 @@
+.story-end {
+    background-color: var(--bg-color);
+    text-align: center;
+    padding: 50px;
+    height: calc(100vh - var(--header-height));
+    color: var(--text-color);
+}
+
+.story-end-container {
+    margin: 0 auto;
+    max-width: 60vw;
+}
+
+.story-end-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--header-text);
+}
+
+.story-end-container p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.story-end-button {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 30px; /* Add space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
+    max-width: 60vw;    
+}
+
+.bookmark {
+    background-color: var(--header-text);
+    border: none;
+    border-radius: 20px;
+    color: var(--header-link-hover);
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+.bookmark:hover {
+    opacity: 0.8;
+    background-color: var(--header-title);
+}
+
+.bookmark a,
+.bookmark a:hover {
+    color: var(--header-link-hover);
+    text-decoration: none;
+}

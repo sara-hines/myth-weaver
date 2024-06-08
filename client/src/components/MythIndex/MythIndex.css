@@ -1,0 +1,234 @@
+.mythweaver {
+    text-align: center;
+    background-color: var(--bg-color);
+    min-height: 100vh; /* Changed to min-height to ensure content fits */
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height)); /* Adjust based on header height */
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+    gap: 20px;
+    padding: 20px; /* Added padding for better spacing */
+}
+
+.story {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    width: 100%; /* Changed to 100% to fit the grid cell */
+    height: 300px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.story-image-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.story-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.story-title-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.story-title-container .story-title {
+    color: white; /* Ensure title text color is white */
+}
+
+.story-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    height: 100%; /* Ensures info takes up full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.story-container:hover .story-image {
+    transform: scale(1.1);
+}
+
+.story-container:hover .story-info {
+    opacity: 1;
+}
+
+.story-title,
+.story-author,
+.story-description,
+.story-stars {
+    margin: 4px 0;
+}
+
+.story-title {
+    font-weight: bold;
+}
+
+.story-info .story-author {
+    font-size: 16px; /* Increase font size for author */
+}
+
+.story-info .story-stars {
+    font-size: 16px; /* Increase font size for stars */
+}
+
+.story-info .story-description {
+    color: black; /* Change story description text color to black */
+}
+
+.story-1 {
+    background-color: var(--story-1);
+}
+
+.story-2 {
+    background-color: var(--story-2);
+}
+
+.story-3 {
+    background-color: var(--story-3);
+}
+
+.story-4 {
+    background-color: var(--story-4);
+}
+
+.story-5 {
+    background-color: var(--story-5);
+}
+
+.story-6 {
+    background-color: var(--story-6);
+}
+
+.story-7 {
+    background-color: var(--story-7);
+}
+
+.story-8 {
+    background-color: var(--story-8);
+}
+
+.modal-header-center .modal-title {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    color: #BD85B2;
+}
+
+.modal-header-center .btn-close {
+    font-size: 2rem;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 2rem;
+    height: 2rem;
+    background-color: #c9084f;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.modal-header-center .btn-close::before {
+    content: '×';
+    font-size: 1.5rem;
+    color: white;
+}
+
+.modal-title-lg {
+    font-size: 2rem;
+    color: #BD85B2;
+}
+
+.modal-body-lg {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+.modal-body-lg form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-body-lg form .form-control {
+    font-size: 1.1rem;
+    padding: 0.75rem;
+}
+
+.modal-body-lg form .btn {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #658068;
+    border-color: #658068;
+    color: white;
+}
+
+.modal-body-lg form .btn:hover {
+    background-color: #546b55;
+    border-color: #546b55;
+}
+
+.modal-content {
+    background-color: #E4F5F5;
+    border: 10px solid #6f4c86;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+    .story-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .story-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 column for small screens */
+    }
+
+    .story {
+        height: 250px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .story {
+        height: 200px; /* Adjust height for smaller screens */
+    }
+
+    .story-info .story-author,
+    .story-info .story-stars {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}

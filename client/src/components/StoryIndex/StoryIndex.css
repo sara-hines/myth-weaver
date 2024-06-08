@@ -1,0 +1,132 @@
+.story-index {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: var(--bg-color);
+    height: 100vh;
+}
+
+.story-main-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+    background-color: var(--bg-color);
+    padding: 20px;
+    height: fit-content;
+    max-width: 80vw;
+    margin: auto;
+}
+
+.story-photo {
+    grid-area: 1 / 1 / 3 / 2;
+    background-color: var(--text-color);
+    text-align: center;
+    border-radius: var(--border-radius);
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.story-photo img {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    max-width: 300px;
+    border-radius: var(--border-radius);
+    background-size: contain;
+}
+
+.rating {
+    grid-area: 3 / 1 / 4 / 2;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 5px;
+    background-color: var(--rating-bg);
+    border-radius: var(--border-radius);
+    height: fit-content;
+    max-width: 300px;
+}
+
+.star {
+    color: #ffcc00;
+    /* same color across themes */
+    font-size: 2.25rem;
+}
+
+/* Commented out to make room for TBR List Button, can mess with this but need TBR button somewhere - Sara */
+/* .genre-tags-links { 
+    grid-area: 4 / 1 / 6 / 2; 
+    background-color: var(--dk-container-color);
+    padding: 10px;
+    height: fit-content;
+    text-align: center;
+    align-content: center;
+    align-self: start;
+    border-radius: var(--border-radius);
+  } */
+  
+  /* Added temporary styling for TBR List Button, of course feel free to change */
+  .tbr-button-container {
+    grid-area: 4 / 1 / 6 / 2;
+    background-color: var(--dk-container-color);
+    padding: 0px;
+    height: fit-content;
+    text-align: center;
+    align-content: center;
+    align-self: start;
+    border-radius: var(--border-radius);
+  }
+
+  /* Added temporary styling for TBR List Button, of course feel free to change */
+  .tbr-button {
+    background-color: var(--dk-container-color);
+    color: var(--accent-container);
+    padding: 10px 20px;
+    margin: 0;
+    align-self: flex-end;
+    border: none;
+    height: fit-content;
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color ease-in-out 0.5s;
+}
+
+.story-description {
+    grid-area: 1 / 2 / 6 / 5;
+    background-color: var(--mid-dark-accent);
+    color: var(--accent-container);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    height: fit-content;
+}
+
+.story-description h2 {
+    color: var(--header-text);
+    text-shadow: 1px 1px 2px var(--dark-accent),
+        0px 0px 2px var(--dark-accent);
+    padding-bottom: 20px;
+}
+
+.start-adventure-button {
+    grid-area: 5 / 3 / 6 / 4;
+    background-color: var(--button-accent);
+    color: var(--accent-container);
+    padding: 10px 20px;
+    margin: 20px 0 0;
+    align-self: flex-end;
+    border: none;
+    height: fit-content;
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color ease-in-out 0.5s;
+}
+
+.start-adventure-button:hover {
+    background-color: var(--dk-button-accent);
+}
