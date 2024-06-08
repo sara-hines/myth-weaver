@@ -1,0 +1,157 @@
+.landing-page {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.hero {
+  background: var(--bg-color);
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; 
+  margin-bottom: -100px;
+}
+
+.landing-title {
+  margin: 0;
+  font-size: 50px;
+  color: var(--header-text);
+  position: relative; 
+  top: -250px; 
+  left: -20px; 
+  animation-duration: 1s; 
+  animation-fill-mode: both;
+  animation-name: zoomIn;
+  z-index: 3;
+  }
+  
+
+.slogan {
+  position: relative;
+  top: -230px; 
+  left: -30px;
+  font-size: 20px;
+  color: var(--dark-accent);
+  z-index: 3;
+}
+
+.cta-button {
+  position: absolute; 
+  bottom: 43%; 
+  left: 49%; 
+  transform: translateX(-50%); 
+  display: inline-block;
+  padding: 10px 20px;
+  background:var(--button-accent);
+  color: var(--header-link-hover);
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  z-index: 3;
+}
+
+
+.cta-button:hover {
+  background: var(--header-title);
+}
+
+.images-section .container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1;
+}
+
+.image {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-image {
+  position: relative;
+  z-index: 1;
+}
+
+.upright {
+  position: absolute;
+  top: 50%; 
+  left: 25%; 
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.upside-down {
+  position: absolute;
+  top: 50%;
+  right: 25%; 
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.book-image {
+  position: absolute;
+  top: 9.8%; 
+  right: 40%; 
+  z-index: 1;
+}
+
+.coinpurse-image {
+  position: absolute;
+  bottom: 29%; 
+  right: 31%; 
+  z-index: 2;
+}
+
+.bag-image {
+  position: absolute;
+  bottom: 20%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.map-image {
+  position: absolute;
+  top: 26.1%;
+  left: 36.9%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.footer {
+   background: var(--mid-dark-accent);
+  padding: 50px 0; 
+  color: var(--dk-button-accent);
+  text-align: center;
+  margin-bottom: -100px;
+  font-size: 1.05rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* When the screen gets smaller than the average screen the smaller images disapear. - Haleigh */
+
+@media (max-width: 1700px) {
+  .book-image,
+  .bag-image,
+  .coinpurse-image,
+  .map-image,
+  .upright,
+  .upside-down {
+    display: none; 
+  }
+}

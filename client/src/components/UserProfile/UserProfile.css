@@ -1,0 +1,140 @@
+.user-profile {
+    background-color: var(--bg-color);
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-main-content {
+    width: 100%;
+    max-width: 65vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-button {
+    background-color: var(--button-accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius);
+    font-size: 20px;
+    color: var(--header-link-hover);
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.additional-content {
+    padding: 0; /* Remove padding */
+    width: 100%;
+}
+
+.story-section {
+    text-align: center;
+}
+
+.story-section h2 {
+    background-color: var(--button-accent);
+    border-radius: var(--border-radius);
+    font-size: 20px;
+    color: var(--header-link-hover);
+    padding: 15px;
+    margin: 15px;
+    cursor: pointer;
+    transition: width 0.3s ease;
+    width: auto;
+}
+
+.stories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards */
+    gap: 20px;
+}
+
+.story-box {
+    width: calc(25% - 20px); /* Four cards per row */
+    max-width: 250px; /* Limit maximum width */
+    flex: 1 0 0; /* Allow flex items to shrink */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--header-link-hover);
+    background-color: var(--header-link-hover);
+}
+
+.story-box img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.story-box h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.01rem;
+}
+
+.story-box p {
+    font-size: .85rem;
+    color: #666;
+}
+
+.story-box .rating {
+    margin: 10px 0;
+}
+
+.story-box .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.story-box .actions button {
+    margin: 5px;
+}
+
+.story-box button {
+    background-color: var(--header-title);
+    color: var(--header-link-hover);
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: opacity ease-in-out 0.3s;
+}
+
+.story-box button:hover {
+    opacity: 0.7;
+}
+
+.story-box .delete-btn {
+    background-color: var(--button-accent);
+}
+
+.story-box .remove-btn {
+    background-color: var(--dk-container-color);
+}
+
+.no-data-message {
+    font-size: 20px;
+    padding: 0px;
+    margin: 15px;
+    cursor: pointer;
+    transition: width 0.3s ease;
+    width: auto;
+}
