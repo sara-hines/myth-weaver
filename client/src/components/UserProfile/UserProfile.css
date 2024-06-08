@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
 .user-main-content {
@@ -35,7 +36,7 @@
 }
 
 .additional-content {
-    padding: 0; /* Remove padding */
+    padding: 0;
     width: 100%;
 }
 
@@ -58,14 +59,14 @@
 .stories-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the cards */
+    justify-content: center;
     gap: 20px;
 }
 
 .story-box {
-    width: calc(25% - 20px); /* Four cards per row */
-    max-width: 250px; /* Limit maximum width */
-    flex: 1 0 0; /* Allow flex items to shrink */
+    width: calc(25% - 20px);
+    max-width: 250px;
+    flex: 1 0 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left;
     padding: 15px;
@@ -88,7 +89,7 @@
 }
 
 .story-box p {
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #666;
 }
 
@@ -137,4 +138,64 @@
     cursor: pointer;
     transition: width 0.3s ease;
     width: auto;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+    .user-main-content {
+        max-width: 80vw;
+    }
+
+    .story-box {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .user-main-content {
+        max-width: 90vw;
+    }
+
+    .story-box {
+        width: calc(50% - 20px);
+    }
+
+    .profile-button {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .story-section h2 {
+        font-size: 18px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-main-content {
+        max-width: 100vw;
+        padding: 10px;
+    }
+
+    .story-box {
+        width: calc(100% - 20px);
+    }
+
+    .profile-button {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .story-section h2 {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .story-box h3 {
+        font-size: 0.9rem;
+    }
+
+    .story-box p {
+        font-size: 0.8rem;
+    }
 }
