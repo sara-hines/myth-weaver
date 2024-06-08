@@ -1,3 +1,4 @@
+/* General Styles */
 .about-us-container {
     background-color: var(--bg-color);
     min-height: 100vh;
@@ -13,7 +14,8 @@
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    max-width: 50vw;
+    max-width: 90vw;
+    padding: 10px;
 }
 
 .about-us-card {
@@ -22,6 +24,7 @@
     padding: 20px;
     margin: 10px;
     text-align: center;
+    width: 100%;
 }
 
 .about-us-title {
@@ -36,16 +39,17 @@
     color: var(--text-color);
 }
 
+/* Team Grid */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+    width: 100%;
 }
 
 .team-member {
     display: flex;
     flex-direction: column;
-    grid-column: span 2;
     border: 1px solid var(--text-color);
     background-color: var(--accent-container);
     padding: 5px;
@@ -57,19 +61,18 @@
     align-items: center;
     align-content: center;
     color: var(--text-color);
+    flex-direction: column; /* Adjust for smaller screens */
 }
 
 .team-member-img {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px; /* Adjust the size as needed */
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 
 .team-member-text {
-    padding-left: 20px;
-    padding-right: 5px;
-    height: 100%;
-    width: 100%;
+    padding: 10px;
+    text-align: center; /* Adjust for smaller screens */
 }
 
 .team-member-name {
@@ -78,21 +81,15 @@
     transition: all ease-in-out 0.5s;
 }
 
-.team-member-info:hover .team-member-name {
-    text-shadow: 0px 0px 2px var(--header-text);
-}
-
-.team-member-name:nth-child(even) {
-    text-align: right;
-}
-
 .team-member-description {
     margin: 0;
     text-align: justify;
 }
 
+/* Form Styles */
 form {
     margin-top: 20px;
+    width: 100%; /* Adjust for smaller screens */
 }
 
 form label {
@@ -104,7 +101,7 @@ form input[type="text"],
 form input[type="email"],
 form textarea,
 form select {
-    max-width: 100%;
+    width: 100%; /* Adjust for smaller screens */
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
@@ -137,4 +134,55 @@ form input[type="submit"]:hover {
 
 option {
     font-family: inherit;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .about-us-main {
+        max-width: 80vw;
+    }
+
+    .about-us-title {
+        font-size: 20px;
+    }
+
+    .about-us-description {
+        font-size: 16px;
+    }
+
+    .team-member-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .team-member-info {
+        flex-direction: column;
+    }
+
+    .team-member-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us-main {
+        max-width: 95vw;
+    }
+
+    .about-us-title {
+        font-size: 18px;
+    }
+
+    .about-us-description {
+        font-size: 14px;
+    }
+
+    .team-member-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .team-member-text {
+        padding: 5px;
+    }
 }
