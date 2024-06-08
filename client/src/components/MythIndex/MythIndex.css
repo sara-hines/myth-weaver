@@ -19,7 +19,7 @@
     padding: 20px; /* Added padding for better spacing */
 }
 
-.story {
+.story-container {
     position: relative;
     overflow: hidden;
     border-radius: var(--border-radius);
@@ -47,29 +47,36 @@
     bottom: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    color: white;
     padding: 10px;
     box-sizing: border-box;
+    margin: 0;
+    font-size: 1.2em;
+    z-index: 2; /* Ensure it is above the image */
 }
 
 .story-title-container .story-title {
     color: white; /* Ensure title text color is white */
+    margin: 0;
 }
 
 .story-info {
     position: absolute;
-    bottom: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 10px;
     box-sizing: border-box;
     transition: opacity 0.3s ease;
     opacity: 0;
-    height: 100%; /* Ensures info takes up full height */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1; /* Ensure it is below the title */
 }
 
 .story-container:hover .story-image {
@@ -80,130 +87,25 @@
     opacity: 1;
 }
 
-.story-title,
 .story-author,
 .story-description,
 .story-stars {
     margin: 4px 0;
+    font-size: 1.2em; /* Increased font size */
 }
 
-.story-title {
-    font-weight: bold;
+.story-author {
+    font-size: 1.4em; /* Increased font size */
+    margin-bottom: 10px;
 }
 
-.story-info .story-author {
-    font-size: 16px; /* Increase font size for author */
-}
-
-.story-info .story-stars {
-    font-size: 16px; /* Increase font size for stars */
-}
-
-.story-info .story-description {
-    color: black; /* Change story description text color to black */
-}
-
-.story-1 {
-    background-color: var(--story-1);
-}
-
-.story-2 {
-    background-color: var(--story-2);
-}
-
-.story-3 {
-    background-color: var(--story-3);
-}
-
-.story-4 {
-    background-color: var(--story-4);
-}
-
-.story-5 {
-    background-color: var(--story-5);
-}
-
-.story-6 {
-    background-color: var(--story-6);
-}
-
-.story-7 {
-    background-color: var(--story-7);
-}
-
-.story-8 {
-    background-color: var(--story-8);
-}
-
-.modal-header-center .modal-title {
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-    font-size: 2rem;
-    color: #BD85B2;
-}
-
-.modal-header-center .btn-close {
-    font-size: 2rem;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 2rem;
-    height: 2rem;
-    background-color: #c9084f;
-    color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    opacity: 1;
-}
-
-.modal-header-center .btn-close::before {
-    content: '×';
-    font-size: 1.5rem;
+.story-description {
+    font-size: 1.2em; /* Increased font size */
     color: white;
 }
 
-.modal-title-lg {
-    font-size: 2rem;
-    color: #BD85B2;
-}
-
-.modal-body-lg {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    padding: 2rem;
-}
-
-.modal-body-lg form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.modal-body-lg form .form-control {
-    font-size: 1.1rem;
-    padding: 0.75rem;
-}
-
-.modal-body-lg form .btn {
-    font-size: 1.1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #658068;
-    border-color: #658068;
-    color: white;
-}
-
-.modal-body-lg form .btn:hover {
-    background-color: #546b55;
-    border-color: #546b55;
-}
-
-.modal-content {
-    background-color: #E4F5F5;
-    border: 10px solid #6f4c86;
+.story-stars {
+    font-size: 1.2em;
 }
 
 /* Media Queries for responsiveness */
@@ -218,52 +120,19 @@
         grid-template-columns: repeat(1, 1fr); /* 1 column for small screens */
     }
 
-    .story {
+    .story-container {
         height: 250px; /* Adjust height for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
-    .story {
+    .story-container {
         height: 200px; /* Adjust height for smaller screens */
     }
 
-    .story-info .story-author,
-    .story-info .story-stars {
-        font-size: 14px; /* Adjust font size for smaller screens */
-    }
-
-    .modal-header-center .modal-title {
-        font-size: 1.2rem; /* Adjust font size for small screens */
-    }
-
-    .modal-body-lg {
-        padding: 0.5rem; /* Adjust padding for small screens */
-    }
-
-    .modal-body-lg form .form-control,
-    .modal-body-lg form .btn {
-        font-size: 0.9rem; /* Adjust font size for small screens */
-        padding: 0.25rem 0.5rem; /* Adjust padding for small screens */
-    }
-
-    .modal {
-        width: 95%; /* Adjust modal width for small screens */
-        margin: 0 auto; /* Center the modal */
-    }
-
-    .modal-content {
-        padding: 1rem; /* Adjust padding for modal content */
-    }
-
-    .modal-header-center .btn-close {
-        top: 10px; /* Adjust close button position */
-        right: 10px; /* Adjust close button position */
-        width: 1.5rem; /* Adjust close button size */
-        height: 1.5rem; /* Adjust close button size */
-    }
-
-    .modal-header-center .btn-close::before {
-        font-size: 1.5rem; /* Adjust close button font size */
+    .story-author,
+    .story-description,
+    .story-stars {
+        font-size: 1em; /* Adjust font size for smaller screens */
     }
 }
