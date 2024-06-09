@@ -1,3 +1,828 @@
+// // import React, { useState } from 'react';
+// // import { useNavigate } from 'react-router-dom';
+// // import { useMutation } from '@apollo/client';
+// // import { ADD_STORY } from '../../utils/mutations';
+// // import Modal from 'react-modal';
+// // import './CreateStory.css';
+// // import Auth from '../../utils/auth';
+// // import axios from 'axios';
+
+// // Modal.setAppElement('#root');
+
+// // function CreateStory() {
+// //     const [addStory, { error }] = useMutation(ADD_STORY);
+// //     const [isInitialModalOpen, setIsInitialModalOpen] = useState(false);
+// //     const [isChapterModalOpen, setIsChapterModalOpen] = useState(false);
+// //     const [isChoiceModalOpen, setIsChoiceModalOpen] = useState(false);
+// //     const [hasStartedStory, setHasStartedStory] = useState(false);
+// //     const [storyTitle, setStoryTitle] = useState('');
+// //     const [storyDescription, setStoryDescription] = useState('');
+// //     const [storyImage, setStoryImage] = useState('');
+// //     const [storyGenre, setStoryGenre] = useState('');
+// //     const [storyTags, setStoryTags] = useState('');
+// //     const [chapters, setChapters] = useState([]);
+// //     const [currentChapter, setCurrentChapter] = useState({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+// //     const [chapterIndexToEdit, setChapterIndexToEdit] = useState(null);
+// //     const [currentChoiceIndex, setCurrentChoiceIndex] = useState(null);
+
+// //     const navigate = useNavigate();
+
+// //     const handleStoryTitleChange = (event) => {
+// //         setStoryTitle(event.target.value);
+// //     };
+
+// //     const handleStoryDescriptionChange = (event) => {
+// //         setStoryDescription(event.target.value);
+// //     };
+
+// //     const handleStoryImageChange = async (event) => {
+// //         const file = event.target.files[0];
+// //         const formData = new FormData();
+// //         formData.append('file', file);
+
+// //         try {
+// //             const response = await axios.post('/api/upload', formData, {
+// //                 headers: {
+// //                     'Content-Type': 'multipart/form-data',
+// //                 },
+// //             });
+// //             setStoryImage(response.data.url);
+// //         } catch (error) {
+// //             console.error('Error uploading image:', error);
+// //             alert('Error uploading image. Please try again.');
+// //         }
+// //     };
+
+// //     const handleStoryGenreChange = (event) => {
+// //         setStoryGenre(event.target.value);
+// //     };
+
+// //     const handleStoryTagsChange = (event) => {
+// //         setStoryTags(event.target.value);
+// //     };
+
+// //     const handleChapterChange = (field, value) => {
+// //         setCurrentChapter((prevState) => ({
+// //             ...prevState,
+// //             [field]: value,
+// //         }));
+// //     };
+
+// //     const handleChoiceChange = (index, field, value) => {
+// //         const newChoices = [...currentChapter.choices];
+// //         newChoices[index][field] = value;
+// //         setCurrentChapter((prevState) => ({
+// //             ...prevState,
+// //             choices: newChoices,
+// //         }));
+// //     };
+
+// //     const addChoice = () => {
+// //         if (currentChapter.choices.length < 3) {
+// //             setCurrentChapter((prevState) => ({
+// //                 ...prevState,
+// //                 choices: [...prevState.choices, { choiceText: '', nextChapterIndex: null }],
+// //             }));
+// //         } else {
+// //             alert('You can only add up to three choices.');
+// //         }
+// //     };
+
+// //     const removeChoice = (index) => {
+// //         const newChoices = [...currentChapter.choices];
+// //         newChoices.splice(index, 1);
+// //         setCurrentChapter((prevState) => ({
+// //             ...prevState,
+// //             choices: newChoices,
+// //         }));
+// //     };
+
+// //     const handleInitialSubmit = (event) => {
+// //         event.preventDefault();
+// //         setIsInitialModalOpen(false);
+// //         setIsChapterModalOpen(true);
+// //         setHasStartedStory(true);
+// //     };
+
+// //     const handleChapterSubmit = (event) => {
+// //         event.preventDefault();
+
+// //         const newChapter = {
+// //             title: currentChapter.title,
+// //             content: currentChapter.content,
+// //             isEnd: currentChapter.isEnd,
+// //             choices: currentChapter.choices,
+// //         };
+
+// //         if (chapterIndexToEdit !== null) {
+// //             const updatedChapters = [...chapters];
+// //             updatedChapters[chapterIndexToEdit] = newChapter;
+// //             setChapters(updatedChapters);
+// //         } else {
+// //             setChapters([...chapters, newChapter]);
+// //         }
+
+// //         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+// //         setIsChapterModalOpen(false);
+// //         setChapterIndexToEdit(null);
+// //     };
+
+// //     const handleChoiceSubmit = (event) => {
+// //         event.preventDefault();
+
+// //         const newChapter = {
+// //             title: currentChapter.title,
+// //             content: currentChapter.content,
+// //             isEnd: currentChapter.isEnd,
+// //             choices: currentChapter.choices,
+// //         };
+
+// //         const updatedChapters = [...chapters];
+// //         updatedChapters[chapters.length] = newChapter;
+
+// //         const parentChapterIndex = currentChoiceIndex.parentChapterIndex;
+// //         const parentChoiceIndex = currentChoiceIndex.parentChoiceIndex;
+// //         updatedChapters[parentChapterIndex].choices[parentChoiceIndex].nextChapterIndex = chapters.length;
+
+// //         setChapters(updatedChapters);
+
+// //         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+// //         setIsChoiceModalOpen(false);
+// //         setCurrentChoiceIndex(null);
+// //     };
+
+// //     const addNewChapterForChoice = (parentChapterIndex, parentChoiceIndex) => {
+// //         setCurrentChoiceIndex({ parentChapterIndex, parentChoiceIndex });
+// //         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+// //         setIsChoiceModalOpen(true);
+// //     };
+
+// //     const editChapter = (index) => {
+// //         const chapterToEdit = chapters[index];
+
+// //         setCurrentChapter({
+// //             title: chapterToEdit.title,
+// //             content: chapterToEdit.content,
+// //             isEnd: chapterToEdit.isEnd,
+// //             choices: chapterToEdit.choices,
+// //         });
+// //         setChapterIndexToEdit(index);
+// //         setIsChapterModalOpen(true);
+// //     };
+
+// //     const finalizeStory = async () => {
+// //         try {
+// //             const profile = await Auth.getProfile();
+// //             const userId = profile.data._id;
+// //             const author = profile.data.username;
+
+// //             const storyInput = {
+// //                 title: storyTitle,
+// //                 author,
+// //                 description: storyDescription,
+// //                 imageUrl: storyImage,
+// //                 genre: storyGenre,
+// //                 tags: storyTags,
+// //                 chapters,
+// //             };
+
+// //             const storyData = await addStory({
+// //                 variables: { storyInput },
+// //             });
+
+// //             if (storyData) {
+// //                 navigate(`/story-index/${storyData.data.addStory._id}`);
+// //             }
+// //         } catch (err) {
+// //             console.error(err);
+// //         }
+// //     };
+
+// //     const renderChapters = (chapterIndex, depth = 0) => {
+// //         const chapter = chapters[chapterIndex];
+// //         if (!chapter) return null;
+
+// //         const indentClass = `indent-${depth}`;
+
+// //         return (
+// //             <div className={`chapter-wrapper ${indentClass}`} key={chapterIndex}>
+// //                 <button onClick={() => editChapter(chapterIndex)}>
+// //                     {chapter.title}
+// //                 </button>
+// //                 <div>
+// //                     {chapter.choices.map((choice, choiceIndex) => (
+// //                         <div key={choiceIndex} className={`indent-${depth + 1}`}>
+// //                             <button onClick={() => addNewChapterForChoice(chapterIndex, choiceIndex)}>
+// //                                 {choice.choiceText || `Choice ${choiceIndex + 1}`}
+// //                             </button>
+// //                             {chapter.isEnd && <span> (End)</span>}
+// //                             {choice.nextChapterIndex !== null && (
+// //                                 <span>
+// //                                     {` -> Chapter ${choice.nextChapterIndex + 1}`}
+// //                                     {renderChapters(choice.nextChapterIndex, depth + 1)}
+// //                                 </span>
+// //                             )}
+// //                         </div>
+// //                     ))}
+// //                 </div>
+// //             </div>
+// //         );
+// //     };
+
+// //     return (
+// //         <div className="create-story-container">
+// //             <div className="create-story-content">
+// //                 {!hasStartedStory && (
+// //                     <button className="create-story-button" onClick={() => setIsInitialModalOpen(true)}>
+// //                         Create Story
+// //                     </button>
+// //                 )}
+// //                 <div className="chapter-container">
+// //                     {chapters.length > 0 && renderChapters(0)}
+// //                 </div>
+// //                 {chapters.length > 0 && (
+// //                     <button className="finalize-story-button" onClick={finalizeStory}>
+// //                         Finalize Story
+// //                     </button>
+// //                 )}
+// //             </div>
+
+// //             <Modal
+// //                 isOpen={isInitialModalOpen}
+// //                 onRequestClose={() => setIsInitialModalOpen(false)}
+// //                 className="modal"
+// //                 overlayClassName="overlay"
+// //             >
+// //                 <h2>Start Your Story</h2>
+// //                 <form onSubmit={handleInitialSubmit}>
+// //                     <label htmlFor="storyTitle">Story Title:</label>
+// //                     <input
+// //                         type="text"
+// //                         id="storyTitle"
+// //                         value={storyTitle}
+// //                         onChange={handleStoryTitleChange}
+// //                         required
+// //                     />
+
+// //                     <label htmlFor="storyDescription">Brief Description:</label>
+// //                     <textarea
+// //                         id="storyDescription"
+// //                         value={storyDescription}
+// //                         onChange={handleStoryDescriptionChange}
+// //                         required
+// //                     />
+
+// //                     <label htmlFor="storyImage">Story Image:</label>
+// //                     <input
+// //                         type="file"
+// //                         id="storyImage"
+// //                         onChange={handleStoryImageChange}
+// //                         required
+// //                     />
+
+// //                     <label htmlFor="storyGenre">Genre:</label>
+// //                     <input
+// //                         type="text"
+// //                         id="storyGenre"
+// //                         value={storyGenre}
+// //                         onChange={handleStoryGenreChange}
+// //                         required
+// //                     />
+
+// //                     <label htmlFor="storyTags">Tags (comma-separated):</label>
+// //                     <input
+// //                         type="text"
+// //                         id="storyTags"
+// //                         value={storyTags}
+// //                         onChange={handleStoryTagsChange}
+// //                         required
+// //                     />
+
+// //                     <button type="submit">Next</button>
+// //                 </form>
+// //             </Modal>
+
+// //             <Modal
+// //                 isOpen={isChapterModalOpen}
+// //                 onRequestClose={() => setIsChapterModalOpen(false)}
+// //                 className="modal"
+// //                 overlayClassName="overlay"
+// //             >
+// //                 <h2>{chapterIndexToEdit !== null ? 'Edit Chapter' : 'Add New Chapter'}</h2>
+// //                 <form onSubmit={handleChapterSubmit}>
+// //                     <label htmlFor="chapterTitle">Title:</label>
+// //                     <input
+// //                         type="text"
+// //                         id="chapterTitle"
+// //                         value={currentChapter.title}
+// //                         onChange={(e) => handleChapterChange('title', e.target.value)}
+// //                         required
+// //                     />
+// //                     <label htmlFor="chapterContent">Content:</label>
+// //                     <textarea
+// //                         id="chapterContent"
+// //                         value={currentChapter.content}
+// //                         onChange={(e) => handleChapterChange('content', e.target.value)}
+// //                         required
+// //                     />
+// //                     <label>
+// //                         <input
+// //                             type="checkbox"
+// //                             checked={currentChapter.isEnd}
+// //                             onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
+// //                         />
+// //                         Ends Story
+// //                     </label>
+
+// //                     {currentChapter.choices.map((choice, index) => (
+// //                         <div key={index}>
+// //                             <input
+// //                                 type="text"
+// //                                 value={choice.choiceText}
+// //                                 onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
+// //                                 placeholder="Choice Text"
+// //                                 required
+// //                             />
+// //                             <button type="button" onClick={() => removeChoice(index)}>
+// //                                 Remove Choice
+// //                             </button>
+// //                         </div>
+// //                     ))}
+// //                     {currentChapter.choices.length < 3 && (
+// //                         <button type="button" onClick={addChoice}>
+// //                             Add Choice
+// //                         </button>
+// //                     )}
+// //                     <button type="submit">
+// //                         {chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}
+// //                     </button>
+// //                 </form>
+// //             </Modal>
+
+// //             <Modal
+// //                 isOpen={isChoiceModalOpen}
+// //                 onRequestClose={() => setIsChoiceModalOpen(false)}
+// //                 className="modal"
+// //                 overlayClassName="overlay"
+// //             >
+// //                 <h2>Add New Chapter for Choice</h2>
+// //                 <form onSubmit={handleChoiceSubmit}>
+// //                     <label htmlFor="chapterTitle">Title:</label>
+// //                     <input
+// //                         type="text"
+// //                         id="chapterTitle"
+// //                         value={currentChapter.title}
+// //                         onChange={(e) => handleChapterChange('title', e.target.value)}
+// //                         required
+// //                     />
+// //                     <label htmlFor="chapterContent">Content:</label>
+// //                     <textarea
+// //                         id="chapterContent"
+// //                         value={currentChapter.content}
+// //                         onChange={(e) => handleChapterChange('content', e.target.value)}
+// //                         required
+// //                     />
+// //                     <label>
+// //                         <input
+// //                             type="checkbox"
+// //                             checked={currentChapter.isEnd}
+// //                             onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
+// //                         />
+// //                         Ends Story
+// //                     </label>
+
+// //                     {currentChapter.choices.map((choice, index) => (
+// //                         <div key={index}>
+// //                             <input
+// //                                 type="text"
+// //                                 value={choice.choiceText}
+// //                                 onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
+// //                                 placeholder="Choice Text"
+// //                                 required
+// //                             />
+// //                             <button type="button" onClick={() => removeChoice(index)}>
+// //                                 Remove Choice
+// //                             </button>
+// //                         </div>
+// //                     ))}
+// //                     {currentChapter.choices.length < 3 && (
+// //                         <button type="button" onClick={addChoice}>
+// //                             Add Choice
+// //                         </button>
+// //                     )}
+// //                     <button type="submit">Save Chapter</button>
+// //                 </form>
+// //             </Modal>
+// //         </div>
+// //     );
+// // }
+
+// // export default CreateStory;
+
+
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { useMutation } from '@apollo/client';
+// import { ADD_STORY } from '../../utils/mutations';
+// import Modal from 'react-modal';
+// import './CreateStory.css';
+// import Auth from '../../utils/auth';
+// import UploadImage from '../UploadImage/UploadImage';
+
+// Modal.setAppElement('#root');
+
+// function CreateStory() {
+//     const [addStory, { error }] = useMutation(ADD_STORY);
+//     const [isInitialModalOpen, setIsInitialModalOpen] = useState(false);
+//     const [isChapterModalOpen, setIsChapterModalOpen] = useState(false);
+//     const [isChoiceModalOpen, setIsChoiceModalOpen] = useState(false);
+//     const [hasStartedStory, setHasStartedStory] = useState(false);
+//     const [storyTitle, setStoryTitle] = useState('');
+//     const [storyDescription, setStoryDescription] = useState('');
+//     const [storyImage, setStoryImage] = useState('');
+//     const [storyGenre, setStoryGenre] = useState('');
+//     const [storyTags, setStoryTags] = useState('');
+//     const [chapters, setChapters] = useState([]);
+//     const [currentChapter, setCurrentChapter] = useState({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+//     const [chapterIndexToEdit, setChapterIndexToEdit] = useState(null);
+//     const [currentChoiceIndex, setCurrentChoiceIndex] = useState(null);
+
+//     const navigate = useNavigate();
+
+//     const handleStoryTitleChange = (event) => {
+//         setStoryTitle(event.target.value);
+//     };
+
+//     const handleStoryDescriptionChange = (event) => {
+//         setStoryDescription(event.target.value);
+//     };
+
+//     const handleStoryImageChange = (url) => {
+//         setStoryImage(url);
+//     };
+
+//     const handleStoryGenreChange = (event) => {
+//         setStoryGenre(event.target.value);
+//     };
+
+//     const handleStoryTagsChange = (event) => {
+//         setStoryTags(event.target.value);
+//     };
+
+//     const handleChapterChange = (field, value) => {
+//         setCurrentChapter((prevState) => ({
+//             ...prevState,
+//             [field]: value,
+//         }));
+//     };
+
+//     const handleChoiceChange = (index, field, value) => {
+//         const newChoices = [...currentChapter.choices];
+//         newChoices[index][field] = value;
+//         setCurrentChapter((prevState) => ({
+//             ...prevState,
+//             choices: newChoices,
+//         }));
+//     };
+
+//     const addChoice = () => {
+//         if (currentChapter.choices.length < 3) {
+//             setCurrentChapter((prevState) => ({
+//                 ...prevState,
+//                 choices: [...prevState.choices, { choiceText: '', nextChapterIndex: null }],
+//             }));
+//         } else {
+//             alert('You can only add up to three choices.');
+//         }
+//     };
+
+//     const removeChoice = (index) => {
+//         const newChoices = [...currentChapter.choices];
+//         newChoices.splice(index, 1);
+//         setCurrentChapter((prevState) => ({
+//             ...prevState,
+//             choices: newChoices,
+//         }));
+//     };
+
+//     const handleInitialSubmit = (event) => {
+//         event.preventDefault();
+//         setIsInitialModalOpen(false);
+//         setIsChapterModalOpen(true);
+//         setHasStartedStory(true);
+//     };
+
+//     const handleChapterSubmit = (event) => {
+//         event.preventDefault();
+
+//         const newChapter = {
+//             title: currentChapter.title,
+//             content: currentChapter.content,
+//             isEnd: currentChapter.isEnd,
+//             choices: currentChapter.choices,
+//         };
+
+//         if (chapterIndexToEdit !== null) {
+//             const updatedChapters = [...chapters];
+//             updatedChapters[chapterIndexToEdit] = newChapter;
+//             setChapters(updatedChapters);
+//         } else {
+//             setChapters([...chapters, newChapter]);
+//         }
+
+//         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+//         setIsChapterModalOpen(false);
+//         setChapterIndexToEdit(null);
+//     };
+
+//     const handleChoiceSubmit = (event) => {
+//         event.preventDefault();
+
+//         const newChapter = {
+//             title: currentChapter.title,
+//             content: currentChapter.content,
+//             isEnd: currentChapter.isEnd,
+//             choices: currentChapter.choices,
+//         };
+
+//         const updatedChapters = [...chapters];
+//         updatedChapters[chapters.length] = newChapter;
+
+//         const parentChapterIndex = currentChoiceIndex.parentChapterIndex;
+//         const parentChoiceIndex = currentChoiceIndex.parentChoiceIndex;
+//         updatedChapters[parentChapterIndex].choices[parentChoiceIndex].nextChapterIndex = chapters.length;
+
+//         setChapters(updatedChapters);
+
+//         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+//         setIsChoiceModalOpen(false);
+//         setCurrentChoiceIndex(null);
+//     };
+
+//     const addNewChapterForChoice = (parentChapterIndex, parentChoiceIndex) => {
+//         setCurrentChoiceIndex({ parentChapterIndex, parentChoiceIndex });
+//         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+//         setIsChoiceModalOpen(true);
+//     };
+
+//     const editChapter = (index) => {
+//         const chapterToEdit = chapters[index];
+
+//         setCurrentChapter({
+//             title: chapterToEdit.title,
+//             content: chapterToEdit.content,
+//             isEnd: chapterToEdit.isEnd,
+//             choices: chapterToEdit.choices,
+//         });
+//         setChapterIndexToEdit(index);
+//         setIsChapterModalOpen(true);
+//     };
+
+//     const finalizeStory = async () => {
+//         try {
+//             const profile = await Auth.getProfile();
+//             const userId = profile.data._id;
+//             const author = profile.data.username;
+
+//             const storyInput = {
+//                 title: storyTitle,
+//                 author,
+//                 description: storyDescription,
+//                 imageUrl: storyImage,
+//                 genre: storyGenre,
+//                 tags: storyTags,
+//                 chapters,
+//             };
+
+//             const storyData = await addStory({
+//                 variables: { storyInput },
+//             });
+
+//             if (storyData) {
+//                 navigate(`/story-index/${storyData.data.addStory._id}`);
+//             }
+//         } catch (err) {
+//             console.error(err);
+//         }
+//     };
+
+//     const renderChapters = (chapterIndex, depth = 0) => {
+//         const chapter = chapters[chapterIndex];
+//         if (!chapter) return null;
+
+//         const indentClass = `indent-${depth}`;
+
+//         return (
+//             <div className={`chapter-wrapper ${indentClass}`} key={chapterIndex}>
+//                 <button onClick={() => editChapter(chapterIndex)}>
+//                     {chapter.title}
+//                 </button>
+//                 <div>
+//                     {chapter.choices.map((choice, choiceIndex) => (
+//                         <div key={choiceIndex} className={`indent-${depth + 1}`}>
+//                             <button onClick={() => addNewChapterForChoice(chapterIndex, choiceIndex)}>
+//                                 {choice.choiceText || `Choice ${choiceIndex + 1}`}
+//                             </button>
+//                             {chapter.isEnd && <span> (End)</span>}
+//                             {choice.nextChapterIndex !== null && (
+//                                 <span>
+//                                     {` -> Chapter ${choice.nextChapterIndex + 1}`}
+//                                     {renderChapters(choice.nextChapterIndex, depth + 1)}
+//                                 </span>
+//                             )}
+//                         </div>
+//                     ))}
+//                 </div>
+//             </div>
+//         );
+//     };
+
+//     return (
+//         <div className="create-story-container">
+//             <div className="create-story-content">
+//                 {!hasStartedStory && (
+//                     <button className="create-story-button" onClick={() => setIsInitialModalOpen(true)}>
+//                         Create Story
+//                     </button>
+//                 )}
+//                 <div className="chapter-container">
+//                     {chapters.length > 0 && renderChapters(0)}
+//                 </div>
+//                 {chapters.length > 0 && (
+//                     <button className="finalize-story-button" onClick={finalizeStory}>
+//                         Finalize Story
+//                     </button>
+//                 )}
+//             </div>
+
+//             <Modal
+//                 isOpen={isInitialModalOpen}
+//                 onRequestClose={() => setIsInitialModalOpen(false)}
+//                 className="modal"
+//                 overlayClassName="overlay"
+//             >
+//                 <h2>Start Your Story</h2>
+//                 <form onSubmit={handleInitialSubmit}>
+//                     <label htmlFor="storyTitle">Story Title:</label>
+//                     <input
+//                         type="text"
+//                         id="storyTitle"
+//                         value={storyTitle}
+//                         onChange={handleStoryTitleChange}
+//                         required
+//                     />
+
+//                     <label htmlFor="storyDescription">Brief Description:</label>
+//                     <textarea
+//                         id="storyDescription"
+//                         value={storyDescription}
+//                         onChange={handleStoryDescriptionChange}
+//                         required
+//                     />
+
+//                     <label htmlFor="storyImage">Story Image:</label>
+//                     <UploadImage setImageUrl={handleStoryImageChange} />
+
+//                     <label htmlFor="storyGenre">Genre:</label>
+//                     <input
+//                         type="text"
+//                         id="storyGenre"
+//                         value={storyGenre}
+//                         onChange={handleStoryGenreChange}
+//                         required
+//                     />
+
+//                     <label htmlFor="storyTags">Tags (comma-separated):</label>
+//                     <input
+//                         type="text"
+//                         id="storyTags"
+//                         value={storyTags}
+//                         onChange={handleStoryTagsChange}
+//                         required
+//                     />
+
+//                     <button type="submit">Next</button>
+//                 </form>
+//             </Modal>
+
+//             <Modal
+//                 isOpen={isChapterModalOpen}
+//                 onRequestClose={() => setIsChapterModalOpen(false)}
+//                 className="modal"
+//                 overlayClassName="overlay"
+//             >
+//                 <h2>{chapterIndexToEdit !== null ? 'Edit Chapter' : 'Add New Chapter'}</h2>
+//                 <form onSubmit={handleChapterSubmit}>
+//                     <label htmlFor="chapterTitle">Title:</label>
+//                     <input
+//                         type="text"
+//                         id="chapterTitle"
+//                         value={currentChapter.title}
+//                         onChange={(e) => handleChapterChange('title', e.target.value)}
+//                         required
+//                     />
+//                     <label htmlFor="chapterContent">Content:</label>
+//                     <textarea
+//                         id="chapterContent"
+//                         value={currentChapter.content}
+//                         onChange={(e) => handleChapterChange('content', e.target.value)}
+//                         required
+//                     />
+//                     <label>
+//                         <input
+//                             type="checkbox"
+//                             checked={currentChapter.isEnd}
+//                             onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
+//                         />
+//                         Ends Story
+//                     </label>
+
+//                     {currentChapter.choices.map((choice, index) => (
+//                         <div key={index}>
+//                             <input
+//                                 type="text"
+//                                 value={choice.choiceText}
+//                                 onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
+//                                 placeholder="Choice Text"
+//                                 required
+//                             />
+//                             <button type="button" onClick={() => removeChoice(index)}>
+//                                 Remove Choice
+//                             </button>
+//                         </div>
+//                     ))}
+//                     {currentChapter.choices.length < 3 && (
+//                         <button type="button" onClick={addChoice}>
+//                             Add Choice
+//                         </button>
+//                     )}
+//                     <button type="submit">
+//                         {chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}
+//                     </button>
+//                 </form>
+//             </Modal>
+
+//             <Modal
+//                 isOpen={isChoiceModalOpen}
+//                 onRequestClose={() => setIsChoiceModalOpen(false)}
+//                 className="modal"
+//                 overlayClassName="overlay"
+//             >
+//                 <h2>Add New Chapter for Choice</h2>
+//                 <form onSubmit={handleChoiceSubmit}>
+//                     <label htmlFor="chapterTitle">Title:</label>
+//                     <input
+//                         type="text"
+//                         id="chapterTitle"
+//                         value={currentChapter.title}
+//                         onChange={(e) => handleChapterChange('title', e.target.value)}
+//                         required
+//                     />
+//                     <label htmlFor="chapterContent">Content:</label>
+//                     <textarea
+//                         id="chapterContent"
+//                         value={currentChapter.content}
+//                         onChange={(e) => handleChapterChange('content', e.target.value)}
+//                         required
+//                     />
+//                     <label>
+//                         <input
+//                             type="checkbox"
+//                             checked={currentChapter.isEnd}
+//                             onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
+//                         />
+//                         Ends Story
+//                     </label>
+
+//                     {currentChapter.choices.map((choice, index) => (
+//                         <div key={index}>
+//                             <input
+//                                 type="text"
+//                                 value={choice.choiceText}
+//                                 onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
+//                                 placeholder="Choice Text"
+//                                 required
+//                             />
+//                             <button type="button" onClick={() => removeChoice(index)}>
+//                                 Remove Choice
+//                             </button>
+//                         </div>
+//                     ))}
+//                     {currentChapter.choices.length < 3 && (
+//                         <button type="button" onClick={addChoice}>
+//                             Add Choice
+//                         </button>
+//                     )}
+//                     <button type="submit">Save Chapter</button>
+//                 </form>
+//             </Modal>
+//         </div>
+//     );
+// }
+
+// export default CreateStory;
+
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
@@ -5,28 +830,21 @@ import { ADD_STORY } from '../../utils/mutations';
 import Modal from 'react-modal';
 import './CreateStory.css';
 import Auth from '../../utils/auth';
+import UploadImage from '../UploadImage/UploadImage';
 
 Modal.setAppElement('#root');
 
-// Define the CreateStory component
 function CreateStory() {
-    // Setup for addStory mutation
     const [addStory, { error }] = useMutation(ADD_STORY);
-
-    // State variables for managing the visibility of various modals
     const [isInitialModalOpen, setIsInitialModalOpen] = useState(false);
     const [isChapterModalOpen, setIsChapterModalOpen] = useState(false);
     const [isChoiceModalOpen, setIsChoiceModalOpen] = useState(false);
     const [hasStartedStory, setHasStartedStory] = useState(false);
-
-    // State variables for storing story metadata
     const [storyTitle, setStoryTitle] = useState('');
     const [storyDescription, setStoryDescription] = useState('');
-    const [storyImage, setStoryImage] = useState('');
+    const [storyImage, setStoryImage] = useState(''); // This will hold the URL
     const [storyGenre, setStoryGenre] = useState('');
     const [storyTags, setStoryTags] = useState('');
-
-    // State variables for managing chapters and choices within the story
     const [chapters, setChapters] = useState([]);
     const [currentChapter, setCurrentChapter] = useState({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
     const [chapterIndexToEdit, setChapterIndexToEdit] = useState(null);
@@ -34,68 +852,62 @@ function CreateStory() {
 
     const navigate = useNavigate();
 
-    // Handlers for changing story metadata
-    const handlestoryTitleChange = (event) => {
-        setStoryTitle(event.target.value); // Update story title
+    const handleStoryTitleChange = (event) => {
+        setStoryTitle(event.target.value);
     };
 
     const handleStoryDescriptionChange = (event) => {
-        setStoryDescription(event.target.value); // Update story description
+        setStoryDescription(event.target.value);
     };
 
-    const handleStoryImageChange = (event) => {
-        setStoryImage(URL.createObjectURL(event.target.files[0])); // Update story image with a file URL
+    const handleStoryImageChange = (url) => {
+        setStoryImage(url); // Set the image URL from the UploadImage component
     };
 
     const handleStoryGenreChange = (event) => {
-        setStoryGenre(event.target.value); // Update story genre
+        setStoryGenre(event.target.value);
     };
 
     const handleStoryTagsChange = (event) => {
-        setStoryTags(event.target.value); // Update story tags
+        setStoryTags(event.target.value);
     };
 
-    // Handler for changing chapter fields
     const handleChapterChange = (field, value) => {
-        setCurrentChapter(prevState => ({
+        setCurrentChapter((prevState) => ({
             ...prevState,
-            [field]: value // Update the specified field of the current chapter
+            [field]: value,
         }));
     };
 
-    // Handler for changing choice fields
     const handleChoiceChange = (index, field, value) => {
         const newChoices = [...currentChapter.choices];
-        newChoices[index][field] = value; // Update the specified field of the specified choice
-        setCurrentChapter(prevState => ({
+        newChoices[index][field] = value;
+        setCurrentChapter((prevState) => ({
             ...prevState,
-            choices: newChoices // Update choices array in the current chapter
+            choices: newChoices,
         }));
     };
 
-    // Function to add a new choice to the current chapter
     const addChoice = () => {
         if (currentChapter.choices.length < 3) {
-            setCurrentChapter(prevState => ({
+            setCurrentChapter((prevState) => ({
                 ...prevState,
-                choices: [...prevState.choices, { choiceText: '', nextChapterIndex: null }]
+                choices: [...prevState.choices, { choiceText: '', nextChapterIndex: null }],
             }));
         } else {
-            alert("You can only add up to three choices.");
+            alert('You can only add up to three choices.');
         }
     };
 
-    // Function to remove a choice from the current chapter
     const removeChoice = (index) => {
         const newChoices = [...currentChapter.choices];
-        newChoices.splice(index, 1); // Remove the specified choice
-        setCurrentChapter(prevState => ({
+        newChoices.splice(index, 1);
+        setCurrentChapter((prevState) => ({
             ...prevState,
-            choices: newChoices
+            choices: newChoices,
         }));
     };
 
-    // Handler for submitting initial story details
     const handleInitialSubmit = (event) => {
         event.preventDefault();
         setIsInitialModalOpen(false);
@@ -103,74 +915,59 @@ function CreateStory() {
         setHasStartedStory(true);
     };
 
-    // Handler for submitting a chapter
     const handleChapterSubmit = (event) => {
         event.preventDefault();
 
-        // Create a new chapter object
         const newChapter = {
             title: currentChapter.title,
             content: currentChapter.content,
             isEnd: currentChapter.isEnd,
-            choices: currentChapter.choices
+            choices: currentChapter.choices,
         };
 
         if (chapterIndexToEdit !== null) {
             const updatedChapters = [...chapters];
-            updatedChapters[chapterIndexToEdit] = newChapter; // Update existing chapter if in edit mode
+            updatedChapters[chapterIndexToEdit] = newChapter;
             setChapters(updatedChapters);
         } else {
-            setChapters([...chapters, newChapter]); // Add new chapter
+            setChapters([...chapters, newChapter]);
         }
 
-        // Reset current chapter and close chapter modal
         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
         setIsChapterModalOpen(false);
         setChapterIndexToEdit(null);
     };
 
-    // Handler for submitting an choice as a new chapter
     const handleChoiceSubmit = (event) => {
         event.preventDefault();
 
-        // Create a new chapter object
         const newChapter = {
             title: currentChapter.title,
             content: currentChapter.content,
             isEnd: currentChapter.isEnd,
-            choices: currentChapter.choices
+            choices: currentChapter.choices,
         };
 
-        // Update chapters array
         const updatedChapters = [...chapters];
         updatedChapters[chapters.length] = newChapter;
 
-        // Set the nextChapterIndex for the choice in the parent chapter
         const parentChapterIndex = currentChoiceIndex.parentChapterIndex;
         const parentChoiceIndex = currentChoiceIndex.parentChoiceIndex;
         updatedChapters[parentChapterIndex].choices[parentChoiceIndex].nextChapterIndex = chapters.length;
 
         setChapters(updatedChapters);
 
-        // Reset current chapter and close choice modal
         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
         setIsChoiceModalOpen(false);
         setCurrentChoiceIndex(null);
     };
 
-    // Function to add a new chapter for a specific choice
     const addNewChapterForChoice = (parentChapterIndex, parentChoiceIndex) => {
-        // if (chapters.length >= 9) {
-        //     alert("You can only create up to nine chapters."); 
-        //     return;
-        // }
-        // Set the current choice index and open the choice modal
         setCurrentChoiceIndex({ parentChapterIndex, parentChoiceIndex });
         setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
         setIsChoiceModalOpen(true);
     };
 
-    // Function to edit an existing chapter
     const editChapter = (index) => {
         const chapterToEdit = chapters[index];
 
@@ -178,19 +975,15 @@ function CreateStory() {
             title: chapterToEdit.title,
             content: chapterToEdit.content,
             isEnd: chapterToEdit.isEnd,
-            choices: chapterToEdit.choices
+            choices: chapterToEdit.choices,
         });
         setChapterIndexToEdit(index);
         setIsChapterModalOpen(true);
     };
 
-    // Function to finalize the story and navigate to the story index page
     const finalizeStory = async () => {
-
         try {
-            // Get the user's data, including _id, by decoding their token
             const profile = await Auth.getProfile();
-
             const userId = profile.data._id;
             const author = profile.data.username;
 
@@ -198,31 +991,29 @@ function CreateStory() {
                 title: storyTitle,
                 author,
                 description: storyDescription,
-                imageUrl: storyImage,
+                imageUrl: storyImage, // Ensure the imageUrl is set
                 genre: storyGenre,
                 tags: storyTags,
-                chapters 
-            }
+                chapters,
+            };
 
             const storyData = await addStory({
-                variables: { storyInput }
+                variables: { storyInput },
             });
 
             if (storyData) {
                 navigate(`/story-index/${storyData.data.addStory._id}`);
             }
-
         } catch (err) {
             console.error(err);
         }
     };
 
-    // Function to render chapters recursively
     const renderChapters = (chapterIndex, depth = 0) => {
         const chapter = chapters[chapterIndex];
         if (!chapter) return null;
 
-        const indentClass = `indent-${depth}`; // Class for indenting nested chapters
+        const indentClass = `indent-${depth}`;
 
         return (
             <div className={`chapter-wrapper ${indentClass}`} key={chapterIndex}>
@@ -253,15 +1044,20 @@ function CreateStory() {
         <div className="create-story-container">
             <div className="create-story-content">
                 {!hasStartedStory && (
-                    <button className="create-story-button" onClick={() => setIsInitialModalOpen(true)}>Create Story</button>
+                    <button className="create-story-button" onClick={() => setIsInitialModalOpen(true)}>
+                        Create Story
+                    </button>
                 )}
                 <div className="chapter-container">
                     {chapters.length > 0 && renderChapters(0)}
                 </div>
-                {chapters.length > 0 && <button className="finalize-story-button" onClick={finalizeStory}>Finalize Story</button>}
+                {chapters.length > 0 && (
+                    <button className="finalize-story-button" onClick={finalizeStory}>
+                        Finalize Story
+                    </button>
+                )}
             </div>
 
-            {/* Modal for initial story details */}
             <Modal
                 isOpen={isInitialModalOpen}
                 onRequestClose={() => setIsInitialModalOpen(false)}
@@ -271,25 +1067,47 @@ function CreateStory() {
                 <h2>Start Your Story</h2>
                 <form onSubmit={handleInitialSubmit}>
                     <label htmlFor="storyTitle">Story Title:</label>
-                    <input type="text" id="storyTitle" value={storyTitle} onChange={handlestoryTitleChange} required />
+                    <input
+                        type="text"
+                        id="storyTitle"
+                        value={storyTitle}
+                        onChange={handleStoryTitleChange}
+                        required
+                    />
 
                     <label htmlFor="storyDescription">Brief Description:</label>
-                    <textarea id="storyDescription" value={storyDescription} onChange={handleStoryDescriptionChange} required />
+                    <textarea
+                        id="storyDescription"
+                        value={storyDescription}
+                        onChange={handleStoryDescriptionChange}
+                        required
+                    />
 
                     <label htmlFor="storyImage">Story Image:</label>
-                    <input type="file" id="storyImage" onChange={handleStoryImageChange} required />
+                    <UploadImage setImageUrl={handleStoryImageChange} />
 
                     <label htmlFor="storyGenre">Genre:</label>
-                    <input type="text" id="storyGenre" value={storyGenre} onChange={handleStoryGenreChange} required />
+                    <input
+                        type="text"
+                        id="storyGenre"
+                        value={storyGenre}
+                        onChange={handleStoryGenreChange}
+                        required
+                    />
 
                     <label htmlFor="storyTags">Tags (comma-separated):</label>
-                    <input type="text" id="storyTags" value={storyTags} onChange={handleStoryTagsChange} required />
+                    <input
+                        type="text"
+                        id="storyTags"
+                        value={storyTags}
+                        onChange={handleStoryTagsChange}
+                        required
+                    />
 
                     <button type="submit">Next</button>
                 </form>
             </Modal>
 
-            {/* Modal for adding or editing a chapter */}
             <Modal
                 isOpen={isChapterModalOpen}
                 onRequestClose={() => setIsChapterModalOpen(false)}
@@ -299,9 +1117,20 @@ function CreateStory() {
                 <h2>{chapterIndexToEdit !== null ? 'Edit Chapter' : 'Add New Chapter'}</h2>
                 <form onSubmit={handleChapterSubmit}>
                     <label htmlFor="chapterTitle">Title:</label>
-                    <input type="text" id="chapterTitle" value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
+                    <input
+                        type="text"
+                        id="chapterTitle"
+                        value={currentChapter.title}
+                        onChange={(e) => handleChapterChange('title', e.target.value)}
+                        required
+                    />
                     <label htmlFor="chapterContent">Content:</label>
-                    <textarea id="chapterContent" value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
+                    <textarea
+                        id="chapterContent"
+                        value={currentChapter.content}
+                        onChange={(e) => handleChapterChange('content', e.target.value)}
+                        required
+                    />
                     <label>
                         <input
                             type="checkbox"
@@ -320,15 +1149,22 @@ function CreateStory() {
                                 placeholder="Choice Text"
                                 required
                             />
-                            <button type="button" onClick={() => removeChoice(index)}>Remove Choice</button>
+                            <button type="button" onClick={() => removeChoice(index)}>
+                                Remove Choice
+                            </button>
                         </div>
                     ))}
-                    {currentChapter.choices.length < 3 && <button type="button" onClick={addChoice}>Add Choice</button>}
-                    <button type="submit">{chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}</button>
+                    {currentChapter.choices.length < 3 && (
+                        <button type="button" onClick={addChoice}>
+                            Add Choice
+                        </button>
+                    )}
+                    <button type="submit">
+                        {chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}
+                    </button>
                 </form>
             </Modal>
 
-            {/* Modal for adding a new chapter for a specific choice */}
             <Modal
                 isOpen={isChoiceModalOpen}
                 onRequestClose={() => setIsChoiceModalOpen(false)}
@@ -338,9 +1174,20 @@ function CreateStory() {
                 <h2>Add New Chapter for Choice</h2>
                 <form onSubmit={handleChoiceSubmit}>
                     <label htmlFor="chapterTitle">Title:</label>
-                    <input type="text" id="chapterTitle" value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
+                    <input
+                        type="text"
+                        id="chapterTitle"
+                        value={currentChapter.title}
+                        onChange={(e) => handleChapterChange('title', e.target.value)}
+                        required
+                    />
                     <label htmlFor="chapterContent">Content:</label>
-                    <textarea id="chapterContent" value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
+                    <textarea
+                        id="chapterContent"
+                        value={currentChapter.content}
+                        onChange={(e) => handleChapterChange('content', e.target.value)}
+                        required
+                    />
                     <label>
                         <input
                             type="checkbox"
@@ -359,10 +1206,16 @@ function CreateStory() {
                                 placeholder="Choice Text"
                                 required
                             />
-                            <button type="button" onClick={() => removeChoice(index)}>Remove Choice</button>
+                            <button type="button" onClick={() => removeChoice(index)}>
+                                Remove Choice
+                            </button>
                         </div>
                     ))}
-                    {currentChapter.choices.length < 3 && <button type="button" onClick={addChoice}>Add Choice</button>}
+                    {currentChapter.choices.length < 3 && (
+                        <button type="button" onClick={addChoice}>
+                            Add Choice
+                        </button>
+                    )}
                     <button type="submit">Save Chapter</button>
                 </form>
             </Modal>

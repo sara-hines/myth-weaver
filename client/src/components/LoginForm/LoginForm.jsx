@@ -3,15 +3,16 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import UploadImage from '../UploadImage/UploadImage';
+
 
 const LoginForm = ({ handleModalClose }) => {
-    // Initialize state variables for form data, validation, and an alert for faulty credentials. Also set up the login mutation.
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
     const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
     const [touched, setTouched] = useState({ email: false, password: false });
     const [login] = useMutation(LOGIN_USER);
 
-    // Single handler for the onChange event for all form inputs
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUserFormData({ ...userFormData, [name]: value });
@@ -25,7 +26,6 @@ const LoginForm = ({ handleModalClose }) => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        // Check form validity
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -33,7 +33,6 @@ const LoginForm = ({ handleModalClose }) => {
         }
 
         try {
-            // Run the login mutation, which will create a token
             const { data } = await login({
                 variables: {
                     ...userFormData
@@ -41,15 +40,20 @@ const LoginForm = ({ handleModalClose }) => {
             });
 
             const { token } = data.login;
-            // Save user token to localStorage
             Auth.login(token);
-            handleModalClose(); // Close the modal on successful login
+            handleModalClose();
         } catch (err) {
-            console.error(err);
+            console.error('Login error:', err);
+            if (err.graphQLErrors) {
+                err.graphQLErrors.forEach(({ message }) => console.error('GraphQL error:', message));
+            }
+            if (err.networkError) {
+                console.error('Network error:', err.networkError.message);
+            }
+            setAlertMessage(err.message || 'Something went wrong with your login credentials!');
             setShowAlert(true);
         }
 
-        // Clear form
         setUserFormData({
             email: '',
             password: '',
@@ -63,10 +67,9 @@ const LoginForm = ({ handleModalClose }) => {
     return (
         <>
             <Form noValidate onSubmit={handleFormSubmit}>
-                {/* Alert for login errors */}
                 {showAlert && (
                     <Alert show={showAlert} variant='danger'>
-                        Something went wrong with your login credentials!
+                        {alertMessage}
                     </Alert>
                 )}
 
