@@ -10,26 +10,29 @@ const UserProfile = () => {
     const userData = data?.profile || {};
     console.log(userData);
 
-    const [deleteStory] = useMutation(DELETE_STORY, {
-        refetchQueries: [
-            GET_PROFILE,
-            'profile'
-        ]
-    });
+    const [deleteStory, { deleteStoryError }] = useMutation
+        (DELETE_STORY, {
+            refetchQueries: [
+                GET_PROFILE,
+                'profile'
+            ]
+        });
 
-    const [removeFromTBR] = useMutation(REMOVE_FROM_TBR, {
-        refetchQueries: [
-            GET_PROFILE,
-            'profile'
-        ]
-    });
+    const [removeFromTBR, { removeFromTBRerror }] = useMutation
+        (REMOVE_FROM_TBR, {
+            refetchQueries: [
+                GET_PROFILE,
+                'profile'
+            ]
+        });
 
-    const [removeFromBookmarks] = useMutation(REMOVE_FROM_BOOKMARKS, {
-        refetchQueries: [
-            GET_PROFILE,
-            'profile'
-        ]
-    });
+    const [removeFromBookmarks, { removeFromBookmarksError }] = useMutation
+        (REMOVE_FROM_BOOKMARKS, {
+            refetchQueries: [
+                GET_PROFILE,
+                'profile'
+            ]
+        });
 
     const [isOpen, setIsOpen] = useState({
         created: false,
