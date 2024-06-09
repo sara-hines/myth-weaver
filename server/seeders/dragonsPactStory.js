@@ -1,5 +1,5 @@
-const title = 'Dragon’s Pact: The Last Alliance';
-const author = 'mythicLore';
+const title = `Dragon's Pact: The Last Alliance`;
+const author = 'storyWeaver';
 const description = 'In the ancient world of Elaria, dragons and humans once lived in harmony. But now, the dragons have vanished, and the realm is on the brink of war. As a young warrior chosen by the last dragon, you must forge a pact and unite the kingdoms. Will you bring peace or unleash destruction?';
 const imageUrl = '/images/dragons-pact.jpg';
 const genre = 'Epic Fantasy';

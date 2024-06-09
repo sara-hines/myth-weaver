@@ -3,8 +3,10 @@ const { Schema, model } = require('mongoose');
 const reviewSchema = new Schema(
     {
         username: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
+            type: String,
+        },
+        fullName: {
+            type: String,
             required: true,
         },
         rating: {
@@ -21,7 +23,17 @@ const reviewSchema = new Schema(
             default: Date.now,
         },
     },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
+    },
 );
+
+reviewSchema.virtual('createdAtFormattedDate').get(function () {
+    return `${this.createdAt.toLocaleDateString()} at ${this.createdAt.toLocaleTimeString()}`;
+});
 
 const Review = model('Review', reviewSchema);
 

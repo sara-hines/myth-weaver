@@ -1,13 +1,12 @@
 const { User, Story, Chapter, Review } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
-// Testing Server- Haleigh
 const resolvers = {
     Query: {
 
         profile: async (parent, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id })
+                const userData = await User.findOne({ _id: context.user._id })
                     .populate({
                         path: 'authorInfo',
                         populate: {
@@ -21,6 +20,7 @@ const resolvers = {
                             path: 'toBeReadStories'
                         },
                     });
+                return userData;
             }
             throw AuthenticationError;
         },
@@ -66,10 +66,6 @@ const resolvers = {
                 const story = await Story.findOne({ _id: storyId })
                     .populate({
                         path: 'reviews',
-                        populate: {
-                            path: 'username',
-                            model: 'User',
-                        },
                     })
                     .populate({
                         path: 'chapters',
@@ -227,24 +223,24 @@ const resolvers = {
                     { _id: context.user._id },
                     { $addToSet: { 'readerInfo.bookmarkedStories': storyId } },
                     { new: true }
-                );
+                ).populate({
+                    path: 'readerInfo',
+                    populate: {
+                        path: 'bookmarkedStories',
+                    },
+                });
 
                 const userToReturn = await User.findOne({ _id: context.user._id })
-                    .populate({
-                        path: 'authorInfo',
-                        populate: {
-                            path: 'createdStories'
-                        },
-                    })
                     .populate({
                         path: 'readerInfo',
                         populate: {
                             path: 'bookmarkedStories',
-                            path: 'toBeReadStories'
                         },
                     });
 
                 return userToReturn;
+
+                // return updatedUser;
             } catch (err) {
                 throw new Error(err);
             }
@@ -262,14 +258,13 @@ const resolvers = {
         },
 
         addReview: async (parent, { input }, context) => {
-            if (!context.user) {
-                throw AuthenticationError;
-            }
+            const rating = parseInt(input.rating);
 
             try {
                 const review = await Review.create({
-                    reviewedBy: input.reviewedBy,
-                    rating: input.rating,
+                    username: input.username,
+                    fullName: input.fullName,
+                    rating: rating,
                     reviewText: input.reviewText,
                 });
 

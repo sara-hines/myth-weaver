@@ -54,9 +54,15 @@ storySchema.virtual('averageRating').get(function () {
         return 0;
     }
 
-    // ratingsTotal uses the reduce method to get the total of all ratings users have given this story. The acc is initialized at 0.
-    const ratingsTotal = this.reviews.reduce((acc, review) => acc + review.rating, 0);
-    return ratingsTotal / this.reviews.length;
+    // Calculate the total of all ratings users have given this story. The acc is initialized at 0.
+    const ratingsTotal = this.reviews.reduce((acc, review) => {
+        return acc + (review.rating > 0 ? review.rating : 0);
+    }, 0);
+
+    const average = ratingsTotal / this.reviews.length;
+
+    // Return the average rating, ensuring it's never NaN
+    return isNaN(average) ? 0 : Math.round(average);
 });
 
 // The number of users who have left a rating for this story

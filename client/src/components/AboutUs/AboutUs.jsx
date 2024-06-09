@@ -35,7 +35,7 @@ The MythWeaver Team</p>
                         <div className="team-member">
                             <div className="team-member-info">
                                 <div className="team-member-text">
-                                    <h3 className="team-member-name">Person 2</h3>
+                                    <h3 className="team-member-name">Sara Hines</h3>
                                     <p className="team-member-description">Sara Hines has a background in Ecosystem Science and Sustainability and a passion for problem solving. She loves the feeling of co-creating an exciting project on a great team and getting it out into the world. She has an interest in language and expression that extends beyond code into music, art, cooking, and other mediums. </p>
                                 </div>
                                 <img src="/images/sara-bio-photo.png" alt="Sara Hines" className="team-member-img" />

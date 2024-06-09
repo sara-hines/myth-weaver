@@ -36,7 +36,7 @@ const typeDefs = `
         publishedDate: String
         chapters: [Chapter]
         reviews: [Review]
-        averageRating: Int
+        averageRating: Float
         ratingsCount: Int
     }
 
@@ -57,7 +57,8 @@ const typeDefs = `
 
     type Review {
         _id: ID!
-        username: String!
+        username: String
+        fullName: String!
         rating: Int!
         reviewText: String
         createdAt: String
@@ -89,7 +90,8 @@ const typeDefs = `
 
     input ReviewInput {
         storyId: ID!
-        username: String!
+        username: String
+        fullName: String!
         rating: Int!
         reviewText: String        
     }
