@@ -2,130 +2,34 @@ import React, { useState } from 'react';
 import './UserProfile.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_PROFILE } from '../../utils/queries';
-import { DELETE_STORY } from '../../utils/mutations';
-import { REMOVE_FROM_TBR } from '../../utils/mutations';
-import { REMOVE_FROM_BOOKMARKS } from '../../utils/mutations';
+import { DELETE_STORY, REMOVE_FROM_TBR, REMOVE_FROM_BOOKMARKS } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const UserProfile = () => {
-    // Mock data for testing purposes
-    const mockData = {
-        createdStories: [
-            {
-                id: '1',
-                title: 'Created Story 1',
-                description: 'Description for created story 1',
-                image: 'https://picsum.photos/150/150',
-                rating: 4
-            },
-            {
-                id: '2',
-                title: 'Created Story 2',
-                description: 'Description for created story 2',
-                image: 'https://picsum.photos/150/150',
-                rating: 5
-            },
-            {
-                id: '3',
-                title: 'Created Story 3',
-                description: 'Description for created story 3',
-                image: 'https://picsum.photos/150/150',
-                rating: 5
-            },
-            {
-                id: '4',
-                title: 'Created Story 4',
-                description: 'Description for created story 4',
-                image: 'https://picsum.photos/150/150',
-                rating: 5
-            }
-        ],
-        bookmarkedStories: [
-            {
-                id: '3',
-                title: 'Bookmarked Story 1',
-                author: 'author',
-                description: 'Description for bookmarked story 1',
-                image: 'https://picsum.photos/150/150',
-                userRating: 3
-            },
-            {
-                id: '4',
-                title: 'Bookmarked Story 2',
-                author: 'author',
-                description: 'Description for bookmarked story 2',
-                image: 'https://picsum.photos/150/150',
-                userRating: 4
-            }
-        ],
-        tbrList: [
-            {
-                id: '5',
-                title: 'TBR Story 1',
-                author: 'author',
-                description: 'Description for TBR story 1',
-                image: 'https://picsum.photos/150/150',
-                rating: 2
-            },
-            {
-                id: '6',
-                title: 'TBR Story 2',
-                author: 'author',
-                description: 'Description for TBR story 2',
-                image: 'https://picsum.photos/150/150',
-                rating: 4
-            }
-        ],
-        purchasedStories: [
-            {
-                id: '7',
-                title: 'Purchased Story 1',
-                author: 'author',
-                description: 'Description for purchased story 1',
-                image: 'https://picsum.photos/150/150',
-                rating: 5
-            },
-            {
-                id: '8',
-                title: 'Purchased Story 2',
-                author: 'author',
-                description: 'Description for purchased story 2',
-                image: 'https://picsum.photos/150/150',
-                rating: 3
-            }
-        ]
-    };
-
     const { loading, data } = useQuery(GET_PROFILE);
-    // const userData = data?.profile || mockData;
-    // const userData = mockData;
-    const userData = data?.profile
+    const userData = data?.profile || {};
     console.log(userData);
 
-    const [deleteStory, { deleteStoryError }] = useMutation
-        (DELETE_STORY, {
-            refetchQueries: [
-                GET_PROFILE,
-                'profile'
-            ]
-        });
-    
-    const [removeFromTBR, { removeFromTBRerror }] = useMutation
-        (REMOVE_FROM_TBR, {
-            refetchQueries: [
-                GET_PROFILE,
-                'profile'
-            ]
-        });
-    
-    const [removeFromBookmarks, { removeFromBookmarksError }] = useMutation
-        (REMOVE_FROM_BOOKMARKS, {
-            refetchQueries: [
-                GET_PROFILE,
-                'profile'
-            ]
-        });
+    const [deleteStory] = useMutation(DELETE_STORY, {
+        refetchQueries: [
+            GET_PROFILE,
+            'profile'
+        ]
+    });
 
+    const [removeFromTBR] = useMutation(REMOVE_FROM_TBR, {
+        refetchQueries: [
+            GET_PROFILE,
+            'profile'
+        ]
+    });
+
+    const [removeFromBookmarks] = useMutation(REMOVE_FROM_BOOKMARKS, {
+        refetchQueries: [
+            GET_PROFILE,
+            'profile'
+        ]
+    });
 
     const [isOpen, setIsOpen] = useState({
         created: false,
@@ -154,11 +58,6 @@ const UserProfile = () => {
     };
 
     const handleDeleteStory = async (storyId) => {
-        // Placeholder function
-        console.log(`Delete story with ID: ${storyId}`);
-        console.log('The next console log will be your storyId from inside handleDeleteStory: ');
-        console.log(storyId);
-
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -178,8 +77,6 @@ const UserProfile = () => {
     };
 
     const handleRemoveFromBookmarkedStories = async (storyId) => {
-        // Placeholder function
-        console.log(`Remove from bookmarked stories with ID: ${storyId}`);
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -199,8 +96,6 @@ const UserProfile = () => {
     };
 
     const handleRemoveFromTBRList = async (storyId) => {
-        // Placeholder function
-        console.log(`Remove from TBR list with ID: ${storyId}`);
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -240,7 +135,7 @@ const UserProfile = () => {
                             <div className="stories-grid">
                                 {userData?.authorInfo?.createdStories?.length > 0 ? (
                                     <>
-                                        {userData.authorInfo.createdStories.map((story, index) => (
+                                        {userData.authorInfo.createdStories.map((story) => (
                                             <div className="story-box" key={story._id}>
                                                 <a href={`/story-index/${story._id}`}>
                                                     <img src={story.imageUrl} alt={story.title} />
@@ -258,8 +153,8 @@ const UserProfile = () => {
                                                     </div>
                                                 </a>
                                                 <div className="actions">
-                                                        <button onClick={() => handleUpdateStory(story._id)}>Update Story</button>
-                                                        <button className="delete-btn" onClick={() => handleDeleteStory(story._id)}>Delete Story</button>
+                                                    <button onClick={() => handleUpdateStory(story._id)}>Update Story</button>
+                                                    <button className="delete-btn" onClick={() => handleDeleteStory(story._id)}>Delete Story</button>
                                                 </div>
                                             </div>
                                         ))}

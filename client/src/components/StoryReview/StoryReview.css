@@ -1,6 +1,8 @@
 .story-review {
     background-color: var(--bg-color);
     min-height: calc(100vh - var(--header-height));
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .story-review-container {
@@ -9,13 +11,15 @@
     max-width: 600px;
     margin: auto;
     background-color: var(--bg-color);
+    box-sizing: border-box;
 }
 
 .story-review h2 {
     margin: 15px auto;
     color: var(--header-text);
     border-bottom: 1px solid;
-    max-width: calc(fit-content + 20px);
+    max-width: fit-content;
+    padding-bottom: 5px;
 }
 
 .username-input,
@@ -29,6 +33,7 @@
     border-radius: 4px;
     background-color: var(--header-link-hover);
     color: var(--dark-accent);
+    box-sizing: border-box;
 }
 
 .review-textarea {
@@ -68,9 +73,9 @@
 
 .review-buttons {
     display: flex;
-    gap: 10px; /* Adjust the spacing between buttons as needed */
-    justify-content: center; /* Center the buttons within the div */
-    margin-bottom: 15px; /* Add some space below the buttons */
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .save-button {
@@ -106,4 +111,48 @@
 
 .review-item p {
     margin: 5px 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .story-review-container {
+        max-width: 80vw;
+    }
+
+    .story-review h2 {
+        font-size: 1.5em;
+    }
+
+    .username-input,
+    .review-textarea,
+    .save-button {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    .star-rating .star {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-review-container {
+        max-width: 95vw;
+        padding: 10px;
+    }
+
+    .story-review h2 {
+        font-size: 1.2em;
+    }
+
+    .username-input,
+    .review-textarea,
+    .save-button {
+        font-size: 0.8em;
+        padding: 6px;
+    }
+
+    .star-rating .star {
+        font-size: 1.2em;
+    }
 }
