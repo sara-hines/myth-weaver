@@ -1,5 +1,5 @@
 const title = 'Neon Abyss: The Cyberpunk Adventure';
-const author = 'cyberExplorer';
+const author = 'questMaster';
 const description = 'In a dystopian future, the neon-lit city of Neo-Tokyo is rife with corruption and cyber-enhancements. You are a skilled hacker with a mission to expose the corporate overlords controlling the city. Navigate the dark alleys, hack into secure networks, and make choices that will determine the fate of Neo-Tokyo. Will you ignite a revolution or become a pawn in the corporate game?';
 const imageUrl = '/images/neon-abyss.jpg';
 const genre = 'Cyberpunk';

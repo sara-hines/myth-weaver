@@ -1,25 +1,55 @@
-import React from 'react';
-import { useNavigate, useLocation, useParams, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import './StoryIndex.css';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_STORY } from '../../utils/queries';
-import { ADD_TO_TBR } from '../../utils/mutations';
+import { GET_STORY, GET_PROFILE } from '../../utils/queries';
+import { ADD_TO_TBR, REMOVE_FROM_TBR } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const StoryIndex = () => {
-
     const { storyId } = useParams();
-    const { loading, data } = useQuery(GET_STORY, {
+
+    const { loading: loadingStory, data: storyData } = useQuery(GET_STORY, {
         variables: { storyId: storyId },
     });
-    const story = data?.story || {};
-    console.log(story);
 
-    const [addToTBR, { error }] = useMutation(ADD_TO_TBR);
+    const { loading: loadingProfile, data: profileData } = useQuery(GET_PROFILE);
 
-    // take in a storyId parameter here? have storyId as a state variable? 
-    const handleAddToTBR = async () => {
+    const [addToTBR, { addToTBRError }] = useMutation
+        (ADD_TO_TBR, {
+            refetchQueries: [
+                GET_STORY,
+                'story'
+            ]
+        });
+    
+    const [removeFromTBR, { removeFromTBRError }] = useMutation
+        (REMOVE_FROM_TBR, {
+            refetchQueries: [
+                GET_STORY,
+                'story'
+            ]
+        });
+    const [isInTBR, setIsInTBR] = useState(false);
 
+    console.log('your profileData is:')
+    console.log(profileData);
+    const story = storyData?.story || {};
+    const profile = profileData?.profile || {};
+
+    useEffect(() => {
+        console.log('your profile var inside useEffect is:')
+        console.log(profile);
+        if (profile?.readerInfo?.toBeReadStories) {
+            console.log('your profile.readerInfo.toBeReadStories is:')
+            console.log(profile.readerInfo.toBeReadStories);
+            const isInList = profile.readerInfo.toBeReadStories.some(tbrStory => tbrStory._id === storyId);
+            setIsInTBR(isInList);
+        }
+    }, [profile, storyId]);
+
+
+    const handleToggleTBR = async () => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -27,16 +57,25 @@ const StoryIndex = () => {
         }
 
         try {
-            // Get the user's data, including _id, by decoding their token
-            const profile = await Auth.getProfile();
-            const data = await addToTBR({
-                variables: { storyId }
-            });
-
+            if (isInTBR) {
+                const removeResult = await removeFromTBR({
+                    variables: { storyId }
+                });
+                console.log('your remove result is:')
+                console.log(removeResult);
+                setIsInTBR(false);
+            } else {
+                const addResult = await addToTBR({
+                    variables: { storyId }
+                });
+                console.log('your addResult is:')
+                console.log(addResult);
+                setIsInTBR(true);
+            }
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     const renderStars = (rating) => {
         const stars = [];
@@ -55,7 +94,7 @@ const StoryIndex = () => {
         return formattedTags;
     }
 
-    if (loading) {
+    if (loadingStory || loadingProfile) {
         return <div>Loading...</div>;
     }
 
@@ -66,12 +105,19 @@ const StoryIndex = () => {
                     <img src={story.imageUrl} alt={story.title} />
                 </div>
                 <div className="rating">
-                    {story.reviews?.length === 0 || !story?.reviews ? (
+                    {story?.reviews?.length === 0 || !story?.reviews ? (
                         <p>No ratings yet!</p>
                     ) : (
                         <>
-                            {renderStars(story.averageRating)}
-                            <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people.</p>
+                            <div className='display-star-rating star'>
+                                {renderStars(story.averageRating)}
+                            </div>
+                            <div className='rating-explanation'>
+                                {story.ratingsCount === 1 ? (
+                                    <p>Rated {story.averageRating} stars by 1 person</p>
+                                ) : (
+                                    <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people</p>)}
+                            </div>
                         </>
                     )}
                 </div>
@@ -83,7 +129,9 @@ const StoryIndex = () => {
 
                 {/* Added TBR List Button - Sara */}
                 <div className='tbr-button-container'>
-                    <button className='tbr-button' onClick={handleAddToTBR}>Add to To Be Read List</button>
+                    <button className='tbr-button' onClick={handleToggleTBR}>
+                        {isInTBR ? 'Remove from To Be Read List' : 'Add to To Be Read List'}
+                    </button>
                 </div>
 
                 {/* should have a max character limit. 400-500? */}
@@ -97,21 +145,6 @@ const StoryIndex = () => {
                     </Link>
                 </div>
             </main>
-
-            {story.reviews?.length > 0 &&
-                <div className='story-reviews'>
-                    {story.reviews.map((review) => (
-                        <div key={review._id}>
-                            <p>{review.username} on {review.createdAtFormattedDate}:</p>
-                            {renderStars(review.rating)}
-                            {/* I currently have the typeDefs set up so that a star rating is mandatory but reviewText is not. I'm not super opinionated about that, we could make reviewText mandatory as well. At least for now, this logic is here so we check for reviewText before rendering it. */}
-                            {review.reviewText &&
-                                <p>{review.reviewText}</p>
-                            }
-                        </div>
-                    ))}
-                </div>
-            }
         </div>
     );
 };

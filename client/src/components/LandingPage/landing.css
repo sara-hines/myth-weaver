@@ -10,27 +10,27 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh; 
+  height: 100vh;
   margin-bottom: -100px;
+  position: relative;
 }
 
 .landing-title {
   margin: 0;
   font-size: 50px;
   color: var(--header-text);
-  position: relative; 
-  top: -250px; 
-  left: -20px; 
-  animation-duration: 1s; 
+  position: relative;
+  top: -250px;
+  left: -20px;
+  animation-duration: 1s;
   animation-fill-mode: both;
   animation-name: zoomIn;
   z-index: 3;
-  }
-  
+}
 
 .slogan {
   position: relative;
-  top: -230px; 
+  top: -230px;
   left: -30px;
   font-size: 20px;
   color: var(--dark-accent);
@@ -38,20 +38,19 @@
 }
 
 .cta-button {
-  position: absolute; 
-  bottom: 43%; 
-  left: 49%; 
-  transform: translateX(-50%); 
+  position: absolute;
+  bottom: 43%;
+  left: 50%;
+  transform: translateX(-50%);
   display: inline-block;
   padding: 10px 20px;
-  background:var(--button-accent);
+  background: var(--button-accent);
   color: var(--header-link-hover);
   text-decoration: none;
   border-radius: 5px;
   font-size: 18px;
   z-index: 3;
 }
-
 
 .cta-button:hover {
   background: var(--header-title);
@@ -78,8 +77,8 @@
 
 .upright {
   position: absolute;
-  top: 50%; 
-  left: 25%; 
+  top: 50%;
+  left: 25%;
   transform: translateY(-50%);
   z-index: 2;
 }
@@ -87,22 +86,22 @@
 .upside-down {
   position: absolute;
   top: 50%;
-  right: 25%; 
+  right: 25%;
   transform: translateY(-50%);
   z-index: 2;
 }
 
 .book-image {
   position: absolute;
-  top: 9.8%; 
-  right: 40%; 
+  top: 9.8%;
+  right: 40%;
   z-index: 1;
 }
 
 .coinpurse-image {
   position: absolute;
-  bottom: 29%; 
-  right: 31%; 
+  bottom: 29%;
+  right: 31%;
   z-index: 2;
 }
 
@@ -123,28 +122,15 @@
 }
 
 .footer {
-   background: var(--mid-dark-accent);
-  padding: 50px 0; 
+  background: var(--mid-dark-accent);
+  padding: 50px 0;
   color: var(--dk-button-accent);
   text-align: center;
   margin-bottom: -100px;
   font-size: 1.05rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* When the screen gets smaller than the average screen the smaller images disapear. - Haleigh */
-
+/* When the screen gets smaller than the average screen the smaller images disappear. - Haleigh */
 @media (max-width: 1700px) {
   .book-image,
   .bag-image,
@@ -152,6 +138,34 @@
   .map-image,
   .upright,
   .upside-down {
-    display: none; 
+    display: none;
+  }
+}
+
+/* Hide scroll image and adjust elements for smaller screens */
+@media (max-width: 670px) {
+  .scroll-image {
+    display: none;
+  }
+  
+  .landing-title {
+    font-size: 36px;
+    top: 0;
+    left: 0;
+  }
+  
+  .slogan {
+    font-size: 18px;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+  }
+  
+  .cta-button {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    margin-top: 20px;
   }
 }

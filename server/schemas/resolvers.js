@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
         profile: async (parent, args, context) => {
             if (context.user) {
-                return User.findById(context.user._id)
+                const userData = await User.findOne({ _id: context.user._id })
                     .populate({
                         path: 'authorInfo',
                         populate: { path: 'createdStories' },
@@ -15,6 +15,7 @@ const resolvers = {
                         path: 'readerInfo',
                         populate: [{ path: 'bookmarkedStories' }, { path: 'toBeReadStories' }],
                     });
+                return userData;
             }
             throw new AuthenticationError('Not logged in');
         },
@@ -22,10 +23,24 @@ const resolvers = {
             return Story.find().populate('chapters').populate('reviews');
         },
         story: async (parent, { storyId }) => {
-            return Story.findById(storyId).populate('chapters').populate('reviews');
-        },
-        storiesTest: async () => {
-            return Story.find().populate('chapters').populate('reviews');
+
+            try {
+                const story = await Story.findOne({ _id: storyId })
+                    .populate({
+                        path: 'reviews',
+                    })
+                    .populate({
+                        path: 'chapters',
+                        populate: {
+                            path: 'choices'
+                        },
+                    });
+
+                return story;
+            } catch (err) {
+                console.error(err);
+                throw err;
+            }
         },
     },
     Mutation: {
@@ -122,14 +137,32 @@ const resolvers = {
                 throw new AuthenticationError('Not logged in');
             }
 
-            const user = await User.findByIdAndUpdate(context.user._id, { $addToSet: { 'readerInfo.bookmarkedStories': storyId } }, { new: true });
-            return user.populate({
-                path: 'authorInfo',
-                populate: { path: 'createdStories' },
-            }).populate({
-                path: 'readerInfo',
-                populate: [{ path: 'bookmarkedStories' }, { path: 'toBeReadStories' }],
-            });
+            try {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { 'readerInfo.bookmarkedStories': storyId } },
+                    { new: true }
+                ).populate({
+                    path: 'readerInfo',
+                    populate: {
+                        path: 'bookmarkedStories',
+                    },
+                });
+
+                const userToReturn = await User.findOne({ _id: context.user._id })
+                    .populate({
+                        path: 'readerInfo',
+                        populate: {
+                            path: 'bookmarkedStories',
+                        },
+                    });
+
+                return userToReturn;
+
+                // return updatedUser;
+            } catch (err) {
+                throw new Error(err);
+            }
         },
         removeFromBookmarks: async (parent, { storyId }, context) => {
             if (!context.user) {
@@ -146,8 +179,25 @@ const resolvers = {
             });
         },
         addReview: async (parent, { input }, context) => {
-            if (!context.user) {
-                throw new AuthenticationError('Not logged in');
+
+            const rating = parseInt(input.rating);
+
+            try {
+                const review = await Review.create({
+                    username: input.username,
+                    fullName: input.fullName,
+                    rating: rating,
+                    reviewText: input.reviewText,
+                });
+
+                const updatedStory = await Story.findOneAndUpdate(
+                    { _id: input.storyId },
+                    { $addToSet: { reviews: review._id } },
+                    { new: true }
+                );
+                return review;
+            } catch (err) {
+                throw new Error(err);
             }
 
             const review = await Review.create({ ...input, username: context.user.username });
