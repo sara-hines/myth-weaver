@@ -16,14 +16,6 @@ const MythIndex = () => {
         return <h2>Error loading stories</h2>;
     }
 
-    const renderStars = (averageRating) => {
-        const stars = [];
-        for (let i = 0; i < averageRating; i++) {
-            stars.push(<span key={i}>★</span>);
-        }
-        return stars;
-    };
-
     return (
         <div className="mythweaver">
             <main className="main-content">
@@ -40,14 +32,6 @@ const MythIndex = () => {
                                 <div className="story-info">
                                     <p className='story-author'>Created by {story.author}</p>
                                     <p className='story-description'>{story.description}</p>
-                                    {story.reviews?.length === 0 || !story?.reviews ? (
-                                        <p>No ratings yet!</p>
-                                    ) : (
-                                        <>
-                                            {renderStars(story.averageRating)}
-                                            <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people.</p>
-                                        </>
-                                    )}
                                 </div>
                             </div>
                         </Link>
