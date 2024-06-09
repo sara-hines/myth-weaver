@@ -4,9 +4,10 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_PROFILE } from '../../utils/queries';
 import { DELETE_STORY, REMOVE_FROM_TBR, REMOVE_FROM_BOOKMARKS } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
-    const { loading, data } = useQuery(GET_PROFILE);
+    const { loading, data, error } = useQuery(GET_PROFILE);
     const userData = data?.profile || {};
     console.log(userData);
 
@@ -38,7 +39,6 @@ const UserProfile = () => {
         created: false,
         bookmarked: false,
         tbr: false,
-        purchased: false
     });
 
     const toggleSection = (section) => {
@@ -47,10 +47,6 @@ const UserProfile = () => {
             [section]: !prevState[section]
         }));
     };
-
-    if (loading) {
-        return <h2>LOADING...</h2>;
-    }
 
     const handleCreateStory = () => {
         window.location.href = '/create-story';
@@ -125,6 +121,13 @@ const UserProfile = () => {
         return stars;
     };
 
+    if (loading) {
+        return <h2>LOADING...</h2>;
+    }
+
+    if (error) {
+        return <h2>Error loading profile data!</h2>;
+    }
     return (
         <div className="user-profile">
             <main className="user-main-content">
@@ -140,21 +143,11 @@ const UserProfile = () => {
                                     <>
                                         {userData.authorInfo.createdStories.map((story) => (
                                             <div className="story-box" key={story._id}>
-                                                <a href={`/story-index/${story._id}`}>
+                                                <Link to={`/story-index/${story._id}`}>
                                                     <img src={story.imageUrl} alt={story.title} />
                                                     <h3>{story.title}</h3>
                                                     <p>{story.description}</p>
-                                                    <div className="rating">
-                                                        {story.reviews?.length === 0 || !story?.reviews ? (
-                                                            <p>No ratings yet!</p>
-                                                        ) : (
-                                                            <>
-                                                                {renderStars(story.averageRating)}
-                                                                <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people.</p>
-                                                            </>
-                                                        )}
-                                                    </div>
-                                                </a>
+                                                </Link>
                                                 <div className="actions">
                                                     <button onClick={() => handleUpdateStory(story._id)}>Update Story</button>
                                                     <button className="delete-btn" onClick={() => handleDeleteStory(story._id)}>Delete Story</button>
@@ -175,24 +168,14 @@ const UserProfile = () => {
                             <div className="stories-grid">
                                 {userData?.readerInfo?.bookmarkedStories?.length > 0 ? (
                                     <>
-                                        {userData.readerInfo.bookmarkedStories.map((story) => (
+                                        {userData?.readerInfo?.bookmarkedStories?.map((story) => (
                                             <div className="story-box" key={story._id}>
-                                                <a href={`/story/${story._id}`}>
+                                                <Link to={`/story-index/${story._id}`}>
                                                     <img src={story.imageUrl} alt={story.title} />
                                                     <h3>{story.title}</h3>
-                                                    <p>{story.author}</p>
+                                                    <p>Created by {story.author}</p>
                                                     <p>{story.description}</p>
-                                                    <div className="rating">
-                                                        {story.reviews?.length === 0 || !story?.reviews ? (
-                                                            <p>No ratings yet!</p>
-                                                        ) : (
-                                                            <>
-                                                                {renderStars(story.averageRating)}
-                                                                <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people.</p>
-                                                            </>
-                                                        )}
-                                                    </div>
-                                                </a>
+                                                </Link>
                                                 <div className="actions">
                                                     <button className="remove-btn" onClick={() => handleRemoveFromBookmarkedStories(story._id)}>Remove from Bookmarked Stories</button>
                                                 </div>
@@ -214,22 +197,12 @@ const UserProfile = () => {
                                     <>
                                         {userData.readerInfo.toBeReadStories.map((story) => (
                                             <div className="story-box" key={story._id}>
-                                                <a href={`/story/${story._id}`}>
+                                                <Link to={`/story-index/${story._id}`}>
                                                     <img src={story.imageUrl} alt={story.title} />
                                                     <h3>{story.title}</h3>
-                                                    <p>{story.author}</p>
+                                                    <p>Created by {story.author}</p>
                                                     <p>{story.description}</p>
-                                                    <div className="rating">
-                                                        {story.reviews?.length === 0 || !story?.reviews ? (
-                                                            <p>No ratings yet!</p>
-                                                        ) : (
-                                                            <>
-                                                                {renderStars(story.averageRating)}
-                                                                <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people.</p>
-                                                            </>
-                                                        )}
-                                                    </div>
-                                                </a>
+                                                </Link>
                                                 <div className="actions">
                                                     <button className="remove-btn" onClick={() => handleRemoveFromTBRList(story._id)}>Remove from TBR List</button>
                                                 </div>

@@ -132,10 +132,13 @@ export const GET_STORY = gql`
             reviews {
                 _id
                 username
+                fullName
                 rating
                 reviewText
                 createdAtFormattedDate
             }
+            averageRating
+            ratingsCount
         }
     }
 `;

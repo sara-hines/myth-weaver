@@ -1,5 +1,5 @@
 const title = 'The Tale of Arinthia: A Journey of Redemption';
-const author = 'storybookMaster';
+const author = 'storyWeaver';
 const description = 'In the magical land of Arinthia, you are a disgraced knight seeking redemption. With a troubled past and a tarnished reputation, you embark on a quest to save the realm from an ancient evil. Along the way, you must confront your demons, form alliances, and make choices that will determine the fate of Arinthia.';
 const imageUrl = '/images/arinthia.jpg';
 const genre = 'High Fantasy';

@@ -70,7 +70,7 @@ const StoryPath = () => {
                     
                     <Link to={`/story-review/${storyId}`}>
                         <div className="story-end-button">
-                            <button className="bookmark" >Bookmark Story and Leave a Review!</button>
+                            <button className="bookmark">Bookmark Story and Leave a Review!</button>
                         </div>
                     </Link>
                 </div>     
