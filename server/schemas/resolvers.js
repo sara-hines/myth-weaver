@@ -160,6 +160,9 @@ const resolvers = {
         },
         deleteStory: async (parent, { storyId }, context) => {
             if (context.user) {
+
+                const storyForDeletion = await Story.findOneAndDelete({ _id: storyId });
+
                 return User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $pull: { 'authorInfo.createdStories': storyId } },

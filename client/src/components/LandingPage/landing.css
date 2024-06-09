@@ -20,7 +20,7 @@
   font-size: 50px;
   color: var(--header-text);
   position: relative;
-  top: -250px;
+  top: -252px;
   left: -20px;
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -30,7 +30,7 @@
 
 .slogan {
   position: relative;
-  top: -230px;
+  top: -242px;
   left: -30px;
   font-size: 20px;
   color: var(--dark-accent);
@@ -39,7 +39,7 @@
 
 .cta-button {
   position: absolute;
-  bottom: 43%;
+  bottom: 42%;
   left: 50%;
   transform: translateX(-50%);
   display: inline-block;
