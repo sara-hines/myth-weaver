@@ -286,7 +286,7 @@ function CreateStory() {
                     <label htmlFor="storyTags">Tags (comma-separated):</label>
                     <input type="text" id="storyTags" value={storyTags} onChange={handleStoryTagsChange} required />
 
-                    <button type="submit" className='next-button'>Next</button>
+                    <button type="submit">Next</button>
                 </form>
             </Modal>
 
@@ -321,11 +321,11 @@ function CreateStory() {
                                 placeholder="Choice Text"
                                 required
                             />
-                            <button type="button" className='remove-choice-button' onClick={() => removeChoice(index)}>Remove Choice</button>
+                            <button type="button" onClick={() => removeChoice(index)}>Remove Choice</button>
                         </div>
                     ))}
-                    {currentChapter.choices.length < 3 && <button type="button" className='add-choice-button' onClick={addChoice}>Add Choice</button>}
-                    <button type="submit" className='save-button'>{chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}</button>
+                    {currentChapter.choices.length < 3 && <button type="button" onClick={addChoice}>Add Choice</button>}
+                    <button type="submit">{chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}</button>
                 </form>
             </Modal>
 
@@ -360,11 +360,11 @@ function CreateStory() {
                                 placeholder="Choice Text"
                                 required
                             />
-                            <button type="button" className='remove-choice-button' onClick={() => removeChoice(index)}>Remove Choice</button>
+                            <button type="button" onClick={() => removeChoice(index)}>Remove Choice</button>
                         </div>
                     ))}
-                    {currentChapter.choices.length < 3 && <button type="button" className='add-choice-button' onClick={addChoice}>Add Choice</button>}
-                    <button type="submit" className='save-button'>Save Chapter</button>
+                    {currentChapter.choices.length < 3 && <button type="button" onClick={addChoice}>Add Choice</button>}
+                    <button type="submit">Save Chapter</button>
                 </form>
             </Modal>
         </div>

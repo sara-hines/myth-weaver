@@ -1,14 +1,9 @@
 .footer {
-    box-sizing: border-box;
-    background: var(--mid-dark-accent);
-    padding: 20px 0;
-    color: var(--dk-button-accent);
-    text-align: center;
-    align-items: center;
-    font-size: 1.05rem;
-    max-height: 40px;
-}
-
-.copyright-wrapper {
-    margin-top: -10px;
-}
+  box-sizing: border-box;
+  background: var(--mid-dark-accent);
+  padding: 20px 0; 
+  color: var(--dk-button-accent);
+  text-align: center;
+  font-size: 1.05rem;
+  max-height: 40px;
+ }

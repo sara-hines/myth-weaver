@@ -42,7 +42,7 @@ const UploadImage = ({ setImageUrl }) => {
 
     return (
         <div className="upload-image-container">
-            <input type="file" className='choose-file-button' onChange={handleFileChange} />
+            <input type="file" onChange={handleFileChange} />
             <button onClick={handleUpload} disabled={uploading}>
                 {uploading ? 'Uploading...' : 'Upload Image'}
             </button>
