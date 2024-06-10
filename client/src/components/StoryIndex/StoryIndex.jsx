@@ -36,6 +36,9 @@ const StoryIndex = () => {
     console.log(profileData);
     const story = storyData?.story || {};
     const profile = profileData?.profile || {};
+    
+    console.log('the next console log will be your story variable from StoryIndex.jsx:')
+    console.log(story);
 
     useEffect(() => {
         console.log('your profile var inside useEffect is:')
