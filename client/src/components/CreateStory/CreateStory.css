@@ -3,18 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #d3c1b1; /* Beige background */
+    background-color: var(--bg-color); /* Beige background */
     min-height: 100vh;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-
-.create-story-header {
-    width: 100%;
-    background-color: #d3c1b1; /* Beige background */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
 }
 
 .home-link {
@@ -44,15 +35,6 @@
     max-width: 800px;
     padding: 20px;
     box-sizing: border-box;
-}
-
-.create-story-sidebar {
-    width: 200px;
-    background-color: #e29e7c; /* Orange background */
-    padding: 20px;
-    border-radius: 0 20px 20px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: left;
 }
 
 .story-title {
@@ -147,7 +129,6 @@
     outline: none;
 }
 
-/* Quick styles added for create story test button, feel free to change however - Sara */
 .submit-story-test-btn {
     background-color: #b0627b;
     color: #fff;
@@ -160,6 +141,63 @@
     text-align: center;
 }
 
+.next-button {
+    background-color: var(--button-accent);
+    color: #FFFBFB;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color ease-in-out 0.5s;
+    padding: 5px 20px;
+    margin: 10px 0px 10px 0px;
+}
+
+.next-button:hover, 
+.add-choice-button:hover, 
+.remove-choice-button:hover {
+    background-color: var(--dk-button-accent);
+}
+
+.add-choice-button,
+.remove-choice-button {
+    background-color: var(--button-accent);
+    color: #FFFBFB;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color ease-in-out 0.5s;
+    padding: 5px 10px;
+    /* margin: 10px 0px 10px 0px; */
+    margin-bottom: 20px;
+    margin-top: -5px;
+    min-width: 113px;
+    /* min-height: 42.4px; */
+}
+
+button.save-button {
+    background-color: var(--story-4);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color ease-in-out 0.5s;
+    padding: 5px 10px;
+    margin: 10px 0px 10px 0px;
+    min-width: 113px;
+    color: #FFFBFB;
+    display: block;
+}
+
+button.save-button:hover {
+    background-color: var(--alt-button-accent);
+    display: block;
+}
+
 .modal {
     position: absolute;
     top: 50%;
@@ -170,7 +208,7 @@
     transform: translate(-50%, -50%);
     width: 60%;
     padding: 20px;
-    background-color: white;
+    background-color: #FFFBFB;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
@@ -255,19 +293,7 @@
     position: relative;
 }
 
-.end-story-label span {
-    /* position: absolute; */
-    /* left: 0;
-    top: 50%;
-    transform: translateY(-50%); */
-}
-
 .end-story-label input[type="checkbox"] {
-    /* margin-right: 80px; */
-    /* justify-content: start; */
-    /* text-align: left;
-    align-self: flex-start;
-    left: -10px; */
     display: inline;
     width: fit-content;
     margin-left: 10px;
@@ -299,7 +325,8 @@
 form label, form input, form textarea, form select {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    /* margin: 10px 0px; */
 }
 
 form .form-group {

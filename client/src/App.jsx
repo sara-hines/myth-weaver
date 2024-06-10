@@ -33,7 +33,6 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-//DO NOT make changes to this function. it breaks the display.
 function App() {
     return (
         <ApolloProvider client={client}>
