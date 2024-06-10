@@ -1,0 +1,53 @@
+/* General styles for the Random Story page */
+.story-splash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+.story-splash-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: var(--bg-color);
+    width: 100%;
+    padding: 20px;
+}
+
+.story-splash-card {
+    background-color: var(--dk-container-color);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--mid-dark-accent);
+}
+
+.story-splash-name {
+    font-size: 32px;
+    color: var(--header-text);
+    margin-bottom: 10px;
+}
+
+.story-splash-description {
+    font-size: 18px;
+    color: var(--header-title);
+    margin-bottom: 20px;
+}
+
+.story-splash-button {
+    background-color: var(--button-accent);
+    color: var(--header-link-hover); 
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.story-splash-button:hover {
+    background-color: var(--dk-button-accent); 
+}

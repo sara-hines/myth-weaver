@@ -44,7 +44,6 @@ const StoryPath = () => {
     }
 
     return (
-    <div className='story-path-pg-wrapper'>
         <div className="story-path">
             {/* If the currentChapter is not the end of the story, render the chapter's content and choices. */}
             {!currentChapter.isEnd ? (
@@ -65,11 +64,11 @@ const StoryPath = () => {
                 </div>
             // If currentChapter is the end of the story, render the ending and a button to go review the story.
             ) : (
-                <div className="story-path-container">
+                <div className="story-end-container">
                     <h1>{currentChapter.title}</h1>
                     <p>{currentChapter.content}</p> 
                     
-                            <Link to={`/story-review/${storyId}`} className='remove-text-decoration'>
+                    <Link to={`/story-review/${storyId}`}>
                         <div className="story-end-button">
                             <button className="bookmark">Bookmark Story and Leave a Review!</button>
                         </div>
@@ -77,7 +76,6 @@ const StoryPath = () => {
                 </div>     
             )}
         </div>
-    </div>
     );
 };
 

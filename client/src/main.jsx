@@ -8,6 +8,7 @@ import NoHeaderLayout from './components/Layout/NoHeaderLayout.jsx'
 import MythIndex from './components/MythIndex/MythIndex.jsx';
 import UserProfile from './components/UserProfile/UserProfile.jsx';
 import StoryIndex from './components/StoryIndex/StoryIndex.jsx';
+import StorySplash from './components/StorySplash/StorySplash.jsx';
 import CreateStory from './components/CreateStory/CreateStory.jsx';
 import AboutUs from './components/AboutUs/AboutUs.jsx';
 import StoryPath from './components/StoryPath/StoryPath.jsx';
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        errorElement: <ErrorComponent />,
+        errorElement: <h1 className='display-2'>Wrong page!</h1>,
         children: [
             {
                 element: <Layout />,
