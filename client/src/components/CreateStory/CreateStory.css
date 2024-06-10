@@ -251,6 +251,28 @@
     gap: 5px;
 }
 
+.end-story-label {
+    position: relative;
+}
+
+.end-story-label span {
+    /* position: absolute; */
+    /* left: 0;
+    top: 50%;
+    transform: translateY(-50%); */
+}
+
+.end-story-label input[type="checkbox"] {
+    /* margin-right: 80px; */
+    /* justify-content: start; */
+    /* text-align: left;
+    align-self: flex-start;
+    left: -10px; */
+    display: inline;
+    width: fit-content;
+    margin-left: 10px;
+}
+
 .indent-1 {
     margin-left: 40px;
 }

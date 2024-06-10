@@ -25,9 +25,9 @@ The MythWeaver Team</p>
                     <div className="team-grid">
                         <div className="team-member">
                             <div className="team-member-info">
-                                <img src="https://picsum.photos/200/200" alt="Person 1" className="team-member-img" />
+                                <img src="/images/morgan-bio-photo.png" alt="Morgan Carmichael" className="team-member-img" />
                                 <div className="team-member-text">
-                                    <h3 className="team-member-name">Person 1</h3>
+                                    <h3 className="team-member-name">Morgan Carmichael</h3>
                                     <p className="team-member-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@ The MythWeaver Team</p>
                             <div className="team-member-info">
                                 <img src='/images/haleigh-bio-photo.jpg' alt="Haleigh Elkins" className="team-member-img" />
                                 <div className="team-member-text">
-                                    <h3 className="team-member-name">Person 3</h3>
+                                    <h3 className="team-member-name">Haleigh Elkins</h3>
                                     <p className="team-member-description">Haleigh brings a unique blend of business management expertise and a passion for computer science to the table. With a strong background in both fields, Haleigh excels in problem-solving and thrives in collaborative environments. An avid lover of the outdoors who also enjoys the comforts of home, Haleigh balances these interests with a keen desire to expand knowledge in cyber security. Dedicated and versatile, Haleigh continually seeks to enhance skills and contribute meaningfully to every project undertaken.</p>
                                 </div>
                             </div>

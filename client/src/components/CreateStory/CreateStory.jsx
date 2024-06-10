@@ -5,6 +5,7 @@ import { ADD_STORY } from '../../utils/mutations';
 import Modal from 'react-modal';
 import './CreateStory.css';
 import Auth from '../../utils/auth';
+import UploadImage from '../UploadImage/UploadImage';
 
 Modal.setAppElement('#root');
 
@@ -35,7 +36,7 @@ function CreateStory() {
     const navigate = useNavigate();
 
     // Handlers for changing story metadata
-    const handlestoryTitleChange = (event) => {
+    const handleStoryTitleChange = (event) => {
         setStoryTitle(event.target.value); // Update story title
     };
 
@@ -43,8 +44,8 @@ function CreateStory() {
         setStoryDescription(event.target.value); // Update story description
     };
 
-    const handleStoryImageChange = (event) => {
-        setStoryImage(URL.createObjectURL(event.target.files[0])); // Update story image with a file URL
+    const handleStoryImageChange = (url) => {
+        setStoryImage(url); // Set the image URL from the UploadImage component
     };
 
     const handleStoryGenreChange = (event) => {
@@ -271,13 +272,13 @@ function CreateStory() {
                 <h2>Start Your Story</h2>
                 <form onSubmit={handleInitialSubmit}>
                     <label htmlFor="storyTitle">Story Title:</label>
-                    <input type="text" id="storyTitle" value={storyTitle} onChange={handlestoryTitleChange} required />
+                    <input type="text" id="storyTitle" value={storyTitle} onChange={handleStoryTitleChange} required />
 
                     <label htmlFor="storyDescription">Brief Description:</label>
                     <textarea id="storyDescription" value={storyDescription} onChange={handleStoryDescriptionChange} required />
 
                     <label htmlFor="storyImage">Story Image:</label>
-                    <input type="file" id="storyImage" onChange={handleStoryImageChange} required />
+                    <UploadImage setImageUrl={handleStoryImageChange} />
 
                     <label htmlFor="storyGenre">Genre:</label>
                     <input type="text" id="storyGenre" value={storyGenre} onChange={handleStoryGenreChange} required />
@@ -302,13 +303,13 @@ function CreateStory() {
                     <input type="text" id="chapterTitle" value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
                     <label htmlFor="chapterContent">Content:</label>
                     <textarea id="chapterContent" value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
-                    <label>
+                    <label className="end-story-label">
+                        <span>Ends Story</span>
                         <input
                             type="checkbox"
                             checked={currentChapter.isEnd}
                             onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
                         />
-                        Ends Story
                     </label>
 
                     {currentChapter.choices.map((choice, index) => (

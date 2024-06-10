@@ -87,7 +87,7 @@ const UserProfile = () => {
                 variables: { storyId }
             });
             if (!data) {
-                throw new Error('Sorry, there was an error in deleting a story.');
+                throw new Error('Sorry, there was an error in removing the story from bookmarks.');
             }
         } catch (err) {
             console.error(err);
@@ -106,7 +106,7 @@ const UserProfile = () => {
                 variables: { storyId }
             });
             if (!data) {
-                throw new Error('Sorry, there was an error in deleting a story.');
+                throw new Error('Sorry, there was an error in removing the story from the To Be Read list.');
             }
         } catch (err) {
             console.error(err);

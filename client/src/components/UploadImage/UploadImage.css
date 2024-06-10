@@ -1,0 +1,27 @@
+.upload-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.upload-image-container input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.upload-image-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-image-container button:hover {
+    background-color: #0056b3;
+}
+
+.result-message {
+    padding-top: 20px;
+}

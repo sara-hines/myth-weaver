@@ -88,7 +88,7 @@ const Header = () => {
                 show={showModal}
                 onHide={() => setShowModal(false)}
                 aria-labelledby='auth-modal'
-                centered>
+                centered className='modal'>
                 <Modal.Header closeButton className="modal-header-center">
                     <Modal.Title id='auth-modal' className="modal-title-lg">
                         {modalType === 'login' ? 'Login' : 'Sign Up'}
