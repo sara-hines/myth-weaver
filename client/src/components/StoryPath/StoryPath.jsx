@@ -36,8 +36,18 @@ const StoryPath = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="story-path-pg-wrapper">
+                <main className="story-path">
+                    <div className="loading-container">
+                        <div className="spinner"></div>
+                        <h2>Loading...</h2>
+                    </div>
+                </main>
+            </div>
+        );
     }
+
 
     if (!currentChapter) {
         return <div>No chapter found.</div>;

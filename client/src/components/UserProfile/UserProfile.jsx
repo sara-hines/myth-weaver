@@ -122,11 +122,28 @@ const UserProfile = () => {
     };
 
     if (loading) {
-        return <h2>LOADING...</h2>;
+        return (
+            <div className="mythweaver">
+                <main className="main-content">
+                    <div className="loading-container">
+                        <div className="spinner"></div>
+                        <h2>Loading...</h2>
+                    </div>
+                </main>
+            </div>
+        );
     }
 
     if (error) {
-        return <h2>Error loading profile data!</h2>;
+        return (
+            <div className="mythweaver">
+                <main className="main-content">
+                    <div className="error-container">
+                        <h2>Error loading profile data</h2>
+                    </div>
+                </main>
+            </div>
+        );
     }
 
     return (

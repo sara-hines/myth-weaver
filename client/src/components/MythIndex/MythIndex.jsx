@@ -9,11 +9,28 @@ const MythIndex = () => {
     const stories = data?.stories || [];
 
     if (loading) {
-        return <h2>LOADING...</h2>;
+        return (
+            <div className="mythweaver">
+                <main className="main-content">
+                    <div className="loading-container">
+                        <div className="spinner"></div>
+                        <h2>Loading...</h2>
+                    </div>
+                </main>
+            </div> 
+        );
     }
 
     if (error) {
-        return <h2>Error loading stories</h2>;
+        return (
+            <div className="mythweaver">
+                <main className="main-content">
+                    <div className="error-container">
+                        <h2>Error loading stories</h2>
+                    </div>
+                </main>
+            </div>
+        );
     }
 
     const handleImageError = (event) => {
@@ -34,7 +51,6 @@ const MythIndex = () => {
                                     <p className='story-title'>{story.title}</p>
                                 </div>
                                 <div className="story-info">
-                                    <p className='story-author'>Created by {story.author}</p>
                                     <p className='story-description'>{story.description}</p>
                                 </div>
                             </div>
