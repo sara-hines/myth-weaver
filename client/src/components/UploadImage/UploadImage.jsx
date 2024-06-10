@@ -22,12 +22,17 @@ const UploadImage = ({ setImageUrl }) => {
 
         setUploading(true);
 
+        console.log('this is your formData from inside function handleUpload:')
+        console.log(formData);
+
         try {
-            const response = await axios.post('http://localhost:3001/api/upload', formData, {
+            const response = await axios.post('/api/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
+            console.log('this is your response variable from awaiting the axios.post in function handleUpload.')
+            console.log(response);
 
             setImageUrl(response.data.url);
             setUploading(false);
