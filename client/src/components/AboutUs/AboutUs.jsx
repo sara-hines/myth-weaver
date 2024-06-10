@@ -61,10 +61,10 @@ The MythWeaver Team</p>
                         </div>
                         <div className="team-member">
                             <div className="team-member-info">
-                                <img src="https://picsum.photos/200/200" alt="Person 5" className="team-member-img" />
+                                <img src="/images/rebeca-bio-photo.jpg" alt="Rebeca Thornburg" className="team-member-img" />
                                 <div className="team-member-text">
-                                    <h3 className="team-member-name">Person 5</h3>
-                                    <p className="team-member-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <h3 className="team-member-name">Rebeca Thornburg</h3>
+                                    <p className="team-member-description">Rebeca a passion for computer science and works as a GIS specialist. She thrives in creating new solutions and collaborative projects. As an avid history buff and outdoor enthusiast, she's always seeking out adventure whether through reading or travel. Her love of reading and travel have caused her to learn several languages, which has helped find new creative outlets.</p>
                                 </div>
                             </div>
                         </div>

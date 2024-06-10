@@ -1,3 +1,10 @@
+.story-path-pg-wrapper {
+    text-align: center;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    /* Ensures content fits */
+}
+
 .story-path {
     background-color: var(--bg-color);
     text-align: center;
@@ -82,6 +89,10 @@
 .bookmark a,
 .bookmark a:hover {
     color: var(--header-link-hover);
+    text-decoration: none;
+}
+
+.remove-text-decoration {
     text-decoration: none;
 }
 

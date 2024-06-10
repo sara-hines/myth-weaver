@@ -15,7 +15,7 @@
 }
 
 .story-review h2 {
-    margin: 15px auto;
+    margin: 0px auto 15px;
     color: var(--header-text);
     border-bottom: 1px solid;
     max-width: fit-content;
@@ -104,7 +104,6 @@
 .reviews-list-container {
     display: flex;
     align-items: center;
-    /* margin-bottom: 15px; */
     justify-content: center;
     text-align: center;
     min-width: 100%;
@@ -113,15 +112,17 @@
 
 .review-item {
     background-color: #fff;
-    padding: 15px;
+    padding: 5px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     min-width: 100%;
+    font-size: 14.4px;
 }
 
 .review-item h3 {
-    margin: 0 0 5px 0;
+    margin: 5px 0;
+    font-size: 14.4px;
     color: var(--story-4);
 }
 
