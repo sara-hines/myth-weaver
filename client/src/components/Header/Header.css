@@ -40,7 +40,6 @@
   margin: 0;
   text-align: center;
   flex-grow: 1;
-  font-family: var(--theme-font); /* Apply the theme font */
 }
 
 .title a {
@@ -53,8 +52,36 @@
   text-shadow: 1px 1px 4px var(--header-shadow);
 }
 
-/* Dropdown Styling */
+/* Animation CSS */
+.leBlurIn span {
+  display: inline-block;
+}
 
+.start-animation {
+  animation-name: leBlurIn;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes leBlurIn {
+  from {
+    transform: scaleX(0.2);
+    filter: blur(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.animated-char {
+  display: inline-block;
+}
+
+/* Dropdown Styling */
 .dropdown-container {
   display: flex;
   justify-content: flex-end;
@@ -125,7 +152,12 @@
   display: ${dropdownOpen ? 'block' : 'none'};
 } */
 
+
 /* MythIndex.css and Header.css */
+
+.modal {
+    z-index: 1000;
+}
 
 .modal-header-center .modal-title {
   margin: 0 auto;
@@ -176,4 +208,37 @@
 .modal-body-lg form .btn {
   font-size: 1.1rem; /* Increase the font size of buttons */
   padding: 0.75rem 1.5rem; /* Increase padding for buttons */
+}
+
+/* Responsive Modals */
+@media (max-width: 768px) {
+  .modal-header-center .modal-title {
+    font-size: 1.5rem; /* Adjust the font size for smaller screens */
+  }
+
+  .modal-body-lg {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .modal-body-lg form .form-control,
+  .modal-body-lg form .btn {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-header-center .modal-title {
+    font-size: 1.2rem; /* Further adjust the font size for very small screens */
+  }
+
+  .modal-body-lg {
+    padding: 0.5rem; /* Further adjust padding for very small screens */
+  }
+
+  .modal-body-lg form .form-control,
+  .modal-body-lg form .btn {
+    font-size: 0.9rem; /* Further adjust font size for very small screens */
+    padding: 0.25rem 0.5rem; /* Further adjust padding for very small screens */
+  }
 }

@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap'); /* Import the hacker font */
 
-/* General styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -45,77 +43,14 @@
   --story-8: rgb(237, 176, 139); /* #edb08b */
 }
   
-/* Cyberpunk theme */
+/* Dark theme */
 [data-theme="cyberpunk"] {
-  --theme-font: 'Share Tech Mono', monospace; /* Apply the hacker font */
-  --bg-color: #000;
-  --text-color: #0f0;
-  --container-color: #333333;
-  --accent-container: #0f0;
-  --dark-accent: #111;
-  --mid-dark-accent: #222;
-  --button-accent: #0f0;
-  --dk-button-accent: #0a0;
-  --dk-container-color: #444;
-  --rating-bg: #666;
-
-  --header-bg: #000;
-  --header-text: #0f0;
-  --header-title: #0f0;
-  --header-shadow: #0f0;
-  --header-link-hover: #0a0;
-
-  --story-1: #0f0;
-  --story-2: #0a0;
-  --story-3: #050;
-  --story-4: #0f0;
-  --story-5: #0a0;
-  --story-6: #060;
-  --story-7: #0f0;
-  --story-8: #090;
+  --bg-color: #333333;
+  --text-color: #ffffff;
 }
 
 /* Fantasy theme */
 [data-theme="fantasy"] {
   --bg-color: goldenrod;
   --text-color: #ffffff;
-  --container-color: #daaf08;
-  --accent-container: #fff9e3;
-  --dark-accent: #8b4513;
-  --mid-dark-accent: #cd853f;
-  --button-accent: #b8860b;
-  --dk-button-accent: #a0522d;
-  --dk-container-color: #d2691e;
-  --rating-bg: #ffdead;
-
-  --header-bg: goldenrod;
-  --header-text: #ffffff;
-  --header-title: #fff8dc;
-  --header-shadow: #daa520;
-  --header-link-hover: #ffd700;
-
-  --story-1: #fffacd;
-  --story-2: #faebd7;
-  --story-3: #ffe4b5;
-  --story-4: #ffefd5;
-  --story-5: #ffebcd;
-  --story-6: #ffdead;
-  --story-7: #ffe4c4;
-  --story-8: #ffdab9;
-}
-
-/* Apply theme colors */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-header {
-  background-color: var(--header-bg);
-  color: var(--header-text);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--theme-font);
-  color: var(--header-title);
 }
