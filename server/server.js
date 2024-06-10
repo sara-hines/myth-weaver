@@ -12,13 +12,19 @@ const cloudinary = require('../server/config/cloudinaryConfig');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-app.use(cors());
+
+app.use(cors({
+    origin: '*', // Allow requests from all origins
+    methods: ['GET', 'POST'], // Allow only these HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow only these headers
+}));
 
 // Creates a new instance of an Apollo server with the GraphQL schema
 const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: ({ req }) => authMiddleware({ req }),
+    cache: 'bounded'
 });
 
 // Set up Cloudinary storage
@@ -52,12 +58,10 @@ const startApolloServer = async () => {
     });
 
     if (process.env.NODE_ENV === 'production') {
-        // app.use(express.static(path.join(__dirname, '../client/dist')));
-        app.use(express.static(path.join(__dirname, '../client/build')));
+        app.use(express.static(path.join(__dirname, '../client/dist')));
 
         app.get('*', (req, res) => {
-            // res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-            res.sendFile(path.join(__dirname, '../client/build/index.html'));
+            res.sendFile(path.join(__dirname, '../client/dist/index.html'));
         });
     }
 
