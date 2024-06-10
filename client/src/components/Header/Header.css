@@ -155,6 +155,10 @@
 
 /* MythIndex.css and Header.css */
 
+.modal {
+    z-index: 1000;
+}
+
 .modal-header-center .modal-title {
   margin: 0 auto;
   text-align: center;

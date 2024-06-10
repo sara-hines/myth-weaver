@@ -16,15 +16,19 @@ const MythIndex = () => {
         return <h2>Error loading stories</h2>;
     }
 
+    const handleImageError = (event) => {
+        event.target.src = '/path/to/default-image.jpg'; // Fallback image URL
+    };
+
     return (
         <div className="mythweaver">
             <main className="main-content">
                 <div className="story-grid">
                     {stories.map((story, index) => (
                         <Link to={`/story-index/${story._id}`} key={story._id}>
-                            <div className={`story-container story story-${index + 1} heartbeat`}>
+                            <div className={`story-container story`}>
                                 <div className='story-image-wrapper'>
-                                    <img className='story-image' src={story.imageUrl} alt={story.title} />
+                                    <img className='story-image' src={story.imageUrl} alt={story.title} onError={handleImageError} />
                                 </div>
                                 <div className="story-title-container">
                                     <p className='story-title'>{story.title}</p>
