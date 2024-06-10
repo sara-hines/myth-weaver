@@ -23,7 +23,7 @@
 }
 
 .profile-button {
-    background-color: var(--button-accent);
+    background-color: var(--story-4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +33,10 @@
     text-align: center;
     padding: 15px;
     cursor: pointer;
+}
+
+.profile-button:hover {
+    background-color: rgb(107, 76, 158);
 }
 
 .additional-content {
@@ -56,6 +60,10 @@
     width: auto;
 }
 
+.story-section h2:hover {
+    background-color: var(--dk-button-accent);
+}
+
 .stories-grid {
     display: flex;
     flex-wrap: wrap;
@@ -76,6 +84,10 @@
     background-color: var(--header-link-hover);
 }
 
+.remove-text-decoration {
+    text-decoration: none;
+}
+
 .story-box img {
     width: 100%;
     height: auto;
@@ -91,6 +103,11 @@
 .story-box p {
     font-size: 0.85rem;
     color: #666;
+}
+
+p.story-author {
+    margin-bottom: 10px;
+    color: var(--dk-button-accent);
 }
 
 .story-box .rating {
