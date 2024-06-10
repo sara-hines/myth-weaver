@@ -128,6 +128,7 @@ const UserProfile = () => {
     if (error) {
         return <h2>Error loading profile data!</h2>;
     }
+
     return (
         <div className="user-profile">
             <main className="user-main-content">

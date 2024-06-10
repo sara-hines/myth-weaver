@@ -178,6 +178,10 @@
     /* min-height: 42.4px; */
 }
 
+.add-choice-button {
+    margin-top: 10px;
+}
+
 button.save-button {
     background-color: var(--story-4);
     border: none;
@@ -187,7 +191,7 @@ button.save-button {
     text-align: center;
     transition: background-color ease-in-out 0.5s;
     padding: 5px 10px;
-    margin: 10px 0px 10px 0px;
+    margin: 0px 0px 10px 0px;
     min-width: 113px;
     color: #FFFBFB;
     display: block;
