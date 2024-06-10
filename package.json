@@ -11,7 +11,6 @@
         "build": "cd client && npm run build",
         "render-build": "npm install && npm run build"
     },
-    "proxy": "http://localhost:3001",
     "keywords": [],
     "author": "",
     "license": "ISC",
