@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body[data-theme="cyberpunk"] {
+    background: #000;
+    color: #0f0;
+    font-family: 'Share Tech Mono', monospace; /* Apply the hacker font */
+    height: 100%;
+  }
+  
+  canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the canvas is behind other content */
+  }
+  
