@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AboutUs.css';
 
 function AboutUs() {
+
+    const [successMessage, setSuccessMessage] = useState('');
+    const handleSetSuccessMessage = () => setSuccessMessage('Thank you! Your response has been recorded.');
+
     return (
         <div className="about-us-container">           
             <main className="about-us-main">
@@ -28,7 +32,7 @@ The MythWeaver Team</p>
                                 <img src="/images/morgan-bio-photo.png" alt="Morgan Carmichael" className="team-member-img" />
                                 <div className="team-member-text">
                                     <h3 className="team-member-name">Morgan Carmichael</h3>
-                                    <p className="team-member-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p className="team-member-description">With a lifelong love for reading, Morgan finds inspiration in the countless worlds discovered between the pages of a book. This passion naturally extends to writing, where she hopes to craft immersive narratives that captivate and engage the audience. As a seasoned video game enthusiast, Morgan also brings a unique perspective to interactive storytelling, blending intricate plotlines with engaging gameplay to create unforgettable experiences. When she's not immersed in the digital world, Morgan finds joy in the company of horses—especially her own, an 11-year-old American Paint Horse named Lola. The grace and strength of these magnificent animals are an endless source of inspiration and serenity, both of which reflect on her work and personal life.</p>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +40,7 @@ The MythWeaver Team</p>
                             <div className="team-member-info">
                                 <div className="team-member-text">
                                     <h3 className="team-member-name">Sara Hines</h3>
-                                    <p className="team-member-description">Sara Hines has a background in Ecosystem Science and Sustainability and a passion for problem solving. She loves the feeling of co-creating an exciting project on a great team and getting it out into the world. She has an interest in language and expression that extends beyond code into music, art, cooking, and other mediums. </p>
+                                    <p className="team-member-description">Sara Hines has a background in Ecosystem Science and Sustainability and a passion for problem solving. She enjoys playing in the balance between imagination—envisioning what a project could look like—and methodical rigor—working from questions to "hypotheses" to successfully coded solutions. When collaborating with other coders, she loves the feeling of being in sync, finishing each other's sentences, and helping with each other's stuck-points. She has an interest in language and expression that extends beyond code into music, art, cooking, and other mediums. </p>
                                 </div>
                                 <img src="/images/sara-bio-photo.png" alt="Sara Hines" className="team-member-img" />
                             </div>
@@ -52,19 +56,19 @@ The MythWeaver Team</p>
                         </div>
                         <div className="team-member">
                             <div className="team-member-info">
-                                <div className="team-member-text">
-                                    <h3 className="team-member-name">Person 4</h3>
-                                    <p className="team-member-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <img src="https://picsum.photos/200/200" alt="Person 4" className="team-member-img" />
-                            </div>
-                        </div>
-                        <div className="team-member">
-                            <div className="team-member-info">
                                 <img src="/images/rebeca-bio-photo.jpg" alt="Rebeca Thornburg" className="team-member-img" />
                                 <div className="team-member-text">
                                     <h3 className="team-member-name">Rebeca Thornburg</h3>
                                     <p className="team-member-description">Rebeca a passion for computer science and works as a GIS specialist. She thrives in creating new solutions and collaborative projects. As an avid history buff and outdoor enthusiast, she's always seeking out adventure whether through reading or travel. Her love of reading and travel have caused her to learn several languages, which has helped find new creative outlets.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="team-member">
+                            <div className="team-member-info">
+                                <img src="/images/austin-bio-photo.png" alt="Austin Allen" className="team-member-img" />
+                                <div className="team-member-text">
+                                    <h3 className="team-member-name">Austin Allen</h3>
+                                    <p className="team-member-description">Austin Allen is an emerging full-stack developer currently completing an intensive coding bootcamp. With a robust background in software development, Austin specializes in creating dynamic, user-centric applications using the MERN stack—comprising MongoDB, Express.js, React, and Node.js. His expertise extends to GraphQL, JWT authentication, and deployment on Heroku, reflecting a comprehensive skill set ideal for modern web development. Beyond his technical acumen, Austin has a passion for electronic music production, drawing inspiration from artists like Elif Musique and Mind Against. This creative pursuit enhances his innovative approach to problem-solving and design, bringing a unique perspective to his development projects.</p>
                                 </div>
                             </div>
                         </div>
@@ -94,9 +98,15 @@ At MythWeaver, our mission is to create a community where stories and creativity
                         <option value="Question">Question</option>
                         <option value="Feedback">Feedback</option>
                         {/* Add more options as needed */}
-                      </select><br /><br />
+                        </select><br /><br />
+                        
+                        {successMessage && (
+                            <div className="success-message">
+                                {successMessage}
+                            </div>
+                        )}
                       
-                      <input type="submit" value="Submit" />
+                        <input type="submit" value="Submit" onClick={handleSetSuccessMessage} />
                     </form>
                     {/* End Contact Form */}
                 </div>

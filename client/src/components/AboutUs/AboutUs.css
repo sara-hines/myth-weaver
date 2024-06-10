@@ -136,6 +136,13 @@ option {
     font-family: inherit;
 }
 
+.success-message {
+    display: flex;
+    align-items: center;
+    margin: 30px 0px 20px 0px;
+    justify-content: center;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     .about-us-main {

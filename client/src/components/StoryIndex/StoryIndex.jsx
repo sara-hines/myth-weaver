@@ -9,7 +9,7 @@ import Auth from '../../utils/auth';
 const StoryIndex = () => {
     const { storyId } = useParams();
 
-    const { loading: loadingStory, data: storyData } = useQuery(GET_STORY, {
+    const { loading: loadingStory, data: storyData, error } = useQuery(GET_STORY, {
         variables: { storyId: storyId },
     });
 
@@ -98,7 +98,28 @@ const StoryIndex = () => {
     }
 
     if (loadingStory || loadingProfile) {
-        return <div>Loading...</div>;
+        return (
+            <div className="mythweaver">
+                <main className="main-content">
+                    <div className="loading-container">
+                        <div className="spinner"></div>
+                        <h2>Loading...</h2>
+                    </div>
+                </main>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="mythweaver">
+                <main className="main-content">
+                    <div className="error-container">
+                        <h2>Error loading stories</h2>
+                    </div>
+                </main>
+            </div>
+        );
     }
 
     return (

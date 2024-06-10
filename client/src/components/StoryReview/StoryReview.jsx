@@ -19,11 +19,11 @@ const StoryReview = () => {
     const [isInBookmarks, setIsInBookmarks] = useState(false);
     const navigate = useNavigate();
 
-    const { loading: loadingStory, data: storyData } = useQuery(GET_STORY, {
+    const { loading: loadingStory, data: storyData, error: storyError } = useQuery(GET_STORY, {
         variables: { storyId: storyId },
     });
 
-    const { loading: loadingProfile, data: profileData } = useQuery(GET_PROFILE);
+    const { loading: loadingProfile, data: profileData, error: profileError } = useQuery(GET_PROFILE);
 
     const story = storyData?.story || {};
     const profile = profileData?.profile || {};
@@ -158,6 +158,19 @@ const StoryReview = () => {
         }
         return stars;
     };
+
+    if (loadingStory || loadingProfile) {
+        return (
+            <div className="mythweaver">
+                <main className="main-content">
+                    <div className="loading-container">
+                        <div className="spinner"></div>
+                        <h2>Loading...</h2>
+                    </div>
+                </main>
+            </div>
+        );
+    }
 
     return (
         <div className="story-review">
