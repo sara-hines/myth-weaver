@@ -1,4 +1,4 @@
-.story-path {
+.story-end {
     background-color: var(--bg-color);
     text-align: center;
     padding: 20px;
@@ -7,51 +7,24 @@
     box-sizing: border-box;
 }
 
-.story-path-container {
+.story-end-container {
     margin: 0 auto;
     max-width: 60vw;
     padding: 20px;
+    box-sizing: border-box;
 }
 
-.story-path-container h1 {
+.story-end-container h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
     color: var(--header-text);
 }
 
-.story-path-container p {
+.story-end-container p {
     font-size: 1.5em;
     margin-bottom: 40px;
     line-height: 1.5;
     text-align: justify;
-}
-
-.options {
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    max-width: 60vw;
-}
-
-.option {
-    background-color: var(--header-text);
-    border: none;
-    border-radius: 20px;
-    color: var(--header-link-hover);
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: opacity ease-in-out 0.3s;
-}
-
-.option:nth-child(even) {
-    background-color: var(--header-title);
-}
-
-.option:hover {
-    opacity: 0.8;
 }
 
 .story-end-button {
@@ -60,7 +33,7 @@
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
-    max-width: 60vw;
+    max-width: 60vw;    
 }
 
 .bookmark {
@@ -87,25 +60,16 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .story-path-container {
+    .story-end-container {
         max-width: 80vw;
     }
 
-    .story-path-container h1 {
+    .story-end-container h1 {
         font-size: 2em;
     }
 
-    .story-path-container p {
+    .story-end-container p {
         font-size: 1.2em;
-    }
-
-    .options {
-        max-width: 80vw;
-        gap: 20px;
-    }
-
-    .option {
-        font-size: 1em;
     }
 
     .story-end-button {
@@ -115,30 +79,21 @@
 
     .bookmark {
         font-size: 1em;
+        padding: 8px 15px;
     }
 }
 
 @media (max-width: 480px) {
-    .story-path-container {
+    .story-end-container {
         max-width: 95vw;
     }
 
-    .story-path-container h1 {
+    .story-end-container h1 {
         font-size: 1.5em;
     }
 
-    .story-path-container p {
+    .story-end-container p {
         font-size: 1em;
-    }
-
-    .options {
-        max-width: 95vw;
-        gap: 15px;
-    }
-
-    .option {
-        font-size: 0.9em;
-        padding: 8px 15px;
     }
 
     .story-end-button {
@@ -148,6 +103,6 @@
 
     .bookmark {
         font-size: 0.9em;
-        padding: 8px 15px;
+        padding: 6px 10px;
     }
 }

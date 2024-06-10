@@ -140,7 +140,7 @@ const StoryIndex = () => {
                 {/* should have a max character limit. 400-500? */}
                 <div className="story-description">
                     <h2>{story.title}</h2>
-                    <p className='author-detail'>Created by {story.author}</p>
+                    <p>Created by {story.author}</p>
                     <p>{story.description}</p>
                     <Link to={`/story-path/${story._id}`}>
                         <button className="start-adventure-button"

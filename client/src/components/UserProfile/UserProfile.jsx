@@ -144,7 +144,7 @@ const UserProfile = () => {
                                     <>
                                         {userData.authorInfo.createdStories.map((story) => (
                                             <div className="story-box" key={story._id}>
-                                                <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
+                                                <Link to={`/story-index/${story._id}`}>
                                                     <img src={story.imageUrl} alt={story.title} />
                                                     <h3>{story.title}</h3>
                                                     <p>{story.description}</p>
@@ -171,10 +171,10 @@ const UserProfile = () => {
                                     <>
                                         {userData?.readerInfo?.bookmarkedStories?.map((story) => (
                                             <div className="story-box" key={story._id}>
-                                                <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
+                                                <Link to={`/story-index/${story._id}`}>
                                                     <img src={story.imageUrl} alt={story.title} />
                                                     <h3>{story.title}</h3>
-                                                    <p className='story-author'>Created by {story.author}</p>
+                                                    <p>Created by {story.author}</p>
                                                     <p>{story.description}</p>
                                                 </Link>
                                                 <div className="actions">
@@ -198,10 +198,10 @@ const UserProfile = () => {
                                     <>
                                         {userData.readerInfo.toBeReadStories.map((story) => (
                                             <div className="story-box" key={story._id}>
-                                                <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
+                                                <Link to={`/story-index/${story._id}`}>
                                                     <img src={story.imageUrl} alt={story.title} />
                                                     <h3>{story.title}</h3>
-                                                    <p className='story-author'>Created by {story.author}</p>
+                                                    <p>Created by {story.author}</p>
                                                     <p>{story.description}</p>
                                                 </Link>
                                                 <div className="actions">

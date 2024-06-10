@@ -7,41 +7,21 @@
 
 .upload-image-container input[type="file"] {
     margin-bottom: 10px;
-    
-}
-
-input[type="file"]::file-selector-button {
-    background-color: var(--button-accent);
-    color: #FFFBFB;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color ease-in-out 0.5s;
-    padding: 6px 10px;
-    margin: 10px 10px 10px 0px;
 }
 
 .upload-image-container button {
-    background-color: var(--story-4);
-    color: #FFFBFB;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color ease-in-out 0.5s;
-    padding: 5px 20px;
-    margin: 10px 0px 10px 0px;
 }
 
 .upload-image-container button:hover {
-    background-color: var(--alt-button-accent);
+    background-color: #0056b3;
 }
 
 .result-message {
-    padding-top: 10px;
+    padding-top: 20px;
 }

@@ -102,7 +102,7 @@ p.rating-explanation {
 }
 
 .tbr-button:hover {
-    background-color: var(--alt-button-accent);
+    background-color: rgb(107, 76, 158);
 }
 
 .story-description {
@@ -122,15 +122,11 @@ p.rating-explanation {
     padding-bottom: 20px;
 }
 
-p.author-detail {
-    margin-bottom: 20px;
-}
-
 .start-adventure-button {
     background-color: var(--button-accent);
     color: var(--accent-container);
     padding: 10px 20px;
-    margin: 20px 0;
+    margin: 20px 0 0;
     align-self: flex-end;
     border: none;
     height: fit-content;
