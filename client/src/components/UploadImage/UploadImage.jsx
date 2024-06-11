@@ -3,58 +3,56 @@ import axios from 'axios';
 import './UploadImage.css';
 
 const UploadImage = ({ setImageUrl }) => {
-    const [file, setFile] = useState(null);
-    const [uploading, setUploading] = useState(false);
-    const [uploadSuccess, setUploadSuccess] = useState(false);
-    const [uploadError, setUploadError] = useState(null); 
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
 
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-        setUploadSuccess(false);
-        setUploadError(null); // Reset error message when a new file is selected
-    };
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+    setUploadSuccess(false);
+    setUploadError(null); // Reset error message when a new file is selected.
+  };
 
-    const handleUpload = async () => {
-        if (!file) return;
+  const handleUpload = async () => {
+    if (!file) return;
 
-        const formData = new FormData();
-        formData.append('file', file);
+    const formData = new FormData();
+    formData.append('file', file);
 
-        setUploading(true);
+    setUploading(true);
 
-        console.log('this is your formData from inside function handleUpload:')
-        console.log(formData);
+    try {
+      const response = await axios.post('/api/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-        try {
-            const response = await axios.post('/api/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            console.log('this is your response variable from awaiting the axios.post in function handleUpload.')
-            console.log(response);
+      setImageUrl(response.data.url);
+      setUploading(false);
+      setUploadSuccess(true);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      setUploading(false);
+      setUploadError('Error uploading file. Please try again.');
+    }
+  };
 
-            setImageUrl(response.data.url);
-            setUploading(false);
-            setUploadSuccess(true);
-        } catch (error) {
-            console.error('Error uploading file:', error);
-            setUploading(false);
-            setUploadError('Error uploading file. Please try again.');
-        }
-    };
+  return (
+    <div className='upload-image-container'>
+      <input type='file' className='choose-file-button' onChange={handleFileChange} />
+      <button onClick={handleUpload} disabled={uploading}>
+        {uploading ? 'Uploading...' : 'Upload Image'}
+      </button>
 
+      {/* Display success message */}
+      {uploadSuccess && <p className='result-message'>Image uploaded successfully!</p>} 
 
-    return (
-        <div className="upload-image-container">
-            <input type="file" className='choose-file-button' onChange={handleFileChange} />
-            <button onClick={handleUpload} disabled={uploading}>
-                {uploading ? 'Uploading...' : 'Upload Image'}
-            </button>
-            {uploadSuccess && <p className='result-message'>Image uploaded successfully!</p>} {/* Display success message */}
-            {uploadError && <p className="result-message">{uploadError}</p>} {/* Display error message */}
-        </div>
-    );
+      {/* Display error message if needed. */}
+      {uploadError && <p className='result-message'>{uploadError}</p>} 
+    </div>
+  );
 };
 
 export default UploadImage;

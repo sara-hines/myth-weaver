@@ -1,7 +1,5 @@
-import ReactDOM from 'react-dom/client'; // Correct import for createRoot
+import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import Tree from './components/Tree/index.jsx;'
-
 import App from './App.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import NoHeaderLayout from './components/Layout/NoHeaderLayout.jsx'
@@ -15,54 +13,52 @@ import StoryReview from './components/StoryReview/StoryReview.jsx';
 import Landing from './components/LandingPage/landing.jsx';
 import ErrorComponent from './components/Error/ErrorComponent.jsx';
 
-// import necessary pages here which will be rendered as elements in the children for react router
-
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <App />,
-        errorElement: <ErrorComponent />,
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorComponent />,
+    children: [
+      {
+        element: <Layout />,
         children: [
-            {
-                element: <Layout />,
-                children: [
-                    {
-                        path: 'myth-index',
-                        element: <MythIndex />
-                    }, {
-                        path: 'user-profile',
-                        element: <UserProfile />
-                    }, {
-                        path: 'story-index/:storyId',
-                        element: <StoryIndex />
-                    }, {
-                        path: 'create-story',
-                        element: <CreateStory />
-                    }, {
-                        path: 'about-us',
-                        element: <AboutUs />
-                    }, {
-                        path: 'story-path/:storyId',
-                        element: <StoryPath />
-                    }, {
-                        path: 'story-review/:storyId',
-                        element: <StoryReview />
-                    }, 
-                ],
-            },
-            {
-                element: <NoHeaderLayout />,
-                children: [
-                    {
-                        index: true,
-                        element: <Landing />
-                    }
-                ],
-            },
+          {
+            path: 'myth-index',
+            element: <MythIndex />
+          }, {
+            path: 'user-profile',
+            element: <UserProfile />
+          }, {
+            path: 'story-index/:storyId',
+            element: <StoryIndex />
+          }, {
+            path: 'create-story',
+            element: <CreateStory />
+          }, {
+            path: 'about-us',
+            element: <AboutUs />
+          }, {
+            path: 'story-path/:storyId',
+            element: <StoryPath />
+          }, {
+            path: 'story-review/:storyId',
+            element: <StoryReview />
+          },
         ],
-    },
+      },
+      {
+        element: <NoHeaderLayout />,
+        children: [
+          {
+            index: true,
+            element: <Landing />
+          }
+        ],
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 )

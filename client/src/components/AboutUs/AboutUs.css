@@ -1,195 +1,199 @@
 /* General Styles */
 .about-us-container {
-    background-color: var(--bg-color);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 50px;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
 }
 
 .about-us-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    max-width: 90vw;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  max-width: 90vw;
+  padding: 10px;
 }
 
 .about-us-card {
-    background-color: var(--container-color);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
-    width: 100%;
+  background-color: var(--container-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  width: 100%;
 }
 
 .about-us-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: var(--header-text);
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--header-text);
 }
 
 .about-us-description {
-    font-size: 18px;
-    line-height: 1.5;
-    color: var(--text-color);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text-color);
 }
 
 /* Team Grid */
 .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
 }
 
 .team-member {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--text-color);
-    background-color: var(--accent-container);
-    padding: 5px;
-    border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--text-color);
+  background-color: var(--accent-container);
+  padding: 5px;
+  border-radius: var(--border-radius);
 }
 
 .team-member-info {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    color: var(--text-color);
-    flex-direction: column; /* Adjust for smaller screens */
+  display: flex;
+  align-items: center;
+  align-content: center;
+  color: var(--text-color);
+  flex-direction: column;
+  /* Adjust for smaller screens */
 }
 
 .team-member-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .team-member-text {
-    padding: 10px;
-    text-align: center; /* Adjust for smaller screens */
+  padding: 10px;
+  text-align: center;
+  /* Adjust for smaller screens */
 }
 
 .team-member-name {
-    margin: 0;
-    color: var(--header-title);
-    transition: all ease-in-out 0.5s;
+  margin: 0;
+  color: var(--header-title);
+  transition: all ease-in-out 0.5s;
 }
 
 .team-member-description {
-    margin: 0;
-    text-align: justify;
+  margin: 0;
+  text-align: justify;
 }
 
 /* Form Styles */
 form {
-    margin-top: 20px;
-    width: 100%; /* Adjust for smaller screens */
+  margin-top: 20px;
+  width: 100%;
+  /* Adjust for smaller screens */
 }
 
 form label {
-    font-size: 18px;
-    color: var(--header-title);
+  font-size: 18px;
+  color: var(--header-title);
 }
 
 form input[type="text"],
 form input[type="email"],
 form textarea,
 form select {
-    width: 100%; /* Adjust for smaller screens */
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid var(--mid-dark-accent);
-    border-radius: var(--border-radius);
-    font-size: 16px;
-    background-color: var(--header-link-hover);
-    color: var(--text-color);
-    box-sizing: border-box;
+  width: 100%;
+  /* Adjust for smaller screens */
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid var(--mid-dark-accent);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  background-color: var(--header-link-hover);
+  color: var(--text-color);
+  box-sizing: border-box;
 }
 
 form select {
-    background-color: var(--header-link-hover);
+  background-color: var(--header-link-hover);
 }
 
 form input[type="submit"] {
-    background-color: var(--button-accent);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: var(--button-accent);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 form input[type="submit"]:hover {
-    background-color: var(--dk-button-accent);
+  background-color: var(--dk-button-accent);
 }
 
 option {
-    font-family: inherit;
+  font-family: inherit;
 }
 
 .success-message {
-    display: flex;
-    align-items: center;
-    margin: 30px 0px 20px 0px;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 30px 0px 20px 0px;
+  justify-content: center;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .about-us-main {
-        max-width: 80vw;
-    }
+  .about-us-main {
+    max-width: 80vw;
+  }
 
-    .about-us-title {
-        font-size: 20px;
-    }
+  .about-us-title {
+    font-size: 20px;
+  }
 
-    .about-us-description {
-        font-size: 16px;
-    }
+  .about-us-description {
+    font-size: 16px;
+  }
 
-    .team-member-img {
-        width: 80px;
-        height: 80px;
-    }
+  .team-member-img {
+    width: 80px;
+    height: 80px;
+  }
 
-    .team-member-info {
-        flex-direction: column;
-    }
+  .team-member-info {
+    flex-direction: column;
+  }
 
-    .team-member-text {
-        text-align: center;
-    }
+  .team-member-text {
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
-    .about-us-main {
-        max-width: 95vw;
-    }
+  .about-us-main {
+    max-width: 95vw;
+  }
 
-    .about-us-title {
-        font-size: 18px;
-    }
+  .about-us-title {
+    font-size: 18px;
+  }
 
-    .about-us-description {
-        font-size: 14px;
-    }
+  .about-us-description {
+    font-size: 14px;
+  }
 
-    .team-member-img {
-        width: 60px;
-        height: 60px;
-    }
+  .team-member-img {
+    width: 60px;
+    height: 60px;
+  }
 
-    .team-member-text {
-        padding: 5px;
-    }
+  .team-member-text {
+    padding: 5px;
+  }
 }

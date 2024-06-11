@@ -1,191 +1,193 @@
 .story-review {
-    background-color: var(--bg-color);
-    min-height: calc(100vh - var(--header-height));
-    padding: 20px;
-    box-sizing: border-box;
+  background-color: var(--bg-color);
+  min-height: calc(100vh - var(--header-height));
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .story-review-container {
-    padding: 20px;
-    border-radius: var(--border-radius);
-    max-width: 600px;
-    margin: auto;
-    background-color: var(--bg-color);
-    box-sizing: border-box;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  margin: auto;
+  background-color: var(--bg-color);
+  box-sizing: border-box;
 }
 
 .story-review h2 {
-    margin: 0px auto 15px;
-    color: var(--header-text);
-    border-bottom: 1px solid;
-    max-width: fit-content;
-    padding-bottom: 5px;
+  margin: 0px auto 15px;
+  color: var(--header-text);
+  border-bottom: 1px solid;
+  max-width: fit-content;
+  padding-bottom: 5px;
 }
 
 .fullName-input,
 .review-textarea,
 .star-rating select {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid var(--text-color);
-    border-radius: 4px;
-    background-color: var(--header-link-hover);
-    color: var(--dark-accent);
-    box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  background-color: var(--header-link-hover);
+  color: var(--dark-accent);
+  box-sizing: border-box;
 }
 
 .review-textarea {
-    height: 100px;
-    resize: vertical;
-    background-color: var(--header-link-hover);
-    color: var(--dark-accent);
+  height: 100px;
+  resize: vertical;
+  background-color: var(--header-link-hover);
+  color: var(--dark-accent);
 }
 
 .star-rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  justify-content: center;
 }
 
 .star-rating .star {
-    font-size: 2em;
-    cursor: pointer;
-    color: var(--header-link-hover);
-    transition: color 0.2s;
+  font-size: 2em;
+  cursor: pointer;
+  color: var(--header-link-hover);
+  transition: color 0.2s;
 }
 
 .star-rating .star.filled {
-    color: #ffcc00;
+  color: #ffcc00;
 }
 
 .star-rating .star:hover,
-.star-rating .star:hover ~ .star {
-    color: #ffcc00;
+.star-rating .star:hover~.star {
+  color: #ffcc00;
 }
 
 /* This line is necessary to revert the color of the stars to the right of the hovered star */
-.star-rating .star:hover ~ .star {
-    color: var(--header-link-hover);
+.star-rating .star:hover~.star {
+  color: var(--header-link-hover);
 }
 
 .review-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .save-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--button-accent);
-    color: var(--header-link-hover);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--button-accent);
+  color: var(--header-link-hover);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .save-button:hover {
-    background-color: var(--dk-button-accent);
+  background-color: var(--dk-button-accent);
 }
 
 .reviews-list {
-    padding: 0px;
-    max-width: 600px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+  padding: 0px;
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .reviews-list-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-width: 100%;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 100%;
+  flex-direction: column;
 }
 
 .review-item {
-    background-color: #fff;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-width: 100%;
-    font-size: 14.4px;
+  background-color: #fff;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 100%;
+  font-size: 14.4px;
 }
 
 .review-item h3 {
-    margin: 5px 0;
-    font-size: 14.4px;
-    color: var(--story-4);
+  margin: 5px 0;
+  font-size: 14.4px;
+  color: var(--story-4);
 }
 
 .review-item p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .rating-error {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
 .success-message {
-    display: flex;
-    align-items: center;
-    margin: 30px 0px 20px 0px;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 30px 0px 20px 0px;
+  justify-content: center;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .story-review-container, 
-    .reviews-list {
-        max-width: 80vw;
-    }
 
-    .story-review h2 {
-        font-size: 1.5em;
-    }
+  .story-review-container,
+  .reviews-list {
+    max-width: 80vw;
+  }
 
-    .fullName-input,
-    .review-textarea,
-    .save-button {
-        font-size: 0.9em;
-        padding: 8px;
-    }
+  .story-review h2 {
+    font-size: 1.5em;
+  }
 
-    .star-rating .star {
-        font-size: 1.5em;
-    }
+  .fullName-input,
+  .review-textarea,
+  .save-button {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
+  .star-rating .star {
+    font-size: 1.5em;
+  }
 }
 
 @media (max-width: 480px) {
-    .story-review-container, 
-    .reviews-list {
-        max-width: 95vw;
-        padding: 10px;
-    }
 
-    .story-review h2 {
-        font-size: 1.2em;
-    }
+  .story-review-container,
+  .reviews-list {
+    max-width: 95vw;
+    padding: 10px;
+  }
 
-    .fullName-input,
-    .review-textarea,
-    .save-button {
-        font-size: 0.8em;
-        padding: 6px;
-    }
+  .story-review h2 {
+    font-size: 1.2em;
+  }
 
-    .star-rating .star {
-        font-size: 1.2em;
-    }
+  .fullName-input,
+  .review-textarea,
+  .save-button {
+    font-size: 0.8em;
+    padding: 6px;
+  }
+
+  .star-rating .star {
+    font-size: 1.2em;
+  }
 }

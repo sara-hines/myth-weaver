@@ -70,6 +70,7 @@
     filter: blur(20px);
     opacity: 0;
   }
+
   to {
     transform: scaleX(1);
     filter: blur(0);
@@ -102,7 +103,7 @@
   right: 0;
   background-color: var(--header-link-hover);
   width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 0px 0px 10px 10px;
 }
@@ -147,98 +148,133 @@
   border-radius: 0px 0px 10px 10px;
 }
 
-/* Show dropdown when button is clicked */
-/* .dropdown-content {
-  display: ${dropdownOpen ? 'block' : 'none'};
-} */
-
-
-/* MythIndex.css and Header.css */
-
 .modal {
-    z-index: 1000;
+  z-index: 1000;
 }
 
 .modal-header-center .modal-title {
   margin: 0 auto;
   text-align: center;
   width: 100%;
-  font-size: 2rem; /* Increase the font size of the title */
-  color: #BD85B2; /* Apply the hex color to the title */
+  font-size: 2rem;
+  /* Increase the font size of the title */
+  color: #BD85B2;
+  /* Apply the hex color to the title */
 }
 
 .modal-header-center .btn-close {
-  font-size: 2rem; /* Increase the font size of the close button */
+  font-size: 2rem;
+  /* Increase the font size of the close button */
   position: absolute;
   top: 15px;
   right: 15px;
-  width: 2rem; /* Increase width */
-  height: 2rem; /* Increase height */
-  color: #A94E6F; /* Apply the hex color to the close button */
-  opacity: 1; /* Ensure the close button is fully opaque */
+  width: 2rem;
+  /* Increase width */
+  height: 2rem;
+  /* Increase height */
+  color: #A94E6F;
+  /* Apply the hex color to the close button */
+  opacity: 1;
+  /* Ensure the close button is fully opaque */
 }
 
 .modal-header-center .btn-close::before {
-  content: '×'; /* Display an 'X' */
-  font-size: 2rem; /* Make sure the 'X' is large enough */
+  content: '×';
+  /* Display an 'X' */
+  font-size: 2rem;
+  /* Make sure the 'X' is large enough */
 }
 
 .modal-title-lg {
-  font-size: 2rem; /* Increase the font size of the title */
-  color: #BD85B2; /* Apply the hex color to the title */
+  font-size: 2rem;
+  /* Increase the font size of the title */
+  color: #BD85B2;
+  /* Apply the hex color to the title */
 }
 
 .modal-body-lg {
-  font-size: 1.2rem; /* Increase the font size of the modal body text */
-  line-height: 1.6; /* Increase the line height for better readability */
-  padding: 2rem; /* Add more padding for better spacing */
+  font-size: 1.2rem;
+  /* Increase the font size of the modal body text */
+  line-height: 1.6;
+  /* Increase the line height for better readability */
+  padding: 2rem;
+  /* Add more padding for better spacing */
 }
 
 .modal-body-lg form {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Add gap between form elements */
+  gap: 1rem;
+  /* Add gap between form elements */
 }
 
 .modal-body-lg form .form-control {
-  font-size: 1.1rem; /* Increase the font size of form inputs */
-  padding: 0.75rem; /* Increase padding for form inputs */
+  font-size: 1.1rem;
+  /* Increase the font size of form inputs */
+  padding: 0.75rem;
+  /* Increase padding for form inputs */
 }
 
 .modal-body-lg form .btn {
-  font-size: 1.1rem; /* Increase the font size of buttons */
-  padding: 0.75rem 1.5rem; /* Increase padding for buttons */
+  font-size: 1.1rem;
+  /* Increase the font size of buttons */
+  padding: 0.75rem 1.5rem;
+  /* Increase padding for buttons */
 }
 
 /* Responsive Modals */
 @media (max-width: 768px) {
   .modal-header-center .modal-title {
-    font-size: 1.5rem; /* Adjust the font size for smaller screens */
+    font-size: 1.5rem;
+    /* Adjust the font size for smaller screens */
   }
 
   .modal-body-lg {
-    padding: 1rem; /* Adjust padding for smaller screens */
+    padding: 1rem;
+    /* Adjust padding for smaller screens */
   }
 
   .modal-body-lg form .form-control,
   .modal-body-lg form .btn {
-    font-size: 1rem; /* Adjust font size for smaller screens */
-    padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    font-size: 1rem;
+    /* Adjust font size for smaller screens */
+    padding: 0.5rem 1rem;
+    /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
   .modal-header-center .modal-title {
-    font-size: 1.2rem; /* Further adjust the font size for very small screens */
+    font-size: 1.2rem;
+    /* Further adjust the font size for very small screens */
   }
 
   .modal-body-lg {
-    padding: 0.5rem; /* Further adjust padding for very small screens */
+    padding: 0.5rem;
+    /* Further adjust padding for very small screens */
   }
 
   .modal-body-lg form .form-control,
   .modal-body-lg form .btn {
-    font-size: 0.9rem; /* Further adjust font size for very small screens */
-    padding: 0.25rem 0.5rem; /* Further adjust padding for very small screens */
+    font-size: 0.9rem;
+    /* Further adjust font size for very small screens */
+    padding: 0.25rem 0.5rem;
+    /* Further adjust padding for very small screens */
+  }
+}
+
+@media (max-width: 430px) {
+  .title {
+    font-size: 1.5rem;
   }
 }

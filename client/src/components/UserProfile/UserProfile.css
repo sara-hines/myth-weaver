@@ -1,218 +1,218 @@
 .user-profile {
-    background-color: var(--bg-color);
-    min-height: calc(100vh - var(--header-height));
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  background-color: var(--bg-color);
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .user-main-content {
-    width: 100%;
-    max-width: 65vw;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  max-width: 65vw;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button-container {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-button {
-    background-color: var(--story-4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--border-radius);
-    font-size: 20px;
-    color: var(--header-link-hover);
-    text-align: center;
-    padding: 15px;
-    cursor: pointer;
+  background-color: var(--story-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+  font-size: 20px;
+  color: var(--header-link-hover);
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
 }
 
 .profile-button:hover {
-    background-color: rgb(107, 76, 158);
+  background-color: rgb(107, 76, 158);
 }
 
 .additional-content {
-    padding: 0;
-    width: 100%;
+  padding: 0;
+  width: 100%;
 }
 
 .story-section {
-    text-align: center;
+  text-align: center;
 }
 
 .story-section h2 {
-    background-color: var(--button-accent);
-    border-radius: var(--border-radius);
-    font-size: 20px;
-    color: var(--header-link-hover);
-    padding: 15px;
-    margin: 15px;
-    cursor: pointer;
-    transition: width 0.3s ease;
-    width: auto;
+  background-color: var(--button-accent);
+  border-radius: var(--border-radius);
+  font-size: 20px;
+  color: var(--header-link-hover);
+  padding: 15px;
+  margin: 15px;
+  cursor: pointer;
+  transition: width 0.3s ease;
+  width: auto;
 }
 
 .story-section h2:hover {
-    background-color: var(--dk-button-accent);
+  background-color: var(--dk-button-accent);
 }
 
 .stories-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .story-box {
-    width: calc(25% - 20px);
-    max-width: 250px;
-    flex: 1 0 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--header-link-hover);
-    background-color: var(--header-link-hover);
+  width: calc(25% - 20px);
+  max-width: 250px;
+  flex: 1 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--header-link-hover);
+  background-color: var(--header-link-hover);
 }
 
 .remove-text-decoration {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .story-box img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
 }
 
 .story-box h3 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 1.01rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.01rem;
 }
 
 .story-box p {
-    font-size: 0.85rem;
-    color: #666;
+  font-size: 0.85rem;
+  color: #666;
 }
 
 p.story-author {
-    margin-bottom: 10px;
-    color: var(--dk-button-accent);
+  margin-bottom: 10px;
+  color: var(--dk-button-accent);
 }
 
 .story-box .rating {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .story-box .actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .story-box .actions button {
-    margin: 5px;
+  margin: 5px;
 }
 
 .story-box button {
-    background-color: var(--header-title);
-    color: var(--header-link-hover);
-    border: none;
-    padding: 8px 12px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: opacity ease-in-out 0.3s;
+  background-color: var(--header-title);
+  color: var(--header-link-hover);
+  border: none;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: opacity ease-in-out 0.3s;
 }
 
 .story-box button:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .story-box .delete-btn {
-    background-color: var(--button-accent);
+  background-color: var(--button-accent);
 }
 
 .story-box .remove-btn {
-    background-color: var(--dk-container-color);
+  background-color: var(--dk-container-color);
 }
 
 .no-data-message {
-    font-size: 20px;
-    padding: 0px;
-    margin: 15px;
-    cursor: pointer;
-    transition: width 0.3s ease;
-    width: auto;
+  font-size: 20px;
+  padding: 0px;
+  margin: 15px;
+  cursor: pointer;
+  transition: width 0.3s ease;
+  width: auto;
 }
 
 /* Media Queries for responsiveness */
 @media (max-width: 1200px) {
-    .user-main-content {
-        max-width: 80vw;
-    }
+  .user-main-content {
+    max-width: 80vw;
+  }
 
-    .story-box {
-        width: calc(33.33% - 20px);
-    }
+  .story-box {
+    width: calc(33.33% - 20px);
+  }
 }
 
 @media (max-width: 768px) {
-    .user-main-content {
-        max-width: 90vw;
-    }
+  .user-main-content {
+    max-width: 90vw;
+  }
 
-    .story-box {
-        width: calc(50% - 20px);
-    }
+  .story-box {
+    width: calc(50% - 20px);
+  }
 
-    .profile-button {
-        font-size: 18px;
-        padding: 10px;
-    }
+  .profile-button {
+    font-size: 18px;
+    padding: 10px;
+  }
 
-    .story-section h2 {
-        font-size: 18px;
-        padding: 10px;
-    }
+  .story-section h2 {
+    font-size: 18px;
+    padding: 10px;
+  }
 }
 
 @media (max-width: 480px) {
-    .user-main-content {
-        max-width: 100vw;
-        padding: 10px;
-    }
+  .user-main-content {
+    max-width: 100vw;
+    padding: 10px;
+  }
 
-    .story-box {
-        width: calc(100% - 20px);
-    }
+  .story-box {
+    width: calc(100% - 20px);
+  }
 
-    .profile-button {
-        font-size: 16px;
-        padding: 8px;
-    }
+  .profile-button {
+    font-size: 16px;
+    padding: 8px;
+  }
 
-    .story-section h2 {
-        font-size: 16px;
-        padding: 8px;
-    }
+  .story-section h2 {
+    font-size: 16px;
+    padding: 8px;
+  }
 
-    .story-box h3 {
-        font-size: 0.9rem;
-    }
+  .story-box h3 {
+    font-size: 0.9rem;
+  }
 
-    .story-box p {
-        font-size: 0.8rem;
-    }
+  .story-box p {
+    font-size: 0.8rem;
+  }
 }
