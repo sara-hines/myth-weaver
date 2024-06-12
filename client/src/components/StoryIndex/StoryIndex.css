@@ -1,232 +1,232 @@
 .mythweaver {
-    text-align: center;
-    background-color: var(--bg-color);
-    min-height: 100vh;
-    /* Ensures content fits */
+  text-align: center;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  /* Ensures content fits */
 }
 
 .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - var(--header-height));
-    /* Adjust based on header height */
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--header-height));
+  /* Adjust based on header height */
+  padding: 20px;
 }
 
 /* General Styles */
 .story-index {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-color: var(--bg-color);
-    height: 100vh;
-    padding: 10px;
-    box-sizing: border-box;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: var(--bg-color);
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .story-main-content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    gap: 10px;
-    background-color: var(--bg-color);
-    padding: 20px;
-    max-width: 80vw;
-    margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 10px;
+  background-color: var(--bg-color);
+  padding: 20px;
+  max-width: 80vw;
+  margin: auto;
 }
 
 .story-photo {
-    grid-area: 1 / 1 / 3 / 2;
-    background-color: var(--text-color);
-    text-align: center;
-    border-radius: var(--border-radius);
-    max-height: 300px;
-    max-width: 300px;
-    margin: auto;
+  grid-area: 1 / 1 / 3 / 2;
+  background-color: var(--text-color);
+  text-align: center;
+  border-radius: var(--border-radius);
+  max-height: 300px;
+  max-width: 300px;
+  margin: auto;
 }
 
 .story-photo img {
-    width: 100%;
-    height: 100%;
-    max-height: 300px;
-    max-width: 300px;
-    border-radius: var(--border-radius);
-    background-size: contain;
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+  max-width: 300px;
+  border-radius: var(--border-radius);
+  background-size: contain;
 }
 
 .rating {
-    grid-area: 3 / 1 / 4 / 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    align-self: center;
-    gap: 5px;
-    padding: 0px 10px 10px 10px;
-    background-color: var(--rating-bg);
-    border-radius: var(--border-radius);
-    height: fit-content;
-    max-width: 300px;
-    margin: auto;
+  grid-area: 3 / 1 / 4 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  gap: 5px;
+  padding: 0px 10px 10px 10px;
+  background-color: var(--rating-bg);
+  border-radius: var(--border-radius);
+  height: fit-content;
+  max-width: 300px;
+  margin: auto;
 }
 
 p.rating-explanation {
-    text-align: center;
+  text-align: center;
 }
 
 .star {
-    color: #ffcc00;
-    font-size: 2rem;
+  color: #ffcc00;
+  font-size: 2rem;
 }
 
 .genre-tags-links {
-    grid-area: 4 / 1 / 5 / 2;
-    background-color: var(--dk-container-color);
-    padding: 10px;
-    height: fit-content;
-    text-align: center;
-    align-content: center;
-    align-self: start;
-    border-radius: var(--border-radius);
+  grid-area: 4 / 1 / 5 / 2;
+  background-color: var(--dk-container-color);
+  padding: 10px;
+  height: fit-content;
+  text-align: center;
+  align-content: center;
+  align-self: start;
+  border-radius: var(--border-radius);
 }
 
 .tbr-button-container {
-    grid-area: 5 / 1 / 6 / 2;
-    /* background-color: var(--dk-container-color); */
-    padding: 0px;
-    height: fit-content;
-    text-align: center;
-    align-content: center;
-    align-self: start;
-    border-radius: var(--border-radius);
+  grid-area: 5 / 1 / 6 / 2;
+  /* background-color: var(--dk-container-color); */
+  padding: 0px;
+  height: fit-content;
+  text-align: center;
+  align-content: center;
+  align-self: start;
+  border-radius: var(--border-radius);
 }
 
 .tbr-button {
-    background-color: var(--story-4);
-    color: var(--accent-container);
-    padding: 10px 20px;
-    width: 100%;
-    margin: 0;
-    align-self: flex-end;
-    border: none;
-    height: fit-content;
-    border-radius: var(--border-radius);
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color ease-in-out 0.5s;
+  background-color: var(--story-4);
+  color: var(--accent-container);
+  padding: 10px 20px;
+  width: 100%;
+  margin: 0;
+  align-self: flex-end;
+  border: none;
+  height: fit-content;
+  border-radius: var(--border-radius);
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color ease-in-out 0.5s;
 }
 
 .tbr-button:hover {
-    background-color: var(--alt-button-accent);
+  background-color: var(--alt-button-accent);
 }
 
 .story-description {
-    grid-area: 1 / 2 / 6 / 5;
-    background-color: var(--mid-dark-accent);
-    color: var(--accent-container);
-    padding: 20px;
-    border-radius: var(--border-radius);
-    text-align: center;
-    height: fit-content;
+  grid-area: 1 / 2 / 6 / 5;
+  background-color: var(--mid-dark-accent);
+  color: var(--accent-container);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  height: fit-content;
 }
 
 .story-description h2 {
-    color: var(--header-text);
-    text-shadow: 1px 1px 2px var(--dark-accent),
-        0px 0px 2px var(--dark-accent);
-    padding-bottom: 20px;
+  color: var(--header-text);
+  text-shadow: 1px 1px 2px var(--dark-accent),
+    0px 0px 2px var(--dark-accent);
+  padding-bottom: 20px;
 }
 
 p.author-detail {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .start-adventure-button {
-    background-color: var(--button-accent);
-    color: var(--accent-container);
-    padding: 10px 20px;
-    margin: 20px 0;
-    align-self: flex-end;
-    border: none;
-    height: fit-content;
-    border-radius: var(--border-radius);
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color ease-in-out 0.5s;
+  background-color: var(--button-accent);
+  color: var(--accent-container);
+  padding: 10px 20px;
+  margin: 20px 0;
+  align-self: flex-end;
+  border: none;
+  height: fit-content;
+  border-radius: var(--border-radius);
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color ease-in-out 0.5s;
 }
 
 .start-adventure-button:hover {
-    background-color: var(--dk-button-accent);
+  background-color: var(--dk-button-accent);
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .story-main-content {
-        grid-template-columns: 1fr 1fr;
-        max-width: 90vw;
-    }
+  .story-main-content {
+    grid-template-columns: 1fr 1fr;
+    max-width: 90vw;
+  }
 
-    .story-photo {
-        grid-area: 1 / 1 / 2 / 3;
-        max-height: 250px;
-        max-width: 250px;
-    }
+  .story-photo {
+    grid-area: 1 / 1 / 2 / 3;
+    max-height: 250px;
+    max-width: 250px;
+  }
 
-    .rating {
-        grid-area: 2 / 1 / 3 / 3;
-        max-width: 250px;
-    }
+  .rating {
+    grid-area: 2 / 1 / 3 / 3;
+    max-width: 250px;
+  }
 
-    .genre-tags-links {
-        grid-area: 3 / 1 / 4 / 3;
-    }
+  .genre-tags-links {
+    grid-area: 3 / 1 / 4 / 3;
+  }
 
-    .tbr-button-container {
-        grid-area: 4 / 1 / 5 / 3;
-    }
+  .tbr-button-container {
+    grid-area: 4 / 1 / 5 / 3;
+  }
 
-    .story-description {
-        grid-area: 5 / 1 / 6 / 3;
-    }
+  .story-description {
+    grid-area: 5 / 1 / 6 / 3;
+  }
 
-    .start-adventure-button {
-        grid-area: auto;
-        margin: 10px auto 0;
-    }
+  .start-adventure-button {
+    grid-area: auto;
+    margin: 10px auto 0;
+  }
 }
 
 @media (max-width: 480px) {
-    .story-main-content {
-        grid-template-columns: 1fr;
-        max-width: 95vw;
-    }
+  .story-main-content {
+    grid-template-columns: 1fr;
+    max-width: 95vw;
+  }
 
-    .story-photo {
-        grid-area: auto;
-        max-height: 200px;
-        max-width: 200px;
-    }
+  .story-photo {
+    grid-area: auto;
+    max-height: 200px;
+    max-width: 200px;
+  }
 
-    .rating {
-        grid-area: auto;
-        max-width: 200px;
-    }
+  .rating {
+    grid-area: auto;
+    max-width: 200px;
+  }
 
-    .genre-tags-links {
-        grid-area: auto;
-    }
+  .genre-tags-links {
+    grid-area: auto;
+  }
 
-    .tbr-button-container {
-        grid-area: auto;
-    }
+  .tbr-button-container {
+    grid-area: auto;
+  }
 
-    .story-description {
-        grid-area: auto;
-    }
+  .story-description {
+    grid-area: auto;
+  }
 
-    .start-adventure-button {
-        margin: 10px auto 0;
-    }
+  .start-adventure-button {
+    margin: 10px auto 0;
+  }
 }

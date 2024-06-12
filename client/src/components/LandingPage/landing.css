@@ -132,6 +132,7 @@
 
 /* When the screen gets smaller than the average screen the smaller images disappear. - Haleigh */
 @media (max-width: 1700px) {
+
   .book-image,
   .bag-image,
   .coinpurse-image,
@@ -147,20 +148,20 @@
   .scroll-image {
     display: none;
   }
-  
+
   .landing-title {
     font-size: 36px;
     top: 0;
     left: 0;
   }
-  
+
   .slogan {
     font-size: 18px;
     top: 0;
     left: 0;
     margin-top: 10px;
   }
-  
+
   .cta-button {
     position: relative;
     bottom: 0;
