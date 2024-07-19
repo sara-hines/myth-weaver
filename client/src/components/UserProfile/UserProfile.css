@@ -65,23 +65,23 @@
 }
 
 .stories-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+  gap: 30px;
+  padding: 15px;
+  width: 100%;
 }
 
 .story-box {
-  width: calc(25% - 20px);
-  max-width: 250px;
-  flex: 1 0 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: left;
   padding: 15px;
-  margin-bottom: 20px;
   border-radius: var(--border-radius);
   border: 1px solid var(--header-link-hover);
   background-color: var(--header-link-hover);
+  box-sizing: border-box;
+  text-align: center;
+  /* Include padding and border in the element's total width and height */
 }
 
 .remove-text-decoration {
@@ -162,10 +162,6 @@ p.story-author {
   .user-main-content {
     max-width: 80vw;
   }
-
-  .story-box {
-    width: calc(33.33% - 20px);
-  }
 }
 
 @media (max-width: 768px) {
@@ -173,8 +169,8 @@ p.story-author {
     max-width: 90vw;
   }
 
-  .story-box {
-    width: calc(50% - 20px);
+  .stories-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .profile-button {
@@ -194,8 +190,8 @@ p.story-author {
     padding: 10px;
   }
 
-  .story-box {
-    width: calc(100% - 20px);
+  .stories-grid {
+    grid-template-columns: 1fr;
   }
 
   .profile-button {

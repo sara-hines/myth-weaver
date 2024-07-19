@@ -128,7 +128,7 @@ const StoryReview = () => {
   };
 
 
-  // User interactivity and rating tracking for reviews.
+  // Rating tracking and user interactivity for reviews.
   const handleStarClick = (rating) => {
     setRating(rating);
     if (rating > 0) {
@@ -154,6 +154,7 @@ const StoryReview = () => {
     return stars;
   };
 
+  // Render loading state if either query is still loading.
   if (loadingStory || loadingProfile) {
     return (
       <div className='mythweaver'>
@@ -190,7 +191,9 @@ const StoryReview = () => {
             <span
               key={star}
               className={`star ${hoveredStar >= star || rating >= star ? 'filled' : ''}`}
+              // Click handler to update star rating after user clicks a star.
               onClick={() => handleStarClick(star)}
+              // onMouseEnter and onMouseLeave handlers for user interactivity / styling effects.
               onMouseEnter={() => handleStarMouseEnter(star)}
               onMouseLeave={handleStarMouseLeave}
             >
@@ -198,15 +201,20 @@ const StoryReview = () => {
             </span>
           ))}
         </div>
+
+        {/* Display error message if user attempts to submit a review without providing a star rating. */}
         {showRatingError && (
           <div className='rating-error'>
             A star rating of at least 1 is required to submit a review.
           </div>
         )}
+
         <div className='review-buttons'>
+          {/* Button to save review. */}
           <button
             onClick={handleSaveReview}
             className='save-button'>Save Review</button>
+          {/* If the user is logged in, display the 'Remove from Bookmarks' / 'Add to Bookmarks' button. */}
           {Auth.loggedIn() && (
             <button className='save-button'
               onClick={handleToggleBookmarks}>
@@ -215,12 +223,14 @@ const StoryReview = () => {
           )}
         </div>
 
+        {/* If the user has just successfully submitted a review, display the success message and countdown to navigate to home. */}
         {successMessage && (
           <div className='success-message'>
             {successMessage} ({countdown})
           </div>
         )}
 
+        {/* If there are existing reviews for this story, display the reviews and render the appropriate number of stars for each review. */}
         {story?.reviews?.length > 0 &&
           <div className='reviews-list'>
             <h2>Recent Reviews</h2>

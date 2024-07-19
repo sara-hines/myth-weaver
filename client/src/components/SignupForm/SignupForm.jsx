@@ -72,16 +72,20 @@ const SignupForm = ({ handleModalClose }) => {
           </Alert>
         )}
 
+        {/* Form Group for the username. The email and password fields have similar onChange and onBlur handlers and similar messages for invalid feedback. */}
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='username'>Username</Form.Label>
           <Form.Control
             type='text'
             placeholder='Your username'
             name='username'
+            // function to update userFormData with the user's input
             onChange={handleInputChange}
+            // handler to mark fields as touched when they loose focus.
             onBlur={handleBlur}
             value={userFormData.username}
             required
+            // If the user touched the username field without providing an email, isInvalid will be true, triggering the 'Username is required!' message.
             isInvalid={touched.username && !userFormData.username}
           />
           {touched.username && !userFormData.username && (
@@ -122,6 +126,8 @@ const SignupForm = ({ handleModalClose }) => {
             <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
           )}
         </Form.Group>
+
+        {/* Submit button will be disabled until the username, email, and password are provided. */}
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'

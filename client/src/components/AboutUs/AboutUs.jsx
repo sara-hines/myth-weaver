@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AboutUs.css';
+import { useLocation } from 'react-router-dom';
+import ContactUs from '../ContactUs/ContactUs';
 
 function AboutUs() {
+  const location = useLocation();
 
-  const [successMessage, setSuccessMessage] = useState('');
-  const handleSetSuccessMessage = () => setSuccessMessage('Thank you! Your response has been received.');
+  // This useEffect hook provides the functionality to navigate to the Contact Us div on the About Us page by clicking the Contact Us link in the header. 
+  useEffect(() => {
+    // If the user clicked the Contact Us link in the header, their location will be /about-us#contact-us-section
+    if (location.hash === '#contact-us-section') {
+      document.getElementById('contact-us-section')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
 
   return (
+
     <div className='about-us-container'>
       <main className='about-us-main'>
+        
+        {/* Mission statement and description of the site */}
         <div className='about-us-card'>
           <h2 className='about-us-title'>Our Story</h2>
-          <p className='about-us-description'>Welcome to MythWeaver, a platform born from creativity and a passion for innovation!
-
-            Our journey began at the University of Denver, where a group of like-minded individuals came together during a coding bootcamp. United by our love for storytelling, technology, and continuous learning, we embarked on a mission to create something truly unique.
-
-            At MythWeaver, we believe in the power of creativity and collaboration. Our diverse backgrounds and shared enthusiasm for discovering new ways to learn have shaped the foundation of our platform. We are committed to providing a space where imagination knows no bounds and where stories can come to life.
-
-            From brainstorming sessions filled with wild ideas to the meticulous process of coding and designing, every step of our journey has been driven by our collective passion. We aim to inspire and be inspired, to learn and grow alongside our community.
-
-            Thank you for joining us on this adventure. Together, we can weave the myths and stories that will shape the future.
-
-            Best regards,
-            The MythWeaver Team</p>
+          <p className='about-us-description'>Welcome to MythWeaver, a platform born from creativity and a passion for innovation! Our journey began at the University of Denver, where a group of like-minded individuals came together during a coding bootcamp. United by our love for storytelling, technology, and continuous learning, we embarked on a mission to create something truly unique.</p>
+          <p className='about-us-description'>At MythWeaver, we believe in the power of creativity and collaboration. Our diverse backgrounds and shared enthusiasm for discovering new ways to learn have shaped the foundation of our platform. We are committed to providing a space where imagination knows no bounds and where stories can come to life. </p>
+          <p className='about-us-description'>From brainstorming sessions filled with wild ideas to the meticulous process of coding and designing, every step of our journey has been driven by our collective passion. We aim to inspire and be inspired, to learn and grow alongside our community. Thank you for joining us on this adventure!</p>
+          <p className='about-us-description'>~ The MythWeaver Team</p>
         </div>
+
+        {/* Team member photos and bios */}
         <div className='about-us-card'>
           <h2 className='about-us-title'>Our Team</h2>
           <div className='team-grid'>
@@ -38,11 +43,11 @@ function AboutUs() {
             </div>
             <div className='team-member'>
               <div className='team-member-info'>
+                <img src='/images/sara-bio-photo.png' alt='Sara Hines' className='team-member-img' />
                 <div className='team-member-text'>
                   <h3 className='team-member-name'>Sara Hines</h3>
                   <p className='team-member-description'>Sara Hines has a background in Ecosystem Science and Sustainability and a passion for problem solving. She enjoys playing in the balance between imagination—envisioning what a project could look like—and methodical rigor—working from questions to 'hypotheses' to successfully coded solutions. When collaborating with other coders, she loves the feeling of being in sync, finishing each other's sentences, and helping with each other's stuck-points. She has an interest in language and expression that extends beyond code into music, art, cooking, and other mediums. </p>
                 </div>
-                <img src='/images/sara-bio-photo.png' alt='Sara Hines' className='team-member-img' />
               </div>
             </div>
             <div className='team-member'>
@@ -74,41 +79,8 @@ function AboutUs() {
             </div>
           </div>
         </div>
-        <div className='about-us-card'>
-          <h2 className='about-us-title'>Contact Us</h2>
-          <p className='about-us-description'>Welcome to MythWeaver! We are thrilled to have you explore our platform, and we value your feedback and ideas.
 
-            At MythWeaver, our mission is to create a community where stories and creativity flourish. Whether you have a question, a suggestion, or simply want to share your thoughts, we’re here to listen.</p>
-
-          {/* Contact Form */}
-          <form action='/submit-form' method='POST'>
-            <label htmlFor='username'>Username:</label><br />
-            <input type='text' id='username' name='username' required /><br /><br />
-
-            <label htmlFor='email'>Email:</label><br />
-            <input type='email' id='email' name='email' required /><br /><br />
-
-            <label htmlFor='message'>Message:</label><br />
-            <textarea id='message' name='message' rows='4' cols='50' required></textarea><br /><br />
-
-            <label htmlFor='type'>Type of Message:</label><br />
-            <select id='type' name='type' required>
-              <option value='' disabled selected>Select type</option>
-              <option value='Bug Report'>Bug Report</option>
-              <option value='Question'>Question</option>
-              <option value='Feedback'>Feedback</option>
-            </select><br /><br />
-
-            {successMessage && (
-              <div className='success-message'>
-                {successMessage}
-              </div>
-            )}
-
-            <input type='submit' value='Submit' onClick={handleSetSuccessMessage} />
-          </form>
-          {/* End Contact Form */}
-        </div>
+        <ContactUs />
       </main>
     </div>
   );

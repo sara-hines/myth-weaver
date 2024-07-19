@@ -14,6 +14,7 @@ import './landing.css';
 function Landing() {
   return (
     <div className='landing-page'>
+      {/* Scroll background, animated site title, slogan, 'Start your Adventure' button, and, depending on viewport width, staff image. */}
       <div className='hero'>
         <img src={UpsideDownStaff} alt='Upsidedownstaff' className='staff-image upside-down' />
         <img src={ScrollImage} alt='Scroll' className='scroll-image' />
@@ -24,6 +25,8 @@ function Landing() {
           <Link to='/myth-index' className='cta-button'>Start your Adventure</Link>
         </div>
       </div>
+
+      {/* Additional images which appear for larger viewport widths */}
       <section className='images-section'>
         <div className='container'>
           <img src={Book} alt='Book' className='book-image' />
