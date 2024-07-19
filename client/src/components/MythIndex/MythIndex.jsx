@@ -8,6 +8,7 @@ const MythIndex = () => {
   const { loading, data, error } = useQuery(GET_STORIES);
   const stories = data?.stories || [];
 
+  // Render loading state if still loading.
   if (loading) {
     return (
       <div className='mythweaver'>
@@ -21,6 +22,7 @@ const MythIndex = () => {
     );
   }
 
+  // Render error state if there was an error fetching the data.
   if (error) {
     return (
       <div className='mythweaver'>

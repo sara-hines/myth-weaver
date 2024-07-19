@@ -1,3 +1,4 @@
+/* General Styles */
 .mythweaver {
   text-align: center;
   background-color: var(--bg-color);
@@ -5,6 +6,7 @@
   /* Ensures content fits */
 }
 
+/* Used to help properly fit page elements if loading or error */
 .main-content {
   display: flex;
   justify-content: center;
@@ -14,12 +16,11 @@
   padding: 20px;
 }
 
-/* General Styles */
+/* Used to properly fit page elements when all is rendered properly (not still loading, and no error) */
 .story-index {
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: var(--bg-color);
-  height: 100vh;
-  padding: 10px;
+  min-height: calc(100vh - var(--header-height));
+  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -39,16 +40,12 @@
   background-color: var(--text-color);
   text-align: center;
   border-radius: var(--border-radius);
-  max-height: 300px;
-  max-width: 300px;
   margin: auto;
 }
 
 .story-photo img {
   width: 100%;
   height: 100%;
-  max-height: 300px;
-  max-width: 300px;
   border-radius: var(--border-radius);
   background-size: contain;
 }
@@ -61,17 +58,15 @@
   align-content: center;
   align-items: center;
   align-self: center;
-  gap: 5px;
-  padding: 0px 10px 10px 10px;
+  padding: 5px;
   background-color: var(--rating-bg);
   border-radius: var(--border-radius);
   height: fit-content;
-  max-width: 300px;
   margin: auto;
 }
 
-p.rating-explanation {
-  text-align: center;
+p.rating {
+  padding: 0px;
 }
 
 .star {
@@ -92,7 +87,6 @@ p.rating-explanation {
 
 .tbr-button-container {
   grid-area: 5 / 1 / 6 / 2;
-  /* background-color: var(--dk-container-color); */
   padding: 0px;
   height: fit-content;
   text-align: center;
@@ -133,8 +127,7 @@ p.rating-explanation {
 
 .story-description h2 {
   color: var(--header-text);
-  text-shadow: 1px 1px 2px var(--dark-accent),
-    0px 0px 2px var(--dark-accent);
+  text-shadow: 1px 1px 2px var(--dark-accent), 0px 0px 2px var(--dark-accent);
   padding-bottom: 20px;
 }
 
@@ -170,13 +163,11 @@ p.author-detail {
 
   .story-photo {
     grid-area: 1 / 1 / 2 / 3;
-    max-height: 250px;
-    max-width: 250px;
   }
 
   .rating {
     grid-area: 2 / 1 / 3 / 3;
-    max-width: 250px;
+    width: 100%;
   }
 
   .genre-tags-links {
@@ -197,36 +188,12 @@ p.author-detail {
   }
 }
 
-@media (max-width: 480px) {
-  .story-main-content {
-    grid-template-columns: 1fr;
-    max-width: 95vw;
-  }
-
-  .story-photo {
-    grid-area: auto;
-    max-height: 200px;
-    max-width: 200px;
-  }
-
+@media (min-width: 480px) {
   .rating {
-    grid-area: auto;
-    max-width: 200px;
+    max-width: 250px;
   }
-
-  .genre-tags-links {
-    grid-area: auto;
-  }
-
-  .tbr-button-container {
-    grid-area: auto;
-  }
-
-  .story-description {
-    grid-area: auto;
-  }
-
-  .start-adventure-button {
-    margin: 10px auto 0;
+  .story-photo {
+    max-height: 300px;
+    max-width: 300px;
   }
 }

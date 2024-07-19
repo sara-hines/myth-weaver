@@ -316,6 +316,7 @@ function CreateStory() {
             <div key={index}>
               <input
                 type='text'
+                style={{ margin: '5px 0px 15px'}}
                 value={choice.choiceText}
                 onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
                 placeholder='Choice Text'
@@ -342,19 +343,20 @@ function CreateStory() {
           <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
           <label htmlFor='chapterContent'>Content:</label>
           <textarea id='chapterContent' value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
-          <label>
+          <label className='end-story-label'>
+            <span>Ends Story</span>
             <input
               type='checkbox'
               checked={currentChapter.isEnd}
               onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
             />
-            Ends Story
           </label>
 
           {currentChapter.choices.map((choice, index) => (
             <div key={index}>
               <input
                 type='text'
+                style={{ margin: '5px 0px 15px' }}
                 value={choice.choiceText}
                 onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
                 placeholder='Choice Text'

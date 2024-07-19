@@ -17,11 +17,13 @@ const LoginForm = ({ handleModalClose }) => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
+  // Handler to mark fields as touched when they lose focus
   const handleBlur = (event) => {
     const { name } = event.target;
     setTouched({ ...touched, [name]: true });
   };
 
+  // Handle form submission
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -76,10 +78,13 @@ const LoginForm = ({ handleModalClose }) => {
             type='text'
             placeholder='Your email'
             name='email'
+            // function to update userFormData with the user's input
             onChange={handleInputChange}
+            // handler to mark fields as touched when they loose focus
             onBlur={handleBlur}
             value={userFormData.email}
             required
+            // If the user touched the email field without providing an email, isInvalid will be true, triggering the 'Email is required!' message.
             isInvalid={touched.email && !userFormData.email}
           />
           {touched.email && !userFormData.email && (
@@ -93,10 +98,13 @@ const LoginForm = ({ handleModalClose }) => {
             type='password'
             placeholder='Your password'
             name='password'
+            // function to update userFormData with the user's input
             onChange={handleInputChange}
+            // handler to mark fields as touched when they loose focus
             onBlur={handleBlur}
             value={userFormData.password}
             required
+            // If the user touched the password field without providing an email, isInvalid will be true, triggering the 'Password is required!' message.
             isInvalid={touched.password && !userFormData.password}
           />
           {touched.password && !userFormData.password && (
@@ -104,6 +112,7 @@ const LoginForm = ({ handleModalClose }) => {
           )}
         </Form.Group>
 
+        {/* Submit button will be disabled until the email and password are provided. */}
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type='submit'

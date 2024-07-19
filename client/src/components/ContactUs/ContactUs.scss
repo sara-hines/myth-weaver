@@ -1,0 +1,93 @@
+// Variables
+$green: #14515d;
+$icon-base-size: 18px;
+
+// Structure
+.success-icon {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  font-size: $icon-base-size;
+  border-radius: 50%;
+  border: 2px solid $green;
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+  animation: showSuccess 180ms ease-in-out;
+  transform: scale(1);
+}
+
+// Elements
+.success-icon {
+
+  &__tip,
+  &__long {
+    display: block;
+    position: absolute;
+    height: 2px;
+    background-color: $green;
+    border-radius: 10px;
+  }
+
+  &__tip {
+    width: 0.6em;
+    top: 1.1em;
+    left: 0.35em; 
+    transform: rotate(45deg);
+    animation: tipInPlace 300ms ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 180ms;
+    visibility: hidden;
+  }
+
+  &__long {
+    width: 1em;
+    top: 0.93em;
+    left: 0.69em; 
+    transform: rotate(-45deg);
+    animation: longInPlace 140ms ease-in-out;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+    animation-delay: 440ms; 
+  }
+}
+
+@keyframes showSuccess {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes tipInPlace {
+  from {
+    width: 0em;
+    top: 0em;
+    left: -0.4em; 
+  }
+
+  to {
+    width: 0.6em;
+    top: 1.1em;
+    left: 0.35em; 
+    visibility: visible;
+  }
+}
+
+@keyframes longInPlace {
+  from {
+    width: 0em;
+    top: 1.275em;
+    left: 0.8em; 
+  }
+
+  to {
+    width: 1em;
+    top: 0.93em;
+    left: 0.69em;
+    visibility: visible;
+  }
+}

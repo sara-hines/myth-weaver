@@ -112,6 +112,7 @@ const UserProfile = () => {
     }
   };
 
+  // Render loading state if query is still loading.
   if (loading) {
     return (
       <div className='mythweaver'>
@@ -125,6 +126,7 @@ const UserProfile = () => {
     );
   }
 
+  // Render error state if there was an error fetching the data.
   if (error) {
     return (
       <div className='mythweaver'>

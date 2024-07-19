@@ -385,6 +385,8 @@ form textarea,
 form select {
   display: block;
   width: 100%;
+  margin: 0px;
+  /* padding: 0px; */
   /* margin-bottom: 10px; */
   /* margin: 10px 0px; */
 }
@@ -404,6 +406,21 @@ form .form-group input,
 form .form-group textarea,
 form .form-group select {
   flex: 2;
+}
+
+form .form-group input {
+  margin: 5px 0px 15px;
+}
+
+input#storyTitle, 
+textarea#storyDescription, 
+input#storyGenre, 
+input#storyTags, 
+input#chapterTitle, 
+textarea#chapterContent
+{
+  margin: 5px 0px 15px;
+  padding: 10px;
 }
 
 /* Choice and End Story alignment */

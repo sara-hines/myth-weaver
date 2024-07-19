@@ -14,8 +14,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: '*', 
-  methods: ['GET', 'POST'], 
+  origin: '*',
+  methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
@@ -46,6 +46,16 @@ const startApolloServer = async () => {
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+
+  // Endpoint to allow the front-end code in ContactUs.jsx to access the Web3Forms API Key without hard coding it on the front-end.
+  app.get('/api/contact-us', (req, res) => {
+    try {
+      const apiKey = process.env.WEB3FORMS_API_KEY;
+      res.status(200).json({ apiKey });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch Web3Forms API Key' });
+    }
+  });
 
   // Cloudinary image upload endpoint.
   app.post('/api/upload', upload.single('file'), async (req, res) => {
