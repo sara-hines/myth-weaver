@@ -29,35 +29,6 @@ form select {
   box-sizing: border-box;
 }
 
-/* Override autofill background and text color */
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px var(--story-5) inset !important;
-  -webkit-text-fill-color: var(--text-color) !important;
-}
-
-input:-moz-autofill,
-textarea:-moz-autofill,
-select:-moz-autofill {
-  box-shadow: 0 0 0 30px var(--story-5) inset !important;
-  -moz-text-fill-color: var(--text-color) !important;
-}
-
-input:-ms-autofill,
-textarea:-ms-autofill,
-select:-ms-autofill {
-  box-shadow: 0 0 0 30px var(--story-5) inset !important;
-  -ms-text-fill-color: var(--text-color) !important;
-}
-
-input:autofill,
-textarea:autofill,
-select:autofill {
-  box-shadow: 0 0 0 30px var(--story-5) inset !important;
-  -webkit-text-fill-color: var(--text-color) !important;
-}
-
 #contact-form-btn {
   background-color: var(--button-accent);
   color: white;
@@ -106,20 +77,20 @@ option {
   margin: 10px 0px;
 }
 
-/* Animated green check mark signalling success */
+/* Animated green check mark signalling success. */
 .success-icon {
   margin-right: 8px;
   display: block;
 }
 
-/* Message communicating form submission success */
+/* Message communicating form submission success. */
 .success-message {
   font-size: 16px;
   margin: 0 !important;
   color: #14515d;
 }
 
-/* The transition property for the error message is set directly on the div.errormessage. */
+/* The transition property for the error message is set directly on the div.error-message. */
 .error-message {
   display: flex;
   align-items: center;
@@ -131,7 +102,7 @@ option {
   margin: 10px 0px;
 }
 
-/* Class to gradually achieve full transparancy for the success or error message. */
+/* Class to gradually achieve full transparency for the success or error message. */
 .fade-out {
   opacity: 0;
 }

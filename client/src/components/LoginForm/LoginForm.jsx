@@ -108,7 +108,7 @@ const LoginForm = ({ handleModalClose }) => {
             isInvalid={touched.password && !userFormData.password}
           />
           {touched.password && !userFormData.password && (
-            <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+            <Form.Control.Feedback type='invalid' class='invalid-input-message'>Password is required!</Form.Control.Feedback>
           )}
         </Form.Group>
 

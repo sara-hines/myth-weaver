@@ -210,8 +210,34 @@ export const ADD_TO_BOOKMARKS = gql`
     addToBookmarks(storyId: $storyId) {
       _id
       username
+      authorInfo {
+        createdStories {
+          _id
+          title
+          author
+          description
+          imageUrl
+          genre
+          tags
+          publishedDate
+          averageRating
+          ratingsCount
+        }
+      }
       readerInfo {
         bookmarkedStories {
+          _id
+          title
+          author
+          description
+          imageUrl
+          genre
+          tags
+          publishedDate
+          averageRating
+          ratingsCount
+        }
+        toBeReadStories {
           _id
           title
           author
@@ -234,8 +260,34 @@ export const REMOVE_FROM_BOOKMARKS = gql`
     removeFromBookmarks(storyId: $storyId) {
       _id
       username
+      authorInfo {
+        createdStories {
+          _id
+          title
+          author
+          description
+          imageUrl
+          genre
+          tags
+          publishedDate
+          averageRating
+          ratingsCount
+        }
+      }
       readerInfo {
         bookmarkedStories {
+          _id
+          title
+          author
+          description
+          imageUrl
+          genre
+          tags
+          publishedDate
+          averageRating
+          ratingsCount
+        }
+        toBeReadStories {
           _id
           title
           author

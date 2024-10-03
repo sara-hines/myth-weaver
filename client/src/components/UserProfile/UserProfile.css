@@ -46,6 +46,7 @@
 
 .story-section {
   text-align: center;
+  width: 100%;
 }
 
 .story-section h2 {
@@ -54,7 +55,7 @@
   font-size: 20px;
   color: var(--header-link-hover);
   padding: 15px;
-  margin: 15px;
+  margin: 15px 0px;
   cursor: pointer;
   transition: width 0.3s ease;
   width: auto;
@@ -65,23 +66,23 @@
 }
 
 .stories-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-  gap: 30px;
-  padding: 15px;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .story-box {
+  width: calc(25% - 20px);
+  max-width: 300px;
+  flex: 1 0 250px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: left;
   padding: 15px;
+  margin-bottom: 20px;
   border-radius: var(--border-radius);
   border: 1px solid var(--header-link-hover);
   background-color: var(--header-link-hover);
-  box-sizing: border-box;
-  text-align: center;
-  /* Include padding and border in the element's total width and height */
 }
 
 .remove-text-decoration {
@@ -98,6 +99,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 1.01rem;
+  color: var(--story-10);
 }
 
 .story-box p {
@@ -162,6 +164,10 @@ p.story-author {
   .user-main-content {
     max-width: 80vw;
   }
+
+  .story-box {
+    width: calc(33.33% - 20px);
+  }
 }
 
 @media (max-width: 768px) {
@@ -169,8 +175,8 @@ p.story-author {
     max-width: 90vw;
   }
 
-  .stories-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .story-box {
+    width: calc(50% - 20px);
   }
 
   .profile-button {
@@ -190,8 +196,8 @@ p.story-author {
     padding: 10px;
   }
 
-  .stories-grid {
-    grid-template-columns: 1fr;
+  .story-box {
+    width: calc(100% - 20px);
   }
 
   .profile-button {

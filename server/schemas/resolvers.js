@@ -26,11 +26,10 @@ const resolvers = {
       throw AuthenticationError;
     },
 
-    // Find all stories, then limit to 9 for displaying at /myth-index.
+    // Find all stories for displaying at /myth-index.
     stories: async () => {
       try {
-        const stories = await Story.find()
-          .sort('-createdAt').limit(9);
+        const stories = await Story.find();
         return stories;
       } catch (err) {
         console.error(err);
@@ -203,18 +202,20 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { 'readerInfo.bookmarkedStories': storyId } },
           { new: true }
-        ).populate({
-          path: 'readerInfo',
-          populate: {
-            path: 'bookmarkedStories',
-          },
-        });
+        );
 
         const userToReturn = await User.findOne({ _id: context.user._id })
+          .populate({
+            path: 'authorInfo',
+            populate: {
+              path: 'createdStories'
+            },
+          })
           .populate({
             path: 'readerInfo',
             populate: {
               path: 'bookmarkedStories',
+              path: 'toBeReadStories'
             },
           });
 

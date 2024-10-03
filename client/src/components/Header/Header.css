@@ -221,16 +221,8 @@
   padding: 0.75rem;
   border: 1px solid var(--dark-accent);
   border-radius: 4px;
-  transition: all 0.3s ease;
-  background-color: var(--story-9);
+  background-color: var(--story-5);
   color: var(--dark-accent);
-}
-
-.modal-body-lg form .form-control:focus {
-  border-color: #66afe9;
-  outline: none;
-  background-color: #f0f4fc;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
 .modal-body-lg form .btn {
@@ -240,19 +232,12 @@
   /* Increase padding for buttons */
 }
 
-input.form-control {
-  background-color: #E8F0FE;
-  border-width: 0px;
-  border-radius: 2px;
-  border: none;
-}
-
 input[type='password'] {
   margin-top: 15px;
 }
 
 div.invalid-feedback {
-  margin-top: 30px;
+  margin: 15px 0px 15px;
 }
 
 button.btn-success {
@@ -304,7 +289,7 @@ button.btn-success {
 
   .modal-body-lg form .form-control,
   .modal-body-lg form .btn {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     /* Further adjust font size for very small screens */
     padding: 0.25rem 0.5rem;
     /* Further adjust padding for very small screens */

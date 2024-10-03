@@ -31,7 +31,7 @@
 .slogan {
   position: relative;
   top: -242px;
-  left: -30px;
+  left: -22px;
   font-size: 20px;
   color: var(--dark-accent);
   z-index: 3;
@@ -39,8 +39,8 @@
 
 .cta-button {
   position: absolute;
-  bottom: 42%;
-  left: 50%;
+  bottom: 43%;
+  left: 49%;
   transform: translateX(-50%);
   display: inline-block;
   padding: 10px 20px;
@@ -86,7 +86,7 @@
 .upside-down {
   position: absolute;
   top: 50%;
-  right: 25%;
+  right: 26%;
   transform: translateY(-50%);
   z-index: 2;
 }
@@ -96,6 +96,8 @@
   top: 9.8%;
   right: 40%;
   z-index: 1;
+  width: 260px;
+  height: auto;
 }
 
 .coinpurse-image {
@@ -116,7 +118,7 @@
 .map-image {
   position: absolute;
   top: 26.1%;
-  left: 36.9%;
+  left: 36%;
   transform: translate(-50%, -50%);
   z-index: 0;
 }
