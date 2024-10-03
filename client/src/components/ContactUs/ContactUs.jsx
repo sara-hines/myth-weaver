@@ -99,11 +99,11 @@ export default function ContactUs() {
           {...register('botcheck')}>
         </input>
 
-        <label htmlFor='username'>Username:</label>
+        <label htmlFor='username'>Username or Name:</label>
         <input type='text' id='username' name='username'
           {...register('username', {
             // Validation rules for username field
-            required: 'Please provide your username.',
+            required: 'Please provide your username or name.',
             maxLength: 80,
           })}
         />

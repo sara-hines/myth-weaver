@@ -9,25 +9,12 @@ import Auth from '../../utils/auth';
 const StoryReview = () => {
   // Obtain storyId from useParams, set up navigate to help with navigation to /myth-index after submiting a review, and set up state variables. 
   const { storyId } = useParams();
-  const navigate = useNavigate();
-  const [fullName, setFullName] = useState('');
-  const [rating, setRating] = useState(0);
-  const [reviewText, setReviewText] = useState('');
-  const [hoveredStar, setHoveredStar] = useState(0);
-  const [showRatingError, setShowRatingError] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [countdown, setCountdown] = useState(5);
-  const [isInBookmarks, setIsInBookmarks] = useState(false);
-
 
   // Set up queries. 
   const { loading: loadingStory, data: storyData, error: storyError } = useQuery(GET_STORY, {
     variables: { storyId: storyId },
   });
   const { loading: loadingProfile, data: profileData, error: profileError } = useQuery(GET_PROFILE);
-  const story = storyData?.story || {};
-  const profile = profileData?.profile || {};
-
 
   // Set up mutations. For the addReview mutation, GET_STORY is done as a refetchQuery so that the new review can be rendered to the page.
   const [addReview, { addReviewError }] =
@@ -41,67 +28,29 @@ const StoryReview = () => {
   const [removeFromBookmarks, { removeFromBookmarksError }] = useMutation(REMOVE_FROM_BOOKMARKS);
 
 
-	// useEffect will be called when the component mounts and any time the profile or storyId changes. It regulates the isInBookmarks state variable to help handleToggleBookmarks call the appropriate mutation to add or remove from bookmarkedStories.
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState('');
+  const [rating, setRating] = useState(0);
+  const [reviewText, setReviewText] = useState('');
+  const [hoveredStar, setHoveredStar] = useState(0);
+  const [showRatingError, setShowRatingError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [countdown, setCountdown] = useState(10);
+  const [isInBookmarks, setIsInBookmarks] = useState(false);
+
+
+  const story = storyData?.story || {};
+  const profile = profileData?.profile || {};
+  console.log({ story });
+  console.log({ profile });
+
+  // useEffect will be called when the component mounts and any time the profile or storyId changes. It regulates the isInBookmarks state variable to help handleToggleBookmarks call the appropriate mutation to add or remove from bookmarkedStories.
   useEffect(() => {
     if (profile?.readerInfo?.bookmarkedStories) {
       const isInList = profile.readerInfo.bookmarkedStories.some(bookmarkStory => bookmarkStory._id === storyId);
       setIsInBookmarks(isInList);
     }
-	}, [profile, storyId]);
-
-
-	const handleSaveReview = async () => {
-		// A star rating of 0 can't be accepted when creating a review and will trigger the rating error to be displayed.
-    if (rating === 0) {
-      setShowRatingError(true);
-      return false;
-    }
-    setShowRatingError(false);
-		// The review model stores a username, which can be null, and a firstName, which is pulled from an input element. This allows the review functionality to be accessible to users who have not signed up. 
-    try {
-      let username = null;
-      if (Auth.loggedIn()) {
-        const profile = Auth.getProfile();
-        username = profile?.data?.username || null;
-			}
-			
-      const reviewInput = {
-        storyId,
-        username,
-        fullName,
-        rating: parseInt(rating),
-        reviewText,
-      };
-
-      const reviewData = await addReview({
-        variables: { reviewInput }
-      });
-
-			// Set the success message and redirect the user to /myth-index in 5 seconds.
-			if (reviewData) {
-				setSuccessMessage('Review submitted successfully! Redirecting to home in 5 seconds.');
-				setTimeout(() => {
-					navigate('/myth-index');
-				}, 5000);
-				let countdownInterval = setInterval(() => {
-					setCountdown(prev => {
-						if (prev === 1) {
-							clearInterval(countdownInterval);
-						}
-						return prev - 1;
-					});
-				}, 1000);
-			}
-
-      setReviewText('');
-      setRating(0);
-      setFullName('');
-    } catch (err) {
-      console.error(err);
-      throw new Error(err);
-    }
-  };
-
+  }, [profile, storyId]);
 
   // Functionality for the 'Add to Bookmarks' / 'Remove from Bookmarks' button. If the story is already in bookmarkedStories array, it will be removed. If the story is not in the bookmarkedStories array, it will be added.
   const handleToggleBookmarks = async () => {
@@ -127,6 +76,58 @@ const StoryReview = () => {
     }
   };
 
+
+  const handleSaveReview = async () => {
+    // A star rating of 0 can't be accepted when creating a review and will trigger the rating error to be displayed.
+    if (rating === 0) {
+      setShowRatingError(true);
+      return false;
+    }
+    setShowRatingError(false);
+    // The review model stores a username, which can be null, and a firstName, which is pulled from an input element. This allows the review functionality to be accessible to users who have not signed up. 
+    try {
+      let username = null;
+      if (Auth.loggedIn()) {
+        const profile = Auth.getProfile();
+        username = profile?.data?.username || null;
+      }
+
+      const reviewInput = {
+        storyId,
+        username,
+        fullName,
+        rating: parseInt(rating),
+        reviewText,
+      };
+
+      const reviewData = await addReview({
+        variables: { reviewInput }
+      });
+
+      // Set the success message and redirect the user to /myth-index in 10 seconds.
+      if (reviewData) {
+        setSuccessMessage('Review submitted successfully! Redirecting to home in 10 seconds.');
+        setTimeout(() => {
+          navigate('/myth-index');
+        }, 10000);
+        let countdownInterval = setInterval(() => {
+          setCountdown(prev => {
+            if (prev === 1) {
+              clearInterval(countdownInterval);
+            }
+            return prev - 1;
+          });
+        }, 1000);
+      }
+
+      setReviewText('');
+      setRating(0);
+      setFullName('');
+    } catch (err) {
+      console.error(err);
+      throw new Error(err);
+    }
+  };
 
   // Rating tracking and user interactivity for reviews.
   const handleStarClick = (rating) => {
@@ -168,7 +169,7 @@ const StoryReview = () => {
     );
   }
 
-	
+
   return (
     <div className='story-review'>
       <div className='story-review-container'>

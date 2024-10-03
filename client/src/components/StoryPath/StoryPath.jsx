@@ -79,7 +79,7 @@ const StoryPath = () => {
             <h1>{currentChapter.title}</h1>
             <p>{currentChapter.content}</p>
 
-            <Link to={`/story-review/${storyId}`} className='remove-text-decoration'>
+              <Link to={`/story-review/${storyId}`} className='remove-text-decoration'>
                 <div className='story-end-button'>
                   {/* Bookmarking functionality is only available to logged in users, but users can review stories whether or not they are logged in. */}
                   <button className='bookmark'>{Auth.loggedIn() ? 'Bookmark Story and Leave a Review!' : 'Leave a Review!'}</button>

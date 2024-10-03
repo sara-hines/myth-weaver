@@ -57,14 +57,8 @@ export const GET_STORIES = gql`
     stories {
       _id
       title
-      author
       description
       imageUrl
-      genre
-      tags
-      publishedDate
-      averageRating
-      ratingsCount
     }
   }
 `;

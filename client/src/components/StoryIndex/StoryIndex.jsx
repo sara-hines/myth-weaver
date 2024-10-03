@@ -32,7 +32,7 @@ const StoryIndex = () => {
         'story'
       ]
     });
-  
+
   // State to track if the story is in the user's TBR list.
   const [isInTBR, setIsInTBR] = useState(false);
 
@@ -126,16 +126,16 @@ const StoryIndex = () => {
           <div className='story-photo'>
             <img src={story.imageUrl} alt={story.title} />
           </div>
-            
+
           <div className='rating'>
             {/* If there are no reviews, so no ratings, display the No Ratings message. */}
             {story?.reviews?.length === 0 || !story?.reviews ? (
               <p>No ratings yet!</p>
             ) : (
-            // If there are ratings, render stars and a message explaining the average rating.
+              // If there are ratings, render stars and a message explaining the average rating.
               <>
                 <div className='display-star-rating star'>
-                  {renderStars(story.averageRating)}
+                    {renderStars(story.averageRating)}
                 </div>
                 <div className='rating'>
                   {story.ratingsCount === 1 ? (
