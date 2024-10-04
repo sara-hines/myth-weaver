@@ -60,45 +60,41 @@ export const DELETE_STORY = gql`
       _id
       username
       email
-      authorInfo {
-        createdStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      createdStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
-      readerInfo {
-        bookmarkedStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
-        toBeReadStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      bookmarkedStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
+      }
+      toBeReadStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
     }
   }
@@ -110,45 +106,41 @@ export const ADD_TO_TBR = gql`
     addToTBR(storyId: $storyId) {
       _id
       username
-      authorInfo {
-        createdStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      createdStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
-      readerInfo {
-        bookmarkedStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
-        toBeReadStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      bookmarkedStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
+      }
+      toBeReadStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
     }
   }
@@ -160,45 +152,41 @@ export const REMOVE_FROM_TBR = gql`
     removeFromTBR(storyId: $storyId) {
       _id
       username
-      authorInfo {
-        createdStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      createdStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
-      readerInfo {
-        bookmarkedStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
-        toBeReadStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      bookmarkedStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
+      }
+      toBeReadStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
     }
   }
@@ -210,45 +198,41 @@ export const ADD_TO_BOOKMARKS = gql`
     addToBookmarks(storyId: $storyId) {
       _id
       username
-      authorInfo {
-        createdStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      createdStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
-      readerInfo {
-        bookmarkedStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
-        toBeReadStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      bookmarkedStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
+      }
+      toBeReadStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
     }
   }
@@ -260,45 +244,41 @@ export const REMOVE_FROM_BOOKMARKS = gql`
     removeFromBookmarks(storyId: $storyId) {
       _id
       username
-      authorInfo {
-        createdStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      createdStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
-      readerInfo {
-        bookmarkedStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
-        toBeReadStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      bookmarkedStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
+      }
+      toBeReadStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
     }
   }

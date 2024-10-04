@@ -8,19 +8,11 @@ const resolvers = {
     profile: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
-          .populate({
-            path: 'authorInfo',
-            populate: {
-              path: 'createdStories'
-            },
-          })
-          .populate({
-            path: 'readerInfo',
-            populate: {
-              path: 'bookmarkedStories',
-              path: 'toBeReadStories'
-            },
-          });
+          .populate([
+            { path: 'createdStories' },
+            { path: 'bookmarkedStories' }, 
+            { path: 'toBeReadStories' }
+          ]);
         return userData;
       }
       throw AuthenticationError;
@@ -114,7 +106,7 @@ const resolvers = {
 
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { 'authorInfo.createdStories': story._id } },
+          { $addToSet: { 'createdStories': story._id } },
           { new: true }
         )
 
@@ -135,11 +127,18 @@ const resolvers = {
     deleteStory: async (parent, { storyId }, context) => {
       if (context.user) {
         const storyForDeletion = await Story.findOneAndDelete({ _id: storyId });
-        return User.findOneAndUpdate(
+
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { 'authorInfo.createdStories': storyId } },
+          { $pull: { 'createdStories': storyId } },
           { new: true }
-        );
+        ).populate([
+          { path: 'createdStories' },
+          { path: 'bookmarkedStories' },
+          { path: 'toBeReadStories' }
+        ]);
+
+        return updatedUser;
       }
       throw AuthenticationError;
     },
@@ -153,27 +152,15 @@ const resolvers = {
       try {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { 'readerInfo.toBeReadStories': storyId } },
+          { $addToSet: { 'toBeReadStories': storyId } },
           { new: true }
-        );
+        ).populate([
+          { path: 'createdStories' },
+          { path: 'bookmarkedStories' },
+          { path: 'toBeReadStories' }
+        ]);
 
-        const userToReturn = await User.findOne({ _id: context.user._id })
-          .populate({
-            path: 'authorInfo',
-            populate: {
-              path: 'createdStories'
-            },
-          })
-          .populate({
-            path: 'readerInfo',
-            populate: {
-              path: 'bookmarkedStories',
-              path: 'toBeReadStories'
-            },
-          });
-
-        return userToReturn;
-
+        return updatedUser;
       } catch (err) {
         throw new Error(err);
       }
@@ -182,11 +169,17 @@ const resolvers = {
     // Remove a story from the user's toBeReadStories, returning the updated user.
     removeFromTBR: async (parent, { storyId }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { 'readerInfo.toBeReadStories': storyId } },
+          { $pull: { 'toBeReadStories': storyId } },
           { new: true }
-        );
+        ).populate([
+          { path: 'createdStories' },
+          { path: 'bookmarkedStories' },
+          { path: 'toBeReadStories' }
+        ]);
+
+        return updatedUser;
       }
       throw AuthenticationError;
     },
@@ -200,26 +193,15 @@ const resolvers = {
       try {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { 'readerInfo.bookmarkedStories': storyId } },
+          { $addToSet: { 'bookmarkedStories': storyId } },
           { new: true }
-        );
+        ).populate([
+          { path: 'createdStories' },
+          { path: 'bookmarkedStories' },
+          { path: 'toBeReadStories' }
+        ]);
 
-        const userToReturn = await User.findOne({ _id: context.user._id })
-          .populate({
-            path: 'authorInfo',
-            populate: {
-              path: 'createdStories'
-            },
-          })
-          .populate({
-            path: 'readerInfo',
-            populate: {
-              path: 'bookmarkedStories',
-              path: 'toBeReadStories'
-            },
-          });
-
-        return userToReturn;
+        return updatedUser;
       } catch (err) {
         throw new Error(err);
       }
@@ -228,11 +210,17 @@ const resolvers = {
     // Remove a story from the user's bookmarkedStories.
     removeFromBookmarks: async (parent, { storyId }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { 'readerInfo.bookmarkedStories': storyId } },
+          { $pull: { 'bookmarkedStories': storyId } },
           { new: true }
-        );
+        ).populate([
+          { path: 'createdStories' },
+          { path: 'bookmarkedStories' },
+          { path: 'toBeReadStories' }
+        ]);
+
+        return updatedUser;
       }
       throw AuthenticationError;
     },

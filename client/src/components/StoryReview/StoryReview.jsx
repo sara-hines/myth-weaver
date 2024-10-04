@@ -41,13 +41,11 @@ const StoryReview = () => {
 
   const story = storyData?.story || {};
   const profile = profileData?.profile || {};
-  console.log({ story });
-  console.log({ profile });
 
   // useEffect will be called when the component mounts and any time the profile or storyId changes. It regulates the isInBookmarks state variable to help handleToggleBookmarks call the appropriate mutation to add or remove from bookmarkedStories.
   useEffect(() => {
-    if (profile?.readerInfo?.bookmarkedStories) {
-      const isInList = profile.readerInfo.bookmarkedStories.some(bookmarkStory => bookmarkStory._id === storyId);
+    if (profile?.bookmarkedStories) {
+      const isInList = profile.bookmarkedStories.some(bookmarkStory => bookmarkStory._id === storyId);
       setIsInBookmarks(isInList);
     }
   }, [profile, storyId]);
