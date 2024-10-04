@@ -42,8 +42,8 @@ const StoryIndex = () => {
 
   // useEffect to check if the story is in the TBR list when profile or storyId changes.
   useEffect(() => {
-    if (profile?.readerInfo?.toBeReadStories) {
-      const isInList = profile.readerInfo.toBeReadStories.some(tbrStory => tbrStory._id === storyId);
+    if (profile?.toBeReadStories) {
+      const isInList = profile.toBeReadStories.some(tbrStory => tbrStory._id === storyId);
       setIsInTBR(isInList);
     }
   }, [profile, storyId]);

@@ -1,6 +1,4 @@
 const { Schema, model } = require('mongoose');
-const authorInfoSchema = require('./AuthorInfo');
-const readerInfoSchema = require('./ReaderInfo');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
@@ -36,8 +34,21 @@ const userSchema = new Schema(
         message: 'Please enter a valid password',
       },
     },
-    authorInfo: authorInfoSchema,
-    readerInfo: readerInfoSchema,
+    createdStories: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Story',
+      default: [],
+    }],
+    bookmarkedStories: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Story',
+      default: [],
+    }],
+    toBeReadStories: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Story',
+      default: [],
+    }],
   },
   {
     toJSON: {

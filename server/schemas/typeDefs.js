@@ -5,24 +5,14 @@ const typeDefs = `
     username: String!
     email: String!
     password: String!
-    authorInfo: AuthorInfo
-    readerInfo: ReaderInfo
-    createdStoriesCount: Int
-    bookmarkedStoriesCount: Int
+    createdStories: [Story]
+    bookmarkedStories: [Story]
+    toBeReadStories: [Story]
   }
 
   type Auth {
     token: ID!
     user: User
-  }
-
-  type AuthorInfo {
-    createdStories: [Story]
-  }
-
-  type ReaderInfo {
-    bookmarkedStories: [Story]
-    toBeReadStories: [Story]
   }
 
   type Story {
@@ -100,7 +90,6 @@ const typeDefs = `
     profile: User
     stories: [Story]
     story(storyId: ID!): Story
-    storiesTest: [Story]
   }
 
   type Mutation {

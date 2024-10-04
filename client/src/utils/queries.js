@@ -7,45 +7,41 @@ export const GET_PROFILE = gql`
       _id
       username
       email
-      authorInfo {
-        createdStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      createdStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
-      readerInfo {
-        bookmarkedStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
-        toBeReadStories {
-          _id
-          title
-          author
-          description
-          imageUrl
-          genre
-          tags
-          publishedDate
-          averageRating
-          ratingsCount
-        }
+      bookmarkedStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
+      }
+      toBeReadStories {
+        _id
+        title
+        author
+        description
+        imageUrl
+        genre
+        tags
+        publishedDate
+        averageRating
+        ratingsCount
       }
     }
   }

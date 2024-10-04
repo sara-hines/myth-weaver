@@ -68,7 +68,7 @@ const addStory = async (title, author, description, imageUrl, genre, tags, chapt
 
   const updatedUser = await User.findOneAndUpdate(
     { username: author },
-    { $addToSet: { 'authorInfo.createdStories': storySeed._id } },
+    { $addToSet: { 'createdStories': storySeed._id } },
     { new: true }
   );
 }

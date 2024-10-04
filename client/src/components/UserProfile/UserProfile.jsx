@@ -153,9 +153,9 @@ const UserProfile = () => {
             <h2 onClick={() => toggleSection('created')}>Stories You've Created</h2>
             {isOpen.created && (
               <div className='stories-grid'>
-                {userData?.authorInfo?.createdStories?.length > 0 ? (
+                {userData?.createdStories?.length > 0 ? (
                   <>
-                    {userData.authorInfo.createdStories.map((story) => (
+                    {userData.createdStories.map((story) => (
                       <div className='story-box' key={story._id}>
                         <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
                           <img src={story.imageUrl} alt={story.title} />
@@ -180,9 +180,9 @@ const UserProfile = () => {
             <h2 onClick={() => toggleSection('bookmarked')}>Bookmarked Stories</h2>
             {isOpen.bookmarked && (
               <div className='stories-grid'>
-                {userData?.readerInfo?.bookmarkedStories?.length > 0 ? (
+                {userData?.bookmarkedStories?.length > 0 ? (
                   <>
-                    {userData?.readerInfo?.bookmarkedStories?.map((story) => (
+                    {userData.bookmarkedStories.map((story) => (
                       <div className='story-box' key={story._id}>
                         <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
                           <img src={story.imageUrl} alt={story.title} />
@@ -208,9 +208,9 @@ const UserProfile = () => {
             <h2 onClick={() => toggleSection('tbr')}>To Be Read List</h2>
             {isOpen.tbr && (
               <div className='stories-grid'>
-                {userData?.readerInfo?.toBeReadStories?.length > 0 ? (
+                {userData?.toBeReadStories?.length > 0 ? (
                   <>
-                    {userData.readerInfo.toBeReadStories.map((story) => (
+                    {userData.toBeReadStories.map((story) => (
                       <div className='story-box' key={story._id}>
                         <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
                           <img src={story.imageUrl} alt={story.title} />
