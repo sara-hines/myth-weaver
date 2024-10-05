@@ -1,9 +1,9 @@
-/* General Styles */
+/* Selectors are listed in the order they appear in the jsx. Unless a class includes 'desktop' or 'mobile' in its name, its element will appear regardless of viewport width. */
+
 .mythweaver {
   text-align: center;
   background-color: var(--bg-color);
   min-height: 100vh;
-  /* Ensures content fits */
 }
 
 /* Used to help properly fit page elements if loading or error */
@@ -20,27 +20,58 @@
 .story-index {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   min-height: calc(100vh - var(--header-height));
-  padding: 20px;
   box-sizing: border-box;
+  padding: 40px;
 }
 
 .story-main-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: row;
   gap: 10px;
-  background-color: var(--bg-color);
-  padding: 20px;
   max-width: 80vw;
+  height: fit-content;
   margin: auto;
 }
 
+.accessory-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.story-photo-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-wrapper-mobile {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px 10px 0px 0px;
+  box-sizing: border-box;
+  z-index: 2;
+  padding: 10px;
+  margin: 0;
+}
+
+.title-wrapper-mobile .title-text-mobile {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
 .story-photo {
-  grid-area: 1 / 1 / 3 / 2;
+  display: flex;
   background-color: var(--text-color);
   text-align: center;
   border-radius: var(--border-radius);
-  margin: auto;
+  margin: 0;
 }
 
 .story-photo img {
@@ -50,65 +81,79 @@
   background-size: contain;
 }
 
-.rating {
-  grid-area: 3 / 1 / 4 / 2;
+.rating-desktop {
   display: flex;
+  width: 100%;
+  height: fit-content;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
   align-self: center;
-  padding: 5px;
   background-color: var(--rating-bg);
   border-radius: var(--border-radius);
-  height: fit-content;
-  margin: auto;
+  padding-bottom: 5px;
+  margin: 0;
 }
 
-p.rating {
-  padding: 0px;
+.rating-desktop .no-ratings-message-desktop {
+  width: 100%;
+  padding: 10px 0px 5px 0px;
 }
 
-.star {
+.rating-container-desktop {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.star-desktop {
   color: #ffcc00;
   font-size: 2rem;
+  padding: 0;
+  margin: 0;
 }
 
-.genre-tags-links {
-  grid-area: 4 / 1 / 5 / 2;
+.genre-tags-desktop {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
   background-color: var(--dk-container-color);
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  gap: 10px;
+  align-self: start;
+  border-radius: var(--border-radius);
   padding: 10px;
+}
+
+.tbr-button-container-desktop {
+  display: flex;
+  width: 100%;
   height: fit-content;
   text-align: center;
   align-content: center;
-  align-self: start;
   border-radius: var(--border-radius);
-}
-
-.tbr-button-container {
-  grid-area: 5 / 1 / 6 / 2;
   padding: 0px;
-  height: fit-content;
-  text-align: center;
-  align-content: center;
-  align-self: start;
-  border-radius: var(--border-radius);
+  margin: 0px;
 }
 
-.tbr-button {
+.tbr-button-desktop {
   background-color: var(--story-4);
   color: var(--accent-container);
-  padding: 10px 20px;
   width: 100%;
-  margin: 0;
-  align-self: flex-end;
+  height: 100%;
   border: none;
-  height: fit-content;
   border-radius: var(--border-radius);
   font-size: 18px;
   cursor: pointer;
   text-align: center;
   transition: background-color ease-in-out 0.5s;
+  padding: 10px 20px;
+  margin: 0;
 }
 
 .tbr-button:hover {
@@ -116,85 +161,224 @@ p.rating {
 }
 
 .story-description {
-  grid-area: 1 / 2 / 6 / 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
   background-color: var(--mid-dark-accent);
   color: var(--accent-container);
-  padding: 20px;
   border-radius: var(--border-radius);
   text-align: center;
-  height: fit-content;
+  padding: 40px;
+  margin: 0px auto;
 }
 
-.story-description h2 {
+.story-description .title-desktop {
   color: var(--header-text);
   text-shadow: 1px 1px 2px var(--dark-accent), 0px 0px 2px var(--dark-accent);
-  padding-bottom: 20px;
 }
 
-p.author-detail {
-  margin-bottom: 20px;
+.story-description p,
+.author-and-genre-mobile,
+.no-ratings-message-mobile,
+.rating-mobile p,
+.tags-mobile {
+  font-size: 18px;
+  color: var(--accent-container);
 }
 
-.start-adventure-button {
+.rating-mobile {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  color: #BAC8CF;
+  margin: -5px 0px 0px 0px;
+}
+
+.rating-mobile .no-ratings-message-mobile {
+  width: 100%;
+  padding: 0px;
+}
+
+.rating-container-mobile {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.star-mobile {
+  color: #ffcc00;
+  font-size: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+button.start-adventure-button {
   background-color: var(--button-accent);
   color: var(--accent-container);
-  padding: 10px 20px;
-  margin: 20px 0;
-  align-self: flex-end;
   border: none;
-  height: fit-content;
   border-radius: var(--border-radius);
   font-size: 18px;
   cursor: pointer;
   text-align: center;
   transition: background-color ease-in-out 0.5s;
+  padding: 10px 20px;
+  width: 260px;
+  text-decoration: none;
 }
 
-.start-adventure-button:hover {
+button.start-adventure-button:hover {
   background-color: var(--dk-button-accent);
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
+button.tbr-button-mobile {
+  background-color: var(--story-4);
+  color: var(--accent-container);
+  width: 260px;  
+  height: fit-content;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  align-self: center;
+  transition: background-color ease-in-out 0.5s;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.tbr-button-desktop {
+  background-color: var(--alt-button-accent);
+}
+
+/* Media Queries for responsiveness */
+
+/* For when the vw is 1001px or larger. This is the "desktop" 2-column layout. */
+@media (min-width: 1001px) {
   .story-main-content {
-    grid-template-columns: 1fr 1fr;
-    max-width: 90vw;
+    min-width: 85vw;
   }
 
-  .story-photo {
-    grid-area: 1 / 1 / 2 / 3;
+  .accessory-info {
+    gap: 10px;
   }
 
-  .rating {
-    grid-area: 2 / 1 / 3 / 3;
-    width: 100%;
+  .story-photo-wrapper {
+    min-width: 350px;
+    max-width: 500px;
+    height: auto;
   }
 
-  .genre-tags-links {
-    grid-area: 3 / 1 / 4 / 3;
+  .rating-desktop,
+  .genre-tags-desktop,
+  .tbr-button-container-desktop {
+    flex-grow: 1;
   }
 
-  .tbr-button-container {
-    grid-area: 4 / 1 / 5 / 3;
+  .rating-mobile,
+  .title-wrapper-mobile,
+  button.tbr-button-mobile, 
+  .author-and-genre-mobile, 
+  .tags-mobile {
+    display: none;
   }
 
-  .story-description {
-    grid-area: 5 / 1 / 6 / 3;
+  .story-description p, p.author-desktop {
+    font-size: 20px !important;
   }
 
-  .start-adventure-button {
-    grid-area: auto;
-    margin: 10px auto 0;
+  button.start-adventure-button {
+    font-size: 20px;
+    width: fit-content;
   }
 }
 
-@media (min-width: 480px) {
-  .rating {
-    max-width: 250px;
+
+/* For when the vw is 1000px or smaller. This is the "mobile" single-column layout. */
+@media (max-width: 1000px) {
+  .story-main-content {
+    flex-direction: column;
   }
 
-  .story-photo {
-    max-height: 300px;
-    max-width: 300px;
+  .rating-desktop, 
+  .genre-tags-desktop, 
+  .tbr-button-container-desktop,
+  .story-description .title-desktop, 
+  p.author-desktop {
+    display: none;
+  }
+
+  .story-main-content .story-description {
+    padding: 30px;
+    gap: 30px;
+  }
+}
+
+/* For when the vw is 780px or larger. This helps the photo from becoming too large and ensures the .title-text-mobile is large enough. */
+@media (min-width: 780px) {
+  .title-text-mobile {
+    font-size: 28px;
+  }
+
+  .story-main-content {
+    max-width: 60vw;
+  }
+
+  .story-description p,
+  .author-and-genre-mobile,
+  .no-ratings-message-mobile,
+  .rating-mobile p,
+  .tags-mobile {
+    font-size: 18px;
+  }
+}
+
+/* For when the vw is 700px or smaller */
+@media (max-width: 700px) {
+  button.start-adventure-button {
+    width: 100%;
+  }
+
+  button.tbr-button-mobile {
+    width: 100%;
+  }
+}
+
+/* For when the vw is 600px or smaller */
+@media (max-width: 600px) {
+  .title-text-mobile {
+    font-size: 20px !important;
+  }
+
+  .story-description p, 
+  .author-and-genre-mobile, 
+  .no-ratings-message-mobile, 
+  .rating-mobile p, 
+  .tags-mobile {
+    font-size: 16px !important;
+  }
+
+  button.start-adventure-button {
+    font-size: 18px;
+  }
+}
+
+/* For when the vw is 480px or smaller */
+@media (max-width: 480px) {
+  .title-text-mobile {
+    font-size: 18px !important;
+  }
+
+  .story-description p {
+    font-size: 16px;
+  }
+
+  button.start-adventure-button {
+    font-size: 18px;
   }
 }
