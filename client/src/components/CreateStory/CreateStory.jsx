@@ -79,7 +79,8 @@ function CreateStory() {
     if (currentChapter.choices.length < 3) {
       setCurrentChapter(prevState => ({
         ...prevState,
-        choices: [...prevState.choices, { choiceText: '', nextChapterIndex: null }]
+        choices: [...prevState.choices, { choiceText: '', nextChapterIndex: null }],
+        isEnd: false // Automatically unmark as end if a choice is added
       }));
     } else {
       alert('You can only add up to three choices.');
@@ -293,11 +294,25 @@ function CreateStory() {
       {/* Modal for adding or editing a chapter */}
       <Modal
         isOpen={isChapterModalOpen}
-        onRequestClose={() => setIsChapterModalOpen(false)}
-        className='modal'
-        overlayClassName='overlay'
+        onRequestClose={() => {
+          // Reset the current chapter and close the modal
+          setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+          setIsChapterModalOpen(false);
+        }}
+        className="modal"
+        overlayClassName="overlay"
       >
-        <h2>{chapterIndexToEdit !== null ? 'Edit Chapter' : 'Add New Chapter'}</h2>
+        <div className="modal-header">
+          <h2>{chapterIndexToEdit !== null ? 'Edit Chapter' : 'Add New Chapter'}</h2>
+          <button
+            className="close-button"
+            onClick={() => {
+              setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+              setIsChapterModalOpen(false);
+            }}
+          >
+          </button>
+        </div>
         <form onSubmit={handleChapterSubmit}>
           <label htmlFor='chapterTitle'>Title:</label>
           <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
@@ -308,7 +323,16 @@ function CreateStory() {
             <input
               type='checkbox'
               checked={currentChapter.isEnd}
-              onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
+              onChange={(e) => {
+                handleChapterChange('isEnd', e.target.checked);
+                if (e.target.checked) {
+                  // Clear all choices at once when the "Ends Story" checkbox is checked
+                  setCurrentChapter(prevState => ({
+                    ...prevState,
+                    choices: [] // Reset the choices array to empty
+                  }));
+                }
+              }}
             />
           </label>
 
@@ -333,11 +357,25 @@ function CreateStory() {
       {/* Modal for adding a new chapter for a specific choice */}
       <Modal
         isOpen={isChoiceModalOpen}
-        onRequestClose={() => setIsChoiceModalOpen(false)}
-        className='modal'
-        overlayClassName='overlay'
+        onRequestClose={() => {
+          // Reset the current chapter and close the modal
+          setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+          setIsChoiceModalOpen(false);
+        }}
+        className="modal"
+        overlayClassName="overlay"
       >
-        <h2>Add New Chapter for Choice</h2>
+        <div className="modal-header">
+          <h2>Add New Chapter for Choice</h2>
+          <button
+            className="close-button"
+            onClick={() => {
+              setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
+              setIsChoiceModalOpen(false);
+            }}
+          >
+          </button>
+        </div>
         <form onSubmit={handleChoiceSubmit}>
           <label htmlFor='chapterTitle'>Title:</label>
           <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
@@ -348,7 +386,16 @@ function CreateStory() {
             <input
               type='checkbox'
               checked={currentChapter.isEnd}
-              onChange={(e) => handleChapterChange('isEnd', e.target.checked)}
+              onChange={(e) => {
+                handleChapterChange('isEnd', e.target.checked);
+                if (e.target.checked) {
+                  // Clear all choices at once when the "Ends Story" checkbox is checked
+                  setCurrentChapter(prevState => ({
+                    ...prevState,
+                    choices: [] // Reset the choices array to empty
+                  }));
+                }
+              }}
             />
           </label>
 

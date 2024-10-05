@@ -118,59 +118,107 @@ const StoryIndex = () => {
     );
   }
 
-  // Render the story details.
+  // Render the story details. 
   return (
     <div className='mythweaver'>
       <div className='story-index'>
         <main className='story-main-content'>
-          <div className='story-photo'>
-            <img src={story.imageUrl} alt={story.title} />
-          </div>
+          <div className='accessory-info'>
 
-          <div className='rating'>
-            {/* If there are no reviews, so no ratings, display the No Ratings message. */}
-            {story?.reviews?.length === 0 || !story?.reviews ? (
-              <p>No ratings yet!</p>
-            ) : (
-              // If there are ratings, render stars and a message explaining the average rating.
-              <>
-                <div className='display-star-rating star'>
-                    {renderStars(story.averageRating)}
+            <div className='story-photo-wrapper'>
+              {/* On mobile view, this div.title-wrapper-mobile displays the title on a transparent background on top of the photo. */}
+              <div className='title-wrapper-mobile'>
+                <p className='title-text-mobile'>{story.title}</p>
+              </div>
+              <div className='story-photo'>
+                <img src={story.imageUrl} alt={story.title} />
+              </div>
+            </div>
+
+            {/* Start of rating container which only appears here on the desktop view */}
+            <div className='rating-desktop'>
+              {/* If there are no reviews, so no ratings, display the No Ratings message. */}
+              {story?.reviews?.length === 0 || !story?.reviews ? (
+                <p className='no-ratings-message-desktop'>No ratings yet. Be the first to rate this story after reading it!</p>
+              ) : (
+                // If there are ratings, render stars and a message explaining the average rating.
+                <div className='rating-container-desktop'>
+                  <div className='star-desktop'>
+                      {renderStars(story.averageRating)}
+                  </div>
+                  <div className='rating-desktop'>
+                    {story.ratingsCount === 1 ? (
+                      <p>Rated {story.averageRating} star{story.averageRating > 1 ? 's' : ''} by 1 person</p>
+                    ) : (
+                      <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people</p>)}
+                  </div>
                 </div>
-                <div className='rating'>
-                  {story.ratingsCount === 1 ? (
-                    <p>Rated {story.averageRating} star{story.averageRating > 1 ? 's' : ''} by 1 person</p>
-                  ) : (
-                    <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people</p>)}
-                </div>
-              </>
+              )}
+            </div>
+            {/* End of rating container which only appears here on the mobile view */}
+
+            {/* On desktop view, genre and tags appear here. */}
+            <div className='genre-tags-desktop'>
+              <div>Genre: {story.genre}</div>
+              <div>Tags: {formatTags(story.tags)}</div>
+            </div>
+
+            {/* If the user is logged in and in desktop view, render a button to add/remove the story to/from the user's TBR list. */}
+            {Auth.loggedIn() && (
+              <div className='tbr-button-container-desktop'>
+                <button className='tbr-button-desktop' onClick={handleToggleTBR}>
+                  {isInTBR ? 'Remove from To Be Read List' : 'Add to To Be Read List'}
+                </button>
+              </div>
             )}
           </div>
 
-          {/* Display genre and tags. */}
-          <div className='genre-tags-links'>
-            <div>Genre: {story.genre}</div>
-            <div>Tags: {formatTags(story.tags)}</div>
-          </div>
-
-          {/* If the user is logged in, render a button to add/remove the story to/from the user's TBR list. */}
-          {Auth.loggedIn() && (
-            <div className='tbr-button-container'>
-              <button className='tbr-button' onClick={handleToggleTBR}>
-                {isInTBR ? 'Remove from To Be Read List' : 'Add to To Be Read List'}
-              </button>
-            </div>
-          )}
-
           {/* Render the story title, author, description, and link/button to start the story. */}
           <div className='story-description'>
-            <h2>{story.title}</h2>
-            <p className='author-detail'>Created by {story.author}</p>
+            <h2 className='title-desktop'>{story.title}</h2>
+            <p className='author-desktop'>Created by {story.author}</p>
             <p>{story.description}</p>
-            <Link to={`/story-path/${story._id}`}>
-              <button className='start-adventure-button'
-              >Start your Adventure Here</button>
-            </Link>
+
+            <div className='author-and-genre-mobile'>Created by {story.author} in MythWeaver's {story.genre} genre.</div>
+
+            {/* Start of rating container which only appears here on the mobile view */}
+            <div className='rating-mobile'>
+              {/* If there are no reviews, so no ratings, display the No Ratings message. */}
+              {story?.reviews?.length === 0 || !story?.reviews ? (
+                <p className='no-ratings-message-mobile'>No ratings yet. Be the first to rate this story after playing through it!</p>
+              ) : (
+                // If there are ratings, render stars and a message explaining the average rating.
+                <div className='rating-container-mobile'>
+                  <div className='star-mobile'>
+                    {renderStars(story.averageRating)}
+                  </div>
+                  <div className='rating-mobile'>
+                    {story.ratingsCount === 1 ? (
+                      <p>Rated {story.averageRating} star{story.averageRating > 1 ? 's' : ''} by 1 person</p>
+                    ) : (
+                      <p>Rated {story.averageRating} stars on average by {story.ratingsCount} people</p>)}
+                  </div>
+                </div>
+              )}
+            </div>
+            {/* End of rating container which only appears here on the mobile view */}
+
+            {/* On mobile view, tags appear here. */}
+            <div className='tags-mobile'>Tags: {formatTags(story.tags)}</div>
+
+              {/* If the user is logged in and in mobile view, render a button to add/remove the story to/from the user's TBR list. */}
+              {Auth.loggedIn() && (
+                  <button className='tbr-button-mobile' onClick={handleToggleTBR}>
+                    {isInTBR ? 'Remove from To Be Read List' : 'Add to To Be Read List'}
+                  </button>
+              )}
+
+              <Link to={`/story-path/${story._id}`}>
+                <button className='start-adventure-button'
+                >Start your Adventure Here</button>
+              </Link>
+
+
           </div>
         </main>
       </div>

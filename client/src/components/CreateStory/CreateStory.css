@@ -160,11 +160,27 @@
 }
 
 .close-button {
-  background: none;
-  border: none;
-  color: #fff;
-  /* White color */
+  font-size: 2rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 2rem;
+  height: 2rem;
+  color: #A94E6F;
   cursor: pointer;
+}
+
+.close-button::before {
+  content: '×';
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close-button:hover {
+  color: #BD85B2;
 }
 
 .editor-content {
@@ -224,11 +240,9 @@
   text-align: center;
   transition: background-color ease-in-out 0.5s;
   padding: 5px 10px;
-  /* margin: 10px 0px 10px 0px; */
   margin-bottom: 20px;
   margin-top: -5px;
   min-width: 113px;
-  /* min-height: 42.4px; */
 }
 
 .add-choice-button {
@@ -376,8 +390,6 @@ button.save-button:hover {
   margin-left: 200px;
 }
 
-/* Add more indentation levels as needed */
-
 /* Form elements with flexbox for better alignment */
 form label,
 form input,
@@ -386,9 +398,6 @@ form select {
   display: block;
   width: 100%;
   margin: 0px;
-  /* padding: 0px; */
-  /* margin-bottom: 10px; */
-  /* margin: 10px 0px; */
 }
 
 form .form-group {
@@ -458,6 +467,11 @@ textarea#chapterContent
 
   .editor-header {
     padding: 5px;
+  }
+
+  .close-button {
+    top: 10px;
+    right: 10px;
   }
 
   .editor-content {
