@@ -1,43 +1,51 @@
+.story-grid a {
+  text-decoration: none;
+}
+
 .mythweaver {
   text-align: center;
   background-color: var(--bg-color);
-  min-height: 100vh;
   /* Ensures content fits */
+  min-height: 100vh;
 }
 
 .main-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - var(--header-height));
   /* Adjust based on header height */
+  min-height: calc(100vh - var(--header-height));
   padding: 20px;
 }
 
 .story-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   /* Default to 3 columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
-  /* Added padding for better spacing */
 }
 
 .story-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   overflow: hidden;
   border-radius: var(--border-radius);
   width: 100%;
-  /* Fit the grid cell */
   height: 300px;
   font-size: 12px;
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .story-image-wrapper {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 .story-image {
@@ -48,43 +56,33 @@
 }
 
 .story-title-container {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px;
   box-sizing: border-box;
   margin: 0;
   font-size: 1.2em;
-  z-index: 2;
   /* Ensure it is above the image */
+  z-index: 2;
 }
 
 .story-title-container .story-title {
   color: white;
-  /* Ensure title text color is white */
   margin: 0;
 }
 
 .story-info {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding-bottom: 10px;
-  box-sizing: border-box;
   transition: opacity 0.3s ease;
   opacity: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  text-align: center;
   z-index: 1;
-  /* Ensure it is below the title */
 }
 
 .story-container:hover .story-image {
@@ -95,59 +93,52 @@
   opacity: 1;
 }
 
-.story-author,
-.story-description,
-.story-stars {
+p.story-description {
   margin: 4px 0;
   font-size: 1.2em;
-}
-
-.story-author {
-  font-size: 1.4em;
-  margin-bottom: 10px;
-}
-
-p.story-description {
-  font-size: 1.2em;
   color: white;
-  display: flex;
-  margin-bottom: 30px;
 }
 
-.story-stars {
-  font-size: 1.2em;
-}
 
 /* Media Queries for responsiveness */
 @media (max-width: 1200px) {
   .story-grid {
-    grid-template-columns: repeat(2, 1fr);
     /* 2 columns for medium screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .story-grid {
-    grid-template-columns: repeat(1, 1fr);
     /* 1 column for small screens */
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .story-container {
-    height: 250px;
     /* Adjust height for smaller screens */
+    height: 250px;
   }
 }
 
 @media (max-width: 480px) {
-  .story-container {
-    height: 200px;
-    /* Adjust height for smaller screens */
+  .story-grid {
+    padding: 10px;
   }
 
-  .story-author,
-  .story-description,
-  .story-stars {
-    font-size: 1em;
-    /* Adjust font size for smaller screens */
+  .story-container {
+    /* Adjust height for smaller screens */
+    height: 320px;
+  }
+
+  p.story-description {
+    font-size: 14.5px;
+    line-height: 1.4;
+    padding: 20px;
+    /* 46px is the height of 1-liner titles at these viewport widths, and adding a 46px margin-bottom helps the p.story-description appear to be more in the vertical middle of the div.story-container. */
+    margin-bottom: 46px;
+  }
+
+  .story-title-container .story-title {
+    font-size: 20px;
   }
 }

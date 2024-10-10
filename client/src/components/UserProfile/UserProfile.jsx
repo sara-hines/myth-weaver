@@ -142,6 +142,7 @@ const UserProfile = () => {
   return (
     <div className='user-profile'>
       <main className='user-main-content'>
+        <h1 className='welcome-message'>Welcome, {userData?.username}!</h1>
         <div className='button-container'>
           {/* Navigate to /create-story on click. */}
           <div className='profile-button' onClick={handleCreateStory}>Create A New Story</div>
@@ -169,7 +170,7 @@ const UserProfile = () => {
                     ))}
                   </>
                 ) : (
-                  <h1 className='no-data-message'>You haven't created any stories!</h1>
+                  <h1 className='no-data-message'>You haven't created any stories yet.</h1>
                 )}
               </div>
             )}
@@ -197,7 +198,7 @@ const UserProfile = () => {
                     ))}
                   </>
                 ) : (
-                  <h1 className='no-data-message'>You don't have any bookmarked stories!</h1>
+                  <h1 className='no-data-message'>You don't have any bookmarked stories.</h1>
                 )}
               </div>
             )}

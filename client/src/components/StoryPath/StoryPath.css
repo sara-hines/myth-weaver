@@ -17,7 +17,7 @@
 .story-path-container {
   margin: 0 auto;
   max-width: 60vw;
-  padding: 20px;
+  padding: 10px;
 }
 
 .story-path-container h1 {
@@ -135,11 +135,11 @@
   }
 
   .story-path-container h1 {
-    font-size: 1.5em;
+    font-size: 20px;
   }
 
   .story-path-container p {
-    font-size: 1em;
+    font-size: 15px;
   }
 
   .options {
@@ -148,7 +148,7 @@
   }
 
   .option {
-    font-size: 0.9em;
+    font-size: 14.5px;
     padding: 8px 15px;
   }
 
@@ -158,7 +158,7 @@
   }
 
   .bookmark {
-    font-size: 0.9em;
+    font-size: 15px;
     padding: 8px 15px;
   }
 }

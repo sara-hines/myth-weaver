@@ -1,11 +1,12 @@
 /* General Styles */
 .about-us-container {
-  background-color: var(--bg-color);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 50px;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  width: 100%;
 }
 
 .about-us-main {
@@ -21,16 +22,16 @@
 .about-us-card {
   background-color: var(--container-color);
   border-radius: var(--border-radius);
-  padding: 25px;
-  margin: 12.5px;
   text-align: center;
   width: 100%;
+  padding: 25px;
+  margin: 12.5px;
 }
 
 .about-us-title {
   font-size: 24px;
-  margin: 10px 0px;
   color: var(--header-text);
+  margin: 10px 0px;
 }
 
 .about-us-description {
@@ -44,8 +45,8 @@
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
   width: 100%;
+  gap: 25px;
   padding-top: 10px;
 }
 
@@ -53,43 +54,42 @@
   display: flex;
   flex-direction: column;
   border: 1px solid var(--text-color);
+  border-radius: var(--border-radius);
   background-color: var(--accent-container);
   padding: 15px;
-  border-radius: var(--border-radius);
 }
 
 .team-member-info {
   display: flex;
+  flex-direction: column;
   align-items: center;
   align-content: center;
   color: var(--text-color);
-  flex-direction: column;
-  /* Adjust for smaller screens */
 }
 
 .team-member-img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  object-fit: cover;
   margin-top: 10px;
 }
 
 .team-member-text {
-  padding: 10px;
   text-align: center;
-  /* Adjust for smaller screens */
+  padding: 10px;
 }
 
 .team-member-name {
-  margin: 0;
   color: var(--header-title);
   transition: all ease-in-out 0.5s;
+  margin: 0;
   padding: 10px 0px;
 }
 
 .team-member-description {
-  margin: 0;
   text-align: justify;
+  margin: 0;
 }
 
 /* Media Queries */
@@ -123,19 +123,34 @@
 @media (max-width: 480px) {
   .about-us-main {
     max-width: 95vw;
+    padding: 30px 15px 0px 15px;
+  }
+
+  .about-us-card {
+    margin-top: 0px;
+    margin-bottom: 30px;
   }
 
   .about-us-title {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .about-us-description {
-    font-size: 14px;
+    font-size: 14.5px;
+    line-height: 1.4;
   }
 
-  .team-member-img {
-    width: 60px;
-    height: 60px;
+  .team-grid {
+    gap: 15px;
+  }
+
+  .team-member-name {
+    font-size: 18px;
+  }
+
+  .team-member-description {
+    font-size: 14.5px;
+    line-height: 1.4;
   }
 
   .team-member-text {

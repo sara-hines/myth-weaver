@@ -76,7 +76,7 @@ const Header = () => {
             </>
           )}
           {/* When the user is at /user-profile, the link on the right of the header will be Stories, navigating to /myth-index. */}
-          {location.pathname === '/user-profile' && (
+          {(location.pathname === '/user-profile' || location.pathname === '/about-us') && (
             <Link to='/myth-index' className='header-link'>
               <button className='header-button'>Stories</button>
             </Link>

@@ -19,10 +19,10 @@ form textarea,
 form select {
   width: 100%;
   padding: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 25px;
   border: 1px solid var(--mid-dark-accent);
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   font-size: 16px;
   background-color: var(--story-5);
   color: var(--text-color);
@@ -105,4 +105,29 @@ option {
 /* Class to gradually achieve full transparency for the success or error message. */
 .fade-out {
   opacity: 0;
+}
+
+@media (max-width: 480px) {
+  .contact-field-error, 
+  .type-field-error, 
+  .success-message, 
+  .error-message {
+    font-size: 15px;
+  }
+
+
+  form input[type='text'],
+  form input[type='email'],
+  form textarea,
+  form select {
+    font-size: 14.5px;
+    padding: 7px;
+    margin-bottom: 20px;
+  }
+
+  #contact-form-btn {
+    padding: 15px 20px;
+    padding: 10px 0;
+    margin: 5px 0px 0px;
+  }
 }
