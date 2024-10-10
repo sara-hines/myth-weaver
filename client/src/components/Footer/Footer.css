@@ -1,14 +1,11 @@
 .footer {
-  box-sizing: border-box;
   background: var(--mid-dark-accent);
-  padding: 20px 0;
   color: var(--dk-button-accent);
   text-align: center;
   align-items: center;
-  font-size: 1.05rem;
-  max-height: 40px;
+  padding: 40px 0;
 }
 
-.copyright-wrapper {
-  margin-top: -10px;
+.footer .copyright-wrapper p {
+  font-size: 16px;
 }

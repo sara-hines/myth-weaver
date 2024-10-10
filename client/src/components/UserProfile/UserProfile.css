@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  width: 100%;
 }
 
 .user-main-content {
@@ -14,6 +15,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.welcome-message {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: var(--button-accent);
 }
 
 .button-container {
@@ -132,7 +140,8 @@ p.story-author {
   background-color: var(--header-title);
   color: var(--header-link-hover);
   border: none;
-  padding: 8px 12px;
+  /* padding: 8px 12px; */
+  padding: 7px;
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: opacity ease-in-out 0.3s;
@@ -160,9 +169,21 @@ p.story-author {
 }
 
 /* Media Queries for responsiveness */
-@media (max-width: 1200px) {
+
+/* Covers all viewport widths greater than 767px and up through the largest viewport widths */
+@media (max-width: 2000px) {
   .user-main-content {
     max-width: 80vw;
+  }
+
+  /* The full height of the footer doesn't fit nicely at this viewport size, so giving the div.user-profile extra height pushes the footer down and out of sight. */
+  div.user-profile {
+    min-height: calc((100vh - var(--header-height)) + 104px);
+  }
+
+  .welcome-message {
+    margin-bottom: 29.2px;
+    font-size: 36px;
   }
 
   .story-box {
@@ -170,9 +191,18 @@ p.story-author {
   }
 }
 
+/* For viewport widths 481px - 768px */
 @media (max-width: 768px) {
   .user-main-content {
     max-width: 90vw;
+  }
+
+  div.user-profile {
+    min-height: calc(100vh - var(--header-height));
+  }
+
+  .welcome-message {
+    font-size: 32px;
   }
 
   .story-box {
@@ -190,31 +220,54 @@ p.story-author {
   }
 }
 
+/* For viewport widths 480px and smaller */
 @media (max-width: 480px) {
   .user-main-content {
     max-width: 100vw;
     padding: 10px;
   }
 
-  .story-box {
-    width: calc(100% - 20px);
+  .welcome-message {
+    font-size: 24px;
+    /* This margin-top is designed to give 100px total vertical space between the header and the h1.welcome-message, to mimic the 100px vertical height of the footer. */
+    margin-top: 31.6px;
+    margin-bottom: 15px;
   }
 
   .profile-button {
-    font-size: 16px;
+    font-size: 18px;
     padding: 8px;
   }
 
+  .stories-grid {
+    gap: 15px;
+  }
+
+  .story-box {
+    width: calc(100% - 20px);
+    margin-bottom: 0;
+  }
+
   .story-section h2 {
-    font-size: 16px;
+    font-size: 18px;
     padding: 8px;
   }
 
   .story-box h3 {
-    font-size: 0.9rem;
+    font-size: 16px;
   }
 
   .story-box p {
-    font-size: 0.8rem;
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+
+  button.delete-btn,
+  button.remove-btn {
+    font-size: 15px;
+  }
+
+  .no-data-message {
+    font-size: 16px;
   }
 }

@@ -77,8 +77,8 @@
 .story-photo img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: var(--border-radius);
-  background-size: contain;
 }
 
 .rating-desktop {
@@ -213,9 +213,9 @@
 
 .star-mobile {
   color: #ffcc00;
-  font-size: 2rem;
+  font-size: 22px;
   padding: 0;
-  margin: 0;
+  margin-bottom: 5px;
 }
 
 button.start-adventure-button {
@@ -340,10 +340,7 @@ button.tbr-button-mobile {
 
 /* For when the vw is 700px or smaller */
 @media (max-width: 700px) {
-  button.start-adventure-button {
-    width: 100%;
-  }
-
+  button.start-adventure-button, 
   button.tbr-button-mobile {
     width: 100%;
   }
@@ -363,22 +360,41 @@ button.tbr-button-mobile {
     font-size: 16px !important;
   }
 
-  button.start-adventure-button {
+  button.start-adventure-button, 
+  button.tbr-button-mobile {
     font-size: 18px;
   }
 }
 
 /* For when the vw is 480px or smaller */
 @media (max-width: 480px) {
+  .story-index {
+    padding: 30px;
+  }
+
+  .story-main-content {
+    max-width: 100%;
+  }
+
+  .story-photo {
+    height: 320px;
+  }
+
   .title-text-mobile {
-    font-size: 18px !important;
+    font-size: 20px !important;
   }
 
-  .story-description p {
-    font-size: 16px;
+  .story-description p,
+  .author-and-genre-mobile,
+  .no-ratings-message-mobile,
+  .rating-mobile p,
+  .tags-mobile {
+    font-size: 14.5px !important;
+    line-height: 1.4;
   }
 
-  button.start-adventure-button {
-    font-size: 18px;
+  button.start-adventure-button, 
+  button.tbr-button-mobile {
+    font-size: 15px;
   }
 }

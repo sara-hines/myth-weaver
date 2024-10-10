@@ -17,11 +17,11 @@
 
 .landing-title {
   margin: 0;
-  font-size: 50px;
+  font-size: 46px;
   color: var(--header-text);
   position: relative;
-  top: -252px;
-  left: -20px;
+  top: -265px;
+  left: -29px;
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-name: zoomIn;
@@ -30,17 +30,22 @@
 
 .slogan {
   position: relative;
-  top: -242px;
-  left: -22px;
+  top: -251px;
+  left: -27px;
   font-size: 20px;
   color: var(--dark-accent);
   z-index: 3;
 }
 
+.slogan-mobile-1,
+.slogan-mobile-2 {
+  display: none;
+}
+
 .cta-button {
   position: absolute;
   bottom: 43%;
-  left: 49%;
+  left: 48.5%;
   transform: translateX(-50%);
   display: inline-block;
   padding: 10px 20px;
@@ -53,7 +58,7 @@
 }
 
 .cta-button:hover {
-  background: var(--header-title);
+  background: #6B4899;
 }
 
 .images-section .container {
@@ -73,12 +78,22 @@
 .scroll-image {
   position: relative;
   z-index: 1;
+  height: 410px;
+  width: auto;
+}
+
+.vertical-scroll {
+  display: none;
+}
+
+.quill-for-mobile {
+  display: none;
 }
 
 .upright {
   position: absolute;
   top: 50%;
-  left: 25%;
+  left: 24%;
   transform: translateY(-50%);
   z-index: 2;
 }
@@ -93,11 +108,12 @@
 
 .book-image {
   position: absolute;
-  top: 9.8%;
+  top: 12%;
   right: 40%;
   z-index: 1;
-  width: 260px;
+  width: 230px;
   height: auto;
+  /* transform: rotate(-10deg); */
 }
 
 .coinpurse-image {
@@ -117,19 +133,10 @@
 
 .map-image {
   position: absolute;
-  top: 26.1%;
-  left: 36%;
+  top: 30%;
+  left: 33%;
   transform: translate(-50%, -50%);
   z-index: 0;
-}
-
-.footer {
-  background: var(--mid-dark-accent);
-  padding: 50px 0;
-  color: var(--dk-button-accent);
-  text-align: center;
-  margin-bottom: -100px;
-  font-size: 1.05rem;
 }
 
 /* When the screen gets smaller than the average screen the smaller images disappear. - Haleigh */
@@ -143,32 +150,241 @@
   .upside-down {
     display: none;
   }
+
+  .cta-button {
+    left: 48%;
+  }
 }
 
-/* Hide scroll image and adjust elements for smaller screens */
-@media (max-width: 670px) {
-  .scroll-image {
-    display: none;
+@media (max-width: 1600px) {
+  .slogan {
+    left: -30px;
   }
+  .cta-button {
+    left: 47.5%;
+  }
+}
 
+@media (max-width: 1200px) {
   .landing-title {
-    font-size: 36px;
-    top: 0;
-    left: 0;
+    left: -13px;
   }
 
   .slogan {
-    font-size: 18px;
-    top: 0;
-    left: 0;
-    margin-top: 10px;
+    left: -12px;
   }
 
   .cta-button {
-    position: relative;
+    left: 48%;
+  }
+}
+
+/* Hide horizontal scroll image, add vertical scroll and quill, and adjust elements for smaller screens */
+/* used to be 670 */
+@media (max-width: 780px) {
+  .hero {
+    position: fixed;
+    top: 0;
     bottom: 0;
     left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .scroll-image,
+  .slogan {
+    display: none;
+  }
+
+  .vertical-scroll {
+    display: block;
+    position: relative;
+    top: 0%;
+    right: 2%;
+    z-index: 1;
+    height: 65vh;
+  }
+
+  .quill-for-mobile {
+    display: block;
+    position: absolute;
+    bottom: 10%;
+    left: 60%;
+    z-index: 2;
+    height: 37vh;
+  }
+
+  .landing-title {
+    position: absolute;
+    top: 29%;
+    left: 34%;
+    font-size: 42px;
+    text-shadow:
+      1px 1px 2px rgba(0, 0, 0, 0.2),
+      2px 2px 4px rgba(0, 0, 0, 0.05),
+      3px 3px 6px rgba(0, 0, 0, 0.03);
+  }
+
+  .slogan-mobile-1,
+  .slogan-mobile-2 {
+    display: block;
+    position: absolute;
+    left: 36%;
+    z-index: 2;
+    color: #3B3434;
+    font-size: 20px;
+    text-shadow:
+      1px 1px 2px rgba(0, 0, 0, 0.1),
+      2px 2px 4px rgba(0, 0, 0, 0.05),
+      3px 3px 6px rgba(0, 0, 0, 0.03);
+  }
+
+  .slogan-mobile-1 {
+    top: 39%;
+  }
+
+  .slogan-mobile-2 {
+    top: 46%;
+  }
+
+  .cta-button {
+    position: absolute;
+    height: fit-content;
+    top: 54%;
+    left: 32%;
     transform: none;
-    margin-top: 20px;
+    box-shadow:
+      -2px 4px 8px rgba(0, 0, 0, 0.05),
+      -4px 8px 16px rgba(0, 0, 0, 0.04),
+      -6px 12px 24px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@media (max-width: 630px) {
+
+  .vertical-scroll {
+    height: 60vh;
+    top: 0%;
+  }
+
+  .quill-for-mobile {
+    height: 32vh;
+    bottom: 12%;
+  }
+
+  .landing-title {
+    left: 33%;
+  }
+
+  .slogan-mobile-1, .slogan-mobile-2 {
+    left: 36%;
+  }
+  
+  .cta-button {
+    left: 30%;
+  }
+}
+
+@media (max-width: 530px) {
+
+  .landing-title {
+    left: 31%;
+  }
+
+  .slogan-mobile-1, .slogan-mobile-2 {
+    left: 33%;
+  }
+
+  .cta-button {
+    left: 28%;
+  }
+}
+
+@media (max-width: 480px) {
+  .vertical-scroll {
+    height: 50vh;
+    top: 0%;
+  }
+
+  .quill-for-mobile {
+    height: 28vh;
+    bottom: 17%;
+    left: 57%;
+  }
+
+  .landing-title {
+    top: 31%;
+    left: 33%;
+    font-size: 32px;
+  }
+
+  .slogan-mobile-1, .slogan-mobile-2 {
+    left: 36%;
+    font-size: 16px;
+  }
+
+  .slogan-mobile-1 {
+    top: 40%;
+  }
+
+  .slogan-mobile-2 {
+    top: 45%;
+  }
+
+  .cta-button {
+    top: 52%;
+    left: 30%;
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 450px) {
+  .landing-title {
+    left: 32%;
+  }
+  
+  .slogan-mobile-1, .slogan-mobile-2 {
+    left: 36%;
+  }
+
+  .cta-button {
+    left: 30%;
+  }
+}
+
+@media (max-width: 410px) {
+  .landing-title {
+    left: 32%;
+  }
+
+  .slogan-mobile-1,
+  .slogan-mobile-2 {
+    left: 34%;
+  }
+
+  .cta-button {
+    left: 28%;
+  }
+}
+
+@media (max-width: 350px) {
+  .vertical-scroll {
+    right: 0%;
+  }
+
+  .quill-for-mobile {
+    left: 59%;
+    height: 28vh;
+  }
+
+  .landing-title {
+    left: 29%;
+  }
+
+  .cta-button {
+    top: 52%;
+    left: 25%;
   }
 }
