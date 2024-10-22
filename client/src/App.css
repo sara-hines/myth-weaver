@@ -10,6 +10,11 @@ html {
   overflow-y: scroll;
 }
 
+body.modal-open {
+  width: 100vw;
+  overflow: hidden;
+}
+
 /* Default (fairycore) theme */
 :root {
   font-size: 16px;
@@ -24,6 +29,13 @@ html {
   /* #d3c9c6 */
   --text-color: rgb(100, 91, 89);
   /* #645b59 */
+  --cool-white: rgb(231, 239, 243);
+  /* #E7EFF3 */
+  --warm-white: rgb(255, 251, 251);
+  /* #FFFBFB */
+  --neutral-white: rgb(241, 246, 248);
+  /* #F1F6F8 */
+  /* try not to use the above --neutral-white for anything other than the scrollbar track */
   --container-color: rgb(216, 184, 153);
   /* #d8b899 */
   --accent-container: rgb(223, 240, 248);
@@ -33,13 +45,13 @@ html {
   /* #847d7c */
   --button-accent: rgb(176, 86, 93);
   /* #b0565d */
-  --dk-button-accent: rgb(155, 63, 78);
+  --dk-button-accent: rgb(134, 51, 65);
   /* #9b3f4e */
   --dk-container-color: rgb(232, 157, 117);
   /* #e89d75 */
   --rating-bg: rgb(177, 202, 203);
   /* #b1cacb */
-  --alt-button-accent: rgb(107, 76, 158);
+  --alt-button-accent: rgb(88, 57, 138);
   /* #6B4C9E */
 
   /* HEADER VARIABLES */
@@ -75,6 +87,8 @@ html {
   /* #e8f0fe */
   --story-10: rgb(0, 0, 179);
   /* #0000b3 */
+  --story-11: rgb(189, 133, 178);
+  /* #BD85B2 */
 }
 
 /* Dark theme */
@@ -124,4 +138,27 @@ html {
   margin-top: 20px;
   font-size: 1.5em;
   color: var(--header-title);
+}
+
+/* Styling for the browser's scrollbar and the scrollbar that appears around the story structure UI in CreateStory.jsx */
+/* Entire scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: var(--neutral-white);
+  border-radius: 10px;
+}
+
+/* Handle (draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: var(--mid-dark-accent);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(112, 105, 104);
 }

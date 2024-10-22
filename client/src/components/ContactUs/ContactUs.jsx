@@ -84,9 +84,9 @@ export default function ContactUs() {
 
   return (
     /* Contact Us section including Contact Form */
-    <div className='about-us-card' id='contact-us-section'>
-      <h2 className='about-us-title'>Contact Us</h2>
-      <p className='about-us-description'>Welcome to MythWeaver! We are thrilled to have you explore our platform, and we value your feedback and ideas. At MythWeaver, our mission is to create a community where stories and creativity flourish. Whether you have a question, a suggestion, or simply want to share your thoughts, we’re here to listen.</p>
+    <div className='about-us-card' id='contact-us-section' >
+      <h2 className='about-us-title' >Contact Us</h2>
+      <p className='about-us-description'>At MythWeaver, our mission is to create a community where stories and creativity flourish. Whether you have a question, a suggestion, or simply want to share your thoughts, we’re here to listen.</p>
 
       {/* Contact Form */}
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -157,9 +157,9 @@ export default function ContactUs() {
           })}
         >
           <option value='' disabled>Select type</option>
-          <option value='Bug Report'>Bug Report</option>
-          <option value='Question'>Question</option>
           <option value='Feedback'>Feedback</option>
+          <option value='Question'>Question</option>
+          <option value='Bug Report'>Bug Report</option>
         </select>
 
         {/* Display error message if type field validation fails */}

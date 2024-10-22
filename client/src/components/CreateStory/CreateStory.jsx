@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import './CreateStory.css';
 import Auth from '../../utils/auth';
 import UploadImage from '../UploadImage/UploadImage';
+import FadeInText from '../FadeInText/FadeInText';
 
 Modal.setAppElement('#root');
 
@@ -254,8 +255,16 @@ function CreateStory() {
   return (
     <div className='create-story-container'>
       <div className='create-story-content'>
-        {!hasStartedStory && (
-          <button className='create-story-button' onClick={() => setIsInitialModalOpen(true)}>Create Story</button>
+        {(!hasStartedStory && !isInitialModalOpen) && (
+          <>
+            <div className='fade-in-text'>
+              <FadeInText text="Your Story Starts Here . . . " />
+            </div>
+            <div className='entry-img-wrapper'>
+              <img className='entry-img' src='/images/path-under-sky.jpg' alt='path-under-sky' />
+              <button className='create-story-button' onClick={() => setIsInitialModalOpen(true)}>Create Story</button>
+            </div>
+          </>
         )}
         <div className='chapter-container'>
           {chapters.length > 0 && renderChapters(0)}
@@ -266,11 +275,34 @@ function CreateStory() {
       {/* Modal for initial story details */}
       <Modal
         isOpen={isInitialModalOpen}
-        onRequestClose={() => setIsInitialModalOpen(false)}
+        onRequestClose={() => {
+          // Reset the state variables for the form fields
+          setStoryTitle('');
+          setStoryDescription('');
+          setStoryImage('');
+          setStoryGenre('');
+          setStoryTags('');
+          setIsInitialModalOpen(false);
+        }}
         className='modal'
         overlayClassName='overlay'
       >
-        <h2>Start Your Story</h2>
+        <div className="modal-header">
+          <h2>Start Your Story</h2>
+          <button
+            className="close-button"
+            onClick={() => {
+              // Reset the state variables for the form fields
+              setStoryTitle('');
+              setStoryDescription('');
+              setStoryImage('');
+              setStoryGenre('');
+              setStoryTags('');
+              setIsInitialModalOpen(false);
+            }}
+          >
+          </button>
+        </div>
         <form onSubmit={handleInitialSubmit}>
           <label htmlFor='storyTitle'>Story Title:</label>
           <input type='text' id='storyTitle' value={storyTitle} onChange={handleStoryTitleChange} required />
@@ -287,7 +319,7 @@ function CreateStory() {
           <label htmlFor='storyTags'>Tags (comma-separated):</label>
           <input type='text' id='storyTags' value={storyTags} onChange={handleStoryTagsChange} required />
 
-          <button type='submit' className='next-button'>Next</button>
+          <button type='submit' className='save-and-continue-button'>Save & Continue</button>
         </form>
       </Modal>
 
@@ -350,7 +382,7 @@ function CreateStory() {
             </div>
           ))}
           {currentChapter.choices.length < 3 && <button type='button' className='add-choice-button' onClick={addChoice}>Add Choice</button>}
-          <button type='submit' className='save-button'>{chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}</button>
+          <button type='submit' className='save-chapter-button'>{chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}</button>
         </form>
       </Modal>
 
@@ -413,7 +445,7 @@ function CreateStory() {
             </div>
           ))}
           {currentChapter.choices.length < 3 && <button type='button' className='add-choice-button' onClick={addChoice}>Add Choice</button>}
-          <button type='submit' className='save-button'>Save Chapter</button>
+          <button type='submit' className='save-chapter-button'>Save Chapter</button>
         </form>
       </Modal>
     </div>

@@ -31,7 +31,7 @@ form select {
 
 #contact-form-btn {
   background-color: var(--button-accent);
-  color: white;
+  color: var(--cool-white);
   border: none;
   padding: 15px 20px;
   margin: 5px 0px 10px;
@@ -108,9 +108,10 @@ option {
 }
 
 @media (max-width: 480px) {
-  .contact-field-error, 
-  .type-field-error, 
-  .success-message, 
+
+  .contact-field-error,
+  .type-field-error,
+  .success-message,
   .error-message {
     font-size: 15px;
   }

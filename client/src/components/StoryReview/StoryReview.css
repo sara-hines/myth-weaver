@@ -77,20 +77,23 @@ p.star-rating.star.filled {
   gap: 10px;
   justify-content: center;
   margin-bottom: 15px;
+  width: 100%;
 }
 
-.save-button {
+button.save-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: var(--button-accent);
-  color: var(--header-link-hover);
+  background-color: var(--story-4);
+  color: var(--cool-white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  flex-grow: 1;
+  transition: background-color ease-in-out 0.3s;
 }
 
-.save-button:hover {
-  background-color: var(--dk-button-accent);
+button.save-button:hover {
+  background-color: var(--alt-button-accent);
 }
 
 .reviews-list {
@@ -117,10 +120,9 @@ div.reviews-list {
 }
 
 .review-item {
-  background-color: #fff;
+  background-color: var(--warm-white);
   padding: 5px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   min-width: 100%;
   font-size: 14.4px;
@@ -153,7 +155,6 @@ div.reviews-list {
 
 /* Media Queries */
 @media (max-width: 768px) {
-
   .story-review-container,
   .reviews-list {
     max-width: 80vw;
@@ -165,7 +166,7 @@ div.reviews-list {
 
   .fullName-input,
   .review-textarea,
-  .save-button {
+  button.save-button {
     font-size: 0.9em;
     padding: 8px;
   }
@@ -176,7 +177,6 @@ div.reviews-list {
 }
 
 @media (max-width: 480px) {
-
   .story-review-container,
   .reviews-list {
     max-width: 95vw;
@@ -200,7 +200,8 @@ div.reviews-list {
 
   button.save-button {
     font-size: 15px;
-    padding: 7px;
+    padding: 8px 16px;
+    width: calc(50% - 10px);
   }
 
   .star-rating .star, 
@@ -219,5 +220,15 @@ div.reviews-list {
 
   .review-item p {
     font-size: 14.5px;
+  }
+}
+
+@media (max-width: 440px) {
+  .review-buttons {
+    flex-direction: column;
+  }
+
+  button.save-button {
+    width: 100%;
   }
 }

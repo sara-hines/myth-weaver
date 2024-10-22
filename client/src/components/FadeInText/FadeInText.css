@@ -1,0 +1,21 @@
+.fade-in-text span {
+  opacity: 0;
+  display: inline-block;
+  white-space: normal;
+  animation: fadeIn 1s forwards;
+  font-size: 24px;
+  color: var(--header-title);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.word {
+  white-space: nowrap;
+  display: inline-flex;
+  flex-wrap: nowrap;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

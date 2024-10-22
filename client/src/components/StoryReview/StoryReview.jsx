@@ -106,7 +106,8 @@ const StoryReview = () => {
       if (reviewData) {
         setSuccessMessage('Review submitted successfully! Redirecting to home in 10 seconds.');
         setTimeout(() => {
-          navigate('/myth-index');
+          // navigate('/myth-index');
+          console.log('placeholder');
         }, 10000);
         let countdownInterval = setInterval(() => {
           setCountdown(prev => {
@@ -212,7 +213,7 @@ const StoryReview = () => {
           {/* Button to save review. */}
           <button
             onClick={handleSaveReview}
-            className='save-button'>Save Review</button>
+            className='save-button'>Save your Review</button>
           {/* If the user is logged in, display the 'Remove from Bookmarks' / 'Add to Bookmarks' button. */}
           {Auth.loggedIn() && (
             <button className='save-button'
