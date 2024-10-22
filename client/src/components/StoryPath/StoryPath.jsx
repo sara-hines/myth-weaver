@@ -28,6 +28,11 @@ const StoryPath = () => {
     }
   }, [story.chapters]);
 
+  // Scroll to the top of the page, since the user would have arrived from a different scroll position at /story-index
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Function to handle navigation to the next chapter.
   const handleChoiceClick = (nextChapterIndex) => {
     // Each choice has a nextChapterIndex field in its choiceSchema, which is equal to the chapterIndex of the chapter that results from selecting that choice. Since the nextChapterIndex of the selected choice is passed to this handleChoiceClick function, it can be used to update the currentChapter.

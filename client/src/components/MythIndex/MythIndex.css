@@ -36,7 +36,7 @@
   width: 100%;
   height: 300px;
   font-size: 12px;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .story-image-wrapper {
@@ -58,7 +58,7 @@
 .story-title-container {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
   margin: 0;
   font-size: 1.2em;
@@ -67,7 +67,7 @@
 }
 
 .story-title-container .story-title {
-  color: white;
+  color: var(--cool-white);
   margin: 0;
 }
 
@@ -76,27 +76,33 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: auto 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   transition: opacity 0.3s ease;
   opacity: 0;
   z-index: 1;
+  padding: 25px;
 }
 
-.story-container:hover .story-image {
+.story-container:hover .story-image,
+.story-container.hover .story-image {
   transform: scale(1.1);
 }
 
-.story-container:hover .story-info {
+.story-container:hover .story-info,
+.story-container.hover .story-info {
   opacity: 1;
 }
 
 p.story-description {
+  color: var(--cool-white);
+  background-color: var(--mid-dark-accent);
+  border-radius: var(--border-radius);
+  text-align: center;
+  padding: 40px;
   margin: 4px 0;
   font-size: 1.2em;
-  color: white;
 }
 
 
@@ -127,18 +133,25 @@ p.story-description {
 
   .story-container {
     /* Adjust height for smaller screens */
-    height: 320px;
+    height: 400px;
   }
 
   p.story-description {
     font-size: 14.5px;
     line-height: 1.4;
     padding: 20px;
-    /* 46px is the height of 1-liner titles at these viewport widths, and adding a 46px margin-bottom helps the p.story-description appear to be more in the vertical middle of the div.story-container. */
-    margin-bottom: 46px;
+    margin-bottom: 90px;
   }
 
   .story-title-container .story-title {
     font-size: 20px;
+  }
+
+  .story-container:focus-within .story-image {
+    transform: scale(1.1);
+  }
+
+  .story-container:focus-within .story-info {
+    opacity: 1;
   }
 }

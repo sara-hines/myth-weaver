@@ -18,19 +18,21 @@
   margin: 0 auto;
   max-width: 60vw;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .story-path-container h1 {
   font-size: 2.5em;
-  margin-bottom: 20px;
   color: var(--header-text);
 }
 
 .story-path-container p {
   font-size: 1.5em;
-  margin-bottom: 40px;
   line-height: 1.5;
   text-align: justify;
+  /* background-color: red; */
 }
 
 .options {
@@ -42,23 +44,30 @@
   max-width: 60vw;
 }
 
-.option {
-  background-color: var(--header-text);
+.option, .bookmark {
   border: none;
   border-radius: 20px;
-  color: var(--header-link-hover);
+  color: var(--cool-white);
   padding: 10px 20px;
   font-size: 1.2em;
   cursor: pointer;
-  transition: opacity ease-in-out 0.3s;
+  transition: background-color ease-in-out 0.3s;
+}
+ 
+.option:nth-child(odd), .bookmark {
+  background-color: var(--header-text);
+}
+
+.option:nth-child(odd):hover, .bookmark:hover {
+  background-color: rgb(176, 70, 102);
 }
 
 .option:nth-child(even) {
-  background-color: var(--header-title);
+  background-color: var(--story-4);
 }
 
-.option:hover {
-  opacity: 0.8;
+.option:nth-child(even):hover {
+  background-color: var(--alt-button-accent);
 }
 
 .story-end-button {
@@ -68,22 +77,6 @@
   gap: 30px;
   flex-wrap: wrap;
   max-width: 60vw;
-}
-
-.bookmark {
-  background-color: var(--header-text);
-  border: none;
-  border-radius: 20px;
-  color: var(--header-link-hover);
-  padding: 10px 20px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: all ease-in-out 0.3s;
-}
-
-.bookmark:hover {
-  opacity: 0.8;
-  background-color: var(--header-title);
 }
 
 .bookmark a,
@@ -143,12 +136,13 @@
   }
 
   .options {
+    flex-direction: column;
     max-width: 95vw;
     gap: 15px;
   }
 
   .option {
-    font-size: 14.5px;
+    font-size: 15px;
     padding: 8px 15px;
   }
 
@@ -159,6 +153,6 @@
 
   .bookmark {
     font-size: 15px;
-    padding: 8px 15px;
+    padding: 8px 16px;
   }
 }

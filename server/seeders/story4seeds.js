@@ -1,6 +1,6 @@
 const title = 'Echoes of the Abyss';
 const author = 'fableFan';
-const description = 'In a world where sorcery is commonplace and demons known as "Umbral Shades" haunt the shadows, you are a skilled magician named Elara. As you grapple with increasing demonic encounters and unsettling visions, your sanity frays, endangering your family and your quest to develop new spells for the greater good. Your choices will determine if you can fend off the darkness, protect your loved ones, and contribute to a brighter future—or if you will succumb to the horrors lurking within and around you.';
+const description = 'In a world where sorcery is commonplace and demons known as "Umbral Shades" haunt the shadows, you are a skilled magician named Elara. As you grapple with increasing demonic encounters, your sanity frays, endangering your family and your quest to develop new spells for the greater good. Your choices will determine if you can fend off the darkness and contribute to a brighter future—or if you will succumb to the horrors lurking within and around you.';
 const imageUrl = '/images/haunted-forest.jpg';
 const genre = 'Sword and Sorcery';
 const tags = [

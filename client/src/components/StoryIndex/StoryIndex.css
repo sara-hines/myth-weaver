@@ -56,12 +56,16 @@
   border-radius: 10px 10px 0px 0px;
   box-sizing: border-box;
   z-index: 2;
-  padding: 10px;
+  padding: 15px;
   margin: 0;
+  opacity: 0;
+  transform: translateY(3px);
+  animation: slideUpFadeIn 0.9s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 .title-wrapper-mobile .title-text-mobile {
-  color: white;
+  color: var(--cool-white);
   font-size: 24px;
   margin: 0;
 }
@@ -72,6 +76,10 @@
   text-align: center;
   border-radius: var(--border-radius);
   margin: 0;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUpFadeIn 0.9s ease-out forwards;
+  animation-delay: 0s;
 }
 
 .story-photo img {
@@ -143,7 +151,7 @@
 
 .tbr-button-desktop {
   background-color: var(--story-4);
-  color: var(--accent-container);
+  color: var(--cool-white);
   width: 100%;
   height: 100%;
   border: none;
@@ -156,35 +164,40 @@
   margin: 0;
 }
 
-.tbr-button:hover {
+.tbr-button-desktop:hover,
+.tbr-button-mobile:hover {
   background-color: var(--alt-button-accent);
 }
 
-.story-description {
+.story-index-description {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
   background-color: var(--mid-dark-accent);
-  color: var(--accent-container);
+  color: var(--cool-white);
   border-radius: var(--border-radius);
   text-align: center;
   padding: 40px;
   margin: 0px auto;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUpFadeIn 0.9s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
-.story-description .title-desktop {
+.story-index-description .title-desktop {
   color: var(--header-text);
   text-shadow: 1px 1px 2px var(--dark-accent), 0px 0px 2px var(--dark-accent);
 }
 
-.story-description p,
+.story-index-description p,
 .author-and-genre-mobile,
 .no-ratings-message-mobile,
 .rating-mobile p,
 .tags-mobile {
   font-size: 18px;
-  color: var(--accent-container);
+  color: var(--cool-white);
 }
 
 .rating-mobile {
@@ -195,7 +208,6 @@
   align-content: center;
   align-items: center;
   align-self: center;
-  color: #BAC8CF;
   margin: -5px 0px 0px 0px;
 }
 
@@ -220,7 +232,7 @@
 
 button.start-adventure-button {
   background-color: var(--button-accent);
-  color: var(--accent-container);
+  color: var(--cool-white);
   border: none;
   border-radius: var(--border-radius);
   font-size: 18px;
@@ -238,8 +250,8 @@ button.start-adventure-button:hover {
 
 button.tbr-button-mobile {
   background-color: var(--story-4);
-  color: var(--accent-container);
-  width: 260px;  
+  color: var(--cool-white);
+  width: 260px;
   height: fit-content;
   border: none;
   border-radius: var(--border-radius);
@@ -252,8 +264,12 @@ button.tbr-button-mobile {
   margin: 0;
 }
 
-.tbr-button-desktop {
-  background-color: var(--alt-button-accent);
+/* Animations */
+@keyframes slideUpFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Media Queries for responsiveness */
@@ -282,13 +298,14 @@ button.tbr-button-mobile {
 
   .rating-mobile,
   .title-wrapper-mobile,
-  button.tbr-button-mobile, 
-  .author-and-genre-mobile, 
+  button.tbr-button-mobile,
+  .author-and-genre-mobile,
   .tags-mobile {
     display: none;
   }
 
-  .story-description p, p.author-desktop {
+  .story-index-description p,
+  p.author-desktop {
     font-size: 20px !important;
   }
 
@@ -305,15 +322,15 @@ button.tbr-button-mobile {
     flex-direction: column;
   }
 
-  .rating-desktop, 
-  .genre-tags-desktop, 
+  .rating-desktop,
+  .genre-tags-desktop,
   .tbr-button-container-desktop,
-  .story-description .title-desktop, 
+  .story-index-description .title-desktop,
   p.author-desktop {
     display: none;
   }
 
-  .story-main-content .story-description {
+  .story-main-content .story-index-description {
     padding: 30px;
     gap: 30px;
   }
@@ -329,7 +346,7 @@ button.tbr-button-mobile {
     max-width: 60vw;
   }
 
-  .story-description p,
+  .story-index-description p,
   .author-and-genre-mobile,
   .no-ratings-message-mobile,
   .rating-mobile p,
@@ -340,7 +357,8 @@ button.tbr-button-mobile {
 
 /* For when the vw is 700px or smaller */
 @media (max-width: 700px) {
-  button.start-adventure-button, 
+
+  button.start-adventure-button,
   button.tbr-button-mobile {
     width: 100%;
   }
@@ -352,15 +370,15 @@ button.tbr-button-mobile {
     font-size: 20px !important;
   }
 
-  .story-description p, 
-  .author-and-genre-mobile, 
-  .no-ratings-message-mobile, 
-  .rating-mobile p, 
+  .story-index-description p,
+  .author-and-genre-mobile,
+  .no-ratings-message-mobile,
+  .rating-mobile p,
   .tags-mobile {
     font-size: 16px !important;
   }
 
-  button.start-adventure-button, 
+  button.start-adventure-button,
   button.tbr-button-mobile {
     font-size: 18px;
   }
@@ -384,7 +402,7 @@ button.tbr-button-mobile {
     font-size: 20px !important;
   }
 
-  .story-description p,
+  .story-index-description p,
   .author-and-genre-mobile,
   .no-ratings-message-mobile,
   .rating-mobile p,
@@ -393,7 +411,7 @@ button.tbr-button-mobile {
     line-height: 1.4;
   }
 
-  button.start-adventure-button, 
+  button.start-adventure-button,
   button.tbr-button-mobile {
     font-size: 15px;
   }

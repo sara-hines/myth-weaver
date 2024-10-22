@@ -1,4 +1,4 @@
-const title = 'The Quest for the Verdant Horizon';
+const title = 'The Journey to the Verdant Horizon';
 const author = 'fableFan';
 const description = 'In a utopian future where nature and technology harmoniously coexist, you embark on a journey to discover the secrets of the Verdant Horizon, a mythical place believed to hold the key to restoring balance to the Earth. Along the way, you will encounter eco-engineers, sentient flora, and ancient wisdom. Your choices will determine whether you can preserve this fragile harmony or inadvertently tip the scales towards chaos.';
 const imageUrl = '/images/solarpunk-forest.jpg';

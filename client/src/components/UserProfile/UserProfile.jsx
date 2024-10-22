@@ -5,6 +5,7 @@ import { GET_PROFILE } from '../../utils/queries';
 import { DELETE_STORY, REMOVE_FROM_TBR, REMOVE_FROM_BOOKMARKS } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
+import FadeInText from '../FadeInText/FadeInText';
 
 const UserProfile = () => {
   // Obtain the user's data with the GET_PROFILE query.
@@ -142,7 +143,8 @@ const UserProfile = () => {
   return (
     <div className='user-profile'>
       <main className='user-main-content'>
-        <h1 className='welcome-message'>Welcome, {userData?.username}!</h1>
+        {/* <h1 className='welcome-message'>Welcome, {userData?.username}!</h1> */}
+        <div className='fade-in-text'><FadeInText text={`Welcome, ${userData?.username}!`} /></div>
         <div className='button-container'>
           {/* Navigate to /create-story on click. */}
           <div className='profile-button' onClick={handleCreateStory}>Create A New Story</div>

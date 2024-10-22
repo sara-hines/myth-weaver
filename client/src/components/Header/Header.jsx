@@ -60,7 +60,7 @@ const Header = () => {
             </>
           )}
         </div>
-        <h1 className='title'>
+        <h1 className='site-title'>
           <Link to='/myth-index' className='cssanimation leBlurIn sequence'>{titleAnimated}</Link>
         </h1>
         <div className='header-right'>
@@ -100,7 +100,6 @@ const Header = () => {
         </div>
       </div>
 
-
       <Modal
         size='xl'
         // Show the modal based on showModal state
@@ -108,7 +107,10 @@ const Header = () => {
         // Function to close the modal
         onHide={() => setShowModal(false)}
         aria-labelledby='auth-modal'
-        centered className='auth-modal'>
+        centered
+        className='auth-modal'
+        id='auth-modal-custom'
+      >
         <Modal.Header closeButton className='modal-header-center'>
           <Modal.Title id='auth-modal' className='modal-title-lg'>
             {modalType === 'login' ? 'Login' : 'Sign Up'}

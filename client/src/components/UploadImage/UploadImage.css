@@ -1,33 +1,35 @@
 .upload-image-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 20px;
 }
 
-.upload-image-container input[type="file"] {
-  margin-bottom: 10px;
-
-}
-
+/* This is the "Choose File" button */
 input[type="file"]::file-selector-button {
   background-color: var(--button-accent);
-  color: #FFFBFB;
+  color: var(--warm-white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-weight: bold;
+  font-family: var(--theme-font);
   text-align: center;
   transition: background-color ease-in-out 0.5s;
-  padding: 6px 10px;
+  padding: 7px;
   margin: 10px 10px 10px 0px;
+  min-width: 113px;
 }
 
+/* This is the "Choose File" button's hover styling */
+input[type="file"]::file-selector-button:hover {
+  background-color: var(--dk-button-accent);
+}
+
+/* This is the "Upload Image" button */
 .upload-image-container button {
   background-color: var(--story-4);
-  color: #FFFBFB;
+  color: var(--warm-white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -36,12 +38,41 @@ input[type="file"]::file-selector-button {
   transition: background-color ease-in-out 0.5s;
   padding: 5px 20px;
   margin: 10px 0px 10px 0px;
+  min-width: 113px;
 }
 
+/* This is the "Upload Image" button's hover styling */
 .upload-image-container button:hover {
   background-color: var(--alt-button-accent);
 }
 
 .result-message {
   padding-top: 10px;
+}
+
+@media (max-width: 480px) {
+  input[type="file"]::file-selector-button {
+    font-size: 15px;
+    height: 33.6px;
+    width: 130px;
+    border-radius: 10px;
+  }
+
+  .upload-image-container {
+    margin: 0;
+  }
+
+  .upload-image-container button {
+    font-size: 15px;
+    height: 33.6px;
+    width: 130px;
+    padding: 7px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .result-message {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
 }

@@ -48,6 +48,11 @@ const StoryIndex = () => {
     }
   }, [profile, storyId]);
 
+  // Scroll to the top of the page, in case the user arrived from a different scroll position at /myth-index
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Handler function to add/remove story from the TBR list.
   const handleToggleTBR = async () => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -174,7 +179,7 @@ const StoryIndex = () => {
           </div>
 
           {/* Render the story title, author, description, and link/button to start the story. */}
-          <div className='story-description'>
+          <div className='story-index-description'>
             <h2 className='title-desktop'>{story.title}</h2>
             <p className='author-desktop'>Created by {story.author}</p>
             <p>{story.description}</p>
