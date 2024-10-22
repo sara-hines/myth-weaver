@@ -176,7 +176,11 @@ Welcome to our creative storytelling platform! When users first arrive, they are
 
 <br />
 
-![landing-mobile](./assets/landing-screenshot-440px.png)
+<div align="center">
+
+<img src="./assets/landing-screenshot-440px.png" alt="landing-screenshot-mobile" width="448">
+
+</div>
 
 <br />
 
@@ -272,7 +276,7 @@ We would love to have you officially join our platform! After you sign up or log
 
 <div align="center">
 
-![user profile page](./assets/user-profile-pg.png)
+<img src="./assets/user-profile-pg.png" alt="user-profile-page-mobile" width="448">
 
 </div>
 
