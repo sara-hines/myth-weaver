@@ -1,41 +1,38 @@
-.story-grid a {
-  text-decoration: none;
-}
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
 
 .mythweaver {
   text-align: center;
   background-color: var(--bg-color);
-  /* Ensures content fits */
-  min-height: 100vh;
 }
 
 .main-content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* Adjust based on header height */
-  min-height: calc(100vh - var(--header-height));
-  padding: 20px;
 }
 
 .story-grid {
+  width: 85vw;
   display: grid;
-  /* Default to 3 columns */
+  /* Grid will be 3 columns if viewport width is 1441px or greater */
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 20px;
+  /* Vertical spacing for MythIndex for viewport widths 1441px and up */
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+.story-grid a {
+  text-decoration: none;
 }
 
 .story-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   position: relative;
   overflow: hidden;
   border-radius: var(--border-radius);
   width: 100%;
-  height: 300px;
-  font-size: 12px;
+  height: 350px;
   cursor: pointer;
 }
 
@@ -56,38 +53,56 @@
 }
 
 .story-title-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 20px;
   box-sizing: border-box;
   margin: 0;
-  font-size: 1.2em;
   /* Ensure it is above the image */
   z-index: 2;
+  opacity: 1;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
 .story-title-container .story-title {
+  font-size: 23px;
   color: var(--cool-white);
   margin: 0;
 }
 
 .story-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.6);
   opacity: 0;
+  transition: opacity 0.3s ease;
   z-index: 1;
-  padding: 25px;
+  padding: 30px;
 }
 
+/* Note on user interactivity and hovering: For all viewport widths, .story-info is 0 opacity by default. For mobiles, when the user taps the .story-container of a story (activating :hover), or when the user has scrolled so that 90% of that .story-container is in view (activating .hover), .story-image increases scale, .story-info becomes visible with opacity: 1, and the .story-title-container stays visible due to a media query. For viewport widths larger than 480px, when the user hovers over the .story-container (activating :hover), .story-image increases scale, .story-title-container and .story-title become invisible via opacity: 0, and .story-info becomes visible via opacity: 1. Keeping the title visible at all times for mobiles helps make the "hover" effect more accessible for them. For larger viewports, hiding the title when the description is visible helps to fit the content in a more attractive way. */
 .story-container:hover .story-image,
 .story-container.hover .story-image {
   transform: scale(1.1);
+}
+
+.story-container:hover .story-title-container,
+.story-container.hover .story-title-container {
+  opacity: 0;
 }
 
 .story-container:hover .story-info,
@@ -96,62 +111,130 @@
 }
 
 p.story-description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   color: var(--cool-white);
   background-color: var(--mid-dark-accent);
   border-radius: var(--border-radius);
   text-align: center;
-  padding: 40px;
-  margin: 4px 0;
-  font-size: 1.2em;
+  padding: 20px;
+  line-height: 1.4;
+  min-height: 180px;
+  font-size: var(--small-txt);
 }
 
-
 /* Media Queries for responsiveness */
-@media (max-width: 1200px) {
+
+@media (max-width: 1440px) {
   .story-grid {
-    /* 2 columns for medium screens */
+    /* When the viewport width is 1001px - 1440px, there will be 2 columns */
     grid-template-columns: repeat(2, 1fr);
+    /* Vertical spacing for MythIndex for viewport widths 769px - 1440px */
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+
+  .story-title-container .story-title {
+    font-size: 22px;
+  }
+
+  .story-info {
+    padding: 80px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .story-info {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .story-grid {
+    width: 60vw;
+    /* There will only be 1 column until the viewport width increases past 1000px */
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .story-info {
+    padding: 60px;
+  }
+
+  p.story-description {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 850px) {
+  .story-grid {
+    width: 70vw;
+  }
+
+  .story-container {
+    height: 400px;
+  }
+
+  p.story-description {
+    line-height: 1.6;
+    padding: 35px;
   }
 }
 
 @media (max-width: 768px) {
   .story-grid {
-    /* 1 column for small screens */
-    grid-template-columns: repeat(1, 1fr);
+    /* Vertical spacing for MythIndex for viewport widths 0px - 768px */
+    padding-top: 30px;
+    padding-bottom: 40px;
   }
 
-  .story-container {
-    /* Adjust height for smaller screens */
-    height: 250px;
+  .story-info {
+    padding: 40px;
+  }
+
+  p.story-description {
+    padding: 25px;
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .story-grid {
+    width: 85vw;
+  }
+
+  .story-info {
+    padding: 30px;
   }
 }
 
 @media (max-width: 480px) {
-  .story-grid {
-    padding: 10px;
+  .story-container:hover .story-title-container,
+  .story-container.hover .story-title-container {
+    /* For mobiles, prevent the title from loosing its opacity when :hover or .hover is activated */
+    opacity: 1;
+    /* For mobiles, make the .story-title-container's background-color completely transparent on hover in order to prevent darkening the background color .story-info is already providing */
+    background-color: rgba(0, 0, 0, 0);
   }
 
-  .story-container {
-    /* Adjust height for smaller screens */
-    height: 400px;
-  }
-
-  p.story-description {
-    font-size: 14.5px;
-    line-height: 1.4;
-    padding: 20px;
-    margin-bottom: 90px;
-  }
-
-  .story-title-container .story-title {
-    font-size: 20px;
-  }
-
+  /* :focus-within selectors ensure that keyboard navigation and screen readers trigger the same mobile "hover" effects as scrolling does */
   .story-container:focus-within .story-image {
     transform: scale(1.1);
   }
 
   .story-container:focus-within .story-info {
     opacity: 1;
+  }
+
+  .story-info {
+    padding: 25px;
+  }
+
+  p.story-description {
+    line-height: 1.5;
+    padding: 20px;
+    /* The margin-top of 35px pushes the p.story-description down so that there is some vertical space between the story title and the p.story-description, even for 2-liner titles. */
+    margin-top: 35px;
   }
 }

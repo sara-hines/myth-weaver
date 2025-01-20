@@ -67,7 +67,7 @@ const SignupForm = ({ handleModalClose }) => {
       <Form noValidate onSubmit={handleFormSubmit}>
         {/* Show alert if server response is bad */}
         {showAlert && (
-          <Alert show={showAlert} variant='danger'>
+          <Alert show={showAlert} variant='danger' className='auth-error-msg'>
             Something went wrong with your signup!
           </Alert>
         )}

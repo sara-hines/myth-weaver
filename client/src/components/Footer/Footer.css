@@ -4,8 +4,13 @@
   text-align: center;
   align-items: center;
   padding: 40px 0;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: relative;
+  height: var(--footer-height);
 }
 
 .footer .copyright-wrapper p {
-  font-size: 16px;
+  font-size: var(--med-small-txt);
 }

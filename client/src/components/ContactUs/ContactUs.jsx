@@ -84,12 +84,12 @@ export default function ContactUs() {
 
   return (
     /* Contact Us section including Contact Form */
-    <div className='about-us-card' id='contact-us-section' >
-      <h2 className='about-us-title' >Contact Us</h2>
+    <div className='about-us-card' id='contact-us-section'>
+      <h2 className='about-us-title'>Contact Us</h2>
       <p className='about-us-description'>At MythWeaver, our mission is to create a community where stories and creativity flourish. Whether you have a question, a suggestion, or simply want to share your thoughts, we’re here to listen.</p>
 
       {/* Contact Form */}
-      <form noValidate onSubmit={handleSubmit(onSubmit)}>
+      <form noValidate className='contact-form' onSubmit={handleSubmit(onSubmit)}>
         {/* Registering botcheck input field */}
         <input
           type='checkbox'
@@ -183,7 +183,7 @@ export default function ContactUs() {
           </div>
         )}
 
-        {/* If the form submission resulted in an error in either of the relevant state variables, then display the error message. (This will also display by default on page load to help keep form spacing consistent). */}
+        {/* If the form submission resulted in an error in either of the relevant state variables, then display the error message. (This div will also take up space by default on page load to help keep form spacing consistent). */}
         {(!isSubmitSuccessful || !isSuccess) && (
           <div className={`error-message ${!showMessage ? 'fade-out' : ''}`}>
             {message || 'Sorry, something went wrong. Please try later.'}
@@ -199,6 +199,6 @@ export default function ContactUs() {
           )}
         </button>
       </form>
-    </div >
+    </div>
   );
 }

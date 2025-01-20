@@ -1,35 +1,36 @@
 /* Selectors are listed in the order they appear in the jsx. Unless a class includes 'desktop' or 'mobile' in its name, its element will appear regardless of viewport width. */
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
 
 .mythweaver {
   text-align: center;
   background-color: var(--bg-color);
-  min-height: 100vh;
 }
 
 /* Used to help properly fit page elements if loading or error */
-.main-content {
+.main-content-story-index {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - var(--header-height));
-  /* Adjust based on header height */
-  padding: 20px;
 }
 
 /* Used to properly fit page elements when all is rendered properly (not still loading, and no error) */
 .story-index {
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  min-height: calc(100vh - var(--header-height));
   box-sizing: border-box;
-  padding: 40px;
+  width: 100%;
+  /* Vertical spacing for StoryIndex for viewport widths 1441px and up */
+  padding-top: 50px;
+  padding-bottom: 70px;
 }
 
 .story-main-content {
   display: flex;
+  /* For large viewport widths, flex-direction row provides a 2 column layout */
   flex-direction: row;
   gap: 10px;
-  max-width: 80vw;
-  height: fit-content;
+  /* Sets the width of the page content for viewport widths 1441px and up */
+  width: 70vw;
+  max-width: 100%;
   margin: auto;
 }
 
@@ -40,34 +41,15 @@
   position: relative;
   margin: 0;
   padding: 0;
+  gap: 10px;
+  width: 100%;
 }
 
 .story-photo-wrapper {
-  width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.title-wrapper-mobile {
-  position: absolute;
-  top: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px 10px 0px 0px;
-  box-sizing: border-box;
-  z-index: 2;
-  padding: 15px;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(3px);
-  animation: slideUpFadeIn 0.9s ease-out forwards;
-  animation-delay: 0.5s;
-}
-
-.title-wrapper-mobile .title-text-mobile {
-  color: var(--cool-white);
-  font-size: 24px;
-  margin: 0;
+  height: auto;
 }
 
 .story-photo {
@@ -76,10 +58,6 @@
   text-align: center;
   border-radius: var(--border-radius);
   margin: 0;
-  opacity: 0;
-  transform: translateY(50px);
-  animation: slideUpFadeIn 0.9s ease-out forwards;
-  animation-delay: 0s;
 }
 
 .story-photo img {
@@ -89,6 +67,7 @@
   border-radius: var(--border-radius);
 }
 
+/* For the desktop layout, div.rating-desktop is the outermost rating div */
 .rating-desktop {
   display: flex;
   width: 100%;
@@ -100,27 +79,41 @@
   align-self: center;
   background-color: var(--rating-bg);
   border-radius: var(--border-radius);
-  padding-bottom: 5px;
+  padding: 22px 30px;
   margin: 0;
 }
 
-.rating-desktop .no-ratings-message-desktop {
+/* Width and font-size for elements in div.rating-desktop */
+.rating-desktop .no-ratings-message-desktop, 
+.rating-desktop p, 
+.genre-tags-desktop {
   width: 100%;
-  padding: 10px 0px 5px 0px;
+  font-size: var(--small-txt);
 }
 
+/* If there are ratings, div.rating-container-desktop wraps and separates the stars and the message explaining the avg. rating */
 .rating-container-desktop {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   margin: 0;
+  gap: 3px;
+  /* The -10px margin-top shifts the .rating-container-desktop up, compensating for the perceived extra vertical space the stars add on top */
+  margin-top: -10px;
 }
 
 .star-desktop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   color: #ffcc00;
-  font-size: 2rem;
   padding: 0;
   margin: 0;
+  font-size: 32px;
+  gap: 2px;
 }
 
 .genre-tags-desktop {
@@ -132,10 +125,9 @@
   text-align: center;
   align-content: center;
   justify-content: center;
-  gap: 10px;
-  align-self: start;
+  gap: 15px;
   border-radius: var(--border-radius);
-  padding: 10px;
+  padding: 22px 30px;
 }
 
 .tbr-button-container-desktop {
@@ -149,6 +141,13 @@
   margin: 0px;
 }
 
+/* If there is extra vertical space in div.accessory-info, allow each of the 3 elements to grow to fill it */
+.rating-desktop,
+.genre-tags-desktop,
+.tbr-button-container-desktop {
+  flex-grow: 1;
+}
+
 .tbr-button-desktop {
   background-color: var(--story-4);
   color: var(--cool-white);
@@ -156,11 +155,11 @@
   height: 100%;
   border: none;
   border-radius: var(--border-radius);
-  font-size: 18px;
+  font-size: var(--med-small-txt);
   cursor: pointer;
   text-align: center;
   transition: background-color ease-in-out 0.5s;
-  padding: 10px 20px;
+  padding: 12px 24px;
   margin: 0;
 }
 
@@ -171,63 +170,45 @@
 
 .story-index-description {
   display: flex;
+  /* Display the children inside div.story-index-description vertically with a 40px vertical gap in between */
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
   background-color: var(--mid-dark-accent);
   color: var(--cool-white);
   border-radius: var(--border-radius);
   text-align: center;
-  padding: 40px;
+  padding: 50px;
+  gap: 40px;
   margin: 0px auto;
-  opacity: 0;
-  transform: translateY(50px);
-  animation: slideUpFadeIn 0.9s ease-out forwards;
-  animation-delay: 0.5s;
 }
 
+/* Styling for the story title where it appears for the desktop layout */
 .story-index-description .title-desktop {
   color: var(--header-text);
   text-shadow: 1px 1px 2px var(--dark-accent), 0px 0px 2px var(--dark-accent);
+  font-size: var(--large-txt);
 }
 
-.story-index-description p,
+.story-index-description p {
+  font-size: var(--small-txt);
+}
+
+p.author-desktop {
+  font-size: var(--med-small-txt);
+}
+
+p.author-desktop,
+p.description {
+  line-height: 1.8;
+}
+
+/* For large viewport widths, mobile-specific elements are display: none by default */
+.rating-mobile,
+.title-wrapper-mobile,
+button.tbr-button-mobile,
 .author-and-genre-mobile,
-.no-ratings-message-mobile,
-.rating-mobile p,
 .tags-mobile {
-  font-size: 18px;
-  color: var(--cool-white);
-}
-
-.rating-mobile {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  align-self: center;
-  margin: -5px 0px 0px 0px;
-}
-
-.rating-mobile .no-ratings-message-mobile {
-  width: 100%;
-  padding: 0px;
-}
-
-.rating-container-mobile {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-}
-
-.star-mobile {
-  color: #ffcc00;
-  font-size: 22px;
-  padding: 0;
-  margin-bottom: 5px;
+  display: none;
 }
 
 button.start-adventure-button {
@@ -235,93 +216,84 @@ button.start-adventure-button {
   color: var(--cool-white);
   border: none;
   border-radius: var(--border-radius);
-  font-size: 18px;
   cursor: pointer;
   text-align: center;
   transition: background-color ease-in-out 0.5s;
-  padding: 10px 20px;
-  width: 260px;
+  padding: 12px 24px;
   text-decoration: none;
+  font-size: var(--med-small-txt);
+  width: fit-content;
 }
 
 button.start-adventure-button:hover {
   background-color: var(--dk-button-accent);
 }
 
-button.tbr-button-mobile {
-  background-color: var(--story-4);
-  color: var(--cool-white);
-  width: 260px;
-  height: fit-content;
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: 18px;
-  cursor: pointer;
-  text-align: center;
-  align-self: center;
-  transition: background-color ease-in-out 0.5s;
-  padding: 10px 20px;
-  margin: 0;
-}
-
 /* Animations */
 @keyframes slideUpFadeIn {
   to {
+    /* Animation finishes with the element at full opacity and its natural y position */
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Media Queries for responsiveness */
+/* Media Queries */
 
-/* For when the vw is 1001px or larger. This is the "desktop" 2-column layout. */
-@media (min-width: 1001px) {
-  .story-main-content {
-    min-width: 85vw;
+@media (max-width: 1440px) {
+  .story-index {
+    /* Vertical spacing for StoryIndex for viewport widths 769px - 1440px */
+    padding-top: 40px;
+    padding-bottom: 60px;
   }
 
-  .accessory-info {
+  /* Sets the width of the page content for viewport widths 1001px - 1440px */
+  .story-main-content {
+    width: 85vw;
+  }
+
+  .rating-desktop, 
+  .genre-tags-desktop {
+    padding: 20px 30px;
+  }
+
+  .genre-tags-desktop {
     gap: 10px;
   }
 
-  .story-photo-wrapper {
-    min-width: 350px;
-    max-width: 500px;
-    height: auto;
+  .star-desktop {
+    font-size: 28px;
   }
 
-  .rating-desktop,
-  .genre-tags-desktop,
-  .tbr-button-container-desktop {
-    flex-grow: 1;
+  .story-main-content .story-index-description {
+    padding: 40px;
+    gap: 35px;
   }
 
-  .rating-mobile,
-  .title-wrapper-mobile,
-  button.tbr-button-mobile,
-  .author-and-genre-mobile,
-  .tags-mobile {
-    display: none;
+  p.author-desktop,
+  p.description {
+    line-height: 1.6;
   }
 
-  .story-index-description p,
-  p.author-desktop {
-    font-size: 20px !important;
-  }
-
-  button.start-adventure-button {
-    font-size: 20px;
-    width: fit-content;
+  button.start-adventure-button, 
+  .tbr-button-desktop {
+    padding: 10px 20px;
   }
 }
 
+@media (min-width: 1000px) {
+  .story-photo-wrapper, 
+  .story-photo img {
+    /* For the desktop layout, a min-width of 350px for the image gives the layout visual balance. */
+    min-width: 350px;
+    /* For the desktop layout, prevent the image from becoming so tall that it creates excess vertical spacing in div.story-index-description. */
+    max-height: 230px;
+  }
+}
 
 /* For when the vw is 1000px or smaller. This is the "mobile" single-column layout. */
 @media (max-width: 1000px) {
-  .story-main-content {
-    flex-direction: column;
-  }
-
+  /* desktop-specific elements are display: none while the "mobile" single-column layout is in use */
   .rating-desktop,
   .genre-tags-desktop,
   .tbr-button-container-desktop,
@@ -330,89 +302,185 @@ button.tbr-button-mobile {
     display: none;
   }
 
-  .story-main-content .story-index-description {
-    padding: 30px;
-    gap: 30px;
-  }
-}
-
-/* For when the vw is 780px or larger. This helps the photo from becoming too large and ensures the .title-text-mobile is large enough. */
-@media (min-width: 780px) {
-  .title-text-mobile {
-    font-size: 28px;
-  }
-
   .story-main-content {
-    max-width: 60vw;
+    /* Sets the width of the page content for viewport widths 769px - 1000px */
+    width: 70vw;
+    flex-direction: column;
   }
 
-  .story-index-description p,
+  .accessory-info, 
+  .story-photo-wrapper, 
+  .story-photo, 
+  .story-photo img {
+    width: 100%;
+  }
+
+  .story-photo-wrapper, 
+  .story-photo img {
+    max-height: 400px;
+  }
+    
+  .title-wrapper-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px 10px 0px 0px;
+    box-sizing: border-box;
+    z-index: 2;
+    padding: 15px;
+    margin: 0;
+    /* div.title-wrapper-mobile starts 3px below its natural position with 0 opacity, and after a delay of 0.5s, executes the slideUpFadeIn animation over a period of 0.9s, ending at full opacity and its natural y position */
+    opacity: 0;
+    transform: translateY(3px);
+    animation: slideUpFadeIn 0.9s ease-out forwards;
+    animation-delay: 0.5s;
+  }
+
+  /* .title-wrapper-mobile .title-text-mobile uses its own unique font sizes rather than a font size variable */
+  .title-wrapper-mobile .title-text-mobile {
+    color: var(--cool-white);
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .story-photo {
+    /* For the mobile layout, div.story-photo starts 50px below its natural position with 0 opacity, and executes the slideUpFadeIn animation over a period of 0.9s, ending at full opacity and its natural y position */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUpFadeIn 0.9s ease-out forwards;
+    animation-delay: 0s;
+  }
+
+  .story-index-description {
+    /* For the mobile layout, div.story-photo starts 50px below its natural position with 0 opacity, and executes the slideUpFadeIn animation over a period of 0.9s, ending at full opacity and its natural y position */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUpFadeIn 0.9s ease-out forwards;
+    animation-delay: 0.5s;
+  }
+
+  p.description, 
   .author-and-genre-mobile,
   .no-ratings-message-mobile,
   .rating-mobile p,
   .tags-mobile {
-    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    line-height: 1.5;
+    font-size: var(--small-txt);
+    color: var(--cool-white);
   }
-}
 
-/* For when the vw is 700px or smaller */
-@media (max-width: 700px) {
+  /* For the mobile layout, div.rating-mobile is the outermost rating div */
+  .rating-mobile {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    margin: -5px 0px 0px 0px;
+  }
+
+  .rating-mobile .no-ratings-message-mobile {
+    width: 100%;
+    padding: 0px;
+  }
+
+  /* For the mobile layout, if the story has ratings, div.rating-container-mobile wraps and separates the stars and the message explaining the avg. rating */
+  .rating-container-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 4px;
+  }
+
+  .star-mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    gap: 2px;
+    color: #ffcc00;
+  }
 
   button.start-adventure-button,
   button.tbr-button-mobile {
     width: 100%;
   }
+
+  button.tbr-button-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--story-4);
+    color: var(--cool-white);
+    height: fit-content;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: var(--med-small-txt);
+    cursor: pointer;
+    align-self: center;
+    transition: background-color ease-in-out 0.5s;
+    padding: 10px 20px;
+    margin: 0;
+  }
 }
 
-/* For when the vw is 600px or smaller */
-@media (max-width: 600px) {
-  .title-text-mobile {
-    font-size: 20px !important;
+@media (max-width: 768px) {
+  .story-index {
+    /* Vertical spacing for StoryIndex for viewport widths 0px - 768px */
+    padding-top: 30px;
+    padding-bottom: 40px;
   }
 
-  .story-index-description p,
-  .author-and-genre-mobile,
-  .no-ratings-message-mobile,
-  .rating-mobile p,
-  .tags-mobile {
-    font-size: 16px !important;
+  .story-main-content {
+    /* Sets the width of the page content for all viewport widths 768px and under */
+    width: 85vw;
   }
 
-  button.start-adventure-button,
-  button.tbr-button-mobile {
-    font-size: 18px;
+  .title-wrapper-mobile .title-text-mobile {
+    font-size: 22px;
+  }
+
+  .story-main-content .story-index-description {
+    padding: 35px;
+    gap: 30px;
   }
 }
 
 /* For when the vw is 480px or smaller */
 @media (max-width: 480px) {
-  .story-index {
+  /* Further sizing and spacing adjustments */
+  .story-photo-wrapper, .story-photo img {
+    height: 300px;
+  }
+
+  .title-wrapper-mobile .title-text-mobile {
+    font-size: 20px;
+  }
+
+  .story-main-content .story-index-description {
     padding: 30px;
   }
 
-  .story-main-content {
-    max-width: 100%;
-  }
-
-  .story-photo {
-    height: 320px;
-  }
-
-  .title-text-mobile {
-    font-size: 20px !important;
-  }
-
-  .story-index-description p,
+  p.description,
   .author-and-genre-mobile,
   .no-ratings-message-mobile,
   .rating-mobile p,
   .tags-mobile {
-    font-size: 14.5px !important;
     line-height: 1.4;
   }
 
-  button.start-adventure-button,
-  button.tbr-button-mobile {
-    font-size: 15px;
+  .star-mobile {
+    font-size: 22px;
   }
 }

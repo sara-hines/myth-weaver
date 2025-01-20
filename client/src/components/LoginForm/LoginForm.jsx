@@ -67,7 +67,7 @@ const LoginForm = ({ handleModalClose }) => {
       <Form noValidate onSubmit={handleFormSubmit}>
         {/* Alert for login errors */}
         {showAlert && (
-          <Alert show={showAlert} variant='danger'>
+          <Alert show={showAlert} variant='danger' className='auth-error-msg'>
             Something went wrong with your login credentials!
           </Alert>
         )}

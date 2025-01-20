@@ -106,8 +106,7 @@ const StoryReview = () => {
       if (reviewData) {
         setSuccessMessage('Review submitted successfully! Redirecting to home in 10 seconds.');
         setTimeout(() => {
-          // navigate('/myth-index');
-          console.log('placeholder');
+          navigate('/myth-index');
         }, 10000);
         let countdownInterval = setInterval(() => {
           setCountdown(prev => {
@@ -158,77 +157,79 @@ const StoryReview = () => {
   if (loadingStory || loadingProfile) {
     return (
       <div className='mythweaver'>
-        <main className='main-content'>
+        <div className='main-content'>
           <div className='loading-container'>
             <div className='spinner'></div>
             <h2>Loading...</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
 
 
   return (
-    <div className='story-review'>
+    <section className='story-review'>
       <div className='story-review-container'>
-        <h2>Leave a Review</h2>
-        <input
-          type='text'
-          placeholder='Your Name'
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-          className='fullName-input'
-        />
-        <textarea
-          placeholder='Write your review here...'
-          value={reviewText}
-          onChange={(e) => setReviewText(e.target.value)}
-          className='review-textarea'
-        />
-        <div className='star-rating'>
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              className={`star ${hoveredStar >= star || rating >= star ? 'filled' : ''}`}
-              // Click handler to update star rating after user clicks a star.
-              onClick={() => handleStarClick(star)}
-              // onMouseEnter and onMouseLeave handlers for user interactivity / styling effects.
-              onMouseEnter={() => handleStarMouseEnter(star)}
-              onMouseLeave={handleStarMouseLeave}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-
-        {/* Display error message if user attempts to submit a review without providing a star rating. */}
-        {showRatingError && (
-          <div className='rating-error'>
-            A star rating of at least 1 is required to submit a review.
+        <div className='review-form'>
+          <h2>Leave a Review</h2>
+          <input
+            type='text'
+            placeholder='Your Name'
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            className='fullName-input'
+          />
+          <textarea
+            placeholder='Write your review here...'
+            value={reviewText}
+            onChange={(e) => setReviewText(e.target.value)}
+            className='review-textarea'
+          />
+          <div className='star-rating'>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                className={`star ${hoveredStar >= star || rating >= star ? 'filled' : ''}`}
+                // Click handler to update star rating after user clicks a star.
+                onClick={() => handleStarClick(star)}
+                // onMouseEnter and onMouseLeave handlers for user interactivity / styling effects.
+                onMouseEnter={() => handleStarMouseEnter(star)}
+                onMouseLeave={handleStarMouseLeave}
+              >
+                ★
+              </span>
+            ))}
           </div>
-        )}
 
-        <div className='review-buttons'>
-          {/* Button to save review. */}
-          <button
-            onClick={handleSaveReview}
-            className='save-button'>Save your Review</button>
-          {/* If the user is logged in, display the 'Remove from Bookmarks' / 'Add to Bookmarks' button. */}
-          {Auth.loggedIn() && (
-            <button className='save-button'
-              onClick={handleToggleBookmarks}>
-              {isInBookmarks ? 'Remove from Bookmarks' : 'Add to Bookmarks'}
-            </button>
+          {/* Display error message if user attempts to submit a review without providing a star rating. */}
+          {showRatingError && (
+            <div className='rating-error'>
+              A star rating of at least 1 is required to submit a review.
+            </div>
+          )}
+
+          <div className='review-buttons'>
+            {/* Button to save review. */}
+            <button
+              onClick={handleSaveReview}
+              className='save-button'>Save your Review</button>
+            {/* If the user is logged in, display the 'Remove from Bookmarks' / 'Add to Bookmarks' button. */}
+            {Auth.loggedIn() && (
+              <button className='save-button'
+                onClick={handleToggleBookmarks}>
+                {isInBookmarks ? 'Remove from Bookmarks' : 'Add to Bookmarks'}
+              </button>
+            )}
+          </div>
+
+          {/* If the user has just successfully submitted a review, display the success message and countdown to navigate to home. */}
+          {successMessage && (
+            <div className='review-success-message'>
+              {successMessage} ({countdown})
+            </div>
           )}
         </div>
-
-        {/* If the user has just successfully submitted a review, display the success message and countdown to navigate to home. */}
-        {successMessage && (
-          <div className='success-message'>
-            {successMessage} ({countdown})
-          </div>
-        )}
 
         {/* If there are existing reviews for this story, display the reviews and render the appropriate number of stars for each review. */}
         {story?.reviews?.length > 0 &&
@@ -250,7 +251,7 @@ const StoryReview = () => {
           </div>
         }
       </div>
-    </div>
+    </section>
   );
 };
 

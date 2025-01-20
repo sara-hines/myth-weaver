@@ -1,88 +1,94 @@
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
+
 .story-path-pg-wrapper {
-  text-align: center;
-  background-color: var(--bg-color);
-  min-height: 100vh;
-  /* Ensures content fits */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* We are making the pg content take up all the height within 100vh that the header and dropdown-container don't take up, thus pushing the footer below the fold. */
+  min-height: calc(100vh - (var(--header-height) + var(--dropdown-height)));
 }
 
 .story-path {
-  background-color: var(--bg-color);
+  /* The below 4 selectors position the page content in the vertical center of the space below the header, and then bump up the vertical position by the height of the div.dropdown-container to land in a visually centered place */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: var(--dropdown-height);
   text-align: center;
-  padding: 20px;
-  height: calc(100vh - var(--header-height));
-  color: var(--text-color);
-  box-sizing: border-box;
+  height: 100%;
 }
 
 .story-path-container {
-  margin: 0 auto;
-  max-width: 60vw;
-  padding: 10px;
+  /* Sets the width of the page content for viewport widths 1441px and up */
+  width: 60vw;
+  height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 .story-path-container h1 {
-  font-size: 2.5em;
+  font-size: var(--large-txt);
   color: var(--header-text);
 }
 
 .story-path-container p {
-  font-size: 1.5em;
+  font-size: var(--small-txt);
+  color: var(--text-color);
   line-height: 1.5;
   text-align: justify;
-  /* background-color: red; */
 }
 
+/* div.options is the container holding the choice buttons */
 .options {
   display: flex;
   margin: 0 auto;
   justify-content: center;
-  gap: 30px;
+  gap: 35px;
   flex-wrap: wrap;
-  max-width: 60vw;
+  max-width: 70vw;
 }
 
-.option, .bookmark {
+/* Each button.option is a choice button. The button.review shares the styling of the choice buttons. */
+.option, .review {
   border: none;
-  border-radius: 20px;
+  /* border-radius: 9999px ensures the element stays fully rounded, regardless of height or width */
+  border-radius: 9999px;
   color: var(--cool-white);
-  padding: 10px 20px;
-  font-size: 1.2em;
+  padding: 12px 24px;
+  font-size: var(--small-txt);
   cursor: pointer;
   transition: background-color ease-in-out 0.3s;
 }
  
-.option:nth-child(odd), .bookmark {
+/* default background-color for odd numbered choice buttons and the review button */
+.option:nth-child(odd), .review {
   background-color: var(--header-text);
 }
 
-.option:nth-child(odd):hover, .bookmark:hover {
+/* hover background-color for odd numbered choice buttons and the review button */
+.option:nth-child(odd):hover, .review:hover {
   background-color: rgb(176, 70, 102);
 }
 
+/* default background-color for even numbered choice buttons */
 .option:nth-child(even) {
   background-color: var(--story-4);
 }
 
+/* hover background-color for even numbered choice buttons */
 .option:nth-child(even):hover {
   background-color: var(--alt-button-accent);
 }
 
+/* div.story-end-button is a container which helps to position the review button */
 .story-end-button {
   display: flex;
   margin: 0 auto;
   justify-content: center;
-  gap: 30px;
   flex-wrap: wrap;
-  max-width: 60vw;
-}
-
-.bookmark a,
-.bookmark a:hover {
-  color: var(--header-link-hover);
-  text-decoration: none;
 }
 
 .remove-text-decoration {
@@ -90,69 +96,62 @@
 }
 
 /* Media Queries */
+
+@media (max-width: 1440px) {
+  /* Necessary width and spacing adjustments for this breakpoint */
+  .story-path-container {
+    /* Sets the width of the page content for viewport widths 1025px - 1440px */
+    width: 65vw;
+    gap: 45px;
+  }
+
+  .options {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Width of the page content for viewport widths 481px - 1024px */
+  .story-path-container {
+    width: 70vw;
+  }
+
+  .options {
+    gap: 25px;
+  }
+
+  .option, .review {
+    padding: 10px 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .story-path-container {
-    max-width: 80vw;
-  }
-
-  .story-path-container h1 {
-    font-size: 2em;
-  }
-
-  .story-path-container p {
-    font-size: 1.2em;
+    gap: 35px;
   }
 
   .options {
     max-width: 80vw;
-    gap: 20px;
   }
 
-  .option {
-    font-size: 1em;
-  }
-
-  .story-end-button {
-    max-width: 80vw;
-    gap: 20px;
-  }
-
-  .bookmark {
-    font-size: 1em;
+  .option, .review {
+    padding: 10px 18px;
   }
 }
 
 @media (max-width: 480px) {
+  /* Width of the page content for viewport widths 480px and under */
   .story-path-container {
-    max-width: 95vw;
-  }
-
-  .story-path-container h1 {
-    font-size: 20px;
-  }
-
-  .story-path-container p {
-    font-size: 15px;
+    width: 85vw;
   }
 
   .options {
     flex-direction: column;
     max-width: 95vw;
-    gap: 15px;
+    gap: 20px;
   }
 
-  .option {
-    font-size: 15px;
-    padding: 8px 15px;
-  }
-
-  .story-end-button {
-    max-width: 95vw;
-    gap: 15px;
-  }
-
-  .bookmark {
-    font-size: 15px;
+  .option, .review {
     padding: 8px 16px;
   }
 }
