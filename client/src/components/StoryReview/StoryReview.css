@@ -1,57 +1,88 @@
-.story-review {
-  background-color: var(--bg-color);
-  min-height: calc(100vh - var(--header-height));
-  padding: 20px;
-  box-sizing: border-box;
-}
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
 
 .story-review-container {
-  padding: 20px;
-  border-radius: var(--border-radius);
-  max-width: 600px;
+  /* Sets the width of the page content for viewport widths 1441px and up */
+  width: 60vw;
   margin: auto;
-  background-color: var(--bg-color);
-  box-sizing: border-box;
+  height: 100%;
+  /* Vertical spacing for StoryReview for viewport widths 1441px and up */
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+/* Consistent border-radius and width for the review form and list of recent reviews */
+.review-form, .reviews-list {
+  border-radius: var(--border-radius);
+  width: 100%;
 }
 
 .story-review h2 {
-  margin: 0px auto 15px;
-  color: var(--header-text);
-  border-bottom: 1px solid;
-  max-width: fit-content;
+  margin: 0px auto 35px;
+  /* The purpose of this padding-bottom is to add extra vertical space between the h2 and its border-bottom / underline */
   padding-bottom: 5px;
+  border-bottom: 1px solid;
+  color: var(--header-text);
+  max-width: fit-content;
+  font-size: var(--large-txt);
 }
 
 .fullName-input,
 .review-textarea,
-.star-rating select {
+.review-item {
+  line-height: 1.5;
+}
+
+/* Styling shared by input.fullName-input and textarea.review-textarea */
+.fullName-input,
+.review-textarea {
   display: block;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 12px 20px;
   border: 1px solid var(--text-color);
   border-radius: 4px;
   background-color: var(--header-link-hover);
   color: var(--dark-accent);
-  box-sizing: border-box;
+  font-size: var(--small-txt);
 }
 
+/* Additional styling for input.fullName-input */
+.fullName-input {
+  margin-bottom: 15px;
+}
+
+/* Additional styling for textarea.review-textarea */
 .review-textarea {
-  height: 100px;
+  margin-bottom: 12px;
+  /* 16.5px font-size x 1.5 line-height x 5 rows of text = 123.75px tall */
+  height: 123.75px;
   resize: vertical;
   background-color: var(--header-link-hover);
   color: var(--dark-accent);
 }
 
+/* Flex styling for the stars (this includes the stars inside div.review-form and the stars inside div.reviews-list) */
+div.star-rating, 
 .star-rating {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  margin-bottom: 15px;
   justify-content: center;
+  /* horizontal gap between each star */
+  gap: 7px;
+}
+
+/* div.star-rating targets the container of interactive stars inside div.review-form */
+div.star-rating {
+  margin-bottom: 15px;
+}
+  
+/* Additional styling for stars */
+.star-rating .star,
+p.star-rating.star.filled {
+  font-size: 32px;
 }
 
 .star-rating .star {
-  font-size: 2em;
   cursor: pointer;
   color: var(--header-link-hover);
   transition: color 0.2s;
@@ -62,8 +93,7 @@ p.star-rating.star.filled {
   color: #ffcc00;
 }
 
-.star-rating .star:hover,
-.star-rating .star:hover~.star {
+.star-rating .star:hover {
   color: #ffcc00;
 }
 
@@ -72,163 +102,320 @@ p.star-rating.star.filled {
   color: var(--header-link-hover);
 }
 
+/* div.review-buttons will contain a button to save the review and (if user is logged in) a bookmarks toggle button */
 .review-buttons {
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 15px;
+  gap: 15px;
   width: 100%;
 }
 
 button.save-button {
-  display: inline-block;
-  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  /* Make the button.save-button(s) match the height of input.fullName-input at this breakpoint. */  
+  height: 50.75px;
+  /* If the user is logged in, there will be 2 button.save-button's, and each will take up 50% of the width of .review-buttons, minus the 15px flex gap. */
+  width: calc(50% - 15px);
+  /* If the user is logged out, there will be 1 button.save-button, and it will grow to take up 100% of the width of .review-buttons. */
+  flex-grow: 1;
   background-color: var(--story-4);
   color: var(--cool-white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  flex-grow: 1;
   transition: background-color ease-in-out 0.3s;
+  font-size: var(--med-small-txt);
 }
 
 button.save-button:hover {
   background-color: var(--alt-button-accent);
 }
 
+/* Styling for the outermost container holding Recent Review info */
 .reviews-list {
   padding: 0px;
-  max-width: 600px;
-  margin: auto;
-  margin-top: 30px;
+  margin: 55px auto 0px;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-div.reviews-list {
-  padding: 0px;
-}
-
+/* Styling for the container which directly wraps each div.review-item */
 .reviews-list-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   min-width: 100%;
-  flex-direction: column;
+  gap: 15px;
 }
 
+/* Styling for each submitted review */
 .review-item {
+  display: flex;
+  flex-direction: column;
   background-color: var(--warm-white);
-  padding: 5px;
-  margin-bottom: 10px;
+  padding: 25px 30px;
+  gap: 2px;
   border-radius: 4px;
   min-width: 100%;
-  font-size: 14.4px;
 }
 
 .review-item h3 {
-  margin: 5px 0;
-  font-size: 14.4px;
+  font-size: var(--small-txt);
   color: var(--story-4);
 }
 
 .review-item p {
-  margin: 5px 0;
+  font-size: var(--small-txt);
+  color: var(--dark-accent);
+}
+
+.rating-error,
+.review-success-message {
+  font-size: var(--med-small-txt);
 }
 
 .rating-error {
   display: flex;
   align-items: center;
+  /* The negative margin-top on .rating-error brings .rating-error up, helping it appear vertically centered between div.star-rating and div.review-buttons. */
+  margin-top: -5px;
   margin-bottom: 20px;
   justify-content: center;
   color: var(--dark-accent);
 }
 
-.success-message {
+.review-success-message {
   display: flex;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 35px;
   justify-content: center;
+  color: #14515d;
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
-  .story-review-container,
-  .reviews-list {
-    max-width: 80vw;
+
+@media (max-width: 1440px) {
+  .story-review-container {
+    /* Sets the width of the page content for viewport widths 1025px - 1440px */
+    width: 65vw;
+    /* Vertical spacing for StoryReview for viewport widths 769px - 1440px */
+    padding-top: 40px;
+    padding-bottom: 60px;
   }
 
   .story-review h2 {
-    font-size: 1.5em;
-  }
-
-  .fullName-input,
-  .review-textarea,
-  button.save-button {
-    font-size: 0.9em;
-    padding: 8px;
-  }
-
-  .star-rating .star {
-    font-size: 1.5em;
-  }
-}
-
-@media (max-width: 480px) {
-  .story-review-container,
-  .reviews-list {
-    max-width: 95vw;
-    padding: 10px;
-  }
-
-  .story-review h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   .fullName-input,
   .review-textarea {
-    font-size: 14.5px;
-    padding: 7px;
+    padding: 11px 18px;
   }
 
-  .review-textarea {
+  .fullName-input {
     margin-bottom: 12px;
   }
 
-  button.save-button {
-    font-size: 15px;
-    padding: 8px 16px;
-    width: calc(50% - 10px);
+  .review-textarea {
+    /* 16px font-size x 1.5 line-height x 5 rows of text = 120px tall */
+    height: 120px;
   }
 
-  .star-rating .star, 
+  /* horizontal gap between each star */
+  div.star-rating, 
+  .star-rating {
+    gap: 5px;
+  }
+
+  /* adjustment for size of stars */
+  .star-rating .star,
   p.star-rating.star.filled {
-    font-size: 22px;
-    margin: 0;
+    font-size: 30px;
   }
 
-  div.review-item {
-    padding: 10px;
+  .review-buttons {
+    gap: 12px;
   }
 
-  .review-item h3 {
-    font-size: 14.5px;
+  /* Make the button.save-button(s) match the height of input.fullName-input at this breakpoint. */
+  button.save-button {
+    height: 47.6px;
   }
 
-  .review-item p {
-    font-size: 14.5px;
+  .reviews-list {
+    margin-top: 50px;
+  }
+
+  .reviews-list-container {
+    gap: 12px;
+  }
+
+  .review-success-message {
+    margin-top: 30px;
+  }
+
+  .review-item {
+    padding: 20px 25px;
+    gap: 3px;
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 1024px) {
+  /* Width of the page content for viewport widths 481px - 1024px */
+  .story-review-container {
+    width: 70vw;
+  }
+
+  .story-review h2 {
+    margin-bottom: 25px;
+  }
+
+  .fullName-input,
+  .review-textarea {
+    padding: 10px 16px;
+  }
+
+  .review-textarea {
+    /* 15.5px font-size x 1.5 line-height x 5 rows of text = 116.25px tall */
+    height: 116.25px;
+    margin-bottom: 10px;
+  }
+
+  /* adjustment for size of stars */
+  .star-rating .star,
+  p.star-rating.star.filled {
+    font-size: 28px;
+  }
+
+  /* Make the button.save-button(s) match the height of input.fullName-input at this breakpoint. */
+  button.save-button {
+    height: 44.85px;
+  }
+
+  .review-item {
+    gap: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Vertical spacing for StoryReview for viewport widths 0px - 768px */
+  .story-review-container {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+
+  .review-textarea {
+    /* 15px font-size x 1.5 line-height x 5 rows of text = 112.5px tall */
+    height: 112.5px;
+    margin-bottom: 12px;
+  }
+
+  /* horizontal gap between each star */
+  div.star-rating, 
+  .star-rating {
+    gap: 4px;
+  }
+
+  /* adjustment for size of stars */
+  .star-rating .star,
+  p.star-rating.star.filled {
+    font-size: 26px;
+  }
+
+  button.save-button {
+    padding: 10px 18px;
+    /* Make the button(s) match the height of .fullName-input at this breakpoint */
+    height: 44.1px;
+  }
+
+  .reviews-list {
+    margin-top: 40px;
+  }
+
+  .review-item {
+    padding: 20px;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 570px) {
+  /* For viewport widths 570px and under, due to decreased horizontal space, make the each button in div.review-buttons display in the column direction and span full width */
+
   .review-buttons {
     flex-direction: column;
   }
 
   button.save-button {
     width: 100%;
+    height: fit-content;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Width of the page content for viewport widths 480px and under */
+  .story-review-container {
+    width: 85vw;
+  }
+
+  .story-review h2 {
+    margin-bottom: 20px;
+  }
+
+  .fullName-input,
+  .review-textarea,
+  .review-item {
+    line-height: 1.4;
+  }
+
+  .fullName-input,
+  .review-textarea {
+    padding: 7px 14px;
+  }
+
+  .fullName-input {
+    margin-bottom: 10px;
+  }
+
+  .review-textarea {
+    /* 14.5px font-size x 1.4 line-height x 5 rows of text = 101.5px tall */
+    height: 101.5px;
+  }
+
+  /* horizontal gap between each star */  
+  div.star-rating, 
+  .star-rating {
+    gap: 2px;
+  }
+
+  /* further star size adjustment */
+  .star-rating .star, 
+  p.star-rating.star.filled {
+    font-size: 22px;
+  }
+
+  .review-buttons {
+    gap: 10px;
+  }
+
+  button.save-button {
+    /* Match the height of the input.fullName-input element */
+    height: 35.9px;
+  }
+
+  .reviews-list {
+    margin-top: 30px;
+  }
+
+  .reviews-list-container {
+    gap: 10px;
+  }
+
+  .review-item {
+    padding: 15px;
+    gap: 5px;
   }
 }

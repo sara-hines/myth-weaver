@@ -1,34 +1,32 @@
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
+
 /* Form Styles */
-form {
-  margin-top: 20px;
+.contact-form {
+  margin-top: 10px;
   width: 100%;
 }
 
-form label {
-  font-size: 18px;
+.contact-form label {
+  font-size: var(--med-large-txt);
   color: var(--header-title);
 }
 
-label {
-  margin-top: 10px;
-}
-
-form input[type='text'],
-form input[type='email'],
-form textarea,
-form select {
+.contact-form input[type='text'],
+.contact-form input[type='email'],
+.contact-form textarea,
+.contact-form select#type {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 25px;
+  padding: 12px;
+  margin-top: 15px;
+  margin-bottom: 30px;
   border: 1px solid var(--mid-dark-accent);
   border-radius: 4px;
-  font-size: 16px;
+  font-size: var(--small-txt);
   background-color: var(--story-5);
   color: var(--text-color);
-  box-sizing: border-box;
 }
 
+/* "Send Message" button */
 #contact-form-btn {
   background-color: var(--button-accent);
   color: var(--cool-white);
@@ -36,7 +34,7 @@ form select {
   padding: 15px 20px;
   margin: 5px 0px 10px;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: var(--med-large-txt);
   cursor: pointer;
   transition: background-color 0.3s;
   width: 100%;
@@ -50,21 +48,18 @@ option {
   font-family: inherit;
 }
 
-#type {
-  margin-bottom: 15px;
-}
-
+/* Error message pertaining to a specific field (excluding the select#type field) */
 .contact-field-error {
   color: var(--header-text);
   margin-top: -10px;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: var(--med-small-txt);
 }
 
-/* The div.type-field-error has slightly different styling than the other div.contact-field-error's because it needs to spatially occomodate the success or error message from submitting the whole form. */
+/* The div.type-field-error has slightly different styling than the other div.contact-field-error's because it needs to spatially accommodate the success or error message from submitting the whole form. */
 .type-field-error {
   color: var(--header-text);
-  font-size: 16px;
+  font-size: var(--med-small-txt);
 }
 
 /* The transition property for the success message is set on the entire div.success-container so it applies to the div.success-icon and the p.success-message. */
@@ -75,6 +70,7 @@ option {
   height: 30px;
   transition: opacity 3s ease-out;
   margin: 10px 0px;
+  padding-bottom: 15px;
 }
 
 /* Animated green check mark signalling success. */
@@ -85,21 +81,22 @@ option {
 
 /* Message communicating form submission success. */
 .success-message {
-  font-size: 16px;
-  margin: 0 !important;
+  font-size: var(--med-small-txt);
   color: #14515d;
 }
 
-/* The transition property for the error message is set directly on the div.error-message. */
+/* Message communicating an error in overall form submission (rather than an individual field error) */
 .error-message {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 30px;
+  /* The transition property for the error message is set directly on the div.error-message. */
   transition: opacity 2s ease-out;
-  font-size: 16px;
+  font-size: var(--med-small-txt);
   color: var(--header-text);
   margin: 10px 0px;
+  padding-bottom: 15px;
 }
 
 /* Class to gradually achieve full transparency for the success or error message. */
@@ -107,28 +104,51 @@ option {
   opacity: 0;
 }
 
-@media (max-width: 480px) {
+/* Media Queries */
 
-  .contact-field-error,
-  .type-field-error,
-  .success-message,
+@media (max-width: 1440px) {
+  /* Necessary spacing adjustments for this breakpoint */
+  .contact-form input[type='text'],
+  .contact-form input[type='email'],
+  .contact-form textarea,
+  .contact-form select#type {
+    padding: 10px;
+    margin: 12px 0px 25px;
+  }
+
+  /* padding-bottom on .success-container and .error-message is adjusted at several breakpoints to maintain a vertically centered appearance between select#type and button#contact-form-btn */
+  .success-container, 
   .error-message {
-    font-size: 15px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-form input[type='text'],
+  .contact-form input[type='email'],
+  .contact-form textarea {
+    padding: 10px;
+    margin: 10px 0px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form input[type='text'],
+  .contact-form input[type='email'],
+  .contact-form textarea,
+  .contact-form select#type {
+    padding: 10px;
+    margin: 10px 0px 20px;
   }
 
-
-  form input[type='text'],
-  form input[type='email'],
-  form textarea,
-  form select {
-    font-size: 14.5px;
-    padding: 7px;
-    margin-bottom: 20px;
+  .success-container, 
+  .error-message {
+    padding-bottom: 0px;
   }
+}
 
+@media (max-width: 480px) {
   #contact-form-btn {
-    padding: 15px 20px;
-    padding: 10px 0;
     margin: 5px 0px 0px;
   }
 }

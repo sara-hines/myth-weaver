@@ -253,23 +253,35 @@ function CreateStory() {
   };
 
   return (
-    <div className='create-story-container'>
+    <section className='create-story-container'>
       <div className='create-story-content'>
+
+        {/* Entry "Page" to welcome user */}
         {(!hasStartedStory && !isInitialModalOpen) && (
-          <>
-            <div className='fade-in-text'>
+          <div className='entry-pg-container'>
+            <div className='fade-in-text entry-text'>
               <FadeInText text="Your Story Starts Here . . . " />
             </div>
             <div className='entry-img-wrapper'>
               <img className='entry-img' src='/images/path-under-sky.jpg' alt='path-under-sky' />
               <button className='create-story-button' onClick={() => setIsInitialModalOpen(true)}>Create Story</button>
             </div>
-          </>
+          </div>
         )}
-        <div className='chapter-container'>
-          {chapters.length > 0 && renderChapters(0)}
-        </div>
-        {chapters.length > 0 && <button className='finalize-story-button' onClick={finalizeStory}>Finalize Story</button>}
+
+        {/* Story Diagram "Page" */}
+        {chapters.length > 0 && (
+          <div className='story-diagram-container'>
+            <div className='story-diagram-heading'>
+              <h1>Your Story Diagram</h1>
+              <h2>Click a chapter or choice button to edit or add onto your story!</h2>
+            </div>
+            <div className='chapter-container'>
+              {renderChapters(0)}
+            </div>
+            <button className='finalize-story-button' onClick={finalizeStory}>Finalize Story</button>
+          </div>
+        )}
       </div>
 
       {/* Modal for initial story details */}
@@ -284,7 +296,7 @@ function CreateStory() {
           setStoryTags('');
           setIsInitialModalOpen(false);
         }}
-        className='modal'
+        className='modal create-story-modal'
         overlayClassName='overlay'
       >
         <div className="modal-header">
@@ -303,7 +315,7 @@ function CreateStory() {
           >
           </button>
         </div>
-        <form onSubmit={handleInitialSubmit}>
+        <form onSubmit={handleInitialSubmit} className='create-story-form'>
           <label htmlFor='storyTitle'>Story Title:</label>
           <input type='text' id='storyTitle' value={storyTitle} onChange={handleStoryTitleChange} required />
 
@@ -331,7 +343,7 @@ function CreateStory() {
           setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
           setIsChapterModalOpen(false);
         }}
-        className="modal"
+        className="modal create-story-modal"
         overlayClassName="overlay"
       >
         <div className="modal-header">
@@ -345,7 +357,7 @@ function CreateStory() {
           >
           </button>
         </div>
-        <form onSubmit={handleChapterSubmit}>
+        <form onSubmit={handleChapterSubmit} className='create-story-form'>
           <label htmlFor='chapterTitle'>Title:</label>
           <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
           <label htmlFor='chapterContent'>Content:</label>
@@ -394,7 +406,7 @@ function CreateStory() {
           setCurrentChapter({ title: '', content: '', isEnd: false, choices: [{ choiceText: '', nextChapterIndex: null }] });
           setIsChoiceModalOpen(false);
         }}
-        className="modal"
+        className="modal create-story-modal"
         overlayClassName="overlay"
       >
         <div className="modal-header">
@@ -408,7 +420,7 @@ function CreateStory() {
           >
           </button>
         </div>
-        <form onSubmit={handleChoiceSubmit}>
+        <form onSubmit={handleChoiceSubmit} className='create-story-form'>
           <label htmlFor='chapterTitle'>Title:</label>
           <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
           <label htmlFor='chapterContent'>Content:</label>
@@ -448,7 +460,7 @@ function CreateStory() {
           <button type='submit' className='save-chapter-button'>Save Chapter</button>
         </form>
       </Modal>
-    </div>
+    </section>
   );
 }
 

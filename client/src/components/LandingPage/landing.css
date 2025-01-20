@@ -1,3 +1,5 @@
+/* Styling is desktop-first; default styles apply to viewport widths 1701px and up */
+
 .landing-page {
   text-align: center;
   font-family: Arial, sans-serif;

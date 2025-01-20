@@ -44,12 +44,12 @@ const StoryPath = () => {
   if (loading) {
     return (
       <div className='story-path-pg-wrapper'>
-        <main className='story-path'>
+        <div className='story-path'>
           <div className='loading-container'>
             <div className='spinner'></div>
             <h2>Loading...</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -59,7 +59,7 @@ const StoryPath = () => {
   }
 
   return (
-    <div className='story-path-pg-wrapper'>
+    <section className='story-path-pg-wrapper'>
       <div className='story-path'>
         {/* If the currentChapter is not the end of the story, render the chapter's content and choices. */}
         {!currentChapter.isEnd ? (
@@ -87,13 +87,13 @@ const StoryPath = () => {
               <Link to={`/story-review/${storyId}`} className='remove-text-decoration'>
                 <div className='story-end-button'>
                   {/* Bookmarking functionality is only available to logged in users, but users can review stories whether or not they are logged in. */}
-                  <button className='bookmark'>{Auth.loggedIn() ? 'Bookmark Story and Leave a Review!' : 'Leave a Review!'}</button>
+                  <button className='review'>{Auth.loggedIn() ? 'Bookmark Story and Leave a Review!' : 'Leave a Review!'}</button>
               </div>
             </Link>
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

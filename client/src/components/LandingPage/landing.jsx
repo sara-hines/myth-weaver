@@ -33,14 +33,14 @@ function Landing() {
       </div>
 
       {/* Additional images which appear for larger viewport widths */}
-      <section className='images-section'>
+      <div className='images-section'>
         <div className='container'>
           <img src={Book} alt='Book' className='book-image' />
           <img src={Bag} alt='Bag' className='bag-image' />
           <img src={CoinPurse} alt='CoinPurse' className='coinpurse-image' />
           <img src={Map} alt='Map' className='map-image' />
         </div>
-      </section>
+      </div>
     </div>
   );
 }

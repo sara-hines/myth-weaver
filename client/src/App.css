@@ -6,23 +6,17 @@
   font-family: var(--theme-font);
 }
 
-html {
-  overflow-y: scroll;
-}
-
-body.modal-open {
-  width: 100vw;
-  overflow: hidden;
-}
-
 /* Default (fairycore) theme */
 :root {
   font-size: 16px;
   /* set default for rem */
   --border-radius: 10px;
   --theme-font: 'Chewy', cursive, sans-serif;
-  --header-height: 274px;
-  /* header & footer height combined */
+
+  /* HEIGHT OF ELEMENTS WHICH IMPACT VERTICAL SPACING */
+  --header-height: 140px; 
+  --dropdown-height: 38px;
+  --footer-height: 100px;
 
   /* COLORS */
   --bg-color: rgb(211, 201, 198);
@@ -54,7 +48,7 @@ body.modal-open {
   --alt-button-accent: rgb(88, 57, 138);
   /* #6B4C9E */
 
-  /* HEADER VARIABLES */
+  /* HEADER COLOR VARIABLES */
   --header-bg: rgb(216, 184, 153);
   /* #d8b899 */
   --header-text: rgb(201, 95, 126);
@@ -89,6 +83,21 @@ body.modal-open {
   /* #0000b3 */
   --story-11: rgb(189, 133, 178);
   /* #BD85B2 */
+
+  /* FONT SIZE VARIABLES */
+  /* these initial values apply for viewport widths 1441px + */
+  --small-txt: 16.5px;
+  --med-small-txt: 18.5px;
+  --med-txt: 21px;
+  --med-large-txt: 23px;
+  --large-txt: 28px;
+
+  /* button.header-button horizontal padding */
+  --header-x-padding-small: 15px;
+  --header-x-padding-bigger: 20px;
+
+  /* LoginSignupModal .btn-close side length - may want to use this for Create Story Modal as well. */
+  --btn-close-length: 38px;
 }
 
 /* Dark theme */
@@ -103,13 +112,45 @@ body.modal-open {
   --text-color: #ffffff;
 }
 
+/* The below 3 classes are a test of flex sticky footer */
+html,
+body, 
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+body.modal-open {
+  width: 100vw;
+  overflow: hidden;
+}
+
 .loading-container,
 .error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - var(--header-height));
   background-color: var(--bg-color);
 }
 
@@ -140,6 +181,31 @@ body.modal-open {
   color: var(--header-title);
 }
 
+/* Shared modal styles */
+.modal {
+  z-index: 1100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Shared form styles */
+form label,
+form input,
+form textarea,
+form select {
+  display: block;
+  width: 100%;
+  margin: 0px;
+}
+
 /* Styling for the browser's scrollbar and the scrollbar that appears around the story structure UI in CreateStory.jsx */
 /* Entire scrollbar */
 ::-webkit-scrollbar {
@@ -161,4 +227,61 @@ body.modal-open {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(112, 105, 104);
+}
+
+div.layout-background {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+}
+
+/* For viewport widths 1025px - 1440px */
+@media (max-width: 1440px) {
+  :root {
+    /* conflict: story descriptions are not fitting in the story boxes in mythIndex at this breakpoint, and 15.5px would work better for those story descriptions, but 16px for --small-txt looks better on other pages. */
+    --small-txt: 16px;
+    --med-small-txt: 18px;
+    --med-txt: 20px;
+    --med-large-txt: 22px;
+    --large-txt: 27px;
+
+    --btn-close-length: 35px;
+  }
+}
+
+/* For viewport widths 769px - 1024px */
+@media (max-width: 1024px) {
+  :root {
+    --small-txt: 15.5px;
+    --med-small-txt: 17px;
+    --med-txt: 19px;
+    --med-large-txt: 21px;
+    --large-txt: 25px;
+  }
+}
+
+/* For viewport widths 481px - 768px */
+@media (max-width: 768px) {
+  :root {
+    --small-txt: 15px;
+    --med-small-txt: 15.5px;
+    --med-txt: 16px;
+    --med-large-txt: 18px;
+    --large-txt: 24px;
+
+    --btn-close-length: 32px;
+  }
+}
+
+/* For viewport widths 480px and under */
+@media (max-width: 480px) {
+  :root {
+    --small-txt: 14.5px;
+    --med-small-txt: 15px;
+    --med-txt: 16px;
+    --med-large-txt: 18px;
+    --large-txt: 22px;
+
+    --btn-close-length: 30px;
+  }
 }

@@ -10,7 +10,7 @@ const MythIndex = () => {
 
   // For mobile viewport widths: useEffect to add hover class to each story thumbnail when the user scrolls to it
   useEffect(() => {
-    // This will ensure the hover effect is only applied on smaller screens
+    // This will ensure the scrolling-triggered hover effect is only applied on screens smaller than 480px wide
     const applyHoverEffect = () => window.innerWidth < 480;
 
     if (applyHoverEffect()) {
@@ -50,12 +50,12 @@ const MythIndex = () => {
   if (loading) {
     return (
       <div className='mythweaver'>
-        <main className='main-content'>
+        <div className='main-content'>
           <div className='loading-container'>
             <div className='spinner'></div>
             <h2>Loading...</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -64,11 +64,11 @@ const MythIndex = () => {
   if (error) {
     return (
       <div className='mythweaver'>
-        <main className='main-content'>
+        <div className='main-content'>
           <div className='error-container'>
             <h2>Error loading stories</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -79,8 +79,8 @@ const MythIndex = () => {
 
   return (
     // Display the stories
-    <div className='mythweaver'>
-      <main className='main-content'>
+    <section className='mythweaver'>
+      <div className='main-content'>
         <div className='story-grid'>
           {stories.map((story, index) => (
             <Link to={`/story-index/${story._id}`} key={story._id}>
@@ -98,8 +98,8 @@ const MythIndex = () => {
             </Link>
           ))}
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 };
 

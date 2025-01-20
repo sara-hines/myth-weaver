@@ -1,46 +1,47 @@
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
+
 .user-profile {
   background-color: var(--bg-color);
-  min-height: calc(100vh - var(--header-height));
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   width: 100%;
+  /* We are making the pg content take up all the height within 100vh that the header and dropdown-container don't take up, thus pushing the footer below the fold. */
+  min-height: calc(100vh - (var(--header-height) + var(--dropdown-height)));
 }
 
 .user-main-content {
-  width: 100%;
-  max-width: 65vw;
-  padding: 20px;
+  /* Sets the width of the page content for viewport widths 1441px and up */
+  width: 60vw;
   display: flex;
+  /* Vertical, 1 column layout */
   flex-direction: column;
   align-items: center;
+  /* Vertical spacing for UserProfile for viewport widths 1441px and up */
+  padding-top: 50px;
+  padding-bottom: 70px;
 }
 
-.welcome-message {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  color: var(--header-title);
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+.fade-in-text.welcome-text span {
+  font-size: var(--large-txt);
 }
 
+/* Parent container of the "Create A New Story" button */
 .button-container {
   margin: 35px 0 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
+/* "Create A New Story" button */
 .profile-button {
   background-color: var(--story-4);
   color: var(--cool-white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: var(--border-radius);
-  font-size: 20px;
+  font-size: var(--med-large-txt);
   text-align: center;
-  padding: 15px;
+  padding: 14px 28px;
   cursor: pointer;
   transition: background-color ease-in-out 0.3s;
 }
@@ -49,33 +50,31 @@
   background-color: var(--alt-button-accent);
 }
 
-.additional-content {
-  padding: 0;
-  width: 100%;
-}
-
+.additional-content, 
 .story-section {
   text-align: center;
   width: 100%;
 }
 
+/* Styling for each toggle to reveal a set of stories */
 .story-section h2 {
   background-color: var(--button-accent);
   color: var(--cool-white);
   border-radius: var(--border-radius);
-  font-size: 20px;
-  padding: 15px;
-  margin: 15px 0px;
+  font-size: var(--med-large-txt);
+  width: auto;
+  padding: 14px;
+  margin: 20px 0px;
   cursor: pointer;
   transition: width 0.3s ease;
   transition: background-color ease-in-out 0.3s;
-  width: auto;
 }
 
 .story-section h2:hover {
   background-color: var(--dk-button-accent);
 }
 
+/* Container holding each set of stories in their div.story-box's */
 .stories-grid {
   display: flex;
   flex-wrap: wrap;
@@ -83,71 +82,83 @@
   gap: 20px;
 }
 
+/* div representing a single story */
 .story-box {
-  width: calc(25% - 20px);
+  /* 0 (flex-grow): Prevents the .story-box from growing to fill extra space in its row. This ensures all .story-box elements maintain equal width. 1 (flex-shrink): Allows .story-box elements to shrink if the container’s width is insufficient. calc(33.33% - 20px) (flex-basis): Sets an equal width for all items based on roughly one-third of the container width. */
+  flex: 0 1 calc(33.33% - 20px);
+  /* Max-width and min-width are also set for a more consistent design. */
   max-width: 300px;
-  flex: 1 0 250px;
+  min-width: 250px;
+  display: flex;
+  /* Display the div.story-box's content in the vertical direction */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* This gap matches the flex gap of .story-box a for visual consistency */
+  gap: 25px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 20px 20px 28px;
   border-radius: var(--border-radius);
   border: 1px solid var(--header-link-hover);
   background-color: var(--header-link-hover);
 }
 
-.remove-text-decoration {
+/* .story-box a contains the img, h3 (story title), and the gap between them, so that all of these elements act as a link */
+.story-box a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* This gap matches the flex gap of .story-box for visual consistency */
+  gap: 25px;
   text-decoration: none;
 }
 
 .story-box img {
   width: 100%;
+  /* Allow flexible adjustment of height, with a min-height of 230px */
   height: auto;
+  min-height: 230px;
+  /* Scale the img to completely cover the container while maintaining aspect ratio */
+  object-fit: cover;
   border-radius: var(--border-radius);
 }
 
+/* Story title */
 .story-box h3 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 1.01rem;
+  font-size: var(--med-txt);
   color: var(--story-10);
 }
 
+.story-box h3,
 .story-box p {
-  font-size: 0.85rem;
-  color: #666;
+  line-height: 1.4;
+}
+
+.story-box .story-blurb {
+  font-size: var(--small-txt);
+  color: var(--text-color);
 }
 
 p.story-author {
-  margin-bottom: 10px;
+  font-size: var(--med-small-txt);
   color: var(--dk-button-accent);
 }
 
-.story-box .rating {
-  margin: 10px 0;
-}
-
-.story-box .actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.story-box .actions button {
-  margin: 5px;
-}
-
+/* Styling for all remove and delete buttons within their div.story-box's */
 .story-box button {
+  font-size: var(--med-small-txt);
   color: var(--cool-white);
   border: none;
-  padding: 8px 16px;
+  padding: 12px 24px;
+  width: fit-content;
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color ease-in-out 0.3s;
 }
 
+/* Styling for delete buttons */
 .story-box .delete-btn {
   background-color: var(--button-accent);
 }
@@ -156,6 +167,7 @@ p.story-author {
   background-color: var(--dk-button-accent);
 }
 
+/* Styling for remove buttons */
 .story-box .remove-btn {
   background-color: var(--dk-container-color);
 }
@@ -164,88 +176,91 @@ p.story-author {
   background-color: rgb(215, 123, 74);
 }
 
+/* If there are no stories in a category, the h3.no-data-message will appear */
 .no-data-message {
-  font-size: 20px;
+  font-size: var(--med-txt);
   padding: 0px;
   margin: 15px;
   cursor: pointer;
   transition: width 0.3s ease;
   width: auto;
+  color: var(--dark-accent);
 }
 
-/* Media Queries for responsiveness */
+/* Media Queries */
 
-/* Covers all viewport widths greater than 767px and up through the largest viewport widths */
-@media (max-width: 2000px) {
+@media (max-width: 1440px) {
   .user-main-content {
-    max-width: 80vw;
-  }
-
-  /* The full height of the footer doesn't fit nicely at this viewport size, so giving the div.user-profile extra height pushes the footer down and out of sight. */
-  div.user-profile {
-    min-height: calc((100vh - var(--header-height)) + 104px);
-  }
-
-  .welcome-message {
-    margin-bottom: 29.2px;
-    font-size: 36px;
+    /* Sets the width of the page content for viewport widths 1025px - 1440px */
+    width: 65vw;
+    /* Vertical spacing for UserProfile for viewport widths 769px - 1440px */
+    padding-top: 40px;
+    padding-bottom: 60px;
   }
 
   .story-box {
-    width: calc(33.33% - 20px);
+    padding: 20px 20px 25px;
+  }
+
+  .story-box img {
+    min-height: 200px;
+  }
+
+  .story-box button {
+    padding: 10px 18px;
+  }
+}
+
+/* For viewport widths 769px - 1024px */
+@media (max-width: 1024px) {
+  .user-main-content {
+    /* Sets the width of the page content for viewport widths 769px - 1024px */
+    width: 70vw;
+  }
+
+  .profile-button, 
+  .story-section h2 {
+    padding: 12px 24px;
+  }
+
+  .story-box,
+  .story-box a {
+    gap: 20px;
   }
 }
 
 /* For viewport widths 481px - 768px */
 @media (max-width: 768px) {
   .user-main-content {
-    max-width: 90vw;
+    /* Width of the page content for all viewport widths 768px and under */
+    width: 85vw;
+    /* Vertical spacing for AboutUs for viewport widths 0px - 768px */
+    padding-top: 30px;
+    padding-bottom: 40px;
   }
+}
 
-  div.user-profile {
-    min-height: calc((100vh - var(--header-height)) + 2px);
-  }
-
-  .welcome-message {
-    font-size: 32px;
-  }
-
+@media (max-width: 620px) {
   .story-box {
-    width: calc(50% - 20px);
-  }
-
-  .profile-button {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
-
-  .story-section h2 {
-    font-size: 18px;
-    padding: 10px;
+    /* When the viewport width is less than 620px, only 1 div.story-box can fit within the available width, but there is still substantial horizontal space around the edges. The below line updates the flex-basis to 90% of the width of div.stories-grid, allowing the .story-box to grow and fill more horizontal space. flex-grow: 0 ensures the .story-box doesn’t grow beyond its allocated space, and flex-shrink: 1 ensures the .story-box can shrink if needed. */
+    flex: 0 1 90%;
   }
 }
 
 /* For viewport widths 480px and smaller */
 @media (max-width: 480px) {
-  div.user-profile {
-    min-height: calc((100vh - var(--header-height)) + 4px);
+  /* For mobiles, decrease the minimum height of the div.user-profile to bring the footer into view and fill excess space at the bottom of the viewport. */
+  .user-profile {
+    min-height: calc(100vh - (var(--header-height) + var(--dropdown-height) + var(--footer-height)));
   }
 
-  .user-main-content {
-    max-width: 100vw;
-    padding: 10px;
-  }
-
-  .welcome-message {
-    font-size: 24px;
-    /* This margin-top is designed to give 100px total vertical space between the header and the h1.welcome-message, to mimic the 100px vertical height of the footer. */
-    margin-top: 31.6px;
-    margin-bottom: 15px;
-  }
-
-  .profile-button {
-    font-size: 18px;
+  .profile-button, 
+  .story-section h2 {
     padding: 8px 16px;
+  }
+
+  .story-section h2 {
+    margin: 15px 0px;
   }
 
   .stories-grid {
@@ -253,34 +268,24 @@ p.story-author {
   }
 
   .story-box {
-    width: calc(100% - 20px);
-    margin-bottom: 0;
+    padding: 15px 15px 20px;
   }
 
-  .story-section h2 {
-    font-size: 18px;
-    padding: 8px;
+  .story-box img {
+    height: 250px;
   }
 
-  .story-box h3 {
-    font-size: 16px;
-  }
-
-  .story-box p {
-    font-size: 14.5px;
-    line-height: 1.4;
-  }
-
-  p.story-author {
-    font-size: 15px;
-  }
-
-  button.delete-btn,
-  button.remove-btn {
-    font-size: 15px;
+  .story-box button {
+    padding: 8px 16px;
   }
 
   .no-data-message {
-    font-size: 16px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 370px) {
+  .story-box img {
+    height: 200px;
   }
 }

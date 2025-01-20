@@ -1,0 +1,203 @@
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
+
+/* Styles for the Login and Signup Modals */
+
+#auth-modal-custom {
+  width: 100%;
+  transition: all ease-in-out 2s;
+}
+
+/* The visible part of the modal */
+#auth-modal-custom .modal-content {
+  z-index: 1000;
+  position: fixed;
+  /* center the modal vertically and horizontally within the viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  background-color: var(--warm-white);
+  padding: 50px;
+  border-radius: 10px;
+  transition: all ease-in-out 2s;
+}
+
+/* This is the modal backdrop which darkens the page content when the modal is open. */
+div.fade.auth-modal.modal.show {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+}
+
+.modal-header-center .modal-title {
+  text-align: center;
+  width: 100%;
+  font-size: var(--large-txt);
+  color: var(--story-4);
+  /* Center the modal title by adjusting its horizontal positioning by the current .btn-close side length */
+  margin-left: var(--btn-close-length);
+}
+
+/* Close button for the modal */
+.modal-header-center .btn-close {
+  /* --btn-close-length is a variable defined and modified in App.css to help with the sizing of the modal close button at various breakpoints */
+  min-width: var(--btn-close-length);
+  height: var(--btn-close-length);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--story-4);
+  color: var(--warm-white);
+  padding: 0;
+  margin: 0;
+  transition: background-color ease-in-out 0.3s;
+}
+
+.modal-header-center .btn-close:hover {
+  background-color: var(--alt-button-accent);
+  cursor: pointer;
+}
+
+.modal-header-center .btn-close::before {
+  content: '×';
+  font-size: var(--btn-close-length);
+  position: relative;
+  /* The below 4 properties center the 'x' inside the modal close button */
+  top: 50%;
+  left: 50%;
+  transform: translate(-120%, -40%);
+  height: fit-content;
+}
+
+.auth-modal-body {
+  line-height: 1.6;
+}
+
+.auth-modal-body.modal-body {
+  padding: 0;
+}
+
+/* Login / Signup Form Styling */
+.auth-modal-body form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.auth-modal-body form label {
+  font-size: var(--med-large-txt);
+  color: var(--header-title);
+}
+
+/* This selector is just the input elements */
+.auth-modal-body form .form-control {
+  font-size: var(--small-txt);
+  padding: 12px;
+  border: 1px solid var(--dark-accent);
+  border-radius: 4px;
+  background-color: var(--story-5);
+  color: var(--dark-accent);
+  margin: 15px 0px 30px;
+}
+
+/* Submit button */
+.auth-modal-body form .btn {
+  font-size: var(--med-large-txt);
+  padding: 12px;
+  border-radius: 4px;
+  border: none;
+  color: var(--warm-white);
+  background-color: var(--story-4);
+  transition: background-color ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+/* Submit button hover */
+.auth-modal-body form .btn:hover {
+  background-color: var(--alt-button-accent);
+}
+
+/* Error message when the user's login or signup submission is invalid */
+.auth-error-msg {
+  font-size: var(--med-small-txt);
+  padding-bottom: 10px;
+  color: var(--dark-accent);
+}
+
+/* div.invalid-feedback appears when the input of an individual field is invalid */
+/* For each breakpoint, the margin-top of div.invalid-feedback will be whatever the margin-top of .auth-modal-body form .form-control is, but negative, and the margin-bottom of the div.invalid-feedback will be equal to the margin-bottom of .auth-modal-body form .form-control. */
+div.invalid-feedback {
+  font-size: var(--med-small-txt);
+  margin: -15px 0 30px;
+  color: var(--dark-accent);
+}
+
+/* Media Queries for the Login and Signup Modals */
+
+@media (max-width: 1440px) {
+  /* Adjusting width of the modal, padding, and spacing as necessary for the breakpoint */
+  #auth-modal-custom .modal-content {
+    width: 40vw;
+    padding: 45px;
+  }
+
+  .auth-modal-body form .form-control {
+    margin: 12px 0px 26px;
+  }
+
+  div.invalid-feedback {
+    margin: -12px 0 26px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #auth-modal-custom .modal-content {
+    width: 55vw;
+    padding: 40px;
+  }
+
+  .auth-modal-body form .form-control {
+    margin: 10px 0px 25px;
+  }
+
+  div.invalid-feedback {
+    margin: -10px 0 25px;  
+  }
+}
+
+@media (max-width: 768px) {
+  #auth-modal-custom .modal-content {
+    width: 65vw;
+    padding: 35px;
+  }
+
+  .auth-modal-body form .form-control {
+    padding: 10px;
+    margin: 10px 0px 20px;
+  }
+
+  div.invalid-feedback {
+    margin: -10px 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #auth-modal-custom .modal-content {
+    width: 85vw;
+    padding: 30px;
+  }
+
+  .auth-modal-body form .form-control {
+    padding: 7px;
+  }
+
+  /* Submit button */
+  .auth-modal-body form .btn {
+    padding: 7px;
+  }
+}

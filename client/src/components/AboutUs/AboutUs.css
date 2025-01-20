@@ -1,12 +1,15 @@
-/* General Styles */
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
+
 .about-us-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   background-color: var(--bg-color);
-  min-height: 100vh;
   width: 100%;
+  /* Vertical spacing for AboutUs for viewport widths 1441px and up */
+  padding-top: 50px;
+  padding-bottom: 70px;
 }
 
 .about-us-main {
@@ -15,39 +18,41 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  max-width: 90vw;
-  padding: 10px;
+  /* Sets the width of AboutUs page content when viewport width is 1441px and up */
+  width: 60vw;
+  gap: 40px;
 }
 
+/* Our Story, Our Team, and Contact Us are each located in their own div.about-us-card */
 .about-us-card {
+  display: flex;
+  flex-direction: column;
   background-color: var(--container-color);
   border-radius: var(--border-radius);
   text-align: center;
+  /* .about-us-card will always be 100% of the width of .about-us-main */
   width: 100%;
-  padding: 25px;
-  margin: 12.5px;
+  padding: 45px 70px;
+  gap: 25px;
 }
 
 .about-us-title {
-  font-size: 24px;
+  font-size: var(--large-txt);
   color: var(--header-text);
-  margin: 10px 0px;
 }
 
 .about-us-description {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: var(--small-txt);
+  line-height: 1.6;
   color: var(--text-color);
-  padding: 10px 0px;
 }
 
 /* Team Grid */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   width: 100%;
-  gap: 25px;
-  padding-top: 10px;
+  gap: 30px;
 }
 
 .team-member {
@@ -56,12 +61,13 @@
   border: 1px solid var(--text-color);
   border-radius: var(--border-radius);
   background-color: var(--accent-container);
-  padding: 15px;
+  padding: 30px;
 }
 
 .team-member-info {
   display: flex;
   flex-direction: column;
+  gap: 25px;
   align-items: center;
   align-content: center;
   color: var(--text-color);
@@ -72,88 +78,157 @@
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  margin-top: 10px;
-}
-
-.team-member-text {
-  text-align: center;
-  padding: 10px;
 }
 
 .team-member-name {
+  font-size: var(--med-large-txt);
   color: var(--header-title);
   transition: all ease-in-out 0.5s;
   margin: 0;
-  padding: 10px 0px;
 }
 
 .team-member-description {
+  font-size: var(--small-txt);
   text-align: justify;
+  /* A line-height of 1.6 is appropriate for when the viewport width is large and the div.team-member cards are displaying in multiple columns, each with fairly short line length. This also matches the line-height of .about-us-description at large viewport widths. */
+  line-height: 1.6;
   margin: 0;
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+
+@media (max-width: 1440px) {
+
+  /* Vertical spacing for AboutUs for viewport widths 769px - 1440px */
+  .about-us-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+
+  /* Sets the width of AboutUs page content when viewport width is 1025px - 1440px */
   .about-us-main {
-    max-width: 80vw;
+    width: 65vw;
   }
 
-  .about-us-title {
-    font-size: 20px;
+  .about-us-card {
+    padding: 40px 60px;
+    gap: 20px;
   }
 
-  .about-us-description {
-    font-size: 16px;
+  .team-grid {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 1300px) {
+  /* Giving .about-us-card extra padding for viewport widths 1025px - 1300px helps prevent excessively long line lengths. */
+  .about-us-card {
+    padding: 45px 70px;
   }
 
-  .team-member-img {
-    width: 80px;
-    height: 80px;
+  /* Giving .team-member extra padding for viewport widths 1025px - 1300px helps prevent excessively long line lengths. */
+  .team-member {
+    padding: 50px;
+  }
+
+  .about-us-description,
+  .team-member-description {
+    /* A line-height of 2 helps give some extra height to the text to balance the large width of content and the long line length of div.team-member cards at viewport widths 1025px - 1300px. */
+    line-height: 2;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  /* Sets the width of AboutUs page content when viewport width is 769px - 1024px*/
+  .about-us-main {
+    width: 70vw;
+    gap: 35px;
+  }
+
+  /* Necessary padding and spacing adjustments for this breakpoint follow */
+  .about-us-card {
+    padding: 40px 45px;
+    gap: 25px;
+  }
+
+  .team-grid {
+    gap: 30px;
+  }
+
+  .team-member {
+    padding: 40px;
+  }
+
+  /* A line-height of 1.8 for viewport widths 481px - 1024px is sufficient to balance the longer line lengths as the viewport width increases. */
+  .about-us-description,
+  .team-member-description {
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Vertical spacing for AboutUs for viewport widths 0px - 768px */
+  .about-us-container {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+
+  .about-us-main {
+    /* Width of AboutUs page content when viewport width is 768px or less */
+    width: 85vw;
+    gap: 30px;
+  }
+
+  .about-us-card {
+    padding: 35px;
+  }
+
+  .team-grid {
+    gap: 25px;
+  }
+
+  .team-member {
+    padding: 30px;
   }
 
   .team-member-info {
-    flex-direction: column;
+    gap: 20px;
   }
+}
 
-  .team-member-text {
-    text-align: center;
+@media (max-width: 600px) {
+  .team-member-img {
+    width: 80px;
+    height: 80px;
   }
 }
 
 @media (max-width: 480px) {
   .about-us-main {
-    max-width: 95vw;
-    padding: 30px 15px 0px 15px;
+    gap: 20px;
   }
 
   .about-us-card {
     margin-top: 0px;
-    margin-bottom: 30px;
+    padding: 35px 25px 25px;
+    gap: 20px;
   }
 
-  .about-us-title {
-    font-size: 20px;
+  .our-story-card {
+    padding: 35px 25px;
   }
 
-  .about-us-description {
-    font-size: 14.5px;
+  /* A line-height of 1.4 is consistent with line-height given to body text at the mobile breakpoint in different pages around the site. */
+  .about-us-description,
+  .team-member-description {
     line-height: 1.4;
   }
 
   .team-grid {
     gap: 15px;
-  }
-
-  .team-member-name {
-    font-size: 18px;
-  }
-
-  .team-member-description {
-    font-size: 14.5px;
-    line-height: 1.4;
-  }
-
-  .team-member-text {
-    padding: 5px;
+    /* The below line ensures that the 1 column fits the space available, rather than staying 300px wide and exceeding the available space. */
+    grid-template-columns: repeat(1, 1fr);
   }
 }

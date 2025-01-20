@@ -1,51 +1,54 @@
-/* General styles for the Create Story page */
+/* General styles for the Create Story page, in order of appearance in the jsx */
+/* Responsive design is still in progress for Create Story */
+
 .create-story-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: var(--bg-color);
-  /* Beige background */
-  min-height: calc(100vh - var(--header-height));
+  /* We are making the pg content take up all the height within 100vh that the header and dropdown-container don't take up, thus pushing the footer below the fold. */
+  min-height: calc(100vh - (var(--header-height) + var(--dropdown-height)));
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-.home-link {
-  font-size: 24px;
-  color: #000;
-  /* Black color */
-  text-decoration: none;
-}
-
-.create-story-title {
-  font-size: 36px;
-  color: #000;
-  /* Black color */
-}
-
-.change-theme-button {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #000;
-  /* Black color */
-  cursor: pointer;
-}
-
+/* div.create-story-content is a container that holds both div.entry-pg-container and div.story-diagram-container, and both of those nested containers are always 100% of the width of div.create-story-content. The width of div.create-story-content changes depending on viewport width; it regulates the width of both of its nested containers.  */
 .create-story-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
+  /* justify-content: space-around makes it so that, within div.create-story-content, there is an equal amount of space above the div.entry-pg-container as there is below the div.entry-pg-container */
+  justify-content: space-around;
   box-sizing: border-box;
+  width: 60vw;
+  height: 100%;
+  overflow-y: auto;
+  /* The below padding-bottom moves the div.entry-pg-container and the div.story-diagram-container up by the height of the theme switcher (div.dropdown-container). Otherwise, the page content of both of these containers doesn't appear vertically centered. */
+  /* Currently am messing with this padding */
+  /* padding-bottom: var(--dropdown-height); */
+}
+
+/* ENTRY "PAGE" STYLES */
+
+.entry-pg-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+  min-height: 65vh;
+  justify-content: flex-start;
+}
+
+.fade-in-text.entry-text span {
+  font-size: var(--large-txt);
 }
 
 .entry-img-wrapper {
   position: relative;
-  margin-top: 20px;
   width: 100%;
-  /* height: 100%; */
-  height: 60vh;
+  /* height: 50vh; */
+  flex: 1;
+  height: auto;
 }
 
 .entry-img-wrapper::after {
@@ -56,12 +59,12 @@
   right: 0;
   height: 100%;
   background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.5) 10%,
-      rgba(0, 0, 0, 0.4) 20%,
-      rgba(0, 0, 0, 0.3) 30%,
-      rgba(0, 0, 0, 0.2) 40%,
-      rgba(0, 0, 0, 0) 50%);
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.5) 10%,
+    rgba(0, 0, 0, 0.4) 20%,
+    rgba(0, 0, 0, 0.3) 30%,
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0) 50%);
   border-radius: 10px;
   pointer-events: none;
   z-index: 1;
@@ -95,287 +98,25 @@
   }
 }
 
-.story-title {
-  font-size: 24px;
-  color: #523B87;
-  /* Purple color */
-  margin-bottom: 10px;
-}
-
-.story-options {
-  list-style: none;
-  padding: 0;
-}
-
-.story-option {
-  font-size: 20px;
-  margin: 10px 0;
-}
-
-.story-option.new {
-  color: #FF7276;
-  /* Red color */
-}
-
-.story-option.edit {
-  color: #A0CC57;
-  /* Green color */
-}
-
-.story-option.rename {
-  color: #FF7276;
-  /* Red color */
-}
-
-.story-option.test {
-  color: #A0CC57;
-  /* Green color */
-}
-
-.story-option.build {
-  color: #FF7276;
-  /* Red color */
-}
-
-.story-option.delete {
-  color: #FF0000;
-  /* Bright red color */
-}
-
-.create-story-main {
-  display: flex;
-  flex-grow: 1;
-  background-color: #d3c1b1;
-  /* Beige background */
-  padding: 20px;
-}
-
-.story-graph {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  position: relative;
-}
-
-/* .node {
-  width: 100px;
-  height: 50px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  position: absolute;
-} */
-
-.purple {
-  background-color: #523B87;
-  left: 10%;
-}
-
-.blue {
-  background-color: #7AC4C1;
-  left: 30%;
-}
-
-.aqua {
-  background-color: #2DB6C8;
-  left: 50%;
-  top: 10%;
-}
-
-.pink {
-  background-color: #D6768E;
-  left: 50%;
-  top: 50%;
-}
-
-.story-editor {
-  background-color: #d3b1b1;
-  /* Beige background */
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 300px;
-}
-
-.editor-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #D6768E;
-  /* Pink background */
-  padding: 10px;
-  border-radius: 20px 20px 0 0;
-  color: #000;
-  /* Black color */
-}
-
-.editor-content {
-  width: 100%;
-  height: 200px;
-  background-color: #b5a3a3;
-  /* Light beige background */
-  border: none;
-  border-radius: 0 0 20px 20px;
-  padding: 10px;
-  font-size: 16px;
-  color: #000;
-  /* Black color */
-  resize: none;
-  outline: none;
-}
-
-.save-and-continue-button {
-  background-color: var(--button-accent);
-  color: var(--warm-white);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  transition: background-color ease-in-out 0.3s;
-  padding: 5px 20px;
-  margin: 10px 0px 10px 0px;
-}
-
-.save-and-continue-button:hover,
-.add-choice-button:hover,
-.remove-choice-button:hover {
-  background-color: var(--dk-button-accent);
-}
-
-.add-choice-button,
-.remove-choice-button {
-  background-color: var(--button-accent);
-  color: var(--warm-white);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  transition: background-color ease-in-out 0.3s;
-  padding: 5px 10px;
-  margin-bottom: 20px;
-  margin-top: -5px;
-  min-width: 113px;
-}
-
-.add-choice-button {
-  margin-top: 10px;
-}
-
-button.save-chapter-button {
-  background-color: var(--story-4);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  transition: background-color ease-in-out 0.3s;
-  padding: 5px 10px;
-  min-width: 113px;
-  color: var(--warm-white);
-  display: block;
-}
-
-button.save-chapter-button:hover {
-  background-color: var(--alt-button-accent);
-  display: block;
-}
-
-.modal {
-  z-index: 1100;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  padding: 20px;
-  background-color: var(--warm-white);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-.modal-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.modal-header h2 {
-  display: flex;
-}
-
-.close-button {
-  display: flex;
-  width: 30px;
-  height: 30px;
-  background-color: var(--story-4);
-  color: var(--warm-white);
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  transition: background-color ease-in-out 0.3s;
-}
-
-.close-button::before {
-  content: '×';
-  font-size: 30px;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -54%);
-  color: var(--warm-white);
-}
-
-.close-button:hover {
-  background-color: #A94E6F;
-  border: none;
-  border-radius: 5px;
-}
-
-.overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 100vh;
-  width: 100%;
-  z-index: 1000;
-}
-
-.create-story-content {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  max-width: 800px;
-  overflow-y: auto;
-  /* min-height: 100vh; */
-}
-
 .create-story-button {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  padding: 15px 30px;
-  font-size: 18px;
-  width: 120px;
+  padding: 15px;
+  font-size: var(--med-large-txt);
+  width: 300px;
   cursor: pointer;
   background-color: var(--header-link-hover);
   color: var(--dark-accent);
   color: #27392F;
   color: #263626;
   transition: background-color ease-in-out 0.3s;
+  border-radius: 10px;
+  border: none;
+  opacity: 0;
+  animation: fadeIntoOpaque 2s forwards;
   box-shadow:
     0px 4px 5px rgba(0, 0, 0, 0.2),
     /* Small, sharper shadow close to button */
@@ -391,24 +132,35 @@ button.save-chapter-button:hover {
   background-color: white;
 }
 
-.finalize-story-button {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  padding: 15px 30px;
-  font-size: 20px;
-  cursor: pointer;
-  background-color: var(--story-4);
-  color: #F1F6F8;
-  color: var(--cool-white);
-  /* color: var(--warm-white); */
-  transition: background-color ease-in-out 0.3s;
-  border: none;
-  border-radius: 5px;
+/* STORY DIAGRAM "PAGE" STYLES */
+
+.story-diagram-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+  min-height: 60vh;
+  justify-content: flex-start;
 }
 
-.finalize-story-button:hover {
-  background-color: var(--alt-button-accent);
+.story-diagram-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  text-align: center;
+  color: var(--header-title);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.story-diagram-heading h1 {
+  font-size: var(--large-txt);
+}
+
+.story-diagram-heading h2 {
+  font-size: var(--med-large-txt);
 }
 
 .chapter-container {
@@ -416,9 +168,10 @@ button.save-chapter-button:hover {
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
+  /* min-height: 50vh; */
   max-height: 70vh;
   overflow-y: auto;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   padding-right: 20px;
   gap: 10px;
 }
@@ -429,11 +182,17 @@ button.save-chapter-button:hover {
   gap: 10px;
 }
 
+/* Styling for the chapter number "labels" in the story diagram */
+.chapter-container span {
+  font-size: var(--med-small-txt);
+}
+
+/* Styling for the story title, chapter titles, and choices which appear in the story diagram */
 .chapter-container button {
   display: block;
   margin: 10px 0;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: var(--small-txt);
   cursor: pointer;
   width: 80%;
   max-width: 400px;
@@ -445,32 +204,6 @@ button.save-chapter-button:hover {
 
 .chapter-container button:hover {
   background-color: #F1F6F8;
-}
-
-.choice-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.choice-end-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.end-story-label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.end-story-label input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  margin-left: 10px;
 }
 
 .indent-1 {
@@ -493,35 +226,106 @@ button.save-chapter-button:hover {
   margin-left: 200px;
 }
 
-/* Form elements with flexbox for better alignment */
-form label,
-form input,
-form textarea,
-form select {
-  display: block;
-  width: 100%;
-  margin: 0px;
+.finalize-story-button {
+  position: fixed;
+  /* For large viewport widths, when the button is not full screen width, the finalize story button is positioned in the bottom right corner of the screen */
+  bottom: 50px;
+  /* right: 20vw is designed so that the button is aligned all the way to the right edge of div.create-story-content, which is 60vw when vw is 1441px and up. */
+  right: 20vw;
+  z-index: 5;
+  padding: 15px 30px;
+  font-size: var(--med-large-txt);
+  cursor: pointer;
+  background-color: var(--story-4);
+  color: #F1F6F8;
+  color: var(--cool-white);
+  transition: background-color ease-in-out 0.3s;
+  border: none;
+  border-radius: 5px;
 }
 
-form .form-group {
+.finalize-story-button:hover {
+  background-color: var(--alt-button-accent);
+}
+
+/* START OF CREATE STORY MODAL STYLES */
+
+.create-story-modal {
+  width: 40vw;
+  padding: 20px;
+  background-color: var(--warm-white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.overlay {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100%;
+  z-index: 1000;
 }
 
-form .form-group label {
-  flex: 1;
+.modal-header h2 {
+  display: flex;
+  font-size: var(--large-txt);
+  color: var(--dark-accent);
 }
 
-form .form-group input,
-form .form-group textarea,
-form .form-group select {
-  flex: 2;
+.close-button {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: var(--story-4);
+  color: var(--warm-white);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color ease-in-out 0.3s;
 }
 
-form .form-group input {
-  margin: 5px 0px 15px;
+.close-button::before {
+  content: '×';
+  /* THIS IS A "FONT SIZE" I DID NOT MAKE RESPONSIVE YET */
+  font-size: 30px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54%);
+  color: var(--warm-white);
+}
+
+.close-button:hover {
+  background-color: #A94E6F;
+  border: none;
+  border-radius: 5px;
+}
+
+.create-story-form {
+  margin-top: 20px;
+}
+
+.create-story-form label {
+  font-size: var(--med-large-txt);
+  color: var(--header-title);
+}
+
+.create-story-form input[type='text'],
+.create-story-form textarea {
+  border: 1px solid var(--mid-dark-accent);
+  border-radius: 4px;
+  font-size: var(--small-txt);
+  background-color: var(--story-5);
+  color: var(--text-color);
+  padding: 7px;
 }
 
 input#storyTitle,
@@ -532,73 +336,143 @@ input#chapterTitle,
 textarea#chapterContent {
   margin: 5px 0px 15px;
   padding: 10px;
+  font-size: var(--small-txt);
 }
 
-/* Choice and End Story alignment */
-.choice-end-wrapper {
+.save-and-continue-button {
+  background-color: var(--button-accent);
+  color: var(--warm-white);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: var(--med-small-txt);
+  text-align: center;
+  transition: background-color ease-in-out 0.3s;
+  padding: 5px 20px;
+  margin: 10px 0px 10px 0px;
+}
+
+.save-and-continue-button:hover,
+.add-choice-button:hover,
+.remove-choice-button:hover {
+  background-color: var(--dk-button-accent);
+}
+
+.add-choice-button,
+.remove-choice-button {
+  background-color: var(--button-accent);
+  color: var(--warm-white);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: var(--med-small-txt);
+  text-align: center;
+  transition: background-color ease-in-out 0.3s;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  margin-top: -5px;
+  min-width: 113px;
+}
+
+.add-choice-button {
+  margin-top: 10px;
+}
+
+button.save-chapter-button {
+  background-color: var(--story-4);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: var(--med-small-txt);
+  text-align: center;
+  transition: background-color ease-in-out 0.3s;
+  padding: 5px 10px;
+  min-width: 113px;
+  color: var(--warm-white);
+  display: block;
+}
+
+button.save-chapter-button:hover {
+  background-color: var(--alt-button-accent);
+  display: block;
+}
+
+.end-story-label {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 5px;
+  margin-bottom: 20px;
 }
 
-/* Responsive styles */
+.end-story-label input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+/* Media Queries */
+
+@media (max-width: 1440px) {
+  .create-story-content {
+    width: 85vw;
+  }
+
+  .create-story-modal {
+    width: 50vw;
+  }
+
+  .finalize-story-button {
+    /* bottom: 40px is designed to match the 50px margin-bottom on the div.dropdown-container that we plan to have applied when vw is 1440px and less. */
+    bottom: 40px;
+    /* When vw is 1440px or less, the div.create-story-content is 85vw. Positioning the .finalize-story-button with right: 7.5vw aligns the button all the way to the right edge of div.create-story-content. */
+    right: 7.5vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .entry-pg-container {
+    gap: 35px;
+  }
+
+  .create-story-modal {
+    width: 60vw;
+    padding: 40px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .create-story-container {
-    padding-bottom: 500px;
-  }
-
-  .create-story-sidebar {
-    width: 100%;
-    padding: 10px;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .create-story-main {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .story-graph {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  .story-editor {
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px;
-  }
-
-  .editor-header {
-    padding: 5px;
-  }
-
-  .close-button {
-    top: 10px;
-    right: 10px;
-  }
-
-  .editor-content {
-    height: 150px;
-  }
-
-  .modal {
-    width: 90%;
-    padding: 10px;
+    /* We are making the pg content take up all the height within 100vh that the header and dropdown-container don't take up, thus pushing the footer below the fold. */
+    min-height: calc(100vh - (var(--header-height) + var(--dropdown-height)));
   }
 
   .create-story-content {
     max-width: 100%;
-    padding: 10px;
   }
+
+  .create-story-button {
+    width: 45%;
+  }
+
+  /* .finalize-story-button {
+    width: calc(100% - 60px);
+  } */
 
   .create-story-button,
   .finalize-story-button {
-    width: calc(100% - 60px);
-    font-size: 16px;
-    padding: 10px;
+    padding: 12px;
+  }
+
+  .create-story-modal {
+    width: 75vw;
+    padding: 35px;
+  }
+  
+  .close-button {
+    top: 10px;
+    right: 10px;
   }
 
   .chapter-container {
@@ -613,20 +487,19 @@ textarea#chapterContent {
 }
 
 @media (max-width: 480px) {
-  .create-story-container {
-    padding-bottom: 150px;
+  .entry-pg-container {
+    gap: 30px;
   }
 
-  .create-story-content {
+  .create-story-modal {
+    width: 85vw;
     padding: 30px;
   }
 
-  .modal {
-    padding: 30px;
-  }
-
-  .modal-header h2 {
-    font-size: 24px;
+  /* I HAVE THIS PADDING OF 7PX DECLARED IN THE DEFAULT STYLING AND IN THIS MEDIA QUERY. ONE OF THEM WILL BE A DUPLICATE, MAKE SURE TO JUST HAVE THAT PADDING WHERE IT IS NEEDED AND ADJUST THE DEFAULT AMOUNT OF PADDING IF NECESSARY. */
+  .create-story-form input[type='text'],
+  .create-story-form textarea {
+    padding: 7px;
   }
 
   input#storyTitle,
@@ -637,14 +510,12 @@ textarea#chapterContent {
   textarea#chapterContent {
     margin: 10px 0px 20px;
     padding: 7px;
-    font-size: 14.5px;
   }
 
   .save-and-continue-button,
   .add-choice-button,
   .remove-choice-button,
   button.save-chapter-button {
-    font-size: 15px;
     width: 130px;
   }
 
@@ -658,36 +529,20 @@ textarea#chapterContent {
     height: 30px;
   }
 
-  .create-story-button,
-  .finalize-story-button {
-    font-size: 18px;
-  }
-
   .create-story-button {
     z-index: 2;
-    font-size: 18px;
     padding: 10px;
     width: 45%;
-    border-radius: 10px;
-    border: none;
-    opacity: 0;
-    animation: fadeIntoOpaque 2s forwards;
+  }
+
+  .finalize-story-button {
+    width: 85vw;
+    /* What would make sense would be if left: 7.5vw perfectly aligned the finalize story button within the width of .create-story-content, which is 85vw. But left: 6vw matches closer. */
+    left: 6vw;
   }
 
   .chapter-container {
-    min-height: 57vh;
+    /* min-height: 57vh; */
     margin: 0;
-  }
-
-  .chapter-container button {
-    font-size: 14.5px;
-  }
-
-  .chapter-container span {
-    font-size: 14.5px;  
-  }
-
-  .editor-content {
-    font-size: 14px;
   }
 }

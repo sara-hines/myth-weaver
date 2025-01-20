@@ -4,6 +4,7 @@ import SignupForm from '../SignupForm/SignupForm';
 import LoginForm from '../LoginForm/LoginForm';
 import Auth from '../../utils/auth';
 import './Header.css';
+import './LoginSignupModal.css';
 import { Modal } from 'react-bootstrap';
 
 const Header = () => {
@@ -43,44 +44,46 @@ const Header = () => {
   return (
     <>
       <header className='header'>
-        <div className='header-left'>
-          {/* If the user is logged in, the links on the left of the header will be a Logout link/button and a Profile link. */}
-          {Auth.loggedIn() ? (
-            <>
-              <button className='header-button' onClick={Auth.logout}>Log out</button>
-              <a href='/user-profile' className='header-link'>
-                <button className='header-button'>Profile</button>
-              </a>
-            </>
-            // If the user is logged out, the links on the left of the header will be a Login link/button and a Signup link/button which each open their respective modals.
-          ) : (
-            <>
-              <button className='header-button' onClick={() => { setModalType('login'); setShowModal(true); }}>Log in</button>
-              <button className='header-button' onClick={() => { setModalType('signup'); setShowModal(true); }}>Sign Up</button>
-            </>
-          )}
-        </div>
-        <h1 className='site-title'>
-          <Link to='/myth-index' className='cssanimation leBlurIn sequence'>{titleAnimated}</Link>
-        </h1>
-        <div className='header-right'>
-          {/* When the user is at /myth-index, the links on the right of the header will be an About Us link and a Contact Us link. */}
-          {location.pathname === '/myth-index' && (
-            <>
-              <Link to='/about-us' className='header-link'>
-                <button className='header-button'>About Us</button>
+        <div className='header-container'>
+          <div className='header-left'>
+            {/* If the user is logged in, the links on the left of the header will be a Logout link/button and a Profile link. */}
+            {Auth.loggedIn() ? (
+              <>
+                <button className='header-button' onClick={Auth.logout}>Log out</button>
+                <a href='/user-profile' className='header-link'>
+                  <button className='header-button'>Profile</button>
+                </a>
+              </>
+              // If the user is logged out, the links on the left of the header will be a Login link/button and a Signup link/button which each open their respective modals.
+            ) : (
+              <>
+                <button className='header-button' onClick={() => { setModalType('login'); setShowModal(true); }}>Log in</button>
+                <button className='header-button' onClick={() => { setModalType('signup'); setShowModal(true); }}>Sign Up</button>
+              </>
+            )}
+          </div>
+          <h1 className='site-title'>
+            <Link to='/myth-index' className='cssanimation leBlurIn sequence'>{titleAnimated}</Link>
+          </h1>
+          <div className='header-right'>
+            {/* When the user is at /myth-index, the links on the right of the header will be an About Us link and a Contact Us link. */}
+            {location.pathname === '/myth-index' && (
+              <>
+                <Link to='/about-us' className='header-link'>
+                  <button className='header-button'>About Us</button>
+                </Link>
+                <Link to='/about-us#contact-us-section' className='header-link'>
+                  <button className='header-button'>Contact Us</button>
+                </Link>
+              </>
+            )}
+            {/* When the user is at /user-profile, the link on the right of the header will be Stories, navigating to /myth-index. */}
+            {(location.pathname === '/user-profile' || location.pathname === '/about-us') && (
+              <Link to='/myth-index' className='header-link'>
+                <button className='header-button'>Stories</button>
               </Link>
-              <Link to='/about-us#contact-us-section' className='header-link'>
-                <button className='header-button'>Contact Us</button>
-              </Link>
-            </>
-          )}
-          {/* When the user is at /user-profile, the link on the right of the header will be Stories, navigating to /myth-index. */}
-          {(location.pathname === '/user-profile' || location.pathname === '/about-us') && (
-            <Link to='/myth-index' className='header-link'>
-              <button className='header-button'>Stories</button>
-            </Link>
-          )}
+            )}
+          </div>
         </div>
       </header>
 
@@ -112,11 +115,11 @@ const Header = () => {
         id='auth-modal-custom'
       >
         <Modal.Header closeButton className='modal-header-center'>
-          <Modal.Title id='auth-modal' className='modal-title-lg'>
+          <Modal.Title id='auth-modal'>
             {modalType === 'login' ? 'Login' : 'Sign Up'}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body className='modal-body-lg'>
+        <Modal.Body className='auth-modal-body'>
           {modalType === 'login' ? (
             // If the modalType === 'login', pass setShowModal(false) as a prop to the LoginForm component so it can use it to close the modal on successful login.
             <LoginForm handleModalClose={() => setShowModal(false)} />

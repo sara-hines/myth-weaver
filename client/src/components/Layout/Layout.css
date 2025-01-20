@@ -1,0 +1,6 @@
+/* Explanation of flex sticky footer: div.layout-background is the container that has <Header />, <main>, and <Footer /> as its direct children. Using flex: 1 on div.layout-background allows it to expand and take up all available space. In App.css, main also has flex: 1 set on it, which allows main to expand and take up the available space between the Header and Footer. */
+div.layout-background {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

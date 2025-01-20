@@ -34,7 +34,7 @@ const UserProfile = () => {
         'profile'
       ]
     });
-  
+
   // Set up the UI functionality to hide and reveal stories when a section button is clicked.
   const [isOpen, setIsOpen] = useState({
     created: false,
@@ -117,12 +117,12 @@ const UserProfile = () => {
   if (loading) {
     return (
       <div className='mythweaver'>
-        <main className='main-content'>
+        <div className='main-content'>
           <div className='loading-container'>
             <div className='spinner'></div>
             <h2>Loading...</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -131,25 +131,24 @@ const UserProfile = () => {
   if (error) {
     return (
       <div className='mythweaver'>
-        <main className='main-content'>
+        <div className='main-content'>
           <div className='error-container'>
             <h2>Error loading profile data</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className='user-profile'>
-      <main className='user-main-content'>
-        {/* <h1 className='welcome-message'>Welcome, {userData?.username}!</h1> */}
-        <div className='fade-in-text'><FadeInText text={`Welcome, ${userData?.username}!`} /></div>
+    <section className='user-profile'>
+      <div className='user-main-content'>
+        <div className='fade-in-text welcome-text'><FadeInText text={`Welcome, ${userData?.username}!`} /></div>
         <div className='button-container'>
           {/* Navigate to /create-story on click. */}
           <div className='profile-button' onClick={handleCreateStory}>Create A New Story</div>
         </div>
-        <section className='additional-content'>
+        <div className='additional-content'>
 
           {/* When the Stories You've Created section is open, display the createdStories if they exist or a no-data-message if not. */}
           <div className='story-section'>
@@ -160,19 +159,17 @@ const UserProfile = () => {
                   <>
                     {userData.createdStories.map((story) => (
                       <div className='story-box' key={story._id}>
-                        <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
+                        <Link to={`/story-index/${story._id}`}>
                           <img src={story.imageUrl} alt={story.title} />
                           <h3>{story.title}</h3>
-                          <p>{story.description}</p>
                         </Link>
-                        <div className='actions'>
-                          <button className='delete-btn' onClick={() => handleDeleteStory(story._id)}>Delete Story</button>
-                        </div>
+                        <p className='story-blurb'>{story.description}</p>
+                        <button className='delete-btn' onClick={() => handleDeleteStory(story._id)}>Delete Story</button>
                       </div>
                     ))}
                   </>
                 ) : (
-                  <h1 className='no-data-message'>You haven't created any stories yet.</h1>
+                  <h3 className='no-data-message'>You haven't created any stories yet.</h3>
                 )}
               </div>
             )}
@@ -187,20 +184,18 @@ const UserProfile = () => {
                   <>
                     {userData.bookmarkedStories.map((story) => (
                       <div className='story-box' key={story._id}>
-                        <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
+                        <Link to={`/story-index/${story._id}`}>
                           <img src={story.imageUrl} alt={story.title} />
                           <h3>{story.title}</h3>
-                          <p className='story-author'>Created by {story.author}</p>
-                          <p>{story.description}</p>
                         </Link>
-                        <div className='actions'>
-                          <button className='remove-btn' onClick={() => handleRemoveFromBookmarkedStories(story._id)}>Remove from Bookmarked Stories</button>
-                        </div>
+                        <p className='story-author'>Created by {story.author}</p>
+                        <p className='story-blurb'>{story.description}</p>
+                        <button className='remove-btn' onClick={() => handleRemoveFromBookmarkedStories(story._id)}>Remove from Bookmarks</button>
                       </div>
                     ))}
                   </>
                 ) : (
-                  <h1 className='no-data-message'>You don't have any bookmarked stories.</h1>
+                  <h3 className='no-data-message'>You don't have any bookmarked stories.</h3>
                 )}
               </div>
             )}
@@ -215,27 +210,25 @@ const UserProfile = () => {
                   <>
                     {userData.toBeReadStories.map((story) => (
                       <div className='story-box' key={story._id}>
-                        <Link to={`/story-index/${story._id}`} className='remove-text-decoration'>
+                        <Link to={`/story-index/${story._id}`}>
                           <img src={story.imageUrl} alt={story.title} />
                           <h3>{story.title}</h3>
-                          <p className='story-author'>Created by {story.author}</p>
-                          <p>{story.description}</p>
                         </Link>
-                        <div className='actions'>
-                          <button className='remove-btn' onClick={() => handleRemoveFromTBRList(story._id)}>Remove from TBR List</button>
-                        </div>
+                        <p className='story-author'>Created by {story.author}</p>
+                        <p className='story-blurb'>{story.description}</p>
+                        <button className='remove-btn' onClick={() => handleRemoveFromTBRList(story._id)}>Remove from TBR List</button>
                       </div>
                     ))}
                   </>
                 ) : (
-                  <h1 className='no-data-message'>No stories in your To Be Read List at the moment!</h1>
+                  <h3 className='no-data-message'>No stories in your To Be Read List at the moment!</h3>
                 )}
               </div>
             )}
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

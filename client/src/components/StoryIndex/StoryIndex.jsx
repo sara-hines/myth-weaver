@@ -100,12 +100,12 @@ const StoryIndex = () => {
   if (loadingStory || loadingProfile) {
     return (
       <div className='mythweaver'>
-        <main className='main-content'>
+        <div className='main-content-story-index'>
           <div className='loading-container'>
             <div className='spinner'></div>
             <h2>Loading...</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -114,20 +114,20 @@ const StoryIndex = () => {
   if (error) {
     return (
       <div className='mythweaver'>
-        <main className='main-content'>
+        <div className='main-content-story-index'>
           <div className='error-container'>
             <h2>Error loading stories</h2>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
 
   // Render the story details. 
   return (
-    <div className='mythweaver'>
+    <section className='mythweaver'>
       <div className='story-index'>
-        <main className='story-main-content'>
+        <div className='story-main-content'>
           <div className='accessory-info'>
 
             <div className='story-photo-wrapper'>
@@ -151,7 +151,7 @@ const StoryIndex = () => {
                   <div className='star-desktop'>
                       {renderStars(story.averageRating)}
                   </div>
-                  <div className='rating-desktop'>
+                  <div className='rating-detail-desktop'>
                     {story.ratingsCount === 1 ? (
                       <p>Rated {story.averageRating} star{story.averageRating > 1 ? 's' : ''} by 1 person</p>
                     ) : (
@@ -182,7 +182,7 @@ const StoryIndex = () => {
           <div className='story-index-description'>
             <h2 className='title-desktop'>{story.title}</h2>
             <p className='author-desktop'>Created by {story.author}</p>
-            <p>{story.description}</p>
+            <p className='description'>{story.description}</p>
 
             <div className='author-and-genre-mobile'>Created by {story.author} in MythWeaver's {story.genre} genre.</div>
 
@@ -211,23 +211,22 @@ const StoryIndex = () => {
             {/* On mobile view, tags appear here. */}
             <div className='tags-mobile'>Tags: {formatTags(story.tags)}</div>
 
-              {/* If the user is logged in and in mobile view, render a button to add/remove the story to/from the user's TBR list. */}
-              {Auth.loggedIn() && (
-                  <button className='tbr-button-mobile' onClick={handleToggleTBR}>
-                    {isInTBR ? 'Remove from To Be Read List' : 'Add to To Be Read List'}
-                  </button>
-              )}
+            {/* If the user is logged in and in mobile view, render a button to add/remove the story to/from the user's TBR list. */}
+            {Auth.loggedIn() && (
+              <button className='tbr-button-mobile' onClick={handleToggleTBR}>
+                {isInTBR ? 'Remove from To Be Read List' : 'Add to To Be Read List'}
+              </button>
+            )}
 
-              <Link to={`/story-path/${story._id}`}>
-                <button className='start-adventure-button'
-                >Start your Adventure Here</button>
-              </Link>
-
+            <Link to={`/story-path/${story._id}`}>
+              <button className='start-adventure-button'
+              >Start your Adventure Here</button>
+            </Link>
 
           </div>
-        </main>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
