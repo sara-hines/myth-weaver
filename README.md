@@ -356,25 +356,25 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/624px-create-story-entry-pg.png" alt="624px-create-story-entry-pg" min-width="768" max-width="70%">
+<img src="./assets/624px-create-story-entry-pg.png" alt="624px-create-story-entry-pg" width="70%">
 
 <br />
 
-<img src="./assets/624px-create-story-modal.png" alt="624px-create-story-modal" min-width="768" max-width="70%">
+<img src="./assets/624px-create-story-modal.png" alt="624px-create-story-modal" width="70%">
 
 <br />
 
-<img src="./assets/624px-story-path.png" alt="624px-story-path" min-width="768" max-width="70%">
+<img src="./assets/624px-story-path.png" alt="624px-story-path" width="70%">
 
 <br />
 
-<img src="./assets/624px-user-profile-1.png" alt="624px-user-profile-1" min-width="768" max-width="70%">
+<img src="./assets/624px-user-profile-1.png" alt="624px-user-profile-1" width="70%">
 
-<img src="./assets/624px-user-profile-2.png" alt="624px-user-profile-2" min-width="768" max-width="70%">
+<img src="./assets/624px-user-profile-2.png" alt="624px-user-profile-2" width="70%">
 
-<img src="./assets/624px-user-profile-3.png" alt="624px-user-profile-3" min-width="768" max-width="70%">
+<img src="./assets/624px-user-profile-3.png" alt="624px-user-profile-3" width="70%">
 
-<img src="./assets/624px-user-profile-4.png" alt="624px-user-profile-4" min-width="768" max-width="70%">
+<img src="./assets/624px-user-profile-4.png" alt="624px-user-profile-4" width="70%">
 
 </div>
 
@@ -388,29 +388,29 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/896px-login.png" alt="896px-login" min-width="768" max-width="80%">
+<img src="./assets/896px-login.png" alt="896px-login" width="80%">
 
 <br />
 
-<img src="./assets/896px-story-index-1.png" alt="896px-story-index-1" min-width="768" max-width="80%">
+<img src="./assets/896px-story-index-1.png" alt="896px-story-index-1" width="80%">
 
-<img src="./assets/896px-story-index-2.png" alt="896px-story-index-2" min-width="768" max-width="80%">
+<img src="./assets/896px-story-index-2.png" alt="896px-story-index-2" width="80%">
 
 <br />
 
-<img src="./assets/896px-about-us-contact-us-1.png" alt="896px-about-us-contact-us-1" min-width="768" max-width="80%">
+<img src="./assets/896px-about-us-contact-us-1.png" alt="896px-about-us-contact-us-1" width="80%">
 
-<img src="./assets/896px-about-us-contact-us-2.png" alt="896px-about-us-contact-us-2" min-width="768" max-width="80%">
+<img src="./assets/896px-about-us-contact-us-2.png" alt="896px-about-us-contact-us-2" width="80%">
 
-<img src="./assets/896px-about-us-contact-us-3.png" alt="896px-about-us-contact-us-3" min-width="768" max-width="80%">
+<img src="./assets/896px-about-us-contact-us-3.png" alt="896px-about-us-contact-us-3" width="80%">
 
-<img src="./assets/896px-about-us-contact-us-4.png" alt="896px-about-us-contact-us-4" min-width="768" max-width="80%">
+<img src="./assets/896px-about-us-contact-us-4.png" alt="896px-about-us-contact-us-4" width="80%">
 
-<img src="./assets/896px-about-us-contact-us-5.png" alt="896px-about-us-contact-us-5" min-width="768" max-width="80%">
+<img src="./assets/896px-about-us-contact-us-5.png" alt="896px-about-us-contact-us-5" width="80%">
 
-<img src="./assets/896px-about-us-contact-us-6.png" alt="896px-about-us-contact-us-6" min-width="768" max-width="80%">
+<img src="./assets/896px-about-us-contact-us-6.png" alt="896px-about-us-contact-us-6" width="80%">
 
-<img src="./assets/896px-about-us-contact-us-7.png" alt="896px-about-us-contact-us-7" min-width="768" max-width="80%">
+<img src="./assets/896px-about-us-contact-us-7.png" alt="896px-about-us-contact-us-7" width="80%">
 
 </div>
 
@@ -424,21 +424,21 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/1232px-create-story-diagram.png" alt="1232px-create-story-diagram" min-width="768" max-width="90%">
+<img src="./assets/1232px-create-story-diagram.png" alt="1232px-create-story-diagram" width="90%">
 
 <br />
 
-<img src="./assets/1232px-myth-index-1.png" alt="1232px-myth-index-1" min-width="768" max-width="90%">
+<img src="./assets/1232px-myth-index-1.png" alt="1232px-myth-index-1" width="90%">
 
-<img src="./assets/1232px-myth-index-2.png" alt="1232px-myth-index-2" min-width="768" max-width="90%">
+<img src="./assets/1232px-myth-index-2.png" alt="1232px-myth-index-2" width="90%">
 
-<img src="./assets/1232px-myth-index-3.png" alt="1232px-myth-index-3" min-width="768" max-width="90%">
+<img src="./assets/1232px-myth-index-3.png" alt="1232px-myth-index-3" width="90%">
 
 <br />
 
-<img src="./assets/1232px-story-review-1.png" alt="1232px-story-review-1" min-width="768" max-width="90%">
+<img src="./assets/1232px-story-review-1.png" alt="1232px-story-review-1" width="90%">
 
-<img src="./assets/1232px-story-review-2.png" alt="1232px-story-review-2" min-width="768" max-width="90%">
+<img src="./assets/1232px-story-review-2.png" alt="1232px-story-review-2" width="90%">
 
 </div>
 
@@ -452,21 +452,21 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/1600px-landing.png" alt="1600px-landing" min-width="768" max-width="100%">
+<img src="./assets/1600px-landing.png" alt="1600px-landing" width="100%">
 
 <br />
 
-<img src="./assets/1600px-story-index.png" alt="1600px-story-index" min-width="768" max-width="100%">
+<img src="./assets/1600px-story-index.png" alt="1600px-story-index" width="100%">
 
 <br />
 
-<img src="./assets/1600px-story-path.png" alt="1600px-story-path" min-width="768" max-width="100%">
+<img src="./assets/1600px-story-path.png" alt="1600px-story-path" width="100%">
 
 <br />
 
-<img src="./assets/1600px-user-profile-1.png" alt="1600px-user-profile-1" min-width="768" max-width="100%">
+<img src="./assets/1600px-user-profile-1.png" alt="1600px-user-profile-1" width="100%">
 
-<img src="./assets/1600px-user-profile-2.png" alt="1600px-user-profile-2" min-width="768" max-width="100%">
+<img src="./assets/1600px-user-profile-2.png" alt="1600px-user-profile-2" width="100%">
 
 </div>
 
