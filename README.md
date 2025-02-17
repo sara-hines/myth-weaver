@@ -356,25 +356,25 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/624px-create-story-entry-pg.png" alt="624px-create-story-entry-pg" width="70%">
+<img src="./assets/624px-create-story-entry-pg.png" alt="624px-create-story-entry-pg" width="624">
 
 <br />
 
-<img src="./assets/624px-create-story-modal.png" alt="624px-create-story-modal" width="70%">
+<img src="./assets/624px-create-story-modal.png" alt="624px-create-story-modal" width="624">
 
 <br />
 
-<img src="./assets/624px-story-path.png" alt="624px-story-path" width="70%">
+<img src="./assets/624px-story-path.png" alt="624px-story-path" width="624">
 
 <br />
 
-<img src="./assets/624px-user-profile-1.png" alt="624px-user-profile-1" width="70%">
+<img src="./assets/624px-user-profile-1.png" alt="624px-user-profile-1" width="624">
 
-<img src="./assets/624px-user-profile-2.png" alt="624px-user-profile-2" width="70%">
+<img src="./assets/624px-user-profile-2.png" alt="624px-user-profile-2" width="624">
 
-<img src="./assets/624px-user-profile-3.png" alt="624px-user-profile-3" width="70%">
+<img src="./assets/624px-user-profile-3.png" alt="624px-user-profile-3" width="624">
 
-<img src="./assets/624px-user-profile-4.png" alt="624px-user-profile-4" width="70%">
+<img src="./assets/624px-user-profile-4.png" alt="624px-user-profile-4" width="624">
 
 </div>
 
@@ -388,29 +388,29 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/896px-login.png" alt="896px-login" width="80%">
+<img src="./assets/896px-login.png" alt="896px-login" width="896">
 
 <br />
 
-<img src="./assets/896px-story-index-1.png" alt="896px-story-index-1" width="80%">
+<img src="./assets/896px-story-index-1.png" alt="896px-story-index-1" width="896">
 
-<img src="./assets/896px-story-index-2.png" alt="896px-story-index-2" width="80%">
+<img src="./assets/896px-story-index-2.png" alt="896px-story-index-2" width="896">
 
 <br />
 
-<img src="./assets/896px-about-us-contact-us-1.png" alt="896px-about-us-contact-us-1" width="80%">
+<img src="./assets/896px-about-us-contact-us-1.png" alt="896px-about-us-contact-us-1" width="896">
 
-<img src="./assets/896px-about-us-contact-us-2.png" alt="896px-about-us-contact-us-2" width="80%">
+<img src="./assets/896px-about-us-contact-us-2.png" alt="896px-about-us-contact-us-2" width="896">
 
-<img src="./assets/896px-about-us-contact-us-3.png" alt="896px-about-us-contact-us-3" width="80%">
+<img src="./assets/896px-about-us-contact-us-3.png" alt="896px-about-us-contact-us-3" width="896">
 
-<img src="./assets/896px-about-us-contact-us-4.png" alt="896px-about-us-contact-us-4" width="80%">
+<img src="./assets/896px-about-us-contact-us-4.png" alt="896px-about-us-contact-us-4" width="896">
 
-<img src="./assets/896px-about-us-contact-us-5.png" alt="896px-about-us-contact-us-5" width="80%">
+<img src="./assets/896px-about-us-contact-us-5.png" alt="896px-about-us-contact-us-5" width="896">
 
-<img src="./assets/896px-about-us-contact-us-6.png" alt="896px-about-us-contact-us-6" width="80%">
+<img src="./assets/896px-about-us-contact-us-6.png" alt="896px-about-us-contact-us-6" width="896">
 
-<img src="./assets/896px-about-us-contact-us-7.png" alt="896px-about-us-contact-us-7" width="80%">
+<img src="./assets/896px-about-us-contact-us-7.png" alt="896px-about-us-contact-us-7" width="896">
 
 </div>
 
@@ -424,21 +424,21 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/1232px-create-story-diagram.png" alt="1232px-create-story-diagram" width="90%">
+<img src="./assets/1232px-create-story-diagram.png" alt="1232px-create-story-diagram" width="1232">
 
 <br />
 
-<img src="./assets/1232px-myth-index-1.png" alt="1232px-myth-index-1" width="90%">
+<img src="./assets/1232px-myth-index-1.png" alt="1232px-myth-index-1" width="1232">
 
-<img src="./assets/1232px-myth-index-2.png" alt="1232px-myth-index-2" width="90%">
+<img src="./assets/1232px-myth-index-2.png" alt="1232px-myth-index-2" width="1232">
 
-<img src="./assets/1232px-myth-index-3.png" alt="1232px-myth-index-3" width="90%">
+<img src="./assets/1232px-myth-index-3.png" alt="1232px-myth-index-3" width="1232">
 
 <br />
 
-<img src="./assets/1232px-story-review-1.png" alt="1232px-story-review-1" width="90%">
+<img src="./assets/1232px-story-review-1.png" alt="1232px-story-review-1" width="1232">
 
-<img src="./assets/1232px-story-review-2.png" alt="1232px-story-review-2" width="90%">
+<img src="./assets/1232px-story-review-2.png" alt="1232px-story-review-2" width="1232">
 
 </div>
 
@@ -452,21 +452,21 @@ We've taken care to build a flexible, responsive design which adapts to differen
 
 <div align="center" width="100%">
 
-<img src="./assets/1600px-landing.png" alt="1600px-landing" width="100%">
+<img src="./assets/1600px-landing.png" alt="1600px-landing" width="1600">
 
 <br />
 
-<img src="./assets/1600px-story-index.png" alt="1600px-story-index" width="100%">
+<img src="./assets/1600px-story-index.png" alt="1600px-story-index" width="1600">
 
 <br />
 
-<img src="./assets/1600px-story-path.png" alt="1600px-story-path" width="100%">
+<img src="./assets/1600px-story-path.png" alt="1600px-story-path" width="1600">
 
 <br />
 
-<img src="./assets/1600px-user-profile-1.png" alt="1600px-user-profile-1" width="100%">
+<img src="./assets/1600px-user-profile-1.png" alt="1600px-user-profile-1" width="1600">
 
-<img src="./assets/1600px-user-profile-2.png" alt="1600px-user-profile-2" width="100%">
+<img src="./assets/1600px-user-profile-2.png" alt="1600px-user-profile-2" width="1600">
 
 </div>
 
