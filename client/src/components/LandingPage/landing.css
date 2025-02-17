@@ -1,4 +1,4 @@
-/* Styling is desktop-first; default styles apply to viewport widths 1701px and up */
+/* Styling is desktop-first; default styles apply to viewport widths 1600px and up */
 
 .landing-page {
   text-align: center;
@@ -88,7 +88,7 @@
 .upright {
   position: absolute;
   top: 50%;
-  left: 24%;
+  left: 21%;
   transform: translateY(-50%);
   z-index: 2;
 }
@@ -96,7 +96,7 @@
 .upside-down {
   position: absolute;
   top: 50%;
-  right: 26%;
+  right: 24%;
   transform: translateY(-50%);
   z-index: 2;
 }
@@ -104,23 +104,23 @@
 .book-image {
   position: absolute;
   top: 12%;
-  right: 40%;
+  right: 39%;
   z-index: 1;
-  width: 230px;
+  width: 220px;
   height: auto;
 }
 
 .coinpurse-image {
   position: absolute;
   bottom: 29%;
-  right: 31%;
+  right: 29%;
   z-index: 2;
 }
 
 .bag-image {
   position: absolute;
   bottom: 20%;
-  left: 36%;
+  left: 34%;
   transform: translate(-50%, -50%);
   z-index: 2;
 }
@@ -128,13 +128,13 @@
 .map-image {
   position: absolute;
   top: 30%;
-  left: 33%;
+  left: 29%;
   transform: translate(-50%, -50%);
   z-index: 0;
 }
 
 /* When the screen gets smaller than the average screen the smaller images disappear. - Haleigh */
-@media (max-width: 1700px) {
+@media (max-width: 1599px) {
   .book-image,
   .bag-image,
   .coinpurse-image,
@@ -143,9 +143,7 @@
   .upside-down {
     display: none;
   }
-}
 
-@media (max-width: 1600px) {
   .slogan {
     left: -30px;
   }

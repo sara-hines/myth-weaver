@@ -97,13 +97,19 @@
                 </ul>
             </li>
             <li>
-                <a href="#responsive-design">Responsive Design</a>
+                <a href="#white_check_mark-responsive-design">Responsive Design</a>
+                <ul>
+                  <li><a href="#tablets-and-large-phones">Tablets and Large Phones</a></li>
+                  <li><a href="#small-laptops-and-landscape-tablets">Small Laptops and Landscape Tablets</a></li>
+                  <li><a href="#laptops-and-small-desktops">Laptops and Small Desktops</a></li>
+                  <li><a href="#very-large-screens">Very large screens</a></li>
+                </ul>
             </li>
         </ul>
     </li>
     <li><a href="#seedling-future-development">Future Development</a></li>
     <li><a href="#wave-contributing">Contributing</a></li>
-    <li><a href="#information_source-license">License</a></li>
+    <li><a href="#grey_exclamation-license">License</a></li>
     <li><a href="#handshake-contact">Contact</a></li>
     <li><a href="#sparkles-acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -337,12 +343,133 @@ To see these features in action, check out the
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-### Responsive Design
+### :white_check_mark: Responsive Design
 
-Responsive Design README section is still in progress. 
+We've taken care to build a flexible, responsive design which adapts to different viewport sizes and accommodates dynamic user-generated content. So far, this README has showcased our mobile design (defined in our styling as 0px - 480px). Keep reading below to see samples of our responsive design for tablets, desktops, and larger devices. 
 
-![landing-large](./assets/screenshot-1.png)
+#### Tablets and Large Phones 
 
+:information_source: Screenshots taken at 624px for a midway point in the 481px - 768px viewport width breakpoint.
+
+<br />
+
+<div align="center">
+
+<img src="./assets/624px-create-story-entry-pg.png" alt="624px-create-story-entry-pg" width="448">
+
+<br />
+
+<img src="./assets/624px-create-story-modal.png" alt="624px-create-story-modal" width="448">
+
+<br />
+
+<img src="./assets/624px-story-path.png" alt="624px-story-path" width="448">
+
+<br />
+
+<img src="./assets/624px-user-profile-1.png" alt="624px-user-profile-1" width="448">
+
+<img src="./assets/624px-user-profile-2.png" alt="624px-user-profile-2" width="448">
+
+<img src="./assets/624px-user-profile-3.png" alt="624px-user-profile-3" width="448">
+
+<img src="./assets/624px-user-profile-4.png" alt="624px-user-profile-4" width="448">
+
+</div>
+
+<br />
+
+#### Small Laptops and Landscape Tablets
+
+:information_source: Screenshots taken at 896px for a midway point in the 769px - 1024px viewport width breakpoint.
+
+<br />
+
+<div align="center">
+
+<img src="./assets/896px-login.png" alt="896px-login" width="448">
+
+<br />
+
+<img src="./assets/896px-story-index-1.png" alt="896px-story-index-1" width="448">
+
+<img src="./assets/896px-story-index-2.png" alt="896px-story-index-2" width="448">
+
+<br />
+
+<img src="./assets/896px-about-us-contact-us-1.png" alt="896px-about-us-contact-us-1" width="448">
+
+<img src="./assets/896px-about-us-contact-us-2.png" alt="896px-about-us-contact-us-2" width="448">
+
+<img src="./assets/896px-about-us-contact-us-3.png" alt="896px-about-us-contact-us-3" width="448">
+
+<img src="./assets/896px-about-us-contact-us-4.png" alt="896px-about-us-contact-us-4" width="448">
+
+<img src="./assets/896px-about-us-contact-us-5.png" alt="896px-about-us-contact-us-5" width="448">
+
+<img src="./assets/896px-about-us-contact-us-6.png" alt="896px-about-us-contact-us-6" width="448">
+
+<img src="./assets/896px-about-us-contact-us-7.png" alt="896px-about-us-contact-us-7" width="448">
+
+</div>
+
+<br />
+
+#### Laptops and Small Desktops
+
+:information_source: Screenshots taken at 1232px for a midway point in the 1025px - 1440px viewport width breakpoint.
+
+<br />
+
+<div align="center">
+
+<img src="./assets/1232px-create-story-diagram.png" alt="1232px-create-story-diagram" width="448">
+
+<br />
+
+<img src="./assets/1232px-myth-index-1.png" alt="1232px-myth-index-1" width="448">
+
+<img src="./assets/1232px-myth-index-2.png" alt="1232px-myth-index-2" width="448">
+
+<img src="./assets/1232px-myth-index-3.png" alt="1232px-myth-index-3" width="448">
+
+<br />
+
+<img src="./assets/1232px-story-review-1.png" alt="1232px-story-review-1" width="448">
+
+<img src="./assets/1232px-story-review-2.png" alt="1232px-story-review-2" width="448">
+
+</div>
+
+<br />
+
+#### Very large screens
+
+:information_source: Screenshots taken at 1600px viewport width.
+
+<br />
+
+<div align="center">
+
+<img src="./assets/1600px-landing.png" alt="1600px-landing" width="448">
+
+<br />
+
+<img src="./assets/1600px-story-index.png" alt="1600px-story-index" width="448">
+
+<br />
+
+<img src="./assets/1600px-story-path.png" alt="1600px-story-path" width="448">
+
+<br />
+
+<img src="./assets/1600px-user-profile-1.png" alt="1600px-user-profile-1" width="448">
+
+<img src="./assets/1600px-user-profile-2.png" alt="1600px-user-profile-2" width="448">
+
+</div>
+
+<br />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -396,7 +523,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- LICENSE -->
-## :information_source: License
+## :grey_exclamation: License
 
 This project is covered under the MIT License. You can learn more about this license and its coverage and permissions [here](https://opensource.org/licenses/MIT).
 
