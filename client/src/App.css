@@ -35,6 +35,7 @@
   --accent-container: rgb(223, 240, 248);
   /* #dff0f8 */
   --dark-accent: rgb(29, 29, 29);
+  /* #1d1d1d */
   --mid-dark-accent: rgb(132, 125, 124);
   /* #847d7c */
   --button-accent: rgb(176, 86, 93);
@@ -96,8 +97,8 @@
   --header-x-padding-small: 15px;
   --header-x-padding-bigger: 20px;
 
-  /* LoginSignupModal .btn-close side length - may want to use this for Create Story Modal as well. */
-  --btn-close-length: 38px;
+  /* .btn-close side length for LoginSignupModal and Create Story Modals */
+  --btn-close-length: 36px;
 }
 
 /* Dark theme */
@@ -220,13 +221,17 @@ form select {
 
 /* Handle (draggable part of the scrollbar) */
 ::-webkit-scrollbar-thumb {
-  background: var(--mid-dark-accent);
+  background: #8D84A6;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(112, 105, 104);
+  background: #9993ae;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 div.layout-background {
@@ -238,13 +243,11 @@ div.layout-background {
 /* For viewport widths 1025px - 1440px */
 @media (max-width: 1440px) {
   :root {
-    /* conflict: story descriptions are not fitting in the story boxes in mythIndex at this breakpoint, and 15.5px would work better for those story descriptions, but 16px for --small-txt looks better on other pages. */
     --small-txt: 16px;
     --med-small-txt: 18px;
     --med-txt: 20px;
     --med-large-txt: 22px;
     --large-txt: 27px;
-
     --btn-close-length: 35px;
   }
 }
@@ -268,7 +271,6 @@ div.layout-background {
     --med-txt: 16px;
     --med-large-txt: 18px;
     --large-txt: 24px;
-
     --btn-close-length: 32px;
   }
 }
@@ -281,7 +283,6 @@ div.layout-background {
     --med-txt: 16px;
     --med-large-txt: 18px;
     --large-txt: 22px;
-
     --btn-close-length: 30px;
   }
 }

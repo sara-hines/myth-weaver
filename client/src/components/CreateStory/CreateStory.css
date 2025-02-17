@@ -1,5 +1,5 @@
 /* General styles for the Create Story page, in order of appearance in the jsx */
-/* Responsive design is still in progress for Create Story */
+/* Styling is desktop-first; default styles apply to viewport widths 1441px and up */
 
 .create-story-container {
   display: flex;
@@ -11,31 +11,29 @@
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-/* div.create-story-content is a container that holds both div.entry-pg-container and div.story-diagram-container, and both of those nested containers are always 100% of the width of div.create-story-content. The width of div.create-story-content changes depending on viewport width; it regulates the width of both of its nested containers.  */
 .create-story-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around makes it so that, within div.create-story-content, there is an equal amount of space above the div.entry-pg-container as there is below the div.entry-pg-container */
-  justify-content: space-around;
+  flex-grow: 1;
   box-sizing: border-box;
-  width: 60vw;
+  width: 100%;
   height: 100%;
-  overflow-y: auto;
-  /* The below padding-bottom moves the div.entry-pg-container and the div.story-diagram-container up by the height of the theme switcher (div.dropdown-container). Otherwise, the page content of both of these containers doesn't appear vertically centered. */
-  /* Currently am messing with this padding */
-  /* padding-bottom: var(--dropdown-height); */
 }
 
 /* ENTRY "PAGE" STYLES */
 
 .entry-pg-container {
+  /* Vertical spacing for the Entry "Page" for viewport widths 769px and up through the largest viewport widths */
+  padding-top: 40px;
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  /* When viewport width is 1441px and up, the width of the Entry "Page" should be 60% */
+  width: 60%;
   gap: 40px;
-  min-height: 65vh;
+  height: 100%;
   justify-content: flex-start;
 }
 
@@ -46,8 +44,9 @@
 .entry-img-wrapper {
   position: relative;
   width: 100%;
-  /* height: 50vh; */
   flex: 1;
+  /* Prevent the .entry-img from becoming too tall (the max-height would really only effect tablets) */
+  max-height: 900px;
   height: auto;
 }
 
@@ -59,12 +58,12 @@
   right: 0;
   height: 100%;
   background: linear-gradient(to top,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.5) 10%,
-    rgba(0, 0, 0, 0.4) 20%,
-    rgba(0, 0, 0, 0.3) 30%,
-    rgba(0, 0, 0, 0.2) 40%,
-    rgba(0, 0, 0, 0) 50%);
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.5) 10%,
+      rgba(0, 0, 0, 0.4) 20%,
+      rgba(0, 0, 0, 0.3) 30%,
+      rgba(0, 0, 0, 0.2) 40%,
+      rgba(0, 0, 0, 0) 50%);
   border-radius: 10px;
   pointer-events: none;
   z-index: 1;
@@ -100,17 +99,17 @@
 
 .create-story-button {
   position: absolute;
+  /* Vertically and horizontally center the .create-story-button over the .entry-image */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  padding: 15px;
+  padding: 12px;
   font-size: var(--med-large-txt);
-  width: 300px;
+  max-width: 300px;
+  width: min(300px, 40vw);
   cursor: pointer;
   background-color: var(--header-link-hover);
-  color: var(--dark-accent);
-  color: #27392F;
   color: #263626;
   transition: background-color ease-in-out 0.3s;
   border-radius: 10px;
@@ -118,14 +117,14 @@
   opacity: 0;
   animation: fadeIntoOpaque 2s forwards;
   box-shadow:
-    0px 4px 5px rgba(0, 0, 0, 0.2),
     /* Small, sharper shadow close to button */
-    0px 8px 15px rgba(0, 0, 0, 0.1),
+    0px 4px 5px rgba(0, 0, 0, 0.2),
     /* Larger, more blurred shadow */
-    0px 15px 30px rgba(0, 0, 0, 0.1),
+    0px 8px 15px rgba(0, 0, 0, 0.1),
     /* Even larger, very subtle shadow */
+    0px 15px 30px rgba(0, 0, 0, 0.1),
+    /* Very soft shadow for blending */
     0px 30px 40px rgba(0, 0, 0, 0.05);
-  /* Very soft, barely visible shadow for blending */
 }
 
 .create-story-button:hover {
@@ -135,51 +134,103 @@
 /* STORY DIAGRAM "PAGE" STYLES */
 
 .story-diagram-container {
+  /* Vertical spacing for the Story Diagram "Page" for viewport widths 769px and up through the largest viewport widths. (There is vertical spacing on top but no vertical spacing on bottom set here because no vertical space is needed between the div.story-diagram-container and the footer.) */
+  /* (This padding-top is the vertical space between the div.dropdown-container and the "Your Story Diagram" h1) */
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 30px;
-  min-height: 60vh;
-  justify-content: flex-start;
+  /* Vertical gap between div.story-diagram-heading (which has 2 children of its own) and div.chapter-container */
+  gap: 40px;
+  height: 100%;
 }
 
 .story-diagram-heading {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  /* Width of div.story-diagram-heading for viewport widths 1441px and up */
+  width: 85%;
+  /* Horizontal gap between the h1 and h2 */
   gap: 20px;
-  text-align: center;
   color: var(--header-title);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .story-diagram-heading h1 {
-  font-size: var(--large-txt);
+  font-size: var(--med-large-txt);
+}
+
+/* For all viewport widths 1025px and up, the h1 and h2 of the heading are displayed horizontally with a dash in between them */
+.story-diagram-heading h1::after {
+  content: "-";
+  flex-shrink: 0;
+  /* positioning for the dash */
+  position: relative;
+  bottom: 2px;
+  left: 10px;
 }
 
 .story-diagram-heading h2 {
   font-size: var(--med-large-txt);
 }
 
+.scrollbar-container {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* Helps ensure the scrollbar-container is tall enough to be flush with the footer. */
+  height: 85vh;
+  /* Content that doesn't fit within the height of the .scrollbar-container will be hidden */
+  overflow-y: hidden;
+  white-space: nowrap;
+  background: transparent;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  /* The below flex styling horizontally centers the div.chapter-container */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .chapter-container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  /* min-height: 50vh; */
-  max-height: 70vh;
+  flex-wrap: nowrap;
+  /* Allow horizontal scrolling on this container */
+  overflow-x: auto;
+  /* Allow vertical scrolling on this container */
   overflow-y: auto;
-  /* margin: 20px 0; */
-  padding-right: 20px;
-  gap: 10px;
+  width: fit-content;
+  height: 100%;
+  /* Simplified calculation of (100vw - (12px + 85vw)) / 2. 12px is the width of the scrollbar. 85vw is the width of allotted to the story diagram (although it might not end up taking up all of that width). These padding-right and padding-left values are for all breakpoints. */
+  padding-right: calc((15vw - 12px) / 2);
+  padding-left: calc((15vw - 12px) / 2);
+  /* 28px of total visual space is what we are aiming for. Subtract 15px because .chapter-container .chapter-wrapper already contributes 15px margin-top. */
+  padding-top: calc(28px - 15px);
+}
+
+/* The purpose of this psueodo-element is to create some vertical space below the bottom of the story diagram content, within the div.chapter-container. (Due to the positioning setup, an ::after pseudo-element works to add some extra vertical space whereas padding and margin did not work.) */
+.scrollbar-container .chapter-container .chapter-wrapper.indent-0::after {
+  content: "";
+  display: block;
+  /* 28px of total visual space is what we are aiming for here; subtract 15px to get that. */
+  height: calc(28px - 15px);
+  flex-shrink: 0;
+}
+
+.scrollbar-container::-webkit-scrollbar {
+  height: 14px;
 }
 
 .chapter-container .chapter-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  /* Vertical space below each chapter number "label". */
+  margin-top: 15px;
+  /* Vertical space between the title of a chapter and the first choice for that chapter. */
+  gap: 13px;
 }
 
 /* Styling for the chapter number "labels" in the story diagram */
@@ -187,24 +238,39 @@
   font-size: var(--med-small-txt);
 }
 
+.chapter-container span::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  /* Vertical space above each chapter number "label" */
+  height: 15px;
+}
+
+.chapter-container .chapter-wrapper .options-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* Vertical space between each choice in the story diagram */
+  gap: 13px;
+}
+
 /* Styling for the story title, chapter titles, and choices which appear in the story diagram */
 .chapter-container button {
   display: block;
-  margin: 10px 0;
-  padding: 10px 20px;
+  padding: 11px 40px;
   font-size: var(--small-txt);
   cursor: pointer;
-  width: 80%;
-  max-width: 400px;
+  width: fit-content;
   background-color: #Dff0f8;
   transition: background-color ease-in-out 0.3s;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .chapter-container button:hover {
   background-color: #F1F6F8;
 }
+
+/* The below indent classes apply a margin-left to help communicate how deeply nested the chapter is within the story */
 
 .indent-1 {
   margin-left: 40px;
@@ -228,20 +294,20 @@
 
 .finalize-story-button {
   position: fixed;
-  /* For large viewport widths, when the button is not full screen width, the finalize story button is positioned in the bottom right corner of the screen */
-  bottom: 50px;
-  /* right: 20vw is designed so that the button is aligned all the way to the right edge of div.create-story-content, which is 60vw when vw is 1441px and up. */
-  right: 20vw;
-  z-index: 5;
-  padding: 15px 30px;
-  font-size: var(--med-large-txt);
   cursor: pointer;
+  padding: 12px 38px;
+  bottom: 50px;
+  /* Add 12px (width of scrollbar) to visually match the bottom positioning */
+  right: calc(50px + 12px);
+  z-index: 5;
+  width: fit-content;
+  font-size: var(--med-large-txt);
   background-color: var(--story-4);
-  color: #F1F6F8;
   color: var(--cool-white);
   transition: background-color ease-in-out 0.3s;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .finalize-story-button:hover {
@@ -252,17 +318,17 @@
 
 .create-story-modal {
   width: 40vw;
-  padding: 20px;
   background-color: var(--warm-white);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  height: 90%;
 }
 
+/* Dark backdrop beneath modal */
 .overlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -274,16 +340,25 @@
   z-index: 1000;
 }
 
-.modal-header h2 {
+.create-story-modal-header {
+  border-bottom: #E3E3E3;
+  border-bottom-style: solid;
   display: flex;
+  flex-direction: row;
+  /* Aligns the .create-story-modal-header h2 to the left and the .close-button to the right, with the extra space in between them */
+  justify-content: space-between;
+  padding: 35px 35px 30px 35px;
+}
+
+.create-story-modal-header h2 {
   font-size: var(--large-txt);
   color: var(--dark-accent);
 }
 
 .close-button {
   display: flex;
-  width: 30px;
-  height: 30px;
+  min-width: var(--btn-close-length);
+  height: var(--btn-close-length);
   background-color: var(--story-4);
   color: var(--warm-white);
   cursor: pointer;
@@ -294,9 +369,9 @@
 
 .close-button::before {
   content: '×';
-  /* THIS IS A "FONT SIZE" I DID NOT MAKE RESPONSIVE YET */
-  font-size: 30px;
+  font-size: var(--btn-close-length);
   position: relative;
+  /* Vertically and horizontally center the "x" within the close button */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -54%);
@@ -305,12 +380,28 @@
 
 .close-button:hover {
   background-color: #A94E6F;
-  border: none;
-  border-radius: 5px;
 }
 
 .create-story-form {
-  margin-top: 20px;
+  /* Using a height of 87% instead of 90% helps ensure the user can scroll all the way to the bottom of .scrollable-content (otherwise, it gets problematic for the 481px - 768px breakpoint) */
+  height: 87%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 50px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.create-story-form .scrollable-content {
+  /* Allows vertical scrolling */
+  overflow-y: auto;
+  height: 80%;
+  padding-right: 30px;
+  padding-left: 50px;
+  /* For this breakpoint (1441px and up), a margin-top of -125px vertically centers the div.scrollable-content between the modal header and modal footer because the height of the modal footer is 125px. Since the flex container is the form itself, and the form takes up the whole height of the modal except the header, putting justify-content: center on the form puts the .scrollable-content 125px lower than we actually want it to go. So, pushing the .scrollable-content 125px up makes it land in the vertical center between the header and footer. */
+  margin-top: -125px;
 }
 
 .create-story-form label {
@@ -318,44 +409,83 @@
   color: var(--header-title);
 }
 
-.create-story-form input[type='text'],
-.create-story-form textarea {
+.create-story-form .scrollable-content input[type='text'],
+.create-story-form .scrollable-content textarea {
   border: 1px solid var(--mid-dark-accent);
   border-radius: 4px;
   font-size: var(--small-txt);
   background-color: var(--story-5);
   color: var(--text-color);
-  padding: 7px;
+  padding: 12px;
 }
 
 input#storyTitle,
 textarea#storyDescription,
 input#storyGenre,
-input#storyTags,
 input#chapterTitle,
 textarea#chapterContent {
-  margin: 5px 0px 15px;
-  padding: 10px;
-  font-size: var(--small-txt);
+  margin: 15px 0px 30px;
 }
 
-.save-and-continue-button {
-  background-color: var(--button-accent);
+input#storyTags {
+  margin: 15px 0px 0px;
+}
+
+input.choice-text {
+  margin: 0px 0px 12px;
+}
+
+.end-story-label {
+  display: flex;
+  /* Display the "Ends Story" span and the input checkbox horizontally, and align them vertically */
+  flex-direction: row;
+  align-items: center;
+  /* The margin-bottom on the .end-story-label matches the margin-bottom on the input elements for this breakpoint */
+  margin-bottom: 30px;
+}
+
+.end-story-label input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin-left: 12px;
+}
+
+.create-story-modal-foot {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  /* Helps align the applicable action button to the right end of the modal footer */
+  justify-content: flex-end;
+  /* position the footer at the bottom of the modal */
+  bottom: 0;
+  width: 100%;
+  background-color: var(--warm-white);
+  border-top: #E3E3E3;
+  border-top-style: solid;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 35px;
+}
+
+.save-and-continue-button,
+button.save-chapter-button {
+  font-size: var(--med-txt);
   color: var(--warm-white);
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: var(--med-small-txt);
   text-align: center;
   transition: background-color ease-in-out 0.3s;
-  padding: 5px 20px;
-  margin: 10px 0px 10px 0px;
+  padding: 12px 24px;
+  width: 190px;
 }
 
-.save-and-continue-button:hover,
-.add-choice-button:hover,
-.remove-choice-button:hover {
-  background-color: var(--dk-button-accent);
+.save-and-continue-button {
+  background-color: var(--button-accent);
+}
+
+button.save-chapter-button {
+  background-color: var(--story-4);
 }
 
 .add-choice-button,
@@ -368,64 +498,113 @@ textarea#chapterContent {
   font-size: var(--med-small-txt);
   text-align: center;
   transition: background-color ease-in-out 0.3s;
-  padding: 5px 10px;
-  margin-bottom: 20px;
-  margin-top: -5px;
-  min-width: 113px;
+  padding: 10px 18px;
+  width: 150px;
 }
 
 .add-choice-button {
-  margin-top: 10px;
+  margin: 10px 0px 0px;
 }
 
-button.save-chapter-button {
-  background-color: var(--story-4);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: var(--med-small-txt);
-  text-align: center;
-  transition: background-color ease-in-out 0.3s;
-  padding: 5px 10px;
-  min-width: 113px;
-  color: var(--warm-white);
-  display: block;
+.remove-choice-button {
+  margin: 0px 0px 30px;
+}
+
+.save-and-continue-button:hover,
+.add-choice-button:hover,
+.remove-choice-button:hover {
+  background-color: var(--dk-button-accent);
 }
 
 button.save-chapter-button:hover {
   background-color: var(--alt-button-accent);
-  display: block;
-}
-
-.end-story-label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.end-story-label input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  margin-left: 10px;
 }
 
 /* Media Queries */
 
 @media (max-width: 1440px) {
-  .create-story-content {
-    width: 85vw;
+  .entry-pg-container {
+    /* When viewport width is 0 - 1440px, the width of the Entry "Page" should be 85% */
+    width: 85%;
+  }
+
+  .scrollbar-container {
+    /* Decrease the height of the .scrollbar-container to make it easier for the user to access the horizontal scrollbar */
+    height: 80vh;
+  }
+
+  .finalize-story-button {
+    padding: 12px 36px;
+    bottom: 40px;
+    /* Add 12px (width of scrollbar) to visually match the bottom positioning */
+    right: calc(40px + 12px);
   }
 
   .create-story-modal {
     width: 50vw;
+    max-height: 650px;
   }
 
-  .finalize-story-button {
-    /* bottom: 40px is designed to match the 50px margin-bottom on the div.dropdown-container that we plan to have applied when vw is 1440px and less. */
-    bottom: 40px;
-    /* When vw is 1440px or less, the div.create-story-content is 85vw. Positioning the .finalize-story-button with right: 7.5vw aligns the button all the way to the right edge of div.create-story-content. */
-    right: 7.5vw;
+  .create-story-modal-header {
+    padding: 25px 25px 18px 25px;
+  }
+
+  .create-story-form {
+    padding-right: 40px;
+  }
+
+  .create-story-form .scrollable-content {
+    padding-right: 25px;
+    padding-left: 40px;
+    /* Vertically center the div.scrollable-content between the modal header and modal footer by bringing it up 96px (the current height of the footer) */
+    margin-top: -96px;
+  }
+
+  .create-story-form .scrollable-content input[type='text'],
+  .create-story-form .scrollable-content textarea {
+    padding: 10px;
+  }
+
+  input#storyTitle,
+  textarea#storyDescription,
+  input#storyGenre,
+  input#chapterTitle,
+  textarea#chapterContent {
+    margin: 12px 0px 25px;
+  }
+
+  input#storyTags {
+    margin: 12px 0px 0px;
+  }
+
+  input.choice-text {
+    margin: 0px 0px 10px;
+  }
+
+  .end-story-label {
+    /* The margin-bottom on the .end-story-label matches the margin-bottom on the input elements for this breakpoint */
+    margin-bottom: 25px;
+  }
+
+  .create-story-modal-foot {
+    padding: 25px;
+  }
+
+  .save-and-continue-button,
+  button.save-chapter-button {
+    font-size: var(--med-small-txt);
+    padding: 10px 18px;
+    width: 155px;
+  }
+
+  .add-choice-button,
+  .remove-choice-button {
+    padding: 8px 16px;
+    width: 145px;
+  }
+
+  .remove-choice-button {
+    margin: 0px 0px 25px;
   }
 }
 
@@ -434,11 +613,118 @@ button.save-chapter-button:hover {
     gap: 35px;
   }
 
+  .story-diagram-heading {
+    /* Vertical gap between the h1 and h2 */
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .story-diagram-heading h1 {
+    font-size: var(--large-txt);
+  }
+
+  /* The .story-diagram-heading switches to flex-direction column for this breakpoint, so the below css clears out the dash for punctuation which is no longer needed for the .story-diagram-heading */
+  .story-diagram-heading h1::after {
+    content: "";
+  }
+
+  .scrollbar-container {
+    /* Decrease the height of the .scrollbar-container to make it easier for the user to access the horizontal scrollbar */
+    height: 75vh;
+  }
+
+  .chapter-container {
+    /* 24px of total visual space is what we are aiming for. Subtract 14px because .chapter-container .chapter-wrapper already contributes 14px margin-top. */
+    padding-top: calc(24px - 14px);
+  }
+
+  .scrollbar-container .chapter-container .chapter-wrapper.indent-0::after {
+    /* 24px of total visual space is what we are aiming for. Subtract 10px to get that. */
+    height: calc(24px - 10px);
+  }
+
+  .chapter-container .chapter-wrapper {
+    /* Vertical space below each chapter number "label". */
+    margin-top: 14px;
+    /* Vertical space between the title of a chapter and the first choice for that chapter. */
+    gap: 12px;
+  }
+
+  .chapter-container span::before {
+    /* Vertical space above each chapter number "label" */
+    height: 14px;
+  }
+
+  .chapter-container .chapter-wrapper .options-wrapper {
+    /* Vertical space between each choice in the story diagram */
+    gap: 12px;
+  }
+
+  .chapter-container button {
+    padding: 10px 40px;
+  }
+
+  .finalize-story-button {
+    padding: 12px 32px;
+    bottom: 36px;
+    /* Add 12px (width of scrollbar) to visually match the bottom positioning */
+    right: calc(36px + 12px);
+  }
+
   .create-story-modal {
     width: 60vw;
-    padding: 40px;
-    max-height: 90vh;
-    overflow-y: auto;
+  }
+
+  .create-story-modal-header {
+    padding: 25px;
+  }
+
+  .create-story-form {
+    padding-right: 30px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  .create-story-form .scrollable-content {
+    padding-right: 20px;
+    padding-left: 30px;
+    /* Vertically center the div.scrollable-content between the modal header and modal footer by bringing it up 91px (the current height of the footer) */
+    margin-top: -91px;
+  }
+
+  input#storyTitle,
+  textarea#storyDescription,
+  input#storyGenre,
+  input#chapterTitle,
+  textarea#chapterContent {
+    margin: 10px 0px 22px;
+  }
+
+  input#storyTags {
+    margin: 10px 0px 0px;
+  }
+
+  .end-story-label {
+    /* The margin-bottom on the .end-story-label matches the margin-bottom on the input elements for this breakpoint */
+    margin-bottom: 22px;
+  }
+
+  .save-and-continue-button,
+  button.save-chapter-button {
+    padding: 8px 16px;
+    width: 150px;
+  }
+
+  .add-choice-button,
+  .remove-choice-button {
+    padding: 7px 14px;
+    width: 150px;
+  }
+
+  .remove-choice-button {
+    margin: 0px 0px 22px;
   }
 }
 
@@ -448,41 +734,113 @@ button.save-chapter-button:hover {
     min-height: calc(100vh - (var(--header-height) + var(--dropdown-height)));
   }
 
-  .create-story-content {
-    max-width: 100%;
+  .entry-pg-container {
+    /* Vertical spacing for the Entry "Page" for viewport widths 0px - 768px */
+    padding-top: 30px;
+    padding-bottom: 40px;
   }
 
   .create-story-button {
     width: 45%;
   }
 
-  /* .finalize-story-button {
-    width: calc(100% - 60px);
-  } */
+  .story-diagram-container {
+    gap: 28px;
+    /* Vertical spacing for the Story Diagram "Page" for viewport widths 0px - 768px */
+    padding-top: 30px;
+  }
 
-  .create-story-button,
+  .scrollbar-container {
+    /* Decrease the height of the .scrollbar-container to make it easier for the user to access the horizontal scrollbar */
+    height: 70vh;
+  }
+
+  .chapter-container {
+    /* 22px of total visual space is what we are aiming for; subtract 10px because .chapter-container .chapter-wrapper already contributes 10px margin-top. */
+    padding-top: calc(22px - 10px);
+  }
+
+  .scrollbar-container .chapter-container .chapter-wrapper.indent-0::after {
+    /* 22px of total visual space is what we are aiming for; subtract 10px to get that. */
+    height: calc(22px - 10px);
+  }
+
+  .chapter-container .chapter-wrapper {
+    /* Vertical space below each chapter number "label". */
+    margin-top: 12px;
+  }
+
+  .chapter-container span::before {
+    /* Vertical space above each chapter number "label" */
+    height: 12px;
+  }
+
   .finalize-story-button {
-    padding: 12px;
+    bottom: 30px;
+    /* Explanation of below formula: it makes it so the .finalize-story-button has a "right" value that creates the same amount of horizontal space from the inner scroll bar, as the leftmost button has from the left edge of the viewport. (See padding-right and padding-left originally set on .chapter-container.) */
+    right: calc(((15vw - 12px) / 2) + 12px);
   }
 
   .create-story-modal {
     width: 75vw;
-    padding: 35px;
   }
-  
+
   .close-button {
     top: 10px;
     right: 10px;
   }
 
-  .chapter-container {
-    max-height: 60vh;
-    padding-right: 10px;
+  .create-story-form {
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
 
-  .chapter-container button {
-    /* width: 100%; */
-    max-width: 100%;
+  .create-story-form .scrollable-content {
+    /* Vertically center the div.scrollable-content between the modal header and modal footer by bringing it up 89px (the current height of the footer) */
+    margin-top: -89px;
+  }
+
+  .create-story-form input[type='text'],
+  .create-story-form textarea {
+    padding: 10px;
+  }
+
+  input#storyTitle,
+  textarea#storyDescription,
+  input#storyGenre,
+  input#chapterTitle,
+  textarea#chapterContent {
+    margin: 10px 0px 20px;
+  }
+
+  input.choice-text {
+    margin: 5px 0px 15px;
+  }
+
+  .end-story-label {
+    /* The margin-bottom on the .end-story-label matches the margin-bottom on the input elements for this breakpoint */
+    margin-bottom: 20px;
+  }
+
+  .end-story-label input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+  }
+
+  .save-and-continue-button,
+  button.save-chapter-button {
+    width: 140px;
+  }
+
+  .add-choice-button,
+  .remove-choice-button {
+    width: 140px;
+  }
+
+  .remove-choice-button {
+    margin: -5px 0px 20px;
   }
 }
 
@@ -491,58 +849,92 @@ button.save-chapter-button:hover {
     gap: 30px;
   }
 
+  .create-story-button {
+    padding: 10px;
+  }
+
+  .story-diagram-container {
+    gap: 25px;
+  }
+
+  .scrollbar-container {
+    height: 65vh;
+  }
+
+  .chapter-container {
+    /* This value is designed to match the horizontal padding on the .chapter-container (which is set in the default styling). Subtract 10px because the .chapter-container .chapter-wrapper already contributes 10px margin-top. */
+    padding-top: calc(((15vw - 12px) / 2) - 10px);
+  }
+
+  .scrollbar-container .chapter-container .chapter-wrapper.indent-0::after {
+    /* This height value is designed to match the horizontal padding on the .chapter-container (which is set in the default styling). */
+    height: calc(((15vw - 12px) / 2) - 10px);
+  }
+
+  .chapter-container .chapter-wrapper {
+    /* Vertical space below each chapter number "label". */
+    margin-top: 10px;
+    /* Vertical space between the title of a chapter and the first choice for that chapter. */
+    gap: 10px;
+  }
+
+  .chapter-container span::before {
+    /* Vertical space above each chapter number "label" */
+    height: 10px;
+  }
+
+  .chapter-container .chapter-wrapper .options-wrapper {
+    /* Vertical space between each choice in the story diagram */
+    gap: 10px;
+  }
+
+  .chapter-container button {
+    padding: 10px 30px;
+  }
+
+  .finalize-story-button {
+    padding: 12px 30px;
+    bottom: 25px;
+  }
+
   .create-story-modal {
     width: 85vw;
-    padding: 30px;
   }
 
-  /* I HAVE THIS PADDING OF 7PX DECLARED IN THE DEFAULT STYLING AND IN THIS MEDIA QUERY. ONE OF THEM WILL BE A DUPLICATE, MAKE SURE TO JUST HAVE THAT PADDING WHERE IT IS NEEDED AND ADJUST THE DEFAULT AMOUNT OF PADDING IF NECESSARY. */
-  .create-story-form input[type='text'],
-  .create-story-form textarea {
+  .create-story-modal-header {
+    padding: 20px;
+  }
+
+  .create-story-form {
+    padding-right: 25px;
+  }
+
+  .create-story-form .scrollable-content {
+    padding-right: 15px;
+    padding-left: 25px;
+    /* Vertically center the div.scrollable-content between the modal header and modal footer by bringing it up 77px (the current height of the footer) */
+    margin-top: -77px;
+  }
+
+  .create-story-form .scrollable-content input[type='text'],
+  .create-story-form .scrollable-content textarea {
     padding: 7px;
   }
 
-  input#storyTitle,
-  textarea#storyDescription,
-  input#storyGenre,
-  input#storyTags,
-  input#chapterTitle,
-  textarea#chapterContent {
-    margin: 10px 0px 20px;
-    padding: 7px;
+  .create-story-modal-foot {
+    padding: 20px;
   }
 
   .save-and-continue-button,
-  .add-choice-button,
-  .remove-choice-button,
   button.save-chapter-button {
+    padding: 7px 14px;
     width: 130px;
-  }
-
-  .save-and-continue-button {
-    padding: 7px;
-    margin: 10px 0px 0px;
   }
 
   .add-choice-button,
   .remove-choice-button {
+    padding: 5px 10px;
     height: 30px;
-  }
-
-  .create-story-button {
-    z-index: 2;
-    padding: 10px;
-    width: 45%;
-  }
-
-  .finalize-story-button {
-    width: 85vw;
-    /* What would make sense would be if left: 7.5vw perfectly aligned the finalize story button within the width of .create-story-content, which is 85vw. But left: 6vw matches closer. */
-    left: 6vw;
-  }
-
-  .chapter-container {
-    /* min-height: 57vh; */
-    margin: 0;
+    width: 130px;
   }
 }

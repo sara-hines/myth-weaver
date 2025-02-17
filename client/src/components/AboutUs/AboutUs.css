@@ -98,7 +98,6 @@
 /* Media Queries */
 
 @media (max-width: 1440px) {
-
   /* Vertical spacing for AboutUs for viewport widths 769px - 1440px */
   .about-us-container {
     padding-top: 40px;
@@ -139,8 +138,7 @@
 }
 
 @media (max-width: 1024px) {
-
-  /* Sets the width of AboutUs page content when viewport width is 769px - 1024px*/
+  /* Sets the width of AboutUs page content when viewport width is 769px - 1024px */
   .about-us-main {
     width: 70vw;
     gap: 35px;
@@ -168,7 +166,6 @@
 }
 
 @media (max-width: 768px) {
-
   /* Vertical spacing for AboutUs for viewport widths 0px - 768px */
   .about-us-container {
     padding-top: 30px;

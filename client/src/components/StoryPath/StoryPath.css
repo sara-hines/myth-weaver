@@ -9,11 +9,12 @@
 }
 
 .story-path {
-  /* The below 4 selectors position the page content in the vertical center of the space below the header, and then bump up the vertical position by the height of the div.dropdown-container to land in a visually centered place */
+  /* The below 5 selectors position the page content in the vertical center of the space below the header, and then bump up the vertical position by the 20vh, with a safeguard margin-top to prevent the .story-path-container content from getting too close to the header. It's a flexible way to handle short page content that could be displayed on tall devices. */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-bottom: var(--dropdown-height);
+  padding-bottom: 20vh;
+  margin-top: 40px;
   text-align: center;
   height: 100%;
 }
@@ -126,6 +127,10 @@
 }
 
 @media (max-width: 768px) {
+  .story-path {
+    margin-top: 30px;
+  }
+
   .story-path-container {
     gap: 35px;
   }

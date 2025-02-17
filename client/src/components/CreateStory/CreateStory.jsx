@@ -232,13 +232,13 @@ function CreateStory() {
         <button onClick={() => editChapter(chapterIndex)}>
           {chapter.title}
         </button>
-        <div>
+        <div className='options-wrapper'>
           {chapter.choices.map((choice, choiceIndex) => (
             <div key={choiceIndex} className={`indent-${depth + 1}`}>
               <button onClick={() => addNewChapterForChoice(chapterIndex, choiceIndex)}>
                 {choice.choiceText || `Choice ${choiceIndex + 1}`}
               </button>
-              {chapter.isEnd && <span> (End)</span>}
+              {chapter.isEnd && <span>End</span>}
               {choice.nextChapterIndex !== null && (
                 <span>
                   {` -> Chapter ${choice.nextChapterIndex + 1}`}
@@ -276,8 +276,10 @@ function CreateStory() {
               <h1>Your Story Diagram</h1>
               <h2>Click a chapter or choice button to edit or add onto your story!</h2>
             </div>
-            <div className='chapter-container'>
-              {renderChapters(0)}
+            <div className='scrollbar-container'>
+              <div className='chapter-container'>
+                {renderChapters(0)}
+              </div>
             </div>
             <button className='finalize-story-button' onClick={finalizeStory}>Finalize Story</button>
           </div>
@@ -299,7 +301,7 @@ function CreateStory() {
         className='modal create-story-modal'
         overlayClassName='overlay'
       >
-        <div className="modal-header">
+        <div className="create-story-modal-header">
           <h2>Start Your Story</h2>
           <button
             className="close-button"
@@ -316,22 +318,25 @@ function CreateStory() {
           </button>
         </div>
         <form onSubmit={handleInitialSubmit} className='create-story-form'>
-          <label htmlFor='storyTitle'>Story Title:</label>
-          <input type='text' id='storyTitle' value={storyTitle} onChange={handleStoryTitleChange} required />
+          <div className='scrollable-content'>
+            <label htmlFor='storyTitle'>Story Title:</label>
+            <input type='text' id='storyTitle' value={storyTitle} onChange={handleStoryTitleChange} required />
 
-          <label htmlFor='storyDescription'>Brief Description:</label>
-          <textarea id='storyDescription' value={storyDescription} onChange={handleStoryDescriptionChange} required />
+            <label htmlFor='storyDescription'>Brief Description:</label>
+            <textarea id='storyDescription' value={storyDescription} onChange={handleStoryDescriptionChange} required />
 
-          <label htmlFor='storyImage'>Story Image:</label>
-          <UploadImage setImageUrl={handleStoryImageChange} />
+            <label htmlFor='storyImage'>Story Image:</label>
+            <UploadImage setImageUrl={handleStoryImageChange} />
 
-          <label htmlFor='storyGenre'>Genre:</label>
-          <input type='text' id='storyGenre' value={storyGenre} onChange={handleStoryGenreChange} required />
+            <label htmlFor='storyGenre'>Genre:</label>
+            <input type='text' id='storyGenre' value={storyGenre} onChange={handleStoryGenreChange} required />
 
-          <label htmlFor='storyTags'>Tags (comma-separated):</label>
-          <input type='text' id='storyTags' value={storyTags} onChange={handleStoryTagsChange} required />
-
-          <button type='submit' className='save-and-continue-button'>Save & Continue</button>
+            <label htmlFor='storyTags'>Tags (comma-separated):</label>
+            <input type='text' id='storyTags' value={storyTags} onChange={handleStoryTagsChange} required />
+          </div>
+          <div className='create-story-modal-foot'>
+            <button type='submit' className='save-and-continue-button'>Save & Continue</button>
+          </div>
         </form>
       </Modal>
 
@@ -346,7 +351,7 @@ function CreateStory() {
         className="modal create-story-modal"
         overlayClassName="overlay"
       >
-        <div className="modal-header">
+        <div className="create-story-modal-header">
           <h2>{chapterIndexToEdit !== null ? 'Edit Chapter' : 'Add New Chapter'}</h2>
           <button
             className="close-button"
@@ -358,43 +363,47 @@ function CreateStory() {
           </button>
         </div>
         <form onSubmit={handleChapterSubmit} className='create-story-form'>
-          <label htmlFor='chapterTitle'>Title:</label>
-          <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
-          <label htmlFor='chapterContent'>Content:</label>
-          <textarea id='chapterContent' value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
-          <label className='end-story-label'>
-            <span>Ends Story</span>
-            <input
-              type='checkbox'
-              checked={currentChapter.isEnd}
-              onChange={(e) => {
-                handleChapterChange('isEnd', e.target.checked);
-                if (e.target.checked) {
-                  // Clear all choices at once when the "Ends Story" checkbox is checked
-                  setCurrentChapter(prevState => ({
-                    ...prevState,
-                    choices: [] // Reset the choices array to empty
-                  }));
-                }
-              }}
-            />
-          </label>
-
-          {currentChapter.choices.map((choice, index) => (
-            <div key={index}>
+          <div className='scrollable-content'>
+            <label htmlFor='chapterTitle'>Title:</label>
+            <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
+            <label htmlFor='chapterContent'>Content:</label>
+            <textarea id='chapterContent' value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
+            <label className='end-story-label'>
+              <span>Ends Story</span>
               <input
-                type='text'
-                style={{ margin: '5px 0px 15px'}}
-                value={choice.choiceText}
-                onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
-                placeholder='Choice Text'
-                required
+                type='checkbox'
+                checked={currentChapter.isEnd}
+                onChange={(e) => {
+                  handleChapterChange('isEnd', e.target.checked);
+                  if (e.target.checked) {
+                    // Clear all choices at once when the "Ends Story" checkbox is checked
+                    setCurrentChapter(prevState => ({
+                      ...prevState,
+                      choices: [] // Reset the choices array to empty
+                    }));
+                  }
+                }}
               />
-              <button type='button' className='remove-choice-button' onClick={() => removeChoice(index)}>Remove Choice</button>
-            </div>
-          ))}
-          {currentChapter.choices.length < 3 && <button type='button' className='add-choice-button' onClick={addChoice}>Add Choice</button>}
-          <button type='submit' className='save-chapter-button'>{chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}</button>
+            </label>
+
+            {currentChapter.choices.map((choice, index) => (
+              <div key={index}>
+                <input
+                  type='text'
+                  className='choice-text'
+                  value={choice.choiceText}
+                  onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
+                  placeholder='Choice Text'
+                  required
+                />
+                <button type='button' className='remove-choice-button' onClick={() => removeChoice(index)}>Remove Choice</button>
+              </div>
+            ))}
+            {currentChapter.choices.length < 3 && <button type='button' className='add-choice-button' onClick={addChoice}>Add Choice</button>}
+          </div>
+          <div className='create-story-modal-foot'>
+            <button type='submit' className='save-chapter-button'>{chapterIndexToEdit !== null ? 'Save Changes' : 'Save Chapter'}</button>
+          </div>
         </form>
       </Modal>
 
@@ -409,7 +418,7 @@ function CreateStory() {
         className="modal create-story-modal"
         overlayClassName="overlay"
       >
-        <div className="modal-header">
+        <div className="create-story-modal-header">
           <h2>Add New Chapter for Choice</h2>
           <button
             className="close-button"
@@ -421,43 +430,47 @@ function CreateStory() {
           </button>
         </div>
         <form onSubmit={handleChoiceSubmit} className='create-story-form'>
-          <label htmlFor='chapterTitle'>Title:</label>
-          <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
-          <label htmlFor='chapterContent'>Content:</label>
-          <textarea id='chapterContent' value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
-          <label className='end-story-label'>
-            <span>Ends Story</span>
-            <input
-              type='checkbox'
-              checked={currentChapter.isEnd}
-              onChange={(e) => {
-                handleChapterChange('isEnd', e.target.checked);
-                if (e.target.checked) {
-                  // Clear all choices at once when the "Ends Story" checkbox is checked
-                  setCurrentChapter(prevState => ({
-                    ...prevState,
-                    choices: [] // Reset the choices array to empty
-                  }));
-                }
-              }}
-            />
-          </label>
-
-          {currentChapter.choices.map((choice, index) => (
-            <div key={index}>
+          <div className='scrollable-content'>
+            <label htmlFor='chapterTitle'>Title:</label>
+            <input type='text' id='chapterTitle' value={currentChapter.title} onChange={(e) => handleChapterChange('title', e.target.value)} required />
+            <label htmlFor='chapterContent'>Content:</label>
+            <textarea id='chapterContent' value={currentChapter.content} onChange={(e) => handleChapterChange('content', e.target.value)} required />
+            <label className='end-story-label'>
+              <span>Ends Story</span>
               <input
-                type='text'
-                style={{ margin: '5px 0px 15px' }}
-                value={choice.choiceText}
-                onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
-                placeholder='Choice Text'
-                required
+                type='checkbox'
+                checked={currentChapter.isEnd}
+                onChange={(e) => {
+                  handleChapterChange('isEnd', e.target.checked);
+                  if (e.target.checked) {
+                    // Clear all choices at once when the "Ends Story" checkbox is checked
+                    setCurrentChapter(prevState => ({
+                      ...prevState,
+                      choices: [] // Reset the choices array to empty
+                    }));
+                  }
+                }}
               />
-              <button type='button' className='remove-choice-button' onClick={() => removeChoice(index)}>Remove Choice</button>
-            </div>
-          ))}
-          {currentChapter.choices.length < 3 && <button type='button' className='add-choice-button' onClick={addChoice}>Add Choice</button>}
-          <button type='submit' className='save-chapter-button'>Save Chapter</button>
+            </label>
+
+            {currentChapter.choices.map((choice, index) => (
+              <div key={index}>
+                <input
+                  type='text'
+                  className='choice-text'
+                  value={choice.choiceText}
+                  onChange={(e) => handleChoiceChange(index, 'choiceText', e.target.value)}
+                  placeholder='Choice Text'
+                  required
+                />
+                <button type='button' className='remove-choice-button' onClick={() => removeChoice(index)}>Remove Choice</button>
+              </div>
+            ))}
+            {currentChapter.choices.length < 3 && <button type='button' className='add-choice-button' onClick={addChoice}>Add Choice</button>}
+          </div>
+          <div className='create-story-modal-foot'>
+            <button type='submit' className='save-chapter-button'>Save Chapter</button>
+          </div>
         </form>
       </Modal>
     </section>

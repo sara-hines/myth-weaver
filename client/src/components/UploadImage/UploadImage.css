@@ -2,7 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 20px;
+}
+
+input#file-upload-button {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Targets the actual text "No file chosen" / the chosen file's name */
+input[type='file'] {
+  font-size: var(--med-small-txt);
+  color: var(--dark-accent);
 }
 
 /* This is the "Choose File" button */
@@ -10,15 +23,15 @@ input[type="file"]::file-selector-button {
   background-color: var(--button-accent);
   color: var(--warm-white);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: var(--med-small-txt);
   font-family: var(--theme-font);
   text-align: center;
   transition: background-color ease-in-out 0.5s;
-  padding: 7px;
-  margin: 10px 10px 10px 0px;
-  min-width: 113px;
+  padding: 12px 24px;
+  margin: 15px 25px 10px 0px;
+  width: 150px;
 }
 
 /* This is the "Choose File" button's hover styling */
@@ -26,19 +39,25 @@ input[type="file"]::file-selector-button:hover {
   background-color: var(--dk-button-accent);
 }
 
+.flex-upload-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /* This is the "Upload Image" button */
 .upload-image-container button {
   background-color: var(--story-4);
   color: var(--warm-white);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: var(--med-small-txt);
   text-align: center;
   transition: background-color ease-in-out 0.5s;
-  padding: 5px 20px;
-  margin: 10px 0px 10px 0px;
-  min-width: 113px;
+  padding: 12px 24px;
+  margin: 5px 25px 30px 0px;
+  width: 150px;
 }
 
 /* This is the "Upload Image" button's hover styling */
@@ -46,19 +65,81 @@ input[type="file"]::file-selector-button:hover {
   background-color: var(--alt-button-accent);
 }
 
+/* Match the vertical margins of .upload-image-container button so that the button and the p.result-message are vertically aligned with each other */
 .result-message {
-  padding-top: 10px;
+  margin: 5px 0px 30px 0px;
+  font-size: var(--med-small-txt);
+}
+
+/* Media Queries */
+
+@media (max-width: 1440px) {
+  input[type="file"]::file-selector-button {
+    margin: 12px 20px 10px 0px;
+    padding: 10px 18px;
+    width: 135px;
+  }
+
+  .upload-image-container button {
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin: 5px 20px 25px 0px;
+    width: 135px;
+  }
+
+  /* Match the vertical margins of .upload-image-container button so that the button and the p.result-message are vertically aligned with each other */
+  .result-message {
+    margin: 5px 0px 25px 0px;
+  }
+}
+
+@media (max-width: 1024px) {
+  input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    width: 150px;
+  }
+
+  .flex-upload-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .upload-image-container button {
+    padding: 8px 16px;
+    border-radius: 10px;
+    margin: 5px 0px 22px;
+    width: 150px;
+  }
+
+  .result-message {
+    margin: 0px 0px 22px 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    width: 140px;
+  }
+
+  .upload-image-container button {
+    padding: 8px 16px;
+    border-radius: 10px;
+    margin: 5px 0px 20px;
+    width: 140px;
+  }
+
+  .result-message {
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   input[type="file"]::file-selector-button {
     height: 33.6px;
     width: 130px;
-    border-radius: 10px;
-  }
-
-  .upload-image-container {
-    margin: 0;
+    /* padding declaration is necessary to keep the text centered within the button */
+    padding: 7px;
   }
 
   .upload-image-container button {
@@ -66,11 +147,6 @@ input[type="file"]::file-selector-button:hover {
     width: 130px;
     padding: 7px;
     border-radius: 10px;
-    margin-bottom: 20px;
-  }
-
-  .result-message {
-    padding-top: 0px;
-    padding-bottom: 20px;
+    margin: 5px 0px 20px;
   }
 }

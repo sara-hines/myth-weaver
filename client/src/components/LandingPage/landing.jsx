@@ -9,7 +9,6 @@ import UprightStaff from '/images/staff_upright.png';
 import UpsideDownStaff from '/images/staff_upsidedown.png';
 import VerticalScroll from '/images/vertical-scroll.png';
 import Quill from '/images/quill-for-mobile-landing.png';
-
 import 'animate.css'
 import './landing.css';
 
