@@ -135,7 +135,6 @@
 
 /* When the screen gets smaller than the average screen the smaller images disappear. - Haleigh */
 @media (max-width: 1700px) {
-
   .book-image,
   .bag-image,
   .coinpurse-image,
@@ -254,7 +253,6 @@
 }
 
 @media (max-width: 630px) {
-
   .vertical-scroll {
     height: 60vh;
     top: 0%;
@@ -279,7 +277,6 @@
 }
 
 @media (max-width: 530px) {
-
   .landing-title {
     left: 31%;
   }

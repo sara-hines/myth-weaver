@@ -1,5 +1,5 @@
 import React from 'react';
-import './FadeInText.css'; // Make sure this file includes your CSS
+import './FadeInText.css';
 
 const FadeInText = ({ text }) => {
   let totalIndex = 0;

@@ -55,16 +55,19 @@ const UploadImage = ({ setImageUrl }) => {
     <div className='upload-image-container'>
       {/* 'Choose File' button/input element to choose a file */}
       <input type='file' className='choose-file-button' onChange={handleFileChange} />
-      {/* 'Upload Image' button which changes to display 'Uploading' while uploading is taking place. */}
-      <button onClick={handleUpload} disabled={uploading}>
-        {uploading ? 'Uploading...' : 'Upload Image'}
-      </button>
 
-      {/* Display success message */}
-      {uploadSuccess && <p className='result-message'>Image uploaded successfully!</p>} 
+      <div className='flex-upload-container'>
+        {/* 'Upload Image' button which changes to display 'Uploading' while uploading is taking place. */}
+        <button onClick={handleUpload} disabled={uploading}>
+          {uploading ? 'Uploading...' : 'Upload Image'}
+        </button>
 
-      {/* Display error message if needed. */}
-      {uploadError && <p className='result-message'>{uploadError}</p>} 
+        {/* Display success message */}
+        {uploadSuccess && <p className='result-message'>Image uploaded successfully!</p>}
+
+        {/* Display error message if needed. */}
+        {uploadError && <p className='result-message'>{uploadError}</p>}
+      </div>
     </div>
   );
 };
